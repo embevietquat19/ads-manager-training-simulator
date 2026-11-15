@@ -1,0 +1,13 @@
+# Dependencies (Hostinger tự chạy npm install khi deploy)
+node_modules/
+
+# Cơ sở dữ liệu SQLite + dữ liệu học viên — KHÔNG đưa lên git.
+# File này sống trên máy chủ; mỗi lần deploy bằng git pull không xoá nó.
+# Sao lưu định kỳ bằng nút "Tải file sao lưu" trong trang Quản trị.
+data/
+
+# Biến môi trường thật (mật khẩu, đường dẫn riêng...)
+.env
+
+# File test tạm
+*.log

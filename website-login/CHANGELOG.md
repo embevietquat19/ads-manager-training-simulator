@@ -1,0 +1,180 @@
+# Changelog — Ads Manager Training Simulator (website có đăng nhập)
+
+> Bản này (v2.0.0) là **website thật có đăng nhập** chạy trên Hostinger tại
+> https://fbads.digimar.site — thay cho bản tĩnh 1 file HTML trước đây.
+> Mở trang là màn hình đăng nhập; giáo viên cấp tài khoản từng học viên;
+> bài làm lưu riêng theo tài khoản trên máy chủ, đổi máy vẫn còn.
+> Toàn bộ nội dung học tập của bản tĩnh v1.2.0 được giữ nguyên (xem mục v1.2.0
+> và v1.1.0 bên dưới). Bản mô phỏng không kết nối Meta, không chạy quảng cáo
+> thật (banner TEST ENVIRONMENT).
+
+---
+
+## v2.0.0 — 16/11/2026 (website đăng nhập — Node.js + Express + SQLite)
+
+### Công nghệ
+- Backend **Node.js 24 + Express 4** (chỉ 2 dependency: `express`, `bcryptjs` —
+  toàn mã JS thuần, `npm install` chạy được trên Hostinger Business).
+- Cơ sở dữ liệu **SQLite (file)** qua `node:sqlite` có sẵn trong Node 22+ —
+  không cần tạo database MySQL riêng; file DB đã gitignore nên deploy bằng
+  git pull không xoá dữ liệu học viên.
+- Chạy trên Hostinger gói **Business** qua hPanel → Web Apps (deploy từ GitHub,
+  tự deploy lại khi push). Xem `README_DEPLOY.md` để biết từng bước.
+
+### Đăng nhập & tài khoản
+- Mở trang là **màn hình đăng nhập** hiện đầu tiên; chưa đăng nhập thì không
+  xem được bất kỳ nội dung nào (trang mô phỏng và trang quản trị đều chặn).
+- **Thiết lập lần đầu:** khi chưa có tài khoản giáo viên, form đăng nhập hiện
+  lối “Thiết lập lần đầu” để giáo viên tự đặt tên đăng nhập + mật khẩu quản trị
+  — **không có mật khẩu mặc định**. Sau khi thiết lập, lối này biến mất.
+- **Giáo viên** đăng nhập vào **trang Quản trị** (`/admin`):
+  - Tạo tài khoản học viên (tên đăng nhập, mật khẩu, tên hiển thị).
+  - Đặt lại mật khẩu học viên (đồng thời đăng xuất học viên đó khỏi mọi thiết bị).
+  - Vô hiệu hoá / kích hoạt lại tài khoản học viên (vô hiệu hoá thì học viên
+    không đăng nhập được và mọi phiên cũ bị huỷ ngay).
+  - Thẻ “Tổng quan dữ liệu lớp học”: số học viên, tổng case đã làm, đáp án đã
+    xem, chiến dịch học viên đã tạo.
+  - Nút “Xem bài làm” ở từng học viên: chi tiết số liệu từng case, đáp án đã
+    xem, ghi chú, campaign đã sửa tên/ngân sách, chiến dịch nháp đã Publish,
+    bản nháp editor đang làm dở.
+  - Đăng / sửa / xoá **thông báo của giảng viên**.
+  - Tải file sao lưu JSON toàn bộ dữ liệu lớp học.
+- **Học viên** đăng nhập bằng tài khoản giáo viên cấp:
+  - Thấy chung một tệp dữ liệu gốc như mọi người (6 chiến dịch nháp mẫu,
+    15 case bài tập, 19 khối Tối ưu & Đề xuất, 3 brief, thuật ngữ).
+  - Mọi bài làm lưu riêng theo tài khoản trên máy chủ, đổi máy vẫn còn:
+    số liệu đã chỉnh trong từng case, đáp án đã xem, ghi chú trong case,
+    tên/ngân sách đã sửa ở campaign của case, bản nháp trình chỉnh sửa đang
+    làm dở, chiến dịch đã Publish (mô phỏng).
+  - Học viên **không xem được** bài làm của học viên khác và **không gọi được**
+    bất kỳ API quản trị nào (trả 403).
+
+### Bài làm lưu theo tài khoản — chi tiết từng chỗ
+- **Case tình huống:** kéo thanh trượt chỉnh số → kết quả tính lại ngay và
+  lưu lên máy chủ (không còn localStorage); mở lại trên máy khác vẫn thấy số
+  của mình. Nút “Khôi phục dữ liệu gốc” khôi phục số gốc và lưu lên máy chủ.
+- **Đáp án gợi ý:** bấm “Xem đáp án gợi ý” thì máy chủ ghi nhận “đã xem đáp
+  án” cho case đó; giáo viên nhìn thấy cờ này trong “Xem bài làm”.
+- **Ghi chú trong case (mới):** mỗi case có thêm ô “Ghi chú của bạn” để học
+  viên ghi lại nhận xét/phương án; lưu theo tài khoản, giáo viên xem được.
+- **Campaign đang chạy của case:** bấm “Mở campaign đang chạy” mở editor 3
+  bước với cấu hình case điền sẵn; tên campaign và ngân sách học viên sửa
+  trong đó được lưu riêng theo tài khoản.
+- **Trình chỉnh sửa (editor 3 bước):** mọi lựa chọn ở bước Ad set và Ad
+  (Advantage+ ↔ setup thường, đối tượng, vị trí, ngân sách, creative…) được
+  lưu nháp theo tài khoản; đang làm dở thì lần sau mở lại vẫn còn.
+- **Publish (mô phỏng):** bấm Publish ở bước cuối thì chiến dịch được lưu
+  thành “chiến dịch nháp” theo tài khoản, hiện thêm 1 dòng “Nháp của bạn”
+  trong bảng Campaigns (bấm tên để mở lại trong editor chỉnh tiếp; nút
+  “Xuất file Word” ở dòng đó xuất đúng setup đã lưu). Giáo viên xem được
+  toàn bộ chiến dịch nháp trong “Xem bài làm”.
+- **Thông báo:** giáo viên đăng/sửa/xoá; học viên thấy thanh thông báo mới
+  trên màn hình chính sau khi đăng nhập và chuông có số chưa đọc; mở danh
+  sách thông báo thì đánh dấu đã đọc.
+
+### Bảo mật
+- Mật khẩu lưu dạng **hash bcrypt** (không lưu plaintext).
+- Phiên đăng nhập bằng token ngẫu nhiên trong cookie `httpOnly`,
+  `SameSite=Lax` (+ `Secure` khi chạy production/HTTPS), hạn 30 ngày.
+- Mọi API đều kiểm tra phiên; API quản trị kiểm tra vai trò giáo viên;
+  mọi dữ liệu học viên đều lấy theo `user_id` từ phiên (không lấy từ tham
+  số client gửi lên).
+- Đăng nhập sai 5 lần / 10 phút / IP thì bị chặn tạm thời (mã 429).
+- API thay đổi dữ liệu kiểm tra Origin cùng host (chống CSRF cơ bản).
+- **Lưu ý:** chưa có chức năng tự đổi mật khẩu giáo viên qua giao diện —
+  giáo viên cần ghi nhớ mật khẩu quản trị ngay từ đầu (xem README_DEPLOY.md
+  mục 5).
+
+### Kiểm thử (chạy local ngày 16/11/2026)
+- Bộ kiểm thử API `scripts/test_api.py`: **53/53 mục đạt**, bao gồm:
+  thiết lập lần đầu (và chặn thiết lập lần 2), tạo học viên, đăng nhập,
+  lưu/đọc lại số liệu case + đáp án + ghi chú + override + bản nháp editor +
+  chiến dịch Publish, giáo viên xem bài làm, học viên khác bị chặn 403 ở
+  mọi API quản trị, thông báo + đánh dấu đã đọc, vô hiệu hoá/kích hoạt lại,
+  đặt lại mật khẩu, phân quyền trang `/admin`, sao lưu JSON, giới hạn đăng
+  nhập sai (429).
+- Cú pháp JavaScript đạt (`node --check`) cho server, `bridge.js` và cả 2
+  script trong trang app đã patch.
+- Mật khẩu trong DB đã kiểm tra: hash bcrypt `$2a$10$`, không có plaintext.
+- **Chưa kiểm chứng trực quan:** bấm tay từng nút/công tắc trên trình duyệt
+  (subagent không có trình duyệt thật) — cần giáo viên mở thử trên website
+  sau deploy và báo lại nếu có chỗ lạ. Các luồng API phía dưới đã chạy thật
+  đạt 53/53.
+
+### Nội dung học tập (giữ nguyên từ bản tĩnh v1.2.0)
+- Mô phỏng Ads Manager: topbar, banner TEST ENVIRONMENT, thanh icon trái,
+  3 tab Campaigns / Ad sets / Ads, 4 preset cột, hộp thoại Create (6 mục tiêu),
+  trình chỉnh sửa 3 bước theo từng mục tiêu, 21 CTA, 3 bài tập brief, thuật ngữ.
+- 19 khối **Tối ưu & Đề xuất** (đã mở rộng chi tiết ở v1.2.0 — xem dưới).
+- 15 case tình huống thực tế, mỗi case có 1 chiến dịch Active tương ứng trong
+  bảng Campaigns với nhãn “Bài tập”.
+- Bước Ad set đầy đủ: Budget & schedule, Audience, Placements, Optimisation &
+  delivery; Advantage+ ↔ setup thường chuyển đổi thật ở mọi cấp; cây Browse
+  Detailed targeting ~200 mục; bước Ad có Create new ad và Use existing post
+  với 5 bài đăng demo; nút “Xuất file Word” (.docx) ở từng chiến dịch và
+  trong editor.
+- Thông tin liên hệ GV. Đỗ Quốc Việt — SĐT 0789111126 — Email vietdq.ncs@gmail.com.
+
+---
+
+## v1.2.0 — 16/11/2026 00:36 (+07:00) — bản tĩnh (nền tảng giao diện của v2.0.0)
+
+- Mở rộng tab **“Tối ưu & Đề xuất”** (19 khối): khối 1–18 mỗi khối thêm 4 mục
+  làm rõ — **“Vì sao nguyên tắc này đúng”**, **“Cách làm từng bước”**,
+  **“Lỗi thường gặp”**, **“Liên hệ trong editor”** (chỉ rõ mục nào trong
+  trình chỉnh sửa 3 bước áp dụng nguyên tắc đó); khối 19 giữ nguyên bảng tra
+  nhanh Target theo ngành. Bỏ dòng meta-ghi-chú trong khối 5. Không thêm số
+  liệu mới, không trích nguồn (giữ quy ước: không tên cộng đồng, không link,
+  không tên tác giả/ngày đăng trong toàn bộ bản mô phỏng).
+- 19 khối gồm: 1. Checklist setup tài khoản & chiến dịch; 2. Lên camp & test;
+  3. Scale ngân sách; 4. Đánh giá & quyết định tắt/giữ; 5. Tối ưu nhân khẩu học
+  & vị trí địa lý; 6. Checklist setup 2026; 7. Những sự thật cần nhớ về ads
+  (chọn lọc); 8. Creative Audience Pairing (tính năng mới 2026); 9. Chạy sạch
+  — đường dài mới bền; 10. AI trong chạy quảng cáo — dùng máy, nhưng người giữ
+  tiền; 11. Chuẩn bị fanpage mới trước khi chạy quảng cáo; 12. Công thức ra
+  trăm đơn mỗi ngày; 13. Quản lý ngân sách — test, scale và stop-loss; 14. 4
+  nguyên tắc test quảng cáo; 15. Target nâng cao 2026 — tín hiệu mua, 3 giai
+  đoạn khách và Lookalike; 16. Target đúng — nghĩ xem ai là người mua;
+  17. Chiến dịch tin nhắn — người nhắn đầu tiên quyết định; 18. Google Ads 3
+  giai đoạn cho thương mại điện tử; 19. Target theo ngành — bảng tra nhanh.
+
+## v1.1.0 — 16/11/2026 00:12 (+07:00) — bản tĩnh
+- Bổ sung đầy đủ setup cấp Ad set (bước 2 của editor 3 bước): Budget & schedule
+  (ngân sách ngày/tổng, ngày + giờ bắt đầu, "Set an end date" cho ngày/giờ kết
+  thúc, "Run ads on a schedule" theo khung giờ + ngày trong tuần); Audience
+  (vị trí thêm/xoá từng dòng với Include/Exclude và bán kính 10–80 km, tuổi
+  tối thiểu, ngôn ngữ, loại trừ custom audience; Advantage+ audience với tuổi
+  từ–đến, giới tính, Detailed targeting dạng chip kèm Browse
+  Demographics/Interests/Behaviours, thu hẹp AND, custom audience/Lookalike;
+  Audience size ước lượng thay đổi theo lựa chọn); Placements (Advantage+
+  placements hoặc Manual placements theo từng nền tảng Facebook/Instagram/
+  Messenger/Audience Network/Threads & WhatsApp, tick từng bề mặt, chọn thiết
+  bị và hệ điều hành, chỉ Wi-Fi); thẻ mới Optimisation & delivery (sự kiện tối
+  ưu hoá theo từng mục tiêu, Dataset/Pixel, Cost controls, Attribution setting
+  + Attribution model). Mọi trường kèm dòng giải thích tiếng Việt và tự lưu
+  vào bản nháp.
+- Tuỳ chọn Advantage+ ↔ setup thường chuyển đổi thật ở mọi cấp: Advantage+
+  audience (bật: chế độ gợi ý; tắt: hiện đầy đủ trường manual), Advantage+
+  placements (bật: chỉ xem trước, bị khoá; tắt: tick tay từng nền tảng/bề mặt),
+  các công tắc Advantage+ sales/leads/app campaign, iOS 14+, Dynamic creative,
+  Advantage+ catalogue ads, thẻ Advantage+ creative mới ở cấp quảng cáo
+  (5 nâng cấp), hộp thoại chọn setup Recommended/Manual áp thật vào bản nháp;
+  Estimated audience size tự tính lại theo chế độ.
+- Cây Browse Detailed targeting đầy đủ đúng taxonomy Ads Manager: Demographics,
+  Interests (9 nhóm), Behaviors — gần 200 mục con tick chọn được, kèm ô tìm
+  kiếm, quy mô ước lượng từng mục, chọn xong thành chip trong ô targeting và
+  tính vào Audience size.
+- Nút "Xuất file Word" ở từng chiến dịch trong bảng Campaigns và trong editor
+  3 bước: nhập họ tên học viên rồi tải thẳng file .docx chứa toàn bộ setup
+  chiến dịch/nhóm quảng cáo/quảng cáo kèm ngày xuất.
+- Bước Ad có đủ 2 lựa chọn Create new ad (thêm trường Headline, Description,
+  CTA) và Use existing post với 5 bài đăng demo mẫu của Page — chọn bài nào
+  nội dung bài đó điền vào quảng cáo và hiện trong Ad preview, chuyển đổi qua
+  lại và lưu bản nháp.
+
+## v1.0.0 — 15/11/2026 23:36 (+07:00) — bản tĩnh
+- Bản đầu tiên: mô phỏng Facebook Ads Manager (3 tab Chiến dịch / Nhóm quảng
+  cáo / Quảng cáo, editor 3 bước theo từng mục tiêu, 4 preset cột), 19 khối
+  Tối ưu & Đề xuất, 15 case tình huống thực tế với campaign đang chạy tương
+  ứng, 3 bài tập brief, thuật ngữ, banner TEST ENVIRONMENT. Không kết nối Meta,
+  không chạy quảng cáo thật.
