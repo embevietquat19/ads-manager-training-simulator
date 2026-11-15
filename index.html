@@ -399,8 +399,59 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
   .dialog{border-radius:0;max-height:100vh;height:100%}
   .editor-scroll{padding:10px}
 }
+.as-sub{font-size:13.5px;font-weight:700;margin:16px 0 2px;padding-top:13px;border-top:1px solid var(--line)}
+.chip{display:inline-flex;align-items:center;gap:5px;background:var(--blue-pale);border:1px solid #B9D9FF;border-radius:999px;padding:2px 4px 2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+.chip button{border:0;background:transparent;font-weight:800;padding:0 4px;color:var(--blue-dark);line-height:1.4}
+.chip.excl{background:#FDECEF;border-color:#F0A8B8}
+.chip.excl button{color:#A4133C}
+.loc-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:6px;background:#fff}
+.loc-row .loc-name{font-weight:600;flex:1;min-width:130px;font-size:13px}
+.loc-row select,.add-row select,.add-row input[type="text"],.grid2 select,.grid2 input{border:1px solid var(--line2);border-radius:6px;padding:7px 8px;background:#fff}
+.loc-row .rm{border:0;background:var(--surface2);width:26px;height:26px;border-radius:50%;font-weight:800;color:var(--text2);flex:none}
+.loc-row .rm:hover{background:var(--hover)}
+.add-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.add-row input[type="text"]{flex:2;min-width:170px}
+.sugg-chips{margin-top:2px}
+.sugg-chips button{border:1px solid var(--line2);background:var(--surface2);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+.sugg-chips button:hover{background:var(--blue-pale);border-color:#B9D9FF}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.plat-head{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-weight:700;font-size:13.5px}
+.plat-head .p-ic{width:26px;height:26px;border-radius:6px;background:var(--surface2);display:grid;place-items:center;font-size:14px;flex:none}
+.seg{display:inline-flex;background:var(--surface2);border-radius:8px;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:6px 13px;border-radius:6px;font-weight:600;color:var(--text2);font-size:13px}
+.seg button.sel{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+details.browse{border:1px solid var(--line);border-radius:8px;padding:9px 12px;margin-top:8px}
+details.browse summary{cursor:pointer;font-weight:600;font-size:13px}
+details.browse .brow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:5px 0;border-bottom:1px solid #EBEDF0;font-size:12.5px}
+details.browse .brow:last-child{border-bottom:0}
+details.browse .brow b{min-width:118px}
+details.browse .brow button{border:1px solid var(--line2);background:#fff;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:600}
+details.browse .brow button:hover{background:var(--blue-pale)}
+.dt-wrap{border:1px solid var(--line2);border-radius:6px;padding:8px 10px;background:#fff}
+.day-chks{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.day-chks label{display:inline-flex;gap:5px;align-items:center;border:1px solid var(--line2);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;background:#fff}
+.day-chks input{accent-color:var(--blue)}
 .opt-entry{display:none}
 @media(max-width:760px){.opt-entry{display:inline-flex;margin-top:12px}}
+/* ---- Detailed targeting Browse tree ---- */
+.dt-search{margin:10px 0 4px}
+.dt-search input{width:100%;border:1px solid var(--line2);border-radius:6px;padding:8px 10px;background:#fff;box-sizing:border-box}
+.dt-group{margin-top:10px}
+.dt-group>h5{margin:0 0 2px;font-size:13px;color:var(--text)}
+.dt-cat{margin:6px 0 0 6px}
+.dt-cat>b{display:block;font-size:12.5px;color:var(--text2);padding:4px 0 2px}
+.dt-item{display:flex;align-items:center;gap:8px;padding:4px 6px 4px 14px;border-radius:6px;font-size:13px;cursor:pointer}
+.dt-item:hover{background:var(--surface2)}
+.dt-item input{accent-color:var(--blue);flex:none}
+.dt-item .nm{flex:1}
+.dt-item .sz{font-size:11.5px;color:var(--text3);white-space:nowrap}
+.dt-none{font-size:12.5px;color:var(--text2);padding:8px 0 2px}
+/* ---- Advantage+ creative & manual notes ---- */
+.adv-note{border:1px dashed var(--line2);border-radius:8px;padding:9px 12px;font-size:12.5px;color:var(--text2);background:var(--surface2);margin-top:10px}
+.peek-note{font-size:12.5px;color:var(--text2);margin:8px 0 0}
+.word-btn{width:auto!important;padding:0 9px!important;font-size:12px!important;font-weight:700}
+.post-thumb{width:64px;height:64px;border-radius:8px;background:var(--surface2);border:1px solid var(--line);display:grid;place-items:center;font-size:10px;font-weight:700;text-align:center;flex:none;padding:4px;color:var(--text2)}
 </style>
 </head>
 <body>
@@ -982,6 +1033,20 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
   </div>
 </div>
 
+<!-- ===== EXPORT WORD DIALOG (nộp bài) ===== -->
+<div class="backdrop" id="wordBack" role="dialog" aria-modal="true" aria-label="Xuất file Word nộp bài">
+  <div class="dialog" style="max-width:560px">
+    <div class="dialog-head"><h2>Xuất file Word — nộp bài</h2><button class="x" onclick="closeDialog('wordBack')" aria-label="Close">✕</button></div>
+    <div class="dialog-body">
+      <p style="margin-top:0">Chiến dịch: <b id="wordCampName">—</b></p>
+      <div class="field"><label>Họ tên học viên</label><input type="text" id="wordStudent" placeholder="Ví dụ: Nguyễn Văn A"></div>
+      <div class="field"><label>Lớp / nhóm (không bắt buộc)</label><input type="text" id="wordClass" placeholder="Ví dụ: Lớp Ads cơ bản — Nhóm 3"></div>
+      <p style="font-size:12.5px;color:var(--text2);margin:0">File .docx tải thẳng về máy, gồm toàn bộ setup: chiến dịch (mục tiêu, loại mua, ngân sách &amp; lịch chạy), nhóm quảng cáo (đối tượng: vị trí, tuổi, giới tính, ngôn ngữ, detailed targeting; vị trí hiển thị) và quảng cáo (định dạng, nội dung, tiêu đề, CTA, đích đến) — kèm họ tên và ngày xuất file để nộp cho giảng viên.</p>
+    </div>
+    <div class="dialog-foot"><span class="sp"></span><button class="btn" onclick="closeDialog('wordBack')">Huỷ</button><button class="btn btn-blue" onclick="doExportWord()">Tải file Word (.docx)</button></div>
+  </div>
+</div>
+
 <!-- ===== DUPLICATE DIALOG ===== -->
 <div class="backdrop" id="dupBack" role="dialog" aria-modal="true" aria-label="Duplicate your campaign">
   <div class="dialog" style="max-width:560px">
@@ -1173,10 +1238,10 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
         <div class="ecard score-card" style="margin:0" id="scoreCard"></div>
         <div class="ecard est-size" id="estCard" style="margin:0">
           <h4>Estimated audience size</h4>
-          <span class="vi-hint">Ước lượng số người trong đối tượng đã chọn — quá hẹp thì đắt &amp; khó phân phối, quá rộng thì loãng.</span>
-          <b>69,500,000 – 81,800,000</b>
-          <div class="bar"><i></i></div>
-          <p>Your audience is defined. Vietnam · All placements (simulated estimate).</p>
+          <span class="vi-hint">Ước lượng số người trong đối tượng đã chọn — quá hẹp thì đắt &amp; khó phân phối, quá rộng thì loãng. Số này tự cập nhật theo lựa chọn ở bước Ad set (mô phỏng cho lớp học).</span>
+          <b id="estSizeVal">69,500,000 – 81,800,000</b>
+          <div class="bar"><i id="estBarFill"></i></div>
+          <p id="estSizeNote">Your audience is defined. Vietnam · All placements (simulated estimate).</p>
         </div>
         <div class="ecard" id="previewCard" style="margin:0;display:none"></div>
         <div class="ecard" id="reviewCard" style="margin:0;display:none"></div>
@@ -1185,6 +1250,7 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
   </div>
   <div class="editor-foot">
     <button class="btn" onclick="closeEditor()">Close</button>
+    <button class="btn" onclick="openExportWordEditor()" title="Tải file Word (.docx) chứa toàn bộ setup của chiến dịch này để nộp bài cho giảng viên">Xuất file Word</button>
     <span class="saved-state" id="savedState">All edits saved.</span>
     <span class="terms" id="termsLine" style="display:none">By clicking Publish, you acknowledge that you have reviewed and understand the Terms and Conditions. <a onclick="toast('Terms and Conditions (mô phỏng): trong bản đào tạo, Publish chỉ đánh dấu đã đăng (mô phỏng).')">Terms and Conditions</a></span>
     <span class="sp"></span>
@@ -1298,7 +1364,7 @@ function renderTable(){
   var rows=rowsFor();
   var th='<tr><th style="width:36px"><input type="checkbox" class="row-check" id="checkAll" aria-label="Select all"></th>';
   cols.forEach(function(c){th+='<th'+(c[2]?' class="num"':'')+'>'+esc(c[1])+(COL_HINTS[c[1]]?'<span class="vi-hint">'+COL_HINTS[c[1]]+'</span>':'')+'</th>'});
-  th+='<th style="width:44px"></th></tr>';
+  th+='<th style="width:'+(curTab==='campaigns'?'118px':'44px')+'"></th></tr>';
   document.getElementById('thead').innerHTML=th;
   var tb='';
   rows.forEach(function(r){
@@ -1308,7 +1374,7 @@ function renderTable(){
       else if(c[0]==='name')tb+='<td><a class="row-name" data-id="'+r.id+'" data-tab="'+curTab+'">'+esc(r.name)+'</a></td>';
       else tb+='<td'+(c[2]?' class="num"':'')+'>'+cellVal(r,c[0])+'</td>';
     });
-    tb+='<td><button class="edit-col-btn" title="Edit" aria-label="Edit row" onclick="openEditor(0)">✎</button></td></tr>';
+    tb+='<td><button class="edit-col-btn" title="Edit" aria-label="Edit row" onclick="openEditor(0)">✎</button>'+(curTab==='campaigns'?'<button class="edit-col-btn word-btn" title="Xuất file Word (.docx) chứa toàn bộ setup của chiến dịch này để nộp bài cho giảng viên" aria-label="Xuất file Word" onclick="openExportWordRow(\''+r.id+'\')">Word ↓</button>':'')+'</td></tr>';
   });
   if(!rows.length)tb='<tr><td colspan="'+(cols.length+2)+'" style="text-align:center;color:var(--text2);padding:26px">No results — try clearing the name filter.</td></tr>';
   document.getElementById('tbody').innerHTML=tb;
@@ -1588,7 +1654,7 @@ var OBJECTIVES=[
  {id:'app',icon:'📱',name:'App promotion',desc:'Find new people to install your app and continue using it.',vi:'Quảng bá ứng dụng — tối ưu lượt cài đặt và hành động trong app.',score:100,budget:'₫ 400,000 VND',budgetLevel:'campaign'},
  {id:'sales',icon:'🛍️',name:'Sales',desc:'Find people who are likely to purchase your product or service.',vi:'Thúc đẩy doanh số / đơn hàng trên website — mục tiêu “ra tiền” trực tiếp, cần có pixel.',score:96,scoreTip:'Use a chat template to start conversations faster. (+4 points)',budget:'₫ 500,000 VND',budgetLevel:'campaign'}
 ];
-var chosenObjective=null, editorObjective='Engagement', edStep=0, editorMode='edit', adFormat='single', pvTab='all', showMoreAdset=false, showMoreCamp=false;
+var chosenObjective=null, editorObjective='Engagement', edStep=0, editorMode='edit', adFormat='single', pvTab='all', showMoreAdset=false, showMoreCamp=false, primaryTextVal='', headlineVal='', descVal='';
 function objByName(n){return OBJECTIVES.filter(function(o){return o.name===n})[0]||OBJECTIVES[2]}
 (function(){
   var list=document.getElementById('objList'),html='';
@@ -1629,7 +1695,13 @@ function openSetupDialog(obj){
    +hint('Tự cài đặt toàn bộ từ đầu — hợp khi học viên đã quen tay hoặc cần kiểm soát chặt từng trường.')+'</div>';
   openDialog('setupBack');
 }
-function setupContinue(){closeDialog('setupBack');openEditorForObjective(chosenObjective)}
+function setupContinue(){
+  var opts=document.querySelectorAll('input[name="setupOpt"]');
+  var manual=opts.length>1&&opts[1].checked;
+  draftSet('advAud',!manual);draftSet('advPl',!manual);if(manual)draftSet('plManual',true);
+  closeDialog('setupBack');openEditorForObjective(chosenObjective);
+  toast(manual?'Manual campaign: Advantage+ audience & Advantage+ placements đang TẮT — bạn tự setup tay toàn bộ ở bước Ad set (đã lưu vào bản nháp).':'Recommended settings: Advantage+ audience & Advantage+ placements đang BẬT — Meta tự tối ưu theo gợi ý của bạn (đã lưu vào bản nháp).');
+}
 function openEditorForObjective(name){
   editorObjective=name;var o=objByName(name);
   document.getElementById('crumbCamp').textContent='New '+name+' campaign';
@@ -1695,59 +1767,387 @@ document.getElementById('collapseBtn').addEventListener('click',function(){var t
 
 /* ---- shared editor fragments ---- */
 function fieldLabel(t,h){return '<label>'+t+(h?hint(h):'')+'</label>'}
-function audienceCard(){
-  return '<div class="ecard"><h4>Audience</h4>'+hint('Ai sẽ nhìn thấy quảng cáo — thẻ này chỉ hiện sau khi bấm Show more options ở bước Ad set, đúng như bản thật.')
-  +'<div class="switch-row" style="margin-bottom:10px"><div><b>Advantage+ audience</b><span>On — Meta tự mở rộng tìm người có khả năng tạo kết quả.</span></div><input type="checkbox" class="toggle" checked aria-label="Advantage+ audience"></div>'
-  +'<div class="field"><label>Saved audience</label><select><option>Use a saved audience</option><option>No saved audiences yet</option></select>'+hint('Dùng lại tệp đối tượng đã lưu để khỏi khai báo lại.')+'</div>'
-  +'<div class="field"><label>Audience controls</label><p style="margin:0">No advertising settings set</p></div>'
-  +'<div class="field"><label>Locations</label><p style="margin:0 0 4px"><b>Included location:</b> Vietnam</p>'
-  +'<div style="display:flex;gap:8px;flex-wrap:wrap"><select style="flex:1;min-width:140px;border:1px solid var(--line2);border-radius:6px;padding:8px"><option>Include</option><option>Exclude</option></select><input type="text" placeholder="Search locations" style="flex:2;min-width:160px;border:1px solid var(--line2);border-radius:6px;padding:8px"></div>'
-  +'<div style="margin-top:6px"><a onclick="toast(\'Browse locations (mô phỏng): duyệt cây quốc gia / tỉnh thành để khoanh vùng.\')">Browse</a> · <a onclick="toast(\'Add locations in bulk (mô phỏng): dán danh sách nhiều địa điểm cùng lúc.\')">Add locations in bulk</a></div>'
-  +'<div class="map-ph">Map (simulated) — Vietnam<br><button class="btn" onclick="toast(\'Zoom In (mô phỏng).\')">Zoom In</button> <button class="btn" onclick="toast(\'Zoom Out (mô phỏng).\')">Zoom Out</button> <button class="btn" onclick="toast(\'Centre Map (mô phỏng).\')">Centre Map</button> <button class="btn" onclick="toast(\'Drop Pin (mô phỏng): ghim vị trí và chọn bán kính.\')">Drop Pin</button></div>'
-  +hint('Khoanh vùng địa lý: bán ở đâu khoanh đúng ở đó — có thể ghim điểm và chọn bán kính quanh điểm.')+'</div>'
-  +'<div class="kv"><span>Minimum age</span><b>18</b></div><div class="kv"><span>Unknown age on WhatsApp</span><b>Included</b></div>'
-  +'<div class="kv"><span>Exclude these custom audiences</span><b>None</b></div><div class="kv"><span>Languages</span><b>All languages</b></div>'
-  +'<p style="color:var(--text2);font-size:12.5px">Audience includes unknown age on WhatsApp</p>'
-  +'<div class="field" style="margin-bottom:0"><label>Suggest an audience</label><button class="btn" type="button" onclick="document.getElementById(\'suggestBox\').style.display=document.getElementById(\'suggestBox\').style.display===\'block\'?\'none\':\'block\'">Show settings</button>'
-  +'<div id="suggestBox" style="display:none;margin-top:10px"><div class="kv"><span>Include these custom audiences</span><b>None</b></div>'
-  +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px"><div class="field"><label>Age</label><input type="text" value="18 – 65+"></div><div class="field"><label>Gender</label><select><option>All genders</option><option>All</option><option>Men</option><option>Women</option></select></div></div>'
-  +'<div class="field"><label>Detailed targeting</label><input type="text" value="All demographics, interests and behaviours"><p style="margin:6px 0 0;font-size:12.5px;color:var(--text2)">Browse: <b>Demographics</b> (Education, Financial, Life events, Parents, Relationship, Work) · <b>Interests</b> · <b>Behaviours</b></p></div>'
-  +'<div class="field"><label>Include people who match</label><select><option>Select demographics, interests or behaviours</option></select></div>'
-  +'<a onclick="toast(\'Further limit your audience (mô phỏng): thu hẹp thêm bằng điều kiện AND — tệp sẽ nhỏ lại, chỉ dùng khi tệp đang quá rộng.\')">Further limit your audience</a><div style="margin-top:10px"><button class="btn btn-blue" type="button" onclick="toast(\'Save audience (mô phỏng): đã lưu gợi ý đối tượng.\')">Save audience</button></div></div>'
-  +hint('Phần “Suggest an audience” chỉ là gợi ý cho Advantage+ — Meta vẫn có thể vượt ra ngoài để tìm kết quả.')+'</div></div>';
+/* ---- Ad set draft state: mọi lựa chọn ở bước Ad set lưu riêng trên trình duyệt này ---- */
+var ADSET_DRAFT_KEY='adset-draft-v14';
+var adsetDraft={};
+try{adsetDraft=JSON.parse(localStorage.getItem(ADSET_DRAFT_KEY)||'{}')}catch(e){adsetDraft={}}
+function draftGet(k,def){return adsetDraft[k]!==undefined?adsetDraft[k]:def}
+function draftSet(k,v){
+  adsetDraft[k]=v;
+  try{localStorage.setItem(ADSET_DRAFT_KEY,JSON.stringify(adsetDraft))}catch(e){}
+  var ss=document.getElementById('savedState');
+  if(ss){ss.textContent='Saving draft…';setTimeout(function(){ss.textContent='All edits saved.'},450)}
+  if(typeof updateEstSize==='function')updateEstSize();
 }
-function placementsCard(){
-  var groups=[
-   ['Feeds',['Facebook Feed','Facebook profile feed','Instagram Feed','Instagram profile feed','Facebook Marketplace','Instagram Explore home','Threads feed'],['Facebook right column','Facebook Business Explore','Facebook notifications']],
-   ['Stories, Status, Reels',['Instagram Stories','Facebook Stories','Instagram Reels','Facebook Reels','WhatsApp Status'],[]],
-   ['In-stream',['Facebook reel in-stream','Facebook reel overlay'],[]],
-   ['Search results',['Facebook search results','Instagram search results'],[]],
-   ['Apps and sites',['Audience Network native, banner and interstitial'],['Audience Network rewarded videos']]
-  ];
-  var h='<div class="ecard"><h4>Placements</h4>'+hint('Quảng cáo xuất hiện ở đâu — thẻ này hiện cùng lúc với Audience sau Show more options.')
-  +'<div class="switch-row" style="margin-bottom:10px"><div><b>Advantage+ placements</b><span>On — Meta tự phân phối tới vị trí có khả năng tạo kết quả tốt nhất.</span></div><input type="checkbox" class="toggle" checked aria-label="Advantage+ placements"></div>'
-  +'<div class="warn-box"><b>WhatsApp Status</b>Ads are now showing on WhatsApp status. Your ads may appear there when Advantage+ placements is on.</div>'
-  +'<div class="kv"><span>Placement value rules — Rule set</span><b>None</b></div><div class="kv"><span>Account controls — Excluded placements</span><b>None</b></div>'
-  +'<button class="btn" type="button" onclick="document.getElementById(\'manualPl\').style.display=document.getElementById(\'manualPl\').style.display===\'block\'?\'none\':\'block\'">Show more settings</button>'
-  +'<div id="manualPl" style="display:none;margin-top:12px"><b>Manual placements</b>'
-  +'<div class="kv"><span>Devices and operating systems</span><b>All</b></div><div class="kv"><span>Platforms</span><b>All</b></div>';
-  groups.forEach(function(g){
-    h+='<div style="margin-top:10px"><label class="check-line"><input type="checkbox" checked><span><b>'+g[0]+'</b></span></label>';
-    g[1].forEach(function(x){h+='<label class="check-line" style="padding-left:28px;padding-top:2px;padding-bottom:2px"><input type="checkbox" checked><span>'+x+'</span></label>'});
-    g[2].forEach(function(x){h+='<label class="check-line" style="padding-left:28px;padding-top:2px;padding-bottom:2px;opacity:.5"><input type="checkbox" disabled><span>'+x+' (unavailable)</span></label>'});
+function draftList(k,def){var v=draftGet(k,null);return Array.isArray(v)?v.slice():(def?def.slice():[])}
+function refreshWrap(id,html){var w=document.getElementById(id);if(w)w.innerHTML=html}
+function refreshAud(){refreshWrap('audWrap',audienceCard());restoreDtSearch()}
+function refreshPl(){refreshWrap('plWrap',placementsCard())}
+function refreshBud(){refreshWrap('budWrap',budgetCard(objByName(editorObjective)))}
+function refreshOpt(){refreshWrap('optWrap',optimCard(objByName(editorObjective),editorObjective))}
+function defaultLocs(){return [{name:'Vietnam',mode:'include',radius:''}]}
+function locRowsHTML(){
+  var list=draftList('locations',defaultLocs());
+  if(!list.length)return '<p style="margin:0 0 6px;font-size:12.5px;color:var(--text2)">Chưa có địa điểm nào — thêm ít nhất 1 địa điểm để quảng cáo phân phối.</p>';
+  return list.map(function(l,i){
+    var rad=['','10','17','25','40','50','80'].map(function(r){return '<option value="'+r+'"'+(String(l.radius)===r?' selected':'')+'>'+(r?('Bán kính '+r+' km'):'Không bán kính (toàn khu vực)')+'</option>'}).join('');
+    return '<div class="loc-row"><span class="loc-name">'+esc(l.name)+'</span>'
+    +'<select aria-label="Include or exclude" onchange="setLocMode('+i+',this.value)"><option value="include"'+(l.mode==='include'?' selected':'')+'>Include</option><option value="exclude"'+(l.mode==='exclude'?' selected':'')+'>Exclude</option></select>'
+    +'<select aria-label="Radius" onchange="setLocRadius('+i+',this.value)">'+rad+'</select>'
+    +'<button type="button" class="rm" aria-label="Remove location" onclick="removeLoc('+i+')">✕</button></div>';
+  }).join('');
+}
+function setLocMode(i,v){var l=draftList('locations',defaultLocs());if(l[i]){l[i].mode=v;draftSet('locations',l)}}
+function setLocRadius(i,v){var l=draftList('locations',defaultLocs());if(l[i]){l[i].radius=v;draftSet('locations',l)}}
+function removeLoc(i){var l=draftList('locations',defaultLocs());l.splice(i,1);draftSet('locations',l);refreshAud();toast('Đã xoá địa điểm khỏi bản nháp Ad set.')}
+function addLoc(){
+  var inp=document.getElementById('locSearch');if(!inp)return;
+  var name=inp.value.trim();
+  if(!name){toast('Hãy gõ tên địa điểm (tỉnh/thành, quận/huyện hoặc địa chỉ) trước khi bấm Add location.');inp.focus();return}
+  var mode=document.getElementById('locModeNew').value;
+  var l=draftList('locations',defaultLocs());
+  l.push({name:name,mode:mode,radius:'25'});
+  draftSet('locations',l);refreshAud();
+  toast('Đã '+(mode==='exclude'?'loại trừ':'thêm')+' địa điểm “'+name+'” (bán kính 25 km) vào bản nháp — chỉnh lại bán kính ở dòng vừa thêm nếu cần.');
+}
+function chipsHTML(key,cls){
+  var list=draftList(key,[]);
+  if(!list.length)return '';
+  return '<div style="margin-top:6px">'+list.map(function(x,i){return '<span class="chip '+(cls||'')+'">'+esc(x)+'<button type="button" aria-label="Remove" onclick="removeChip(\''+key+'\','+i+')">✕</button></span>'}).join('')+'</div>';
+}
+function addChip(key,val){
+  if(!val)return;
+  var l=draftList(key,[]);
+  if(l.indexOf(val)>-1){toast('“'+val+'” đã có trong danh sách rồi.');return}
+  l.push(val);draftSet(key,l);refreshAud();
+}
+function removeChip(key,i){var l=draftList(key,[]);l.splice(i,1);draftSet(key,l);refreshAud()}
+function addChipFromInput(inputId,key){
+  var inp=document.getElementById(inputId);if(!inp)return;
+  var v=inp.value.trim();
+  if(!v){toast('Hãy gõ nội dung cần thêm trước.');inp.focus();return}
+  addChip(key,v);
+}
+function addFromSelect(sel,key){if(!sel||!sel.value)return;addChip(key,sel.value)}
+function setGender(v){draftSet('gender',v);refreshAud()}
+function toggleAdvAud(cb){draftSet('advAud',cb.checked);refreshAud();toast(cb.checked?'Advantage+ audience: ON — Meta có thể mở rộng ra ngoài gợi ý để tìm thêm kết quả.':'Advantage+ audience: OFF — Meta chỉ phân phối trong đúng đối tượng bạn khai báo (manual audience).')}
+function toggleAdvPl(cb){draftSet('advPl',cb.checked);if(!cb.checked)draftSet('plManual',true);refreshPl();toast(cb.checked?'Advantage+ placements: ON — Meta tự phân phối tới vị trí có khả năng tạo kết quả tốt nhất.':'Advantage+ placements: OFF — đang dùng Manual placements, tự chọn từng nền tảng và bề mặt bên dưới.')}
+function togglePlManual(){draftSet('plManual',!draftGet('plManual',false));refreshPl()}
+function setBudgetType(v){draftSet('budgetType',v);refreshBud()}
+function toggleEndDate(cb){draftSet('setEnd',cb.checked);refreshBud()}
+function toggleSched(cb){draftSet('setSched',cb.checked);refreshBud()}
+function toggleNarrow(){draftSet('narrowOn',!draftGet('narrowOn',false));refreshAud()}
+function setCostControl(v){draftSet('costCtl',v);refreshOpt()}
+/* ---- Công tắc Advantage+ dùng chung (cấp chiến dịch & các tuỳ chọn phụ ở cấp ad set) ---- */
+function toggleAdvOpt(key,cb,label){
+  draftSet(key,cb.checked);
+  var row=cb.closest?cb.closest('.switch-row'):null;
+  if(row){var sp=row.querySelector('div span');if(sp)sp.textContent=cb.checked?'On':'Off'}
+  toast(label+': '+(cb.checked?'ON — Meta tự động hoá phần này theo dữ liệu & gợi ý của bạn.':'OFF — chuyển sang setup thường (manual): bạn tự kiểm soát hoàn toàn phần này. Lựa chọn đã lưu vào bản nháp.'));
+}
+function toggleAdvCreative(cb){
+  draftSet('advCreative',cb.checked);
+  renderFormatBody(editorObjective);
+  toast(cb.checked?'Advantage+ creative: ON — Meta được tự thêm nhạc, tạo biến thể chữ/ảnh và tối ưu creative cho từng người.':'Advantage+ creative: OFF — dùng creative thủ công: Meta giữ đúng bản bạn tải lên, không tự biến tấu. Lựa chọn đã lưu vào bản nháp.');
+}
+/* ---- Estimated audience size: tính lại theo bản nháp mỗi khi đổi lựa chọn ---- */
+function fmtNum(n){return Math.round(n).toLocaleString('en-US')}
+function updateEstSize(){
+  var val=document.getElementById('estSizeVal');if(!val)return;
+  var adv=draftGet('advAud',true);
+  var low=69500000,high=81800000,f=1;
+  var locs=draftList('locations',defaultLocs());
+  locs.forEach(function(l){if(l.mode==='exclude')f*=0.97});
+  var minAge=parseInt(draftGet('minAge','18'),10)||18;
+  if(minAge>18)f*=Math.max(0.35,(66-minAge)/48);
+  if(draftList('langs',[]).length)f*=0.85;
+  f*=Math.pow(0.95,draftList('exclAud',[]).length);
+  if(!adv){
+    var g=draftGet('gender','All genders');if(g!=='All genders')f*=0.52;
+    var aMin=parseInt(draftGet('ageMin','18'),10)||18;
+    var aMaxS=String(draftGet('ageMax','65+'));var aMax=aMaxS.indexOf('+')>-1?65:(parseInt(aMaxS,10)||65);
+    f*=Math.min(1,Math.max(0.12,(aMax-aMin+1)/48));
+    f*=Math.pow(0.88,draftList('dtChips',[]).length);
+    f*=Math.pow(0.6,draftList('dtNarrow',[]).length);
+    f*=Math.pow(0.92,draftList('dtExcl',[]).length);
+  }
+  low*=f;high*=f;
+  val.textContent=fmtNum(low)+' – '+fmtNum(high);
+  var bar=document.getElementById('estBarFill');if(bar)bar.style.width=Math.max(4,Math.min(100,high/85000000*100))+'%';
+  var note=document.getElementById('estSizeNote');
+  if(note)note.textContent=adv?'Advantage+ audience: ước lượng tính theo Audience controls (giới hạn cứng) — Meta vẫn có thể mở rộng ra ngoài phần gợi ý để tìm thêm kết quả. (Simulated estimate)':'Manual audience: ước lượng tính theo toàn bộ điều kiện bạn khai báo — vị trí, tuổi, giới tính, ngôn ngữ, detailed targeting & loại trừ. (Simulated estimate)';
+}
+function plKey(name){return 'pl_'+name.replace(/[^a-z0-9]+/gi,'_')}
+/* ---- Cây Detailed targeting (Browse) — đúng cấu trúc danh mục của Ads Manager:
+   Demographics / Interests / Behaviors, mỗi mục con tick chọn được, kèm quy mô ước lượng (số mô phỏng cho lớp học) ---- */
+var DT_TREE=[
+ {g:'Demographics',vi:'Nhân khẩu học',cats:[
+  {c:'Education',vi:'Học vấn',items:[['High school',38.5],['Some college',12.4],['In college',6.8],['College grad',9.6],['In grad school',1.9],['Grad school grad',2.7],['Doctorate degree',0.6],['Field of study: Business administration',1.4],['Field of study: Marketing',0.9],['Field of study: Information technology',1.6],['Field of study: Medicine',0.8]]},
+  {c:'Financial',vi:'Tài chính',items:[['Household income: top 5%',3.1],['Household income: top 10%',6.4],['Household income: top 10–25%',9.8],['Household income: top 25–50%',14.2],['Net worth: over $1M',0.9]]},
+  {c:'Life events',vi:'Sự kiện đời sống',items:[['Anniversary within 30 days',4.6],['Away from family',7.3],['Away from hometown',9.1],['Long-distance relationship',3.8],['New job',5.2],['Newly engaged (1 year)',1.7],['Newly engaged (6 months)',0.9],['Newly engaged (3 months)',0.5],['Newlywed (1 year)',2.3],['Newlywed (6 months)',1.2],['Newlywed (3 months)',0.6],['Recently moved',4.4],['Upcoming birthday',6.9]]},
+  {c:'Parents',vi:'Cha mẹ',items:[['All parents',21.5],['Expectant parents',1.8],['Parents with toddlers (0–2 years)',3.9],['Parents with preschoolers (3–5 years)',4.2],['Parents with primary school-age children (6–8 years)',4.8],['Parents with preteens (9–12 years)',5.1],['Parents with teenagers (13–17 years)',6.3],['Parents with adult children (18–26 years)',7.7]]},
+  {c:'Politics',vi:'Chính trị (danh mục theo thị trường Mỹ — ở Việt Nam ít dùng)',items:[['US politics (very liberal)',0.4],['US politics (liberal)',0.8],['US politics (moderate)',1.1],['US politics (conservative)',0.7],['US politics (very conservative)',0.3]]},
+  {c:'Relationship status',vi:'Tình trạng quan hệ',items:[['Single',18.9],['In a relationship',14.6],['Married',16.8],['Engaged',2.1],["It's complicated",3.4],['Open relationship',0.9],['Domestic partnership',0.7],['Separated',0.8],['Divorced',1.3],['Widowed',1.9]]},
+  {c:'Work',vi:'Công việc',items:[['Industry: Management',2.6],['Industry: Sales',3.4],['Industry: Education and libraries',2.2],['Industry: Healthcare and medical',1.8],['Industry: Computers and mathematics',1.5],['Industry: Arts, entertainment, sports and media',1.2],['Industry: Architecture and engineering',0.9],['Industry: Business and financial operations',2.9],['Industry: Legal services',0.4],['Industry: Transportation and moving',2.4],['Job title: Marketing manager',0.5],['Job title: Software engineer',0.7],['Job title: Teacher',1.6],['Job title: Accountant',0.8]]}
+ ]},
+ {g:'Interests',vi:'Sở thích',cats:[
+  {c:'Business and industry',vi:'Kinh doanh & công nghiệp',items:[['Small business',11.8],['Entrepreneurship',6.2],['Marketing',7.4],['Online advertising',3.1],['Real estate',8.9],['Retail',9.7],['Sales',6.6],['Banking',10.4],['E-commerce',13.5],['Startups',3.8],['Agriculture',5.9],['Construction',4.7]]},
+  {c:'Entertainment',vi:'Giải trí',items:[['Movies',24.6],['Music',31.2],['Reading',15.8],['Video games',18.4],['Live events',9.3],['TV shows',20.7],['K-pop',7.9],['Anime',6.5]]},
+  {c:'Family and relationships',vi:'Gia đình & quan hệ',items:[['Family',28.3],['Parenting',13.9],['Marriage',11.2],['Weddings',5.6],['Dating',8.1],['Friendship',17.4],['Motherhood',9.8],['Fatherhood',6.7],['Children',15.1]]},
+  {c:'Fitness and wellness',vi:'Thể dục & sức khoẻ',items:[['Physical fitness',14.8],['Gym',8.6],['Running',6.9],['Yoga',4.8],['Bodybuilding',3.2],['Nutrition',9.4],['Meditation',3.9],['Weight loss',7.7],['Zumba',1.8],['Dieting',5.5]]},
+  {c:'Food and drink',vi:'Ẩm thực & đồ uống',items:[['Cooking',19.6],['Restaurants',17.8],['Fast food',13.4],['Coffee',12.9],['Tea',8.3],['Organic food',4.1],['Baking',6.2],['Street food',9.8],['Vegetarianism',2.6],['Alcoholic beverages',7.5]]},
+  {c:'Hobbies and activities',vi:'Sở thích & hoạt động',items:[['Travel',21.3],['Photography',10.6],['Pets',12.7],['Home and garden',9.9],['Arts and music',11.5],['Current events',13.8],['Vehicles',14.2],['Fishing',4.4],['Camping',3.7]]},
+  {c:'Shopping and fashion',vi:'Mua sắm & thời trang',items:[['Shopping and fashion',26.4],['Beauty',15.7],['Cosmetics',11.9],["Women's fashion",16.8],["Men's fashion",10.3],['Fashion accessories',9.6],['Online shopping',24.9],['Luxury goods',5.8],['Shoes',12.2],['Handbags',7.1]]},
+  {c:'Sports and outdoors',vi:'Thể thao & ngoài trời',items:[['Football (soccer)',22.6],['Badminton',5.4],['Tennis',2.8],['Golf',1.9],['Swimming',6.1],['Cycling',5.7],['Outdoor recreation',8.8],['Marathon',2.2],['Volleyball',3.9],['Basketball',4.6]]},
+  {c:'Technology',vi:'Công nghệ',items:[['Smartphones',28.7],['Computers',17.3],['Consumer electronics',15.9],['Mobile phones',30.4],['Software',8.8],['Social media',26.1],['Artificial intelligence',6.4],['Apple products',11.7],['Video games (technology)',13.2]]}
+ ]},
+ {g:'Behaviors',vi:'Hành vi',cats:[
+  {c:'Automotive',vi:'Ô tô & xe',items:[['New car buyers',2.8],['Used car buyers',3.6],['Car owners',6.9],['Motorcycle owners',9.4],['Luxury car buyers',0.8]]},
+  {c:'B2B',vi:'Doanh nghiệp với doanh nghiệp',items:[['Small business owners',5.7],['Medium business owners (10–49 employees)',1.3],['Large business owners (50+ employees)',0.5],['IT decision makers',0.6],['Marketing decision makers',0.4]]},
+  {c:'Digital activities',vi:'Hoạt động số',items:[['Facebook Page admins',4.9],['Facebook Events creators',1.6],['Console gamers',3.4],['Canvas gamers',5.8],['Mobile gamers',16.7],['Early technology adopters',4.2],['Facebook Payments users',2.9],['Small business owners (Facebook Page)',3.8]]},
+  {c:'Financial behaviors',vi:'Hành vi tài chính',items:[['Credit card users',6.8],['Online banking users',11.3],['Investors',2.4],['Insurance buyers',3.1],['Frequent international money transfers',1.2]]},
+  {c:'Mobile device user',vi:'Thiết bị di động',items:[['All mobile devices',52.6],['Apple iPhone users',14.8],['Samsung users',13.6],['Xiaomi users',8.9],['Oppo users',7.4],['Android device users',34.5],['Tablet users',6.7],['New smartphone/tablet owners (0–3 months)',3.3]]},
+  {c:'Purchase behavior',vi:'Hành vi mua sắm',items:[['Engaged Shoppers',18.6],['Frequent online shoppers',12.4],['Fashion buyers',9.8],['Beauty & personal care buyers',8.7],['Electronics buyers',7.9],['Premium brand buyers',3.6]]},
+  {c:'Travel',vi:'Du lịch & di chuyển',items:[['Frequent travellers',6.8],['Frequent flyers',2.7],['Business travellers',3.4],['Commuters',9.6],['Currently travelling',1.9],['Returned from trip (1 week ago)',1.4],['Returned from trip (2 weeks ago)',2.2],['Family travellers',5.3]]}
+ ]}
+];
+var dtBrowseOpen=false,dtQuery='';
+function dtTreeHTML(){
+  var sel=draftList('dtChips',[]);
+  var h='';
+  DT_TREE.forEach(function(g){
+    h+='<div class="dt-group"><h5>'+g.g+' — '+g.vi+'</h5>';
+    g.cats.forEach(function(c){
+      h+='<div class="dt-cat"><b>'+c.c+' · '+c.vi+'</b>';
+      c.items.forEach(function(it){
+        var on=sel.indexOf(it[0])>-1;
+        h+='<label class="dt-item"><input type="checkbox" data-name="'+esc(it[0])+'" '+(on?'checked':'')+' onchange="toggleDtItem(this)"><span class="nm">'+esc(it[0])+'</span><span class="sz">≈ '+String(it[1]).replace('.',',')+' triệu người</span></label>';
+      });
+      h+='</div>';
+    });
     h+='</div>';
   });
-  h+='<div class="kv" style="margin-top:8px"><span>Skippable ads</span><b>Included</b></div>'+hint('Người mới nên để Advantage+ placements — chỉ chuyển Manual khi có chủ đích rõ, ví dụ chỉ chạy Reels.')+'</div></div>';
+  return h+'<div class="dt-none" id="dtNone" style="display:none">Không có lựa chọn nào khớp từ khoá — thử từ ngắn hơn, ví dụ “shopping”, “travel”, “parents”.</div>';
+}
+function toggleDtItem(el){
+  var name=el.getAttribute('data-name');if(!name)return;
+  var l=draftList('dtChips',[]);
+  if(el.checked){if(l.indexOf(name)===-1)l.push(name)}
+  else{l=l.filter(function(x){return x!==name})}
+  draftSet('dtChips',l);
+  var box=document.getElementById('dtChips');
+  if(box)box.innerHTML=l.length?chipsHTML('dtChips'):'<span style="font-size:12.5px;color:var(--text2)">All demographics, interests and behaviours — chưa thu hẹp theo sở thích / hành vi / nhân khẩu học nào.</span>';
+}
+function filterDtTree(q){
+  dtQuery=q||'';
+  var tree=document.getElementById('dtTree');if(!tree)return;
+  var ql=dtQuery.trim().toLowerCase(),any=false;
+  Array.prototype.forEach.call(tree.querySelectorAll('.dt-item'),function(it){
+    var hit=!ql||it.textContent.toLowerCase().indexOf(ql)>-1;
+    it.style.display=hit?'flex':'none';if(hit)any=true;
+  });
+  Array.prototype.forEach.call(tree.querySelectorAll('.dt-cat'),function(c){
+    var vis=Array.prototype.some.call(c.querySelectorAll('.dt-item'),function(i){return i.style.display!=='none'});
+    c.style.display=vis?'block':'none';
+  });
+  Array.prototype.forEach.call(tree.querySelectorAll('.dt-group'),function(g){
+    var vis=Array.prototype.some.call(g.querySelectorAll('.dt-item'),function(i){return i.style.display!=='none'});
+    g.style.display=vis?'block':'none';
+  });
+  var none=document.getElementById('dtNone');if(none)none.style.display=any?'none':'block';
+}
+function restoreDtSearch(){
+  if(!dtQuery)return;
+  var inp=document.getElementById('dtSearch');if(inp)inp.value=dtQuery;
+  filterDtTree(dtQuery);
+}
+function onDtBrowseToggle(el){dtBrowseOpen=el.open}
+function audienceCard(){
+  var adv=draftGet('advAud',true);
+  var minAge=draftGet('minAge','18');
+  var ageOpts=['13','18','19','20','21','25'].map(function(a){return '<option'+(minAge===a?' selected':'')+'>'+a+'</option>'}).join('');
+  var ageMin=draftGet('ageMin','18'),ageMax=draftGet('ageMax','65+');
+  var ageMinOpts=['13','18','20','21','25','30','35'].map(function(a){return '<option'+(ageMin===a?' selected':'')+'>'+a+'</option>'}).join('');
+  var ageMaxOpts=['24','29','34','44','54','64','65+'].map(function(a){return '<option'+(ageMax===a?' selected':'')+'>'+a+'</option>'}).join('');
+  var gender=draftGet('gender','All genders');
+  var langs=draftList('langs',[]);
+  var sugg=['Mua sắm online (Shopping)','Thời trang (Fashion)','Làm đẹp (Beauty)','Spa & chăm sóc da','Du lịch (Travel)','Thể dục thể thao (Fitness)','Ẩm thực (Food & Drink)','Giáo dục (Education)'];
+  var h='<div class="ecard"><h4>Audience</h4>'+hint('Ai sẽ nhìn thấy quảng cáo — thẻ này chỉ hiện sau khi bấm Show more options ở bước Ad set, đúng như bản thật.')
+  +'<div class="switch-row" style="margin-bottom:10px"><div><b>Advantage+ audience</b><span>'+(adv?'On — Meta tự mở rộng tìm người có khả năng tạo kết quả, dựa trên các gợi ý bên dưới.':'Off — chỉ phân phối trong đúng đối tượng bạn khai báo ở phần Audience details.')+'</span></div><input type="checkbox" class="toggle" '+(adv?'checked':'')+' onchange="toggleAdvAud(this)" aria-label="Advantage+ audience"></div>'
+  +hint('<b>Khi nào dùng Advantage+ audience:</b> đã có dữ liệu chuyển đổi (Pixel/CAPI, tệp khách đã mua), sản phẩm đại trà, ngân sách đủ lớn để Meta học — để Meta tự vượt ra ngoài gợi ý tìm thêm người giống khách thật. <b>Khi nào dùng setup thường (manual):</b> bán theo vùng/ngách hẹp phải khoá cứng đối tượng (xem Case 8), ngân sách test nhỏ cần kiểm soát từng đồng, hoặc sản phẩm chỉ bán cho một nhóm rất cụ thể (xem Case 13).')
+  +'<div class="field"><label>Saved audience</label><select onchange="draftSet(\'savedAud\',this.value)"><option>Use a saved audience</option><option>No saved audiences yet</option></select>'+hint('Dùng lại tệp đối tượng đã lưu để khỏi khai báo lại.')+'</div>'
+
+  +'<div class="as-sub">Audience controls</div>'
+  +hint('<b>Kiểm soát đối tượng</b> là giới hạn cứng — Advantage+ có mở rộng thế nào cũng không vượt qua các giới hạn này (địa lý, tuổi tối thiểu, loại trừ, ngôn ngữ).')
+  +'<div class="field" style="margin-top:10px"><label>Locations</label>'
+  +locRowsHTML()
+  +'<div class="add-row"><select id="locModeNew" aria-label="Include or exclude new location"><option value="include">Include</option><option value="exclude">Exclude</option></select><input type="text" id="locSearch" placeholder="Search locations — TP. Hồ Chí Minh, Hà Nội, Đà Nẵng, quận/huyện…"><button class="btn" type="button" onclick="addLoc()">Add location</button></div>'
+  +'<div style="margin-top:6px"><a onclick="toast(\'Browse locations (mô phỏng): duyệt cây quốc gia / tỉnh thành để khoanh vùng.\')">Browse</a> · <a onclick="toast(\'Add locations in bulk (mô phỏng): dán danh sách nhiều địa điểm cùng lúc.\')">Add locations in bulk</a></div>'
+  +'<div class="map-ph">Map (simulated) — Vietnam<br><button class="btn" onclick="toast(\'Zoom In (mô phỏng).\')">Zoom In</button> <button class="btn" onclick="toast(\'Zoom Out (mô phỏng).\')">Zoom Out</button> <button class="btn" onclick="toast(\'Centre Map (mô phỏng).\')">Centre Map</button> <button class="btn" onclick="toast(\'Drop Pin (mô phỏng): ghim một điểm trên bản đồ rồi chọn bán kính quanh điểm đó ở danh sách địa điểm phía trên.\')">Drop Pin</button></div>'
+  +hint('Khoanh vùng địa lý: bán ở đâu khoanh đúng ở đó. Địa điểm dạng thành phố/điểm ghim thì đặt <b>bán kính</b> (ví dụ bán kính 25 km quanh cửa hàng); vùng không phục vụ được thì thêm một dòng <b>Exclude</b> để loại trừ. Ngành thi công/dịch vụ theo vùng mà để toàn quốc là tin nhắn đổ về nơi không làm được — xem Case 8.')+'</div>'
+  +'<div class="grid2"><div class="field"><label>Minimum age</label><select onchange="draftSet(\'minAge\',this.value)">'+ageOpts+'</select>'+hint('Tuổi tối thiểu là giới hạn cứng — dưới tuổi này Meta không hiển thị, kể cả khi Advantage+ mở rộng.')+'</div>'
+  +'<div class="field"><label>Languages</label><select onchange="addFromSelect(this,\'langs\')"><option value="">Add a language…</option><option>Vietnamese</option><option>English (US)</option><option>English (UK)</option><option>Korean</option><option>Japanese</option><option>Chinese (Simplified)</option></select>'
+  +(langs.length?chipsHTML('langs'):'<p style="margin:6px 0 0;font-size:12.5px;color:var(--text2)">All languages — chưa giới hạn ngôn ngữ.</p>')
+  +hint('Để trống = mọi ngôn ngữ. Chỉ chọn khi sản phẩm/nội dung chỉ phục vụ người dùng một ngôn ngữ nhất định.')+'</div></div>'
+  +'<div class="field"><label>Exclude these custom audiences</label><select onchange="addFromSelect(this,\'exclAud\')"><option value="">Select a custom audience to exclude…</option><option>Người đã mua — 180 ngày</option><option>Người đã nhắn tin Page — 180 ngày</option><option>Khách hàng hiện tại (CRM list)</option><option>Người đã cài app</option></select>'+chipsHTML('exclAud','excl')
+  +hint('Loại trừ người đã mua / đã là khách để ngân sách tập trung vào khách mới — tệp loại trừ hiện dưới dạng thẻ, bấm ✕ để gỡ.')+'</div>'
+  +'<div class="kv"><span>Unknown age on WhatsApp</span><b>Included</b></div>'
+  +'<p style="color:var(--text2);font-size:12.5px;margin:6px 0 0">Audience includes unknown age on WhatsApp</p>'
+
+  +'<div class="as-sub">'+(adv?'Advantage+ audience — Suggest an audience':'Audience details (manual)')+'</div>'
+  +hint(adv?'Phần này là <b>gợi ý</b> cho Advantage+: Meta ưu tiên tìm người khớp gợi ý nhưng vẫn có thể vượt ra ngoài để tìm kết quả. Muốn khóa cứng thì đưa điều kiện lên Audience controls ở trên.':'Advantage+ đang tắt nên phần này là đối tượng <b>chính thức</b>: Meta chỉ phân phối cho người khớp các điều kiện dưới đây.')
+  +'<div class="grid2" style="margin-top:10px"><div class="field"><label>Age — from</label><select onchange="draftSet(\'ageMin\',this.value)">'+ageMinOpts+'</select></div><div class="field"><label>Age — to</label><select onchange="draftSet(\'ageMax\',this.value)">'+ageMaxOpts+'</select></div></div>'
+  +'<div class="field"><label>Gender</label><div class="seg" role="group" aria-label="Gender">'
+  +['All genders','Men','Women'].map(function(g){return '<button type="button" class="'+(gender===g?'sel':'')+'" onclick="setGender(\''+g+'\')">'+g+'</button>'}).join('')+'</div>'
+  +hint('Chọn theo người thật sự mua hàng: ví dụ đồ ngủ nữ thì để Women, áo phông biker thì để Men — đừng để All genders cho mọi sản phẩm.')+'</div>'
+  +'<div class="field"><label>Detailed targeting — Include people who match</label>'
+  +'<div class="dt-wrap"><div id="dtChips">'+(draftList('dtChips',[]).length?chipsHTML('dtChips'):'<span style="font-size:12.5px;color:var(--text2)">All demographics, interests and behaviours — chưa thu hẹp theo sở thích / hành vi / nhân khẩu học nào.</span>')+'</div>'
+  +'<div class="add-row"><input type="text" id="dtInput" placeholder="Search demographics, interests or behaviours…"><button class="btn" type="button" onclick="addChipFromInput(\'dtInput\',\'dtChips\')">Add</button></div></div>'
+  +'<div class="sugg-chips"><span style="font-size:12px;color:var(--text2);font-weight:600">Gợi ý hay dùng:</span><br>'+sugg.map(function(s){return '<button type="button" onclick="addChip(\'dtChips\',\''+s+'\')">'+s+'</button>'}).join('')+'</div>'
+  +'<details class="browse" '+(dtBrowseOpen?'open':'')+' ontoggle="onDtBrowseToggle(this)"><summary>Browse — Demographics · Interests · Behaviours</summary>'
+  +'<div class="dt-search"><input type="text" id="dtSearch" placeholder="Search demographics, interests or behaviours…" oninput="filterDtTree(this.value)" aria-label="Search detailed targeting"></div>'
+  +'<div id="dtTree">'+dtTreeHTML()+'</div>'
+  +hint('Cây Browse đúng cấu trúc bản thật: <b>Demographics</b> (học vấn, tài chính, sự kiện đời sống, cha mẹ, chính trị, tình trạng quan hệ, công việc) · <b>Interests</b> (kinh doanh &amp; công nghiệp, giải trí, gia đình &amp; quan hệ, thể dục &amp; sức khoẻ, ẩm thực &amp; đồ uống, sở thích &amp; hoạt động, mua sắm &amp; thời trang, thể thao &amp; ngoài trời, công nghệ) · <b>Behaviors</b> (ô tô, B2B, hoạt động số, hành vi tài chính, thiết bị di động, hành vi mua sắm, du lịch). Tick chọn mục nào là mục đó hiện thành chip trong ô targeting phía trên và <b>Estimated audience size</b> ở cột phải tính lại ngay. Con số “≈ … triệu người” cạnh mỗi mục là quy mô đối tượng ước lượng (số mô phỏng cho lớp học).')
+  +'</details>'
+  +hint('<b>Đối tượng chi tiết</b> gồm 3 nhóm: nhân khẩu học (Demographics), sở thích (Interests) và hành vi (Behaviours). Trong cùng một nhóm, các điều kiện nối bằng OR (khớp một trong các mục là được) — tệp càng thêm nhiều mục càng rộng ra.')+'</div>';
+  if(draftGet('narrowOn',false)){
+    h+='<div class="field"><label>Further limit your audience — and must also match</label>'
+    +'<div class="dt-wrap"><div>'+(draftList('dtNarrow',[]).length?chipsHTML('dtNarrow'):'<span style="font-size:12.5px;color:var(--text2)">Chưa có điều kiện thu hẹp nào.</span>')+'</div>'
+    +'<div class="add-row"><input type="text" id="narrowInput" placeholder="Add a narrowing condition…"><button class="btn" type="button" onclick="addChipFromInput(\'narrowInput\',\'dtNarrow\')">Add</button></div></div>'
+    +hint('Nhóm thu hẹp nối bằng <b>AND</b> với nhóm trên: người xem phải khớp cả hai nhóm. Tệp sẽ nhỏ lại rõ rệt — chỉ dùng khi tệp đang quá rộng và ngân sách đủ lớn.')
+    +'<div style="margin-top:6px"><a onclick="toggleNarrow()">Remove narrowing layer</a></div></div>';
+  } else {
+    h+='<a onclick="toggleNarrow()">Further limit your audience</a>'+hint('Thu hẹp thêm bằng một lớp điều kiện AND — xem giải thích sau khi bấm.');
+  }
+  if(!adv){
+    h+='<div class="field" style="margin-top:12px"><label>Detailed targeting — Exclude people who match</label>'
+    +'<div class="dt-wrap"><div>'+(draftList('dtExcl',[]).length?chipsHTML('dtExcl','excl'):'<span style="font-size:12.5px;color:var(--text2)">Chưa loại trừ theo sở thích / hành vi / nhân khẩu học nào.</span>')+'</div>'
+    +'<div class="add-row"><input type="text" id="dtExclInput" placeholder="Search an interest or behaviour to exclude…"><button class="btn" type="button" onclick="addChipFromInput(\'dtExclInput\',\'dtExcl\')">Add</button></div></div>'
+    +hint('Ô <b>Exclude</b> của detailed targeting chỉ có ở chế độ manual: người khớp điều kiện loại trừ này sẽ KHÔNG thấy quảng cáo, kể cả khi họ khớp phần Include ở trên. Ví dụ bán áo phông biker thì loại trừ nhóm chỉ quan tâm xe đạp điện để đỡ tốn tiền vào tệp sai.')+'</div>';
+  } else {
+    h+='<div class="adv-note"><b>Exclude theo detailed targeting không khả dụng khi Advantage+ audience đang bật</b> — ở chế độ gợi ý, Meta có thể vượt qua sở thích/hành vi bạn gợi ý. Muốn loại trừ cứng, dùng <b>Exclude these custom audiences</b> ở phần Audience controls phía trên, hoặc tắt Advantage+ audience để mở ô Exclude thủ công.</div>';
+  }
+  h+='<div class="field" style="margin-top:12px"><label>Include these custom audiences</label><select onchange="addFromSelect(this,\'inclAud\')"><option value="">Select a custom audience…</option><option>Người tương tác Page — 365 ngày</option><option>Người xem video 75% — 180 ngày</option><option>Website visitors — 180 ngày (Pixel)</option><option>Lookalike 1% — Người đã mua</option></select>'+chipsHTML('inclAud')
+  +hint('Tệp tùy chỉnh / Lookalike đưa vào làm gợi ý cho Advantage+ — ưu tiên xây Lookalike từ tệp <b>người đã mua</b>, không phải tệp tương tác.')+'</div>'
+  +'<div style="margin-top:10px"><button class="btn btn-blue" type="button" onclick="toast(\'Save audience (mô phỏng): đã lưu đối tượng hiện tại vào bản nháp — mở lại editor vẫn còn nguyên các lựa chọn.\')">Save audience</button></div>'
+  +hint('Mọi lựa chọn ở thẻ Audience tự lưu vào bản nháp của trình duyệt này ngay khi bạn thay đổi.')+'</div>';
+  return h;
+}
+var PLATFORMS=null;
+function placementsCard(){
+  var adv=draftGet('advPl',true);
+  var showManual=!adv||draftGet('plManual',false);
+  var platforms=PLATFORMS=[
+   ['Facebook','f',[['Facebook Feed','Bảng feed Facebook'],['Facebook profile feed','Bảng feed trang cá nhân'],['Facebook Video feeds','Nguồn cấp video'],['Facebook Marketplace','Marketplace — nơi người dùng đang có ý định mua'],['Facebook right column','Cột phải (desktop)'],['Facebook Stories','Stories'],['Facebook Reels','Reels'],['Facebook search results','Kết quả tìm kiếm'],['Facebook notifications','Thông báo'],['Facebook in-stream ads for videos and live','Video trong luồng (in-stream) — quảng cáo chèn giữa video / livestream']]],
+   ['Instagram','◎',[['Instagram Feed','Bảng feed Instagram'],['Instagram profile feed','Bảng feed trang cá nhân'],['Instagram Explore','Khám phá (Explore)'],['Instagram Explore home','Trang chủ Khám phá'],['Instagram Reels','Reels'],['Instagram Stories','Stories'],['Instagram search results','Kết quả tìm kiếm']]],
+   ['Messenger','💬',[['Messenger inbox','Hộp thư Messenger (inbox)'],['Messenger Stories','Stories trên Messenger'],['Messenger search','Tìm kiếm trong Messenger']]],
+   ['Audience Network','🌐',[['Audience Network native, banner and interstitial','Quảng cáo gốc / banner / toàn màn hình trên app & web đối tác'],['Audience Network in-stream video','Video trong luồng trên Audience Network'],['Audience Network rewarded video','Video có thưởng (rewarded) — mặc định tắt']]],
+   ['Threads','@',[['Threads feed','Bảng feed Threads'],['Threads profile feed','Bảng feed trang cá nhân Threads']]]
+  ];
+  var h='<div class="ecard"><h4>Placements</h4>'+hint('Quảng cáo xuất hiện ở đâu — thẻ này hiện cùng lúc với Audience sau Show more options.')
+  +'<div class="switch-row" style="margin-bottom:10px"><div><b>Advantage+ placements</b><span>'+(adv?'On — Meta tự phân phối tới vị trí có khả năng tạo kết quả tốt nhất trên Facebook, Instagram, Messenger và Audience Network.':'Off — Manual placements: bạn tự chọn từng nền tảng và từng bề mặt ở phần dưới.')+'</span></div><input type="checkbox" class="toggle" '+(adv?'checked':'')+' onchange="toggleAdvPl(this)" aria-label="Advantage+ placements"></div>'
+  +hint('<b>Khi nào dùng Advantage+ placements:</b> mới chạy, chưa có dữ liệu vị trí nào tốt, creative hiển thị ổn ở mọi bề mặt — để Meta tự dồn tiền vào vị trí rẻ nhất cho mỗi kết quả. <b>Khi nào dùng setup thường (Manual placements):</b> chỉ muốn một bề mặt cụ thể (ví dụ chỉ Reels/Stories cho video dọc 9:16), cần loại hẳn Audience Network vì traffic chất lượng thấp, hoặc ngành nhạy cảm cần kiểm soát chặt ngữ cảnh hiển thị.')
+  +'<div class="warn-box"><b>WhatsApp Status</b>Ads are now showing on WhatsApp status. Your ads may appear there when Advantage+ placements is on.</div>'
+  +'<div class="kv"><span>Placement value rules — Rule set</span><b>None</b></div><div class="kv"><span>Account controls — Excluded placements</span><b>None</b></div>';
+  if(adv)h+='<button class="btn" type="button" onclick="togglePlManual()">'+(showManual?'Hide manual placements':'Show manual placements')+'</button>';
+  if(showManual){
+    h+='<div style="margin-top:12px"><b>Manual placements'+(adv?' (xem trước — đang khoá)':'')+'</b>'+hint('Chọn tay từng <b>nền tảng</b> (Facebook, Instagram, Messenger, Audience Network, Threads) và từng <b>bề mặt</b> trong nền tảng đó: Bảng feed, Stories, Reels, Tìm kiếm, Marketplace, Video trong luồng… Bỏ tick bề mặt nào là quảng cáo không xuất hiện ở đó nữa.')
+    +(adv?'<p class="peek-note">Advantage+ placements đang bật nên danh sách này chỉ để xem trước và bị khoá — Meta tự quyết định vị trí hiển thị. Tắt công tắc Advantage+ placements ở trên để chỉnh tay từng bề mặt; các lựa chọn thủ công trước đó vẫn được giữ trong bản nháp.</p>':'')
+    +'<div class="grid2" style="margin-top:10px"><div class="field"><label>Device type</label><select onchange="draftSet(\'devType\',this.value)">'
+    +['All devices','Mobile only','Desktop only'].map(function(x){return '<option'+(draftGet('devType','All devices')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select></div>'
+    +'<div class="field"><label>Operating systems</label><select onchange="draftSet(\'devOS\',this.value)">'
+    +['All operating systems','iOS only','Android only'].map(function(x){return '<option'+(draftGet('devOS','All operating systems')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select></div></div>'
+    +'<label class="check-line"><input type="checkbox" '+(draftGet('wifiOnly',false)?'checked':'')+' onchange="draftSet(\'wifiOnly\',this.checked)"><span><b>Only when connected to Wi-Fi</b><span>Chỉ hiển thị khi thiết bị đang dùng Wi-Fi — hợp quảng cáo video nặng / cài app.</span></span></label>';
+    platforms.forEach(function(p){
+      h+='<div class="plat-head"><span class="p-ic">'+p[1]+'</span>'+p[0]+'</div>';
+      p[2].forEach(function(item){
+        var key=plKey(item[0]);
+        var def=item[0].indexOf('rewarded')===-1;
+        var on=draftGet(key,def);
+        h+='<label class="check-line" style="padding-left:28px;padding-top:2px;padding-bottom:2px'+(adv?';opacity:.55':'')+'"><input type="checkbox" '+(on?'checked':'')+(adv?' disabled':'')+' onchange="draftSet(\''+key+'\',this.checked)"><span><b style="font-weight:600">'+item[0]+'</b><span>'+item[1]+'</span></span></label>';
+      });
+    });
+    h+='<div style="margin-top:10px"><label class="check-line" style="padding-left:28px;padding-top:2px;padding-bottom:2px;opacity:.5"><input type="checkbox" disabled><span>Facebook Business Explore (unavailable)</span></label></div>'
+    +'<div class="kv" style="margin-top:8px"><span>Skippable ads</span><b>Included</b></div></div>';
+  }
+  h+=hint('Người mới nên để Advantage+ placements — chỉ chuyển Manual khi có chủ đích rõ, ví dụ chỉ chạy Reels, hoặc loại hẳn Audience Network khi sợ traffic chất lượng thấp. Mọi tick chọn ở đây tự lưu vào bản nháp.')+'</div>';
   return h;
 }
 function budgetCard(o){
   var isCamp=o.budgetLevel==='campaign';
-  return '<div class="ecard"><h4>Budget &amp; schedule</h4>'+hint(isCamp?'Mục tiêu này đặt ngân sách ở tầng chiến dịch (CBO) — nhóm quảng cáo dùng chung ngân sách chiến dịch.':'Tiền và thời gian chạy của riêng nhóm này (ABO) — chỗ học viên hay nhầm với ngân sách chiến dịch nhất.')
-  +'<div class="field"><label>Budget type</label><select><option>Daily budget</option><option>Lifetime budget</option></select></div>'
-  +'<div class="field"><label>Amount</label><input type="text" value="'+o.budget+'"></div>'
+  var bType=draftGet('budgetType','Daily budget');
+  var isLife=bType==='Lifetime budget';
+  var setEnd=draftGet('setEnd',false)||isLife;
+  var setSched=draftGet('setSched',false);
+  var days=['T2','T3','T4','T5','T6','T7','CN'];
+  var h='<div class="ecard"><h4>Budget &amp; schedule</h4>'+hint(isCamp?'Mục tiêu này đặt ngân sách ở tầng chiến dịch (CBO) — nhóm quảng cáo dùng chung ngân sách chiến dịch.':'Tiền và thời gian chạy của riêng nhóm này (ABO) — chỗ học viên hay nhầm với ngân sách chiến dịch nhất.')
+  +'<div class="field"><label>Budget type</label><select onchange="setBudgetType(this.value)"><option'+(!isLife?' selected':'')+'>Daily budget</option><option'+(isLife?' selected':'')+'>Lifetime budget</option></select>'
+  +hint(isLife?'<b>Lifetime budget</b> = ngân sách <b>tổng</b> cho cả đợt chạy — bắt buộc có ngày kết thúc, Meta tự rải tiền theo lịch. Hợp chiến dịch có hạn chót rõ ràng (flash sale, sự kiện).':'<b>Daily budget</b> = ngân sách <b>theo ngày</b> — cách đặt phổ biến nhất khi chạy liên tục (Ongoing), dễ tăng/giảm từng bước khi scale.')+'</div>'
+  +'<div class="field"><label>Amount</label><input type="text" value="'+esc(draftGet('budgetAmt',o.budget))+'" onchange="draftSet(\'budgetAmt\',this.value)">'+hint('Số tiền lưu vào bản nháp ngay khi bạn sửa — mở lại nhóm quảng cáo vẫn giữ nguyên mức ngân sách đã nhập.')+'</div>'
   +'<p style="font-size:12.5px;color:var(--text2);margin:0 0 12px">Ad set budget sharing is on. This ad set may spend up to a maximum per day and a maximum per week above its daily budget. <a onclick="toast(\'About daily budget (mô phỏng): ngân sách ngày là mức trung bình — có ngày Meta chi vượt để bắt cơ hội tốt, nhưng tổng tuần vẫn quanh mức đã đặt.\')">About daily budget</a></p>'
-  +'<div class="field"><label>Schedule — Start date</label><input type="text" value="26 Oct 2026 17:31 GMT+7"></div>'
-  +'<label class="check-line"><input type="checkbox"><span><b>Set an end date</b></span></label></div>';
+  +'<div class="as-sub" style="margin-top:4px">Schedule</div>'
+  +'<div class="grid2" style="margin-top:8px"><div class="field"><label>Start date</label><input type="date" value="'+esc(draftGet('startDate','2026-10-26'))+'" onchange="draftSet(\'startDate\',this.value)"></div>'
+  +'<div class="field"><label>Start time (GMT+7)</label><input type="time" value="'+esc(draftGet('startTime','17:31'))+'" onchange="draftSet(\'startTime\',this.value)"></div></div>'
+  +'<label class="check-line"><input type="checkbox" '+(setEnd?'checked':'')+' onchange="toggleEndDate(this)"><span><b>Set an end date</b>'+(isLife?'<span>Bắt buộc với Lifetime budget.</span>':'')+'</span></label>';
+  if(setEnd){
+    h+='<div class="grid2"><div class="field"><label>End date</label><input type="date" value="'+esc(draftGet('endDate','2026-11-26'))+'" onchange="draftSet(\'endDate\',this.value)"></div>'
+    +'<div class="field"><label>End time (GMT+7)</label><input type="time" value="'+esc(draftGet('endTime','23:59'))+'" onchange="draftSet(\'endTime\',this.value)"></div></div>'
+    +hint('Đến đúng thời điểm này nhóm quảng cáo tự dừng — nhớ kiểm tra múi giờ GMT+7 kẻo camp dừng sớm hoặc chạy lố một ngày.');
+  } else {
+    h+=hint('Không đặt ngày kết thúc = chạy liên tục (Ongoing) cho tới khi bạn tự tắt hoặc hết hạn mức tài khoản.');
+  }
+  h+='<label class="check-line" style="margin-top:6px"><input type="checkbox" '+(setSched?'checked':'')+' onchange="toggleSched(this)"><span><b>Run ads on a schedule</b><span>Ad scheduling — chỉ chạy trong khung giờ / ngày đã chọn.</span></span></label>';
+  if(setSched){
+    h+='<div class="grid2"><div class="field"><label>From</label><input type="time" value="'+esc(draftGet('schedFrom','06:00'))+'" onchange="draftSet(\'schedFrom\',this.value)"></div>'
+    +'<div class="field"><label>To</label><input type="time" value="'+esc(draftGet('schedTo','22:00'))+'" onchange="draftSet(\'schedTo\',this.value)"></div></div>'
+    +'<div class="day-chks">'+days.map(function(d,i){return '<label><input type="checkbox" '+(draftGet('schedD'+i,true)?'checked':'')+' onchange="draftSet(\'schedD'+i+'\',this.checked)"> '+d+'</label>'}).join('')+'</div>'
+    +hint('Chỉ nên hẹn giờ khi khách của bạn thật sự chỉ mua trong khung giờ đó (ví dụ dịch vụ đặt lịch giờ hành chính). Shop online bán 24/7 mà hẹn giờ hẹp là tự cắt mất khách buổi tối.');
+  }
+  h+='</div>';
+  return h;
+}
+function optimCard(o,n){
+  var events={
+   'Awareness':['Maximise ad recall lift','Maximise reach','Maximise impressions','Maximise ThruPlay views'],
+   'Traffic':['Maximise number of landing page views','Maximise number of link clicks','Maximise number of conversations','Maximise daily unique reach'],
+   'Engagement':['Maximise number of conversations','Maximise number of leads through messaging','Maximise number of purchases through messaging','Maximise number of Page likes','Maximise number of video views'],
+   'Leads':['Maximise number of leads','Maximise number of qualified leads','Maximise number of conversions'],
+   'App promotion':['Maximise number of app installs','Maximise number of app events — Purchase','Maximise number of app events — Complete registration'],
+   'Sales':['Purchase','Initiate checkout','Add to cart','Maximise number of conversions','Maximise number of purchases through messaging','Lead','Complete registration']
+  };
+  var evs=events[n]||events['Sales'];
+  var curEv=draftGet('convEvent_'+n,evs[0]);
+  var ctl=draftGet('costCtl','none');
+  var ctlOpts=[['none','No cost control — Highest volume','Meta lấy nhiều kết quả nhất có thể trong ngân sách, không khóa giá. Cách mặc định nên dùng khi mới chạy.'],['cpr','Cost per result goal','Meta cố giữ chi phí trung bình cho 1 kết quả quanh mức bạn đặt — đặt quá thấp là camp khó phân phối.'],['bid','Bid cap','Giá thầu tối đa trong mỗi phiên đấu giá — chỉ dùng khi đã biết rõ giá thầu chấp nhận được.']];
+  if(n==='Sales')ctlOpts.push(['roas','Minimum ROAS goal','Meta chỉ phân phối khi tỉ suất doanh thu / chi tiêu kỳ vọng đạt tối thiểu mức bạn đặt (ví dụ ROAS 2.0 = 200%).']);
+  var ctlLabel=ctl==='cpr'?'Cost per result goal (VND / kết quả)':(ctl==='bid'?'Bid cap (VND / lần đấu giá)':(ctl==='roas'?'Minimum ROAS goal (ví dụ 2.0)':'Amount'));
+  var h='<div class="ecard"><h4>Optimisation &amp; delivery</h4>'+hint('Meta phân phối quảng cáo dựa trên <b>sự kiện tối ưu hoá</b> này và các giới hạn chi phí / cửa sổ ghi nhận bên dưới — chọn sai sự kiện là camp tối ưu nhầm hành vi (xem Case 10: Traffic tối ưu lượt bấm nên lead toàn bấm nhầm).')
+  +'<div class="field" style="margin-top:10px"><label>Optimisation event</label><select onchange="draftSet(\'convEvent_'+n+'\',this.value)">'
+  +evs.map(function(e){return '<option'+(curEv===e?' selected':'')+'>'+e+'</option>'}).join('')+'</select>'
+  +hint('Sự kiện phải khớp mục tiêu: bán hàng thì tối ưu <b>Purchase</b>, thu lead thì <b>Leads</b>, nhắn tin thì <b>Conversations</b>. Tối ưu sự kiện ở miệng phễu (Add to cart, link click) chỉ khi sự kiện chính chưa đủ ~50 chuyển đổi/tuần để Meta học.')+'</div>';
+  if(n==='Sales'||n==='Leads'){
+    h+='<div class="field"><label>Dataset / Pixel</label><select onchange="draftSet(\'dataset\',this.value)">'
+    +['Shop Pixel — 1234567890 (sample)','Chưa cài dataset / pixel'].map(function(x){return '<option'+(draftGet('dataset','Shop Pixel — 1234567890 (sample)')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'
+    +hint('Sự kiện tối ưu hoá lấy từ dataset/pixel này — chưa cài pixel + CAPI thì không tối ưu theo Purchase/Lead trên website được.')+'</div>';
+  }
+  h+='<div class="as-sub">Cost controls</div>'+hint('<b>Kiểm soát chi phí</b> ở cấp nhóm quảng cáo — khác chiến lược thầu ở cấp chiến dịch: đây là trần giá cho riêng nhóm này.');
+  ctlOpts.forEach(function(c){
+    h+='<label class="radio-line'+(ctl===c[0]?' sel':'')+'"><input type="radio" name="costCtl" '+(ctl===c[0]?'checked':'')+' onchange="setCostControl(\''+c[0]+'\')"><span><b>'+c[1]+'</b><span>'+c[2]+'</span></span></label>';
+  });
+  if(ctl!=='none'){
+    h+='<div class="field" style="margin-top:8px"><label>'+ctlLabel+'</label><input type="text" placeholder="Ví dụ: 50,000" value="'+esc(draftGet('costAmt',''))+'" onchange="draftSet(\'costAmt\',this.value)">'
+    +hint('Mức kiểm soát lưu vào bản nháp. Đặt trần thấp hơn hẳn chi phí/kết quả đang có thường khiến nhóm quảng cáo chi tiêu rất chậm hoặc đứng hẳn.')+'</div>';
+  }
+  h+='<div class="as-sub">Attribution setting</div>'
+  +'<div class="field" style="margin-top:8px"><label>Attribution setting</label><select onchange="draftSet(\'attrSetting\',this.value)">'
+  +['7-day click · 1-day view','7-day click','1-day click · 1-day view','1-day click','1-day click · 1-day engaged view'].map(function(x){return '<option'+(draftGet('attrSetting','7-day click · 1-day view')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'
+  +hint('<b>Phân bổ (attribution)</b> = cửa sổ ghi nhận: một đơn hàng được tính cho quảng cáo nếu khách bấm (click) trong vòng 7 ngày hoặc xem (view) trong vòng 1 ngày trước khi mua. Chu trình mua càng dài (BĐS, khóa học, dịch vụ giá cao) càng cần cửa sổ dài; đổi cửa sổ giữa chừng làm số liệu trước/sau không so sánh được với nhau.')+'</div>'
+  +'<div class="field"><label>Attribution model</label><select onchange="draftSet(\'attrModel\',this.value)">'
+  +['Standard','Incremental'].map(function(x){return '<option'+(draftGet('attrModel','Standard')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'
+  +hint('Standard là mô hình mặc định theo quy tắc cửa sổ ở trên; Incremental đo phần chuyển đổi tăng thêm nhờ quảng cáo — nâng cao, chỉ dùng khi đã có dữ liệu đối chứng.')+'</div>'
+  +'<div class="kv"><span>Delivery type</span><b>Standard</b></div>'
+  +hint('Mọi lựa chọn trong thẻ Optimisation &amp; delivery tự lưu vào bản nháp của trình duyệt này.')+'</div>';
+  return h;
 }
 function renderEditor(){
   var o=objByName(editorObjective),n=editorObjective;
@@ -1757,8 +2157,8 @@ function renderEditor(){
   +'<div class="ecard"><h4>Campaign details</h4>'+hint('Mục tiêu chọn ở đây quyết định Meta tối ưu theo hành động nào — đổi mục tiêu giữa chừng thường phải tạo chiến dịch mới.')
   +'<div class="field"><label>Buying type</label><select><option>Auction</option><option>Reservation</option></select></div>'
   +'<div class="field" style="margin:0"><label>Campaign objective</label><p style="margin:0"><b>'+n+'</b></p></div></div>';
-  if(n==='Leads')c+='<div class="ecard"><div class="switch-row"><div><b>Advantage+ leads campaign</b><span>On</span></div><input type="checkbox" class="toggle" checked aria-label="Advantage+ leads campaign"></div>'+hint('Gói tối ưu tự động dành riêng cho chiến dịch thu lead.')+'</div>';
-  if(n==='App promotion')c+='<div class="ecard"><div class="switch-row"><div><b>iOS 14+ campaign</b><span>Off</span></div><input type="checkbox" class="toggle" aria-label="iOS 14+ campaign"></div></div><div class="ecard"><div class="switch-row"><div><b>Advantage+ app campaign</b><span>On</span></div><input type="checkbox" class="toggle" checked aria-label="Advantage+ app campaign"></div>'+hint('Tự động hoá cho chiến dịch app: Meta tự test tổ hợp quảng cáo và đối tượng.')+'</div>';
+  if(n==='Leads')c+='<div class="ecard"><div class="switch-row"><div><b>Advantage+ leads campaign</b><span>'+(draftGet('advLeadsCamp',true)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('advLeadsCamp',true)?'checked':'')+' onchange="toggleAdvOpt(\'advLeadsCamp\',this,\'Advantage+ leads campaign\')" aria-label="Advantage+ leads campaign"></div>'+hint('<b>Advantage+ leads campaign</b> là gói tự động hoá riêng cho thu lead: Meta tự áp đối tượng &amp; vị trí hiển thị Advantage+ và tối ưu theo lead. Dùng khi đã có nguồn lead chất lượng/CRM để Meta học đúng lead tốt. Tắt công tắc để về <b>setup thường</b>: tự khai báo đối tượng và vị trí hiển thị ở bước Ad set — hợp khi mới test, ngân sách nhỏ, cần kiểm soát chặt nguồn lead.')+'</div>';
+  if(n==='App promotion')c+='<div class="ecard"><div class="switch-row"><div><b>iOS 14+ campaign</b><span>'+(draftGet('ios14Camp',false)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('ios14Camp',false)?'checked':'')+' onchange="toggleAdvOpt(\'ios14Camp\',this,\'iOS 14+ campaign\')" aria-label="iOS 14+ campaign"></div></div><div class="ecard"><div class="switch-row"><div><b>Advantage+ app campaign</b><span>'+(draftGet('advAppCamp',true)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('advAppCamp',true)?'checked':'')+' onchange="toggleAdvOpt(\'advAppCamp\',this,\'Advantage+ app campaign\')" aria-label="Advantage+ app campaign"></div>'+hint('<b>Advantage+ app campaign</b>: Meta tự test tổ hợp quảng cáo, đối tượng và vị trí hiển thị để tìm lượt cài app rẻ nhất — hợp khi app đã có lượng cài đặt ổn định. Tắt để về <b>setup thường</b>: tự chia nhóm theo hệ điều hành / sự kiện trong app và tự chọn vị trí hiển thị khi cần kiểm soát chặt.')+'</div>';
   if(n==='Sales')c+='<div class="ecard"><h4>Product data</h4><p class="hint" style="margin:0">No catalogues available</p>'+hint('Chưa có catalogue sản phẩm — muốn chạy quảng cáo catalogue/dynamic thì cần tạo catalogue trong Commerce Manager trước.')+'</div><div class="ecard"><h4>Audience segment reporting</h4><p class="hint" style="margin:0">Báo cáo hiệu quả tách theo phân khúc đối tượng (mới / đã tương tác / khách hiện tại).</p></div>';
   c+='<div class="ecard"><h4>Budget</h4>'+hint('Chọn nơi “giữ tiền”: ở tầng chiến dịch (CBO) hay ở từng nhóm quảng cáo (ABO).')
   +(o.budgetLevel==='campaign'?'<p style="margin:0 0 8px"><b>Campaign budget: '+o.budget+' / day</b></p><label class="radio-line sel"><input type="radio" name="bs" checked><span><b>Campaign budget</b><span>Advantage+ campaign budget — Meta tự phân bổ giữa các ad set.</span></span></label>':'<label class="radio-line sel"><input type="radio" name="bs" checked><span><b>Ad set budget</b><span>Mỗi ad set có ngân sách riêng — đặt ở bước Ad set: '+o.budget+'/ngày.</span></span></label>')
@@ -1770,6 +2170,7 @@ function renderEditor(){
   +'<div class="field" style="margin:0"><label>Category</label><select><option>Select a category</option><option>Credit</option><option>Employment</option><option>Housing</option><option>Social issues, elections or politics</option></select></div></div>';
   document.getElementById('epane0').innerHTML=c;
   renderAdset(o,n);renderAd(o,n);renderScore(o);renderPreview(o);
+  updateEstSize();
 }
 function onBidChange(){var v=document.getElementById('bidSel').value;document.getElementById('bidExpand').style.display=(v==='Other options'||v==='Cost per result goal')?'block':'none';if(v==='Other options')toast('Other options (mô phỏng): mở thêm Bid cap — chỉ dùng khi đã biết giá thầu tối đa chấp nhận được.')}
 function toggleCampMore(){var d=document.getElementById('campMore');d.style.display=d.style.display==='block'?'none':'block'}
@@ -1778,7 +2179,7 @@ function convBlock(o,n){
   if(n==='Awareness')return '<div class="ecard"><h4>Conversion</h4>'+hint('Mục tiêu Awareness KHÔNG có trường Conversion location — Meta tối ưu theo mức độ ghi nhớ, không theo một điểm đến cụ thể.')
   +'<div class="field"><label>Performance goal</label><select><optgroup label="Awareness goals"><option>Maximise reach of ads</option><option>Maximise number of impressions</option><option>Maximise ad recall lift</option></optgroup><optgroup label="Video view goals"><option>Maximise ThruPlay views</option><option>Maximise 2-second continuous video plays</option></optgroup></select>'+hint('Chọn theo thứ bạn muốn tối đa hoá: độ phủ (reach), số lần hiển thị, mức ghi nhớ, hay lượt xem video.')+'</div>'
   +'<div class="field"><label>Frequency control</label><select><option>No frequency control</option><option selected>Cap — 2 times every 7 days</option></select>'+hint('Giới hạn 1 người thấy quảng cáo tối đa mấy lần — Awareness chạy dài ngày rất nên đặt Cap để tránh gây nhàm.')+'</div>'
-  +'<div class="switch-row"><div><b>Dynamic creative</b><span>Off</span></div><input type="checkbox" class="toggle" aria-label="Dynamic creative"></div></div>';
+  +'<div class="switch-row"><div><b>Dynamic creative</b><span>'+(draftGet('dynCreative',false)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('dynCreative',false)?'checked':'')+' onchange="toggleAdvOpt(\'dynCreative\',this,\'Dynamic creative\')" aria-label="Dynamic creative"></div>'+hint('Bật <b>Dynamic creative</b> thì Meta tự ghép các biến thể ảnh/chữ bạn cung cấp thành nhiều tổ hợp và ưu tiên tổ hợp hiệu quả — tiền thân của Advantage+ creative. Tắt = setup thường: mỗi quảng cáo chạy đúng một bản creative cố định, dễ đối chiếu A/B test thủ công.')+'</div></div>';
   if(n==='Traffic')return '<div class="ecard"><h4>Conversion</h4>'+hint('Nơi “kết quả” xảy ra — Traffic đang chọn Message destinations nên kết quả là cuộc trò chuyện.')
   +'<div class="field"><label>Conversion location</label>'
   +['Instagram live video','Website','App','Message destinations','Instagram or Facebook','Calls'].map(function(x){return '<label class="radio-line'+(x==='Message destinations'?' sel':'')+'"><input type="radio" name="tcl" '+(x==='Message destinations'?'checked':'')+'><span><b>'+x+'</b></span></label>'}).join('')+'</div>'
@@ -1802,7 +2203,7 @@ function convBlock(o,n){
   +'<label class="check-line"><input type="checkbox"><span><b>Search for app by country</b></span></label>'
   +'<div class="field"><label>Performance goal</label><select id="appPerf" disabled><option>Maximise number of app installs</option></select></div>'
   +'<div class="field"><label>Attribution model</label><select><option>Standard</option><option disabled>Incremental</option></select></div>'
-  +'<div class="kv"><span>Advantage+ catalogue ads</span><b>Off</b></div><div class="kv"><span>Value rules</span><b>Enabled: No</b></div></div>';
+  +'<div class="switch-row" style="margin-top:10px"><div><b>Advantage+ catalogue ads</b><span>'+(draftGet('advCatalogue',false)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('advCatalogue',false)?'checked':'')+' onchange="toggleAdvOpt(\'advCatalogue\',this,\'Advantage+ catalogue ads\')" aria-label="Advantage+ catalogue ads"></div>'+hint('Bật khi app có catalogue sản phẩm: Meta tự lấy sản phẩm trong catalogue làm creative và cá nhân hoá theo từng người. Tắt = setup thường: tự chọn ảnh/video và viết nội dung cho từng quảng cáo.')+'<div class="kv"><span>Value rules</span><b>Enabled: No</b></div></div>';
   /* Sales */
   return '<div class="ecard"><h4>Conversion</h4>'+hint('Sales có thêm chiến lược vòng đời khách hàng và nhóm điểm đến Multiple/Single — đang chọn Message destinations.')
   +'<div class="field"><label>Customer life cycle strategy</label><select><option>Get conversions from all audiences</option><option>Focus on new customers</option><option>Focus on existing customers</option></select>'+hint('Chọn Meta nên săn khách mới, khách cũ, hay tất cả — shop mới thường để “all audiences”.')+'</div>'
@@ -1810,21 +2211,21 @@ function convBlock(o,n){
   +page
   +'<div class="field"><label>Performance goal</label><select><optgroup label="Conversion goals"><option>Maximise number of conversions</option><option>Maximise number of conversations</option><option>Maximise number of purchases through messaging</option></optgroup><optgroup label="Other goals"><option>Maximise number of link clicks</option><option>Maximise daily unique reach</option><option>Maximise number of impressions</option></optgroup></select></div>'
   +'<div class="field"><label>Attribution model</label><select><option>Standard</option></select></div>'
-  +'<div class="switch-row"><div><b>Advantage+ sales campaign</b><span>On</span></div><input type="checkbox" class="toggle" checked aria-label="Advantage+ sales campaign"></div></div>';
+  +'<div class="switch-row"><div><b>Advantage+ sales campaign</b><span>'+(draftGet('advSalesCamp',true)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('advSalesCamp',true)?'checked':'')+' onchange="toggleAdvOpt(\'advSalesCamp\',this,\'Advantage+ sales campaign\')" aria-label="Advantage+ sales campaign"></div>'+hint('<b>Advantage+ sales campaign</b> là chế độ tự động hoá cao nhất cho mục tiêu Sales: ngân sách cấp chiến dịch (Advantage+ campaign budget) + Advantage+ audience + Advantage+ placements, Meta tự phân bổ tất cả. Dùng khi Pixel/CAPI đã ổn định và có đủ ~50 chuyển đổi/tuần. Tắt để về <b>setup thường</b>: tự đặt ngân sách từng nhóm, tự khai báo đối tượng &amp; vị trí hiển thị ở các thẻ bên dưới — hợp giai đoạn test sản phẩm mới hoặc ngân sách nhỏ.')+'</div>';
 }
 function renderAdset(o,n){
   var h='<div class="ecard"><h4>Ad set name</h4>'+hint('Đặt tên theo đối tượng + vị trí, ví dụ “HN 22–35 Nữ – Fashion”.')
   +'<div class="field" style="margin:0"><input type="text" value="New '+n+' ad set"></div><button class="btn" style="margin-top:10px" onclick="toast(\'Create template (mô phỏng).\')">Create template</button></div>'
   +convBlock(o,n)
   +'<div style="text-align:center;margin-bottom:12px"><button class="btn" id="showMoreBtn" onclick="toggleAdsetMore()">Show more options</button></div>'
-  +'<div id="adsetMore" style="display:none">'+budgetCard(o)+audienceCard()+placementsCard()+'<div style="text-align:center;margin-bottom:12px"><button class="btn" onclick="toggleAdsetMore()">Hide options</button></div></div>';
+  +'<div id="adsetMore" style="display:none"><div id="budWrap">'+budgetCard(o)+'</div><div id="audWrap">'+audienceCard()+'</div><div id="optWrap">'+optimCard(o,n)+'</div><div id="plWrap">'+placementsCard()+'</div><div style="text-align:center;margin-bottom:12px"><button class="btn" onclick="toggleAdsetMore()">Hide options</button></div></div>';
   document.getElementById('epane1').innerHTML=h;
 }
 function toggleAdsetMore(){
   showMoreAdset=!showMoreAdset;
   document.getElementById('adsetMore').style.display=showMoreAdset?'block':'none';
   document.getElementById('showMoreBtn').textContent=showMoreAdset?'Hide options':'Show more options';
-  if(showMoreAdset)toast('Đã mở Budget & schedule, Audience và Placements — đúng 3 thẻ nằm sau Show more options ở bản thật.');
+  if(showMoreAdset)toast('Đã mở Budget & schedule, Audience, Optimisation & delivery và Placements — các thẻ setup nằm sau Show more options ở bản thật. Mọi lựa chọn bạn chỉnh đều tự lưu vào bản nháp.');
 }
 var CTA21=['No button','Download','Get directions','Get quote','Get showtimes','See details','Learn more','Listen now','Send message','Order now','Request time','Save','See menu','Shop now','Sign up','Subscribe','Watch more','Send WhatsApp message','Apply now','Book now','Contact us'];
 function conversationsBlock(){
@@ -1840,18 +2241,68 @@ function trackingBlock(n){
   else h+='<div class="kv"><span>Website events</span><b>Not set up</b></div><div class="kv"><span>App events</span><b>Not connected</b></div><div class="kv"><span>URL parameters</span><b>utm_source=facebook&amp;utm_medium=cpc</b></div>';
   return h+'</div>';
 }
+/* ---- Bài đăng demo mẫu của Page — dùng cho lựa chọn "Use existing post" ở bước Ad ---- */
+var DEMO_POSTS=[
+ {id:'p1',media:'ẢNH · Áo len',title:'Bài đăng · BST Thu Đông — áo len lông cừu',text:'Áo len lông cừu 100% vừa về thêm đợt mới — mềm, ấm mà không nặng. Nhắn tin cho shop để xem bảng màu và tư vấn size nhé!',headline:'Áo len lông cừu 100% — 1.900.000đ',date:'Đăng 28/10/2026',stats:'1.248 lượt thích · 96 bình luận · 31 lượt chia sẻ'},
+ {id:'p2',media:'VIDEO · 0:45',title:'Bài đăng · Video unbox áo khoác',text:'Unbox áo khoác mới nhất của shop — chất liệu chống gió, form freesize. Xem hết video để nhận mã freeship hôm nay!',headline:'Áo khoác freesize — 1.990.000đ',date:'Đăng 30/10/2026',stats:'3.502 lượt xem · 412 lượt thích · 58 bình luận'},
+ {id:'p3',media:'ẢNH · Áo thun',title:'Bài đăng · Áo thun mỏng mát',text:'Áo thun mỏng mát cho những ngày nắng — chỉ 890.000đ, freesize, 4 màu dễ phối. Comment “ÁO THUN” để shop gửi link đặt hàng!',headline:'Áo thun mỏng mát — 890.000đ',date:'Đăng 30/10/2026',stats:'864 lượt thích · 122 bình luận · 19 lượt chia sẻ'},
+ {id:'p4',media:'ẢNH · Feedback',title:'Bài đăng · Feedback khách hàng',text:'Khách gửi feedback mặc đồ của shop xinh quá nên shop đăng lại liền. Cảm ơn mọi người đã ủng hộ — đợt hàng mới đang trên đường về!',headline:'Feedback thật từ khách của shop',date:'Đăng 02/11/2026',stats:'2.107 lượt thích · 240 bình luận · 87 lượt chia sẻ'},
+ {id:'p5',media:'VIDEO · 1:12',title:'Bài đăng · Livestream cắt mẫu tại xưởng',text:'Lại một buổi livestream cắt mẫu trực tiếp tại xưởng — xem chất vải thật, đường may thật trước khi quyết định đặt hàng.',headline:'Xem trực tiếp chất vải tại xưởng',date:'Đăng 05/11/2026',stats:'5.930 lượt xem · 689 lượt thích · 143 bình luận'}
+];
+function demoPostById(id){return DEMO_POSTS.filter(function(p){return p.id===id})[0]||DEMO_POSTS[0]}
+function setAdSetupMode(mode){
+  if(mode==='existing'){draftSet('manualPrimary',primaryTextVal);draftSet('manualHeadline',headlineVal);var p=demoPostById(draftGet('demoPostId','p1'));primaryTextVal=p.text;headlineVal=p.headline}
+  else{primaryTextVal=draftGet('manualPrimary','');headlineVal=draftGet('manualHeadline','')}
+  draftSet('adSetupMode',mode);
+  renderEditor();goEditorStep(2);setEditorMode(editorMode);
+  toast(mode==='existing'?'Use existing post: nội dung quảng cáo lấy từ bài đăng đã chọn của Page — phần Ad preview bên phải đã cập nhật theo bài đó. Lựa chọn đã lưu vào bản nháp.':'Create new ad: tự tải lên / chọn media và viết nội dung từ đầu. Lựa chọn đã lưu vào bản nháp.');
+}
+function selectDemoPost(id){
+  draftSet('demoPostId',id);
+  var p=demoPostById(id);primaryTextVal=p.text;headlineVal=p.headline;
+  renderEditor();goEditorStep(2);setEditorMode(editorMode);
+  toast('Đã chọn “'+p.title+'” — nội dung bài đã điền vào quảng cáo và hiện trong phần Ad preview.');
+}
+function postPickerHTML(){
+  var sel=draftGet('demoPostId','p1');
+  var h='<div style="margin-top:10px"><label>Select a post — Shop Thời Trang ABC (Page mẫu)</label>';
+  DEMO_POSTS.forEach(function(p){
+    h+='<label class="radio-line'+(sel===p.id?' sel':'')+'" style="align-items:flex-start"><input type="radio" name="demoPost" '+(sel===p.id?'checked':'')+' onchange="selectDemoPost(\''+p.id+'\')"><span style="flex:1"><b>'+esc(p.title)+'</b><span>'+esc(p.text)+'</span><span style="color:var(--text3);font-size:11.5px">'+p.date+' · '+p.stats+'</span></span><span class="post-thumb">'+p.media+'</span></label>';
+  });
+  return h+hint('Chọn bài nào thì nội dung bài đó (media, Primary text, Headline) điền vào quảng cáo và hiện ở phần <b>Ad preview</b> bên phải. Tương tác sẵn có của bài (thích / bình luận / chia sẻ) cũng được giữ khi chạy quảng cáo — đây là lý do nhiều shop chọn dùng bài đăng có sẵn thay vì tạo mới.')+'</div>';
+}
+function existingPostBody(n){
+  var p=demoPostById(draftGet('demoPostId','p1'));
+  var cta=draftGet('postCta','Send message');
+  var h='<div class="ecard"><h4>Ad creative — from existing post</h4>'+hint('Toàn bộ nội dung lấy nguyên từ bài đăng đã chọn — muốn sửa chữ/ảnh thì sửa ở bài đăng gốc trên Page, không sửa trực tiếp tại đây.')
+  +'<div class="pm" style="height:110px;border-radius:8px;margin-top:10px">'+p.media+'<br><span style="font-weight:600;font-size:12px">'+esc(p.title)+'</span></div>'
+  +'<div class="field" style="margin-top:10px"><label>Primary text (từ bài đăng)</label><textarea disabled>'+esc(p.text)+'</textarea></div>'
+  +'<div class="field"><label>Headline (từ bài đăng)</label><input type="text" value="'+esc(p.headline)+'" disabled></div>'
+  +'<div class="kv"><span>Tương tác sẵn có của bài</span><b>'+p.stats+'</b></div>'
+  +'<div class="field" style="margin:0"><label>Call to action</label><select onchange="draftSet(\'postCta\',this.value)">'+CTA21.map(function(x){return '<option'+(x===cta?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'+hint('Với bài đăng có sẵn, bạn vẫn đổi được nút CTA cho bản quảng cáo; nội dung chữ và media thì giữ nguyên theo bài gốc.')+'</div></div>'
+  +advCreativeCard()
+  +'<div class="ecard"><h4>Destination</h4><p class="hint" style="margin:0">Destination follows your ad set settings ('+(n==='Leads'?'Instant forms':'conversion location đã chọn ở bước Ad set')+').</p>'+hint('Đích đến của quảng cáo dùng bài đăng có sẵn đi theo cài đặt ở bước Ad set — đổi đích đến thì quay lại bước Ad set.')+'</div>';
+  return h;
+}
 function renderAd(o,n){
+  var setupMode=draftGet('adSetupMode','new');
   var h='<div class="ecard"><h4>Ad name</h4>'+hint('Đặt tên theo nội dung / phiên bản, ví dụ “Video unbox – V1”.')
   +'<div class="field" style="margin:0"><input type="text" value="New '+n+' ad"></div><button class="btn" style="margin-top:10px" onclick="toast(\'Create template (mô phỏng).\')">Create template</button></div>'
   +'<div class="ecard"><div class="switch-row"><div><b>Partnership ad</b><span>Off — chạy cùng nhà sáng tạo / đối tác khi bật.</span></div><input type="checkbox" class="toggle" aria-label="Partnership ad"></div></div>'
   +'<div class="ecard"><h4>Identity</h4>'+hint('Danh tính hiển thị trên quảng cáo — khách thấy tên & avatar của Page này.')
   +(n==='App promotion'?'<div class="warn-box"><b>Select a Page</b>Bạn cần chọn Facebook Page trước khi tiếp tục.<div class="field" style="margin:10px 0 0"><select><option>Select a Page</option><option>Shop Thời Trang ABC (Page mẫu)</option></select></div></div>':'<div style="display:flex;gap:9px;align-items:center"><span style="width:34px;height:26px;border-radius:4px;background:#111827;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:700">SHOP</span><b style="font-size:13.5px">Shop Thời Trang ABC (Page mẫu)</b></div>')
   +'</div>'
-  +'<div class="ecard"><h4>Ad setup</h4>'+hint('Tạo mới hoặc dùng bài đã đăng — đổi Format ở đây là phần Creative và Destination bên dưới thay đổi theo thật.')
-  +'<div class="field" style="margin:0"><label>Format</label>'
-  +'<label class="radio-line'+(adFormat==='single'?' sel':'')+'"><input type="radio" name="adFormat" '+(adFormat==='single'?'checked':'')+' onchange="setFormat(\'single\')"><span><b>Single image or video</b><span>Một hình ảnh hoặc một video.</span></span></label>'
-  +'<label class="radio-line'+(adFormat==='carousel'?' sel':'')+'"><input type="radio" name="adFormat" '+(adFormat==='carousel'?'checked':'')+' onchange="setFormat(\'carousel\')"><span><b>Carousel</b><span>2–10 thẻ vuốt ngang, mỗi thẻ một liên kết.</span></span></label>'
-  +'<label class="check-line"><input type="checkbox" checked><span><b>Multi-advertiser ads</b><span>On</span></span></label></div></div>'
+  +'<div class="ecard"><h4>Ad setup</h4>'+hint('Đúng 2 lựa chọn như bản thật: <b>Create new ad</b> (tạo quảng cáo mới từ đầu) hoặc <b>Use existing post</b> (dùng bài đăng có sẵn của Page). Chuyển qua lại được bất cứ lúc nào — lựa chọn tự lưu vào bản nháp.')
+  +'<div class="field" style="margin:0"><label>Setup</label>'
+  +'<label class="radio-line'+(setupMode==='new'?' sel':'')+'"><input type="radio" name="adSetupMode" '+(setupMode==='new'?'checked':'')+' onchange="setAdSetupMode(\'new\')"><span><b>Create new ad</b><span>Tạo quảng cáo mới — tải lên / chọn ảnh-video, tự viết Primary text, Headline, Description, chọn CTA và đích đến.</span></span></label>'
+  +'<label class="radio-line'+(setupMode==='existing'?' sel':'')+'"><input type="radio" name="adSetupMode" '+(setupMode==='existing'?'checked':'')+' onchange="setAdSetupMode(\'existing\')"><span><b>Use existing post</b><span>Dùng bài đăng có sẵn — chọn một bài đã đăng của Page; nội dung và tương tác của bài được giữ nguyên cho quảng cáo.</span></span></label></div>'
+  +(setupMode==='new'
+    ?'<div class="field" style="margin-top:10px"><label>Format</label>'
+     +'<label class="radio-line'+(adFormat==='single'?' sel':'')+'"><input type="radio" name="adFormat" '+(adFormat==='single'?'checked':'')+' onchange="setFormat(\'single\')"><span><b>Single image or video</b><span>Một hình ảnh hoặc một video.</span></span></label>'
+     +'<label class="radio-line'+(adFormat==='carousel'?' sel':'')+'"><input type="radio" name="adFormat" '+(adFormat==='carousel'?'checked':'')+' onchange="setFormat(\'carousel\')"><span><b>Carousel</b><span>2–10 thẻ vuốt ngang, mỗi thẻ một liên kết.</span></span></label>'
+     +'<label class="check-line"><input type="checkbox" checked><span><b>Multi-advertiser ads</b><span>On</span></span></label></div>'
+    :postPickerHTML())
+  +'</div>'
   +'<div id="adFormatBody"></div>'
   +((n==='Traffic'||n==='Engagement'||n==='Sales')?conversationsBlock():'')
   +(n==='Leads'?'<div class="ecard"><h4>Instant form lead nurturing</h4>'+hint('Phần chăm sóc lead ngay sau khi khách gửi form — càng phản hồi nhanh, tỉ lệ chốt càng cao.')
@@ -1865,18 +2316,24 @@ function renderAd(o,n){
 function setFormat(f){adFormat=f;renderEditor();goEditorStep(2);setEditorMode(editorMode)}
 function renderFormatBody(n){
   var el=document.getElementById('adFormatBody');if(!el)return;
+  if(draftGet('adSetupMode','new')==='existing'){el.innerHTML=existingPostBody(n);return}
   if(adFormat==='single'){
+    var defCta=n==='Sales'?'Shop now':(n==='Leads'?'Sign up':(n==='App promotion'?'Download':(n==='Awareness'?'Learn more':'Send message')));
+    var curCta=draftGet('adCta',defCta);
     var dest='';
     if(n==='App promotion')dest='<div class="ecard"><h4>Destination</h4><div class="kv"><span>Main destination</span><b>App</b></div><div class="field"><label>Deferred deep link (Optional)</label><input type="text" placeholder="myapp://offer"></div><div class="field" style="margin:0"><label>Custom store listing</label><select><option>Default listing</option></select></div></div>';
-    else if(n==='Traffic'||n==='Engagement'||n==='Sales'||n==='Leads')dest='<div class="ecard"><h4>Destination</h4><p class="hint" style="margin:0">Destination is already set from your ad set ('+(n==='Leads'?'Instant forms':'Message destinations')+'), so there is no call-to-action dropdown at ad level.</p>'+hint('Điểm đến đã khoá từ bước Ad set — vì vậy bước Ad của các mục tiêu này KHÔNG có dropdown CTA, đúng như bản thật.')+'</div>';
+    else if(n==='Traffic'||n==='Engagement'||n==='Sales'||n==='Leads')dest='<div class="ecard"><h4>Destination</h4><p class="hint" style="margin:0">Destination is already set from your ad set ('+(n==='Leads'?'Instant forms':'Message destinations')+').</p>'+hint('Điểm đến đã khoá từ bước Ad set; nút CTA chọn ở thẻ Ad creative phía trên phải đi theo đích đến này (tin nhắn → Send message, form → Sign up).')+'</div>';
     else dest='<div class="ecard"><label class="check-line"><input type="checkbox" id="addDestChk" onchange="document.getElementById(\'singleDest\').style.display=this.checked?\'block\':\'none\'"><span><b>Add a destination</b></span></label><div id="singleDest" style="display:none"><h4>Destination</h4><label class="radio-line sel"><input type="radio" name="sdest" checked><span><b>Instant Experience</b></span></label><div class="field"><select><option>Select Instant Experience</option></select></div><label class="radio-line"><input type="radio" name="sdest"><span><b>Website</b></span></label><label class="radio-line"><input type="radio" name="sdest"><span><b>Call</b></span></label><label class="radio-line"><input type="radio" name="sdest"><span><b>Messaging apps</b></span></label></div>'+hint('Chưa tick “Add a destination” thì phần Destination ẩn hẳn — tick vào mới hiện các lựa chọn điểm đến.')+'</div>';
     var shop=(n==='Traffic'||n==='Engagement'||n==='Sales')?'<div class="ecard"><div class="switch-row"><div><b>Turn ads into a shopping experience</b><span>Biến quảng cáo thành trải nghiệm mua sắm ngay trong app.</span></div><input type="checkbox" class="toggle" aria-label="Shopping experience"></div></div>':'';
     el.innerHTML=shop+'<div class="ecard"><h4>Ad creative</h4>'+hint('Phần khách nhìn thấy và quyết định có bấm hay không.')
     +'<div class="field"><label>Creative source</label><label class="radio-line sel"><input type="radio" name="csrc" checked><span><b>Manual upload</b></span></label><label class="radio-line disabled"><input type="radio" name="csrc" disabled><span><b>Product media</b><span>Unavailable — no catalogue connected.</span></span></label></div>'
     +'<div class="field"><label>Set up creative</label><div class="menu-wrap"><button class="btn" type="button" id="setupCreativeBtn">Set up creative ▾</button><div class="menu" id="setupCreativeMenu"><button onclick="openDialog(\'mediaBack\')">Image ad</button><button onclick="openDialog(\'mediaBack\')">Video ad</button></div></div>'+hint('Bấm Set up creative → chọn Image ad / Video ad → mở Media picker để chọn và cắt media.')+'</div>'
-    +'<div class="kv"><span>Advantage+ creative image generation</span><b><button class="btn" onclick="toast(\'Try it out (mô phỏng): AI gợi ý biến thể ảnh.\')">Try it out</button></b></div>'
-    +'<label class="check-line"><input type="checkbox" checked><span><b>Add music</b></span></label>'
-    +'<div class="field"><label>Primary text</label><textarea id="primaryText" oninput="syncPreviewText(this.value)">BST mới đã về! Nhắn tin ngay để được tư vấn size và nhận ưu đãi freeship hôm nay.</textarea>'+hint('Câu chữ chính phía trên ảnh/video — viết lợi ích + lý do bấm ngay trong 1–2 dòng đầu.')+'</div></div>'
+    +'<div class="kv"><span>Advantage+ creative</span><b>'+(draftGet('advCreative',true)?'On — chỉnh ở thẻ Advantage+ creative ngay bên dưới':'Off — manual creative (thẻ bên dưới)')+'</b></div>'
+    +'<div class="field"><label>Primary text</label><textarea id="primaryText" oninput="syncPreviewText(this.value)">'+esc(primaryTextVal||'BST mới đã về! Nhắn tin ngay để được tư vấn size và nhận ưu đãi freeship hôm nay.')+'</textarea>'+hint('Câu chữ chính phía trên ảnh/video — viết lợi ích + lý do bấm ngay trong 1–2 dòng đầu.')+'</div>'
+    +'<div class="field"><label>Headline</label><input type="text" id="adHeadline" value="'+esc(headlineVal||'BST mới — tư vấn size trong 5 phút')+'" oninput="headlineVal=this.value;syncPreviewHeadline(this.value)">'+hint('Tiêu đề in đậm ngay dưới media — ngắn gọn, chứa lợi ích chính hoặc giá. Gõ vào là phần Ad preview (tab Search results) cập nhật theo.')+'</div>'
+    +'<div class="field"><label>Description</label><input type="text" id="adDesc" value="'+esc(descVal)+'" oninput="descVal=this.value" placeholder="Mô tả ngắn dưới tiêu đề (không bắt buộc)">'+hint('Dòng mô tả nhỏ dưới Headline — chỉ hiển thị ở một số vị trí (ví dụ Feed trên máy tính), có thể để trống.')+'</div>'
+    +'<div class="field" style="margin:0"><label>Call to action</label><select id="adCtaSel" onchange="draftSet(\'adCta\',this.value)">'+CTA21.map(function(x){return '<option'+(x===curCta?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'+hint('Nút bấm dưới quảng cáo — chọn theo đích đến: nhắn tin thì <b>Send message</b>, bán hàng website thì <b>Shop now</b>, thu lead thì <b>Sign up</b>. Đích đến đã đặt ở bước Ad set nên CTA phải khớp với đích đến đó.')+'</div></div>'
+    +advCreativeCard()
     +dest;
     wireMenu('setupCreativeBtn','setupCreativeMenu');
   } else {
@@ -1889,9 +2346,9 @@ function renderFormatBody(n){
     +'<div class="field"><label>Browser add-ons</label><select><option>None</option></select></div>'
     +'<label class="radio-line"><input type="radio" name="cdest"><span><b>Messenger</b></span></label><label class="radio-line"><input type="radio" name="cdest"><span><b>WhatsApp</b></span></label><label class="radio-line"><input type="radio" name="cdest"><span><b>Call</b></span></label><label class="radio-line"><input type="radio" name="cdest"><span><b>Messaging apps</b></span></label></div>'
     +'<div class="ecard"><h4>Ad creative</h4><div class="field"><label>Carousel cards — 0 of 10 cards added</label><div class="warn-box"><b>Add at least two cards</b>Carousel cần tối thiểu 2 thẻ mới đăng được.</div><button class="btn" onclick="toast(\'Add cards (mô phỏng): thêm tối đa 10 thẻ carousel.\')">Add cards</button> <button class="btn" disabled>Edit placement</button></div>'
-    +'<div class="field"><label>Primary text</label><textarea id="primaryText" oninput="syncPreviewText(this.value)">BST mới đã về! Vuốt để xem từng mẫu và nhắn tin tư vấn size.</textarea></div>'
+    +'<div class="field"><label>Primary text</label><textarea id="primaryText" oninput="syncPreviewText(this.value)">'+esc(primaryTextVal||'BST mới đã về! Vuốt để xem từng mẫu và nhắn tin tư vấn size.')+'</textarea></div>'
     +'<div class="field" style="margin:0"><label>Call to action</label><select id="ctaSel" onchange="syncPreviewCta(this.value)">'+CTA21.map(function(x){return '<option'+(x==='No button'?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'
-    +'<p style="margin:5px 0 0;font-size:12px;color:var(--text2)">\'See details\' is the default call-to-action text — \'See details\' drives up to 2.3% higher CVR compared to \'Learn more\'.</p>'+hint('Đủ 21 lựa chọn nút CTA như bản thật — “No button” nghĩa là quảng cáo không hiện nút bấm.')+'</div></div>';
+    +'<p style="margin:5px 0 0;font-size:12px;color:var(--text2)">\'See details\' is the default call-to-action text — \'See details\' drives up to 2.3% higher CVR compared to \'Learn more\'.</p>'+hint('Đủ 21 lựa chọn nút CTA như bản thật — “No button” nghĩa là quảng cáo không hiện nút bấm.')+'</div></div>'+advCreativeCard();
   }
 }
 function renderScore(o){
@@ -1905,10 +2362,11 @@ function previewCardHTML(o,n,tab){
   var delivering=(tab==='feeds')?'All 9 placements':(tab==='stories'?'All 7 placements':'Your ad is delivering to all selected placements');
   var body='';
   if(n==='App promotion')body='<div class="ad-preview-frame"><div class="pc" style="text-align:center;color:var(--text2)">Add media to see ad examples.</div></div>';
-  else if(tab==='stories')body='<div class="story-frame"><b>Shop Thời Trang ABC</b><div style="margin:16px 0;font-size:22px">STORY PREVIEW</div><span id="pvTextStory">BST mới đã về!</span><div style="margin-top:16px;font-size:12px">Swipe up · Send message</div></div>';
-  else if(tab==='search')body='<div class="ad-preview-frame"><div class="pc"><b>Shop Thời Trang ABC</b> <span style="color:var(--text2)">· Sponsored</span><div id="pvHeadlineSearch" style="font-weight:700;margin-top:4px">BST mới — tư vấn size trong 5 phút</div><span style="color:var(--text2);font-size:12px">shop.example.vn</span></div><div class="pm" style="height:90px">IMAGE</div></div>';
+  else if(tab==='stories')body='<div class="story-frame"><b>Shop Thời Trang ABC</b><div style="margin:16px 0;font-size:22px">STORY PREVIEW</div><span id="pvTextStory">'+esc(primaryTextVal||'BST mới đã về!')+'</span><div style="margin-top:16px;font-size:12px">Swipe up · Send message</div></div>';
+  else if(tab==='search')body='<div class="ad-preview-frame"><div class="pc"><b>Shop Thời Trang ABC</b> <span style="color:var(--text2)">· Sponsored</span><div id="pvHeadlineSearch" style="font-weight:700;margin-top:4px">'+esc(headlineVal||'BST mới — tư vấn size trong 5 phút')+'</div><span style="color:var(--text2);font-size:12px">shop.example.vn</span></div><div class="pm" style="height:90px">IMAGE</div></div>';
   else{
-    var card='<div class="ad-preview-frame"><div class="ph"><span class="pa">SHOP</span><div><b style="font-size:13px;display:block">Shop Thời Trang ABC</b><span style="font-size:11.5px;color:var(--text2)">Sponsored · 🌐</span></div></div><div class="pc pvText">BST mới đã về! Nhắn tin ngay để được tư vấn size và nhận ưu đãi freeship hôm nay.</div><div class="pm">'+(adFormat==='carousel'?'CAROUSEL':'SINGLE IMAGE / VIDEO')+'<br><span style="font-weight:600;font-size:12px">BST mới — tư vấn size trong 5 phút</span></div><div class="pv-actions"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>↗ Share</span><span>🔖 Save</span></div></div>';
+    var exPost=draftGet('adSetupMode','new')==='existing'?demoPostById(draftGet('demoPostId','p1')):null;
+    var card='<div class="ad-preview-frame"><div class="ph"><span class="pa">SHOP</span><div><b style="font-size:13px;display:block">Shop Thời Trang ABC</b><span style="font-size:11.5px;color:var(--text2)">Sponsored · 🌐</span></div></div><div class="pc pvText">'+esc(primaryTextVal||'BST mới đã về! Nhắn tin ngay để được tư vấn size và nhận ưu đãi freeship hôm nay.')+'</div><div class="pm">'+(exPost?exPost.media:(adFormat==='carousel'?'CAROUSEL':'SINGLE IMAGE / VIDEO'))+'<br><span style="font-weight:600;font-size:12px">'+esc(exPost?exPost.headline:(headlineVal||'BST mới — tư vấn size trong 5 phút'))+'</span></div><div class="pv-actions"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>↗ Share</span><span>🔖 Save</span></div></div>';
     body=card+(tab==='all'?card:'');
   }
   return '<div class="switch-row"><b>Ad preview</b><input type="checkbox" class="toggle" checked aria-label="Ad preview"></div>'
@@ -1924,8 +2382,33 @@ function previewCardHTML(o,n,tab){
 }
 function renderPreview(o){document.getElementById('previewCard').innerHTML=previewCardHTML(o||objByName(editorObjective),editorObjective,pvTab)}
 function setPvTab(t){pvTab=t;renderPreview()}
-function syncPreviewText(v){Array.prototype.forEach.call(document.querySelectorAll('.pvText'),function(e){e.textContent=v});var s=document.getElementById('pvTextStory');if(s)s.textContent=v}
+function syncPreviewText(v){primaryTextVal=v;Array.prototype.forEach.call(document.querySelectorAll('.pvText'),function(e){e.textContent=v});var s=document.getElementById('pvTextStory');if(s)s.textContent=v}
+/* ---- Advantage+ creative (cấp quảng cáo): bật = Meta tự cải tiến creative; tắt = manual creative giữ nguyên bản ---- */
+var AC_ENH=[
+ ['acMusic','Add music','Meta tự thêm nhạc nền hợp ngữ cảnh cho ảnh/video.',true],
+ ['acTouchups','Visual touch-ups','Tự chỉnh sáng / tương phản và cắt cúp ảnh theo từng vị trí hiển thị.',false],
+ ['acTextVar','Text improvements','Meta tự tạo và hoán đổi biến thể của Primary text / Headline để tìm câu chữ hiệu quả nhất.',false],
+ ['acImgGen','Image generation','AI tạo nền mới / mở rộng khung ảnh (expand image) cho đủ tỉ lệ của từng bề mặt.',false],
+ ['acPerPerson','Optimise creative for each person','Tự đổi định dạng và bố cục creative theo từng người xem (dynamic formats).',true]
+];
+function advCreativeCard(){
+  var on=draftGet('advCreative',true);
+  var h='<div class="ecard"><h4>Advantage+ creative</h4>'
+  +'<div class="switch-row"><div><b>Advantage+ creative</b><span>'+(on?'On — Meta được tự cải tiến creative của bạn bằng các nâng cấp bên dưới.':'Off — Manual creative: dùng đúng bản creative bạn tải lên.')+'</span></div><input type="checkbox" class="toggle" '+(on?'checked':'')+' onchange="toggleAdvCreative(this)" aria-label="Advantage+ creative"></div>'
+  +hint('<b>Khi nào dùng Advantage+ creative:</b> sản phẩm đại trà, cần nhiều biến thể để Meta tự tìm bản thắng, không khắt khe về việc giữ nguyên mẫu thiết kế. <b>Khi nào dùng setup thường (tắt Advantage+ creative):</b> thương hiệu có brand guideline phải duyệt từng chi tiết, quảng cáo ngành nhạy cảm (y tế, tài chính) cần giữ nguyên câu chữ đã kiểm duyệt, hoặc đang A/B test thủ công từng biến thể.');
+  if(on){
+    h+='<div style="margin-top:10px"><b style="font-size:13px">Creative enhancements</b>';
+    AC_ENH.forEach(function(e){
+      h+='<label class="check-line"><input type="checkbox" '+(draftGet(e[0],e[3])?'checked':'')+' onchange="draftSet(\''+e[0]+'\',this.checked)"><span><b>'+e[1]+'</b><span>'+e[2]+'</span></span></label>';
+    });
+    h+='</div>'+hint('Mỗi nâng cấp bật/tắt riêng và tự lưu vào bản nháp. Tắt hết các nâng cấp thì gần như quay về creative thủ công, nhưng công tắc lớn vẫn cho Meta quyền tối ưu định dạng theo người xem.');
+  } else {
+    h+='<div class="adv-note"><b>Manual creative đang bật.</b> Meta dùng đúng ảnh/video và câu chữ bạn nhập ở thẻ Ad creative — không thêm nhạc, không đổi tỉ lệ khung hình, không tạo biến thể chữ. Muốn Meta tự cải tiến, bật lại công tắc Advantage+ creative ở trên; các nâng cấp đã chọn trước đó vẫn được giữ trong bản nháp.</div>';
+  }
+  return h+'</div>';
+}
 function syncPreviewCta(v){/* CTA reflected in preview controls in real UI; simulated */}
+function syncPreviewHeadline(v){var s=document.getElementById('pvHeadlineSearch');if(s)s.textContent=v}
 function renderReview(){
   var n=editorObjective;
   document.getElementById('reviewCard').innerHTML='<h4>Review — Ad summary</h4>'+hint('Tab Review là bản tóm tắt chỉ đọc trước khi Publish — kiểm tra kỹ tên, Page và URL ở đây; Review không có panel Campaign score.')
@@ -1944,7 +2427,7 @@ document.addEventListener('keydown',function(e){
   if(e.ctrlKey&&(e.key==='i'||e.key==='I')){e.preventDefault();toast('See history (mô phỏng): chưa có thay đổi nào trong phiên luyện tập này.')}
   if(e.key==='Escape'){closeAllMenus(null);closeInsights();closeCompare();closeDialog('toolsBack');closeDialog('createBack')}
 });
-['toolsBack','createBack','setupBack','dupBack','tagsBack','exportBack','dateBack','mediaBack'].forEach(function(id){
+['toolsBack','createBack','setupBack','dupBack','tagsBack','exportBack','dateBack','mediaBack','wordBack'].forEach(function(id){
   document.getElementById(id).addEventListener('click',function(e){if(e.target===this)closeDialog(id)});
 });
 /* ===== CASE STUDIES ===== */
@@ -2391,6 +2874,235 @@ function openCaseCampaign(caseId,step){
   toast('Đang mở campaign đang chạy của '+caseId.replace('case','Case ')+' — học viên có thể chỉnh thử, thay đổi lưu riêng trên trình duyệt này.');
 }
 
+/* ============ XUẤT FILE WORD (.docx) NỘP BÀI ============
+   File .docx được đóng gói trực tiếp trong trình duyệt (ZIP không nén + XML WordprocessingML),
+   không cần máy chủ hay thư viện ngoài — bấm là tải về máy. */
+var wordCtx=null;
+function openExportWordRow(id){
+  var r=CAMPAIGNS.filter(function(x){return x.id===id})[0];if(!r)return;
+  wordCtx={type:'row',id:id};
+  document.getElementById('wordCampName').textContent=r.name;
+  openDialog('wordBack');
+}
+function openExportWordEditor(){
+  wordCtx={type:'editor'};
+  var cn=document.getElementById('campNameInput');
+  document.getElementById('wordCampName').textContent=(cn&&cn.value)||('New '+editorObjective+' campaign');
+  openDialog('wordBack');
+}
+function slugify(s){return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60)||'chien-dich'}
+function wordHead(lines,student,cls){
+  var now=new Date();
+  var dstr=now.toLocaleDateString('vi-VN')+' '+now.toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'});
+  lines.push(['title','BÀI NỘP — SETUP CHIẾN DỊCH QUẢNG CÁO FACEBOOK']);
+  lines.push(['body','Họ tên học viên: '+(student||'(chưa nhập tên)')]);
+  if(cls)lines.push(['body','Lớp / nhóm: '+cls]);
+  lines.push(['body','Ngày xuất file: '+dstr]);
+  lines.push(['body','Giảng viên: GV. Đỗ Quốc Việt — xuất từ Ads Manager Training Simulator (môi trường luyện tập mô phỏng, không kết nối Meta, không tốn ngân sách thật).']);
+}
+function collectRowLines(r){
+  var L=[];
+  var s=ADSETS.filter(function(x){return x.camp===r.id})[0];
+  var a=s?ADS.filter(function(x){return x.adset===s.id})[0]:null;
+  var cc=r.caseId?CASE_CAMP_ROWS.filter(function(x){return x.caseId===r.caseId})[0]:null;
+  L.push(['h1','1. CHIẾN DỊCH (CAMPAIGN)']);
+  L.push(['body','Tên chiến dịch: '+r.name]);
+  L.push(['body','Mục tiêu: '+r.objective]);
+  L.push(['body','Loại mua (Buying type): Auction']);
+  L.push(['body','Ngân sách: '+r.budget+(r.budgetSub?' — '+r.budgetSub:'')]);
+  L.push(['body','Chiến lược thầu: '+(r.bid||'Highest volume')]);
+  L.push(['body','Trạng thái: '+(r.active?'Active':'In draft')+' · Kết thúc: '+(r.ends||'Ongoing')]);
+  L.push(['h1','2. NHÓM QUẢNG CÁO (AD SET)']);
+  if(s)L.push(['body','Tên nhóm quảng cáo: '+s.name]);
+  if(cc){
+    L.push(['body','Ngân sách nhóm: '+cc.cfg.budgetAmt]);
+    L.push(['body','Conversion location: '+cc.cfg.conv]);
+    L.push(['body','Performance goal: '+cc.cfg.goal]);
+    L.push(['h2','Đối tượng (Audience)']);
+    L.push(['body',cc.cfg.aud]);
+    L.push(['h2','Vị trí hiển thị (Placements)']);
+    L.push(['body',cc.cfg.place]);
+  } else {
+    L.push(['body','Ngân sách nhóm: '+(s?s.budget:'—')]);
+    L.push(['body','Lịch chạy: '+(s?(s.schedule||'Ongoing'):'—')]);
+    L.push(['h2','Đối tượng (Audience)']);
+    L.push(['body','Cấu hình mặc định của bản mô phỏng theo mục tiêu '+r.objective+' — mở chiến dịch trong trình chỉnh sửa để xem chi tiết đối tượng (vị trí, tuổi, giới tính, ngôn ngữ, detailed targeting).']);
+    L.push(['h2','Vị trí hiển thị (Placements)']);
+    L.push(['body','Advantage+ placements (cấu hình mặc định của bản mô phỏng).']);
+  }
+  L.push(['h1','3. QUẢNG CÁO (AD)']);
+  if(a)L.push(['body','Tên quảng cáo: '+a.name]);
+  if(cc){
+    L.push(['body','Định dạng: '+cc.cfg.format]);
+    L.push(['body','Primary text: '+cc.cfg.primary]);
+    L.push(['body','Headline: '+cc.cfg.headline]);
+    L.push(['body','CTA: '+cc.cfg.cta]);
+    L.push(['body','Đích đến: '+cc.cfg.conv]);
+    L.push(['h1','4. GHI CHÚ GIẢNG DẠY CỦA CASE']);
+    L.push(['body',cc.cfg.note]);
+  } else {
+    L.push(['body','Định dạng: Single image or video']);
+    L.push(['body','Nội dung mẫu của bản mô phỏng — mở quảng cáo trong trình chỉnh sửa để xem và chỉnh chi tiết.']);
+  }
+  return L;
+}
+function collectEditorLines(){
+  var o=objByName(editorObjective),n=editorObjective,L=[];
+  var cn=document.getElementById('campNameInput');
+  L.push(['h1','1. CHIẾN DỊCH (CAMPAIGN)']);
+  L.push(['body','Tên chiến dịch: '+((cn&&cn.value)||('New '+n+' campaign'))]);
+  L.push(['body','Mục tiêu: '+n]);
+  L.push(['body','Loại mua (Buying type): Auction']);
+  L.push(['body','Ngân sách: '+(o.budgetLevel==='campaign'?('Cấp chiến dịch (Advantage+ campaign budget): '+o.budget+' / ngày'):('Cấp nhóm quảng cáo (ABO): '+o.budget+' / ngày'))]);
+  if(n==='Sales')L.push(['body','Advantage+ sales campaign: '+(draftGet('advSalesCamp',true)?'Bật':'Tắt — setup thường')]);
+  if(n==='Leads')L.push(['body','Advantage+ leads campaign: '+(draftGet('advLeadsCamp',true)?'Bật':'Tắt — setup thường')]);
+  if(n==='App promotion')L.push(['body','Advantage+ app campaign: '+(draftGet('advAppCamp',true)?'Bật':'Tắt — setup thường')]);
+  L.push(['h1','2. NHÓM QUẢNG CÁO (AD SET)']);
+  var tn=document.getElementById('treeAdsetName');
+  L.push(['body','Tên nhóm quảng cáo: '+(tn?tn.textContent:('New '+n+' ad set'))]);
+  L.push(['h2','Ngân sách & lịch chạy']);
+  L.push(['body','Loại ngân sách: '+draftGet('budgetType','Daily budget')+' — Số tiền: '+draftGet('budgetAmt',o.budget)]);
+  L.push(['body','Bắt đầu: '+draftGet('startDate','2026-10-26')+' '+draftGet('startTime','17:31')+' (GMT+7)']);
+  L.push(['body',draftGet('setEnd',false)?('Kết thúc: '+draftGet('endDate','2026-11-26')+' '+draftGet('endTime','23:59')+' (GMT+7)'):'Không đặt ngày kết thúc — chạy liên tục (Ongoing)']);
+  if(draftGet('setSched',false))L.push(['body','Lịch chạy theo khung giờ: '+draftGet('schedFrom','06:00')+' – '+draftGet('schedTo','22:00')]);
+  L.push(['h2','Đối tượng (Audience)']);
+  var advA=draftGet('advAud',true);
+  L.push(['body','Chế độ đối tượng: '+(advA?'Advantage+ audience — các trường gợi ý bên dưới, Meta có thể mở rộng ra ngoài gợi ý':'Manual audience (setup thường) — các trường dưới đây là điều kiện bắt buộc')]);
+  var locs=draftList('locations',defaultLocs());
+  L.push(['body','Vị trí: '+(locs.length?locs.map(function(l){return l.name+' ('+(l.mode==='exclude'?'Loại trừ':'Bao gồm')+(l.radius?', bán kính '+l.radius+' km':'')+')'}).join('; '):'(chưa chọn địa điểm)')]);
+  L.push(['body','Tuổi tối thiểu (giới hạn cứng): '+draftGet('minAge','18')]);
+  L.push(['body','Độ tuổi: '+draftGet('ageMin','18')+' – '+draftGet('ageMax','65+')]);
+  L.push(['body','Giới tính: '+draftGet('gender','All genders')]);
+  var langs=draftList('langs',[]);
+  L.push(['body','Ngôn ngữ: '+(langs.length?langs.join(', '):'Tất cả ngôn ngữ')]);
+  var dt=draftList('dtChips',[]);
+  L.push(['body','Detailed targeting (Include): '+(dt.length?dt.join(' · '):'Không thu hẹp — toàn bộ nhân khẩu học / sở thích / hành vi')]);
+  var nar=draftList('dtNarrow',[]);
+  if(nar.length)L.push(['body','Thu hẹp thêm (AND — must also match): '+nar.join(' · ')]);
+  var dtx=draftList('dtExcl',[]);
+  if(dtx.length)L.push(['body','Detailed targeting (Exclude): '+dtx.join(' · ')]);
+  var incl=draftList('inclAud',[]);
+  if(incl.length)L.push(['body','Tệp tùy chỉnh bao gồm: '+incl.join(' · ')]);
+  var excl=draftList('exclAud',[]);
+  L.push(['body','Tệp tùy chỉnh loại trừ: '+(excl.length?excl.join(' · '):'Không có')]);
+  L.push(['h2','Vị trí hiển thị (Placements)']);
+  if(draftGet('advPl',true)){
+    L.push(['body','Advantage+ placements — Meta tự phân phối tới vị trí có khả năng tạo kết quả tốt nhất (Facebook, Instagram, Messenger, Audience Network, Threads).']);
+  } else {
+    var sel=[];
+    (PLATFORMS||[]).forEach(function(p){p[2].forEach(function(it){var def=it[0].indexOf('rewarded')===-1;if(draftGet(plKey(it[0]),def))sel.push(p[0]+' — '+it[0])})});
+    L.push(['body','Manual placements — Thiết bị: '+draftGet('devType','All devices')+' · Hệ điều hành: '+draftGet('devOS','All operating systems')+(draftGet('wifiOnly',false)?' · Chỉ hiển thị khi có Wi-Fi':'')]);
+    L.push(['body','Các bề mặt đã chọn: '+(sel.length?sel.join(' · '):'(chưa chọn bề mặt nào)')]);
+  }
+  L.push(['h2','Tối ưu hoá & phân phối']);
+  L.push(['body','Sự kiện tối ưu hoá: '+draftGet('convEvent_'+n,'(mặc định theo mục tiêu)')]);
+  var ctl=draftGet('costCtl','none');
+  L.push(['body','Kiểm soát chi phí: '+(ctl==='none'?'Không đặt (Highest volume)':ctl+(draftGet('costAmt','')?' — '+draftGet('costAmt',''):''))]);
+  L.push(['body','Attribution: '+draftGet('attrSetting','7-day click · 1-day view')+' · Model: '+draftGet('attrModel','Standard')]);
+  L.push(['h1','3. QUẢNG CÁO (AD)']);
+  var an=document.getElementById('treeAdName');
+  L.push(['body','Tên quảng cáo: '+(an?an.textContent:('New '+n+' ad'))]);
+  var mode=draftGet('adSetupMode','new');
+  L.push(['body','Cách tạo quảng cáo: '+(mode==='existing'?'Use existing post (dùng bài đăng có sẵn)':'Create new ad (tạo quảng cáo mới)')]);
+  if(mode==='existing'){
+    var p=demoPostById(draftGet('demoPostId','p1'));
+    L.push(['body','Bài đăng đã chọn: '+p.title+' ('+p.date+')']);
+    L.push(['body','Media của bài: '+p.media]);
+    L.push(['body','Primary text: '+p.text]);
+    L.push(['body','Headline: '+p.headline]);
+    L.push(['body','CTA: '+draftGet('postCta','Send message')]);
+    L.push(['body','Tương tác sẵn có của bài: '+p.stats]);
+    L.push(['body','Đích đến: theo cài đặt ở nhóm quảng cáo']);
+  } else {
+    L.push(['body','Định dạng: '+(adFormat==='carousel'?'Carousel (2–10 thẻ)':'Single image or video')]);
+    var pt=document.getElementById('primaryText');
+    L.push(['body','Primary text: '+((pt&&pt.value)||primaryTextVal||'(chưa nhập)')]);
+    L.push(['body','Headline: '+(headlineVal||'BST mới — tư vấn size trong 5 phút')]);
+    if(descVal)L.push(['body','Description: '+descVal]);
+    var ctaEl=document.getElementById('adCtaSel')||document.getElementById('ctaSel');
+    L.push(['body','CTA: '+((ctaEl&&ctaEl.value)||draftGet('adCta','Send message'))]);
+    L.push(['body','Đích đến: theo cài đặt ở nhóm quảng cáo (Conversion location của mục tiêu '+n+')']);
+  }
+  L.push(['body','Advantage+ creative: '+(draftGet('advCreative',true)?('Bật — các nâng cấp đang bật: '+AC_ENH.filter(function(e){return draftGet(e[0],e[3])}).map(function(e){return e[1]}).join(', ')):'Tắt — manual creative, giữ nguyên bản tải lên')]);
+  return L;
+}
+function xmlEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function buildDocxBlob(lines){
+  var paras=lines.map(function(l){
+    var tx=xmlEsc(l[1]);
+    if(l[0]==='title')return '<w:p><w:pPr><w:pStyle w:val="Title"/></w:pPr><w:r><w:t xml:space="preserve">'+tx+'</w:t></w:r></w:p>';
+    if(l[0]==='h1')return '<w:p><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t xml:space="preserve">'+tx+'</w:t></w:r></w:p>';
+    if(l[0]==='h2')return '<w:p><w:pPr><w:pStyle w:val="Heading2"/></w:pPr><w:r><w:t xml:space="preserve">'+tx+'</w:t></w:r></w:p>';
+    return '<w:p><w:r><w:t xml:space="preserve">'+tx+'</w:t></w:r></w:p>';
+  }).join('');
+  var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+paras+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134"/></w:sectPr></w:body></w:document>';
+  var styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
+  +'<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/><w:sz w:val="22"/></w:rPr></w:style>'
+  +'<w:style w:type="paragraph" w:styleId="Title"><w:name w:val="Title"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:after="240"/></w:pPr><w:rPr><w:b/><w:sz w:val="36"/><w:color w:val="1C1E21"/></w:rPr></w:style>'
+  +'<w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="280" w:after="120"/></w:pPr><w:rPr><w:b/><w:sz w:val="28"/><w:color w:val="0866FF"/></w:rPr></w:style>'
+  +'<w:style w:type="paragraph" w:styleId="Heading2"><w:name w:val="heading 2"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="200" w:after="80"/></w:pPr><w:rPr><w:b/><w:sz w:val="24"/></w:rPr></w:style></w:styles>';
+  var ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>';
+  var rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>';
+  var wrels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>';
+  var enc=new TextEncoder();
+  return zipStoreBlob([
+    {name:'[Content_Types].xml',data:enc.encode(ct)},
+    {name:'_rels/.rels',data:enc.encode(rels)},
+    {name:'word/document.xml',data:enc.encode(doc)},
+    {name:'word/styles.xml',data:enc.encode(styles)},
+    {name:'word/_rels/document.xml.rels',data:enc.encode(wrels)}
+  ]);
+}
+var CRC_TABLE=null;
+function crc32(bytes){
+  if(!CRC_TABLE){CRC_TABLE=[];for(var nn=0;nn<256;nn++){var c=nn;for(var k=0;k<8;k++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);CRC_TABLE[nn]=c>>>0}}
+  var crc=0xFFFFFFFF;
+  for(var i=0;i<bytes.length;i++)crc=CRC_TABLE[(crc^bytes[i])&0xFF]^(crc>>>8);
+  return (crc^0xFFFFFFFF)>>>0;
+}
+function zipStoreBlob(files){
+  var chunks=[],central=[],offset=0,enc=new TextEncoder(),DOS_DATE=23585;
+  files.forEach(function(f){
+    var nameBytes=enc.encode(f.name),data=f.data,crc=crc32(data);
+    var lh=new DataView(new ArrayBuffer(30));
+    lh.setUint32(0,0x04034b50,true);lh.setUint16(4,20,true);lh.setUint16(6,0x0800,true);lh.setUint16(8,0,true);lh.setUint16(10,0,true);lh.setUint16(12,DOS_DATE,true);
+    lh.setUint32(14,crc,true);lh.setUint32(18,data.length,true);lh.setUint32(22,data.length,true);lh.setUint16(26,nameBytes.length,true);
+    chunks.push(new Uint8Array(lh.buffer),nameBytes,data);
+    var ch=new DataView(new ArrayBuffer(46));
+    ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);ch.setUint16(8,0x0800,true);ch.setUint16(10,0,true);ch.setUint16(12,0,true);ch.setUint16(14,DOS_DATE,true);
+    ch.setUint32(16,crc,true);ch.setUint32(20,data.length,true);ch.setUint32(24,data.length,true);ch.setUint16(28,nameBytes.length,true);ch.setUint32(42,offset,true);
+    central.push(new Uint8Array(ch.buffer),nameBytes);
+    offset+=30+nameBytes.length+data.length;
+  });
+  var cdSize=central.reduce(function(a,c){return a+c.length},0);
+  var end=new DataView(new ArrayBuffer(22));
+  end.setUint32(0,0x06054b50,true);end.setUint16(8,files.length,true);end.setUint16(10,files.length,true);end.setUint32(12,cdSize,true);end.setUint32(16,offset,true);
+  return new Blob(chunks.concat(central,[new Uint8Array(end.buffer)]),{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+function doExportWord(){
+  if(!wordCtx){closeDialog('wordBack');return}
+  var student=(document.getElementById('wordStudent').value||'').trim();
+  var cls=(document.getElementById('wordClass').value||'').trim();
+  var lines=[];wordHead(lines,student,cls);
+  var campName='chien-dich';
+  if(wordCtx.type==='row'){
+    var r=CAMPAIGNS.filter(function(x){return x.id===wordCtx.id})[0];if(!r){closeDialog('wordBack');return}
+    campName=r.name;
+    lines=lines.concat(collectRowLines(r));
+  } else {
+    var cn=document.getElementById('campNameInput');campName=(cn&&cn.value)||('New '+editorObjective+' campaign');
+    lines=lines.concat(collectEditorLines());
+  }
+  lines.push(['body','— Hết — File xuất từ Ads Manager Training Simulator để nộp bài; toàn bộ số liệu trong file là dữ liệu luyện tập mô phỏng.']);
+  var blob=buildDocxBlob(lines);
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='nop-bai-'+slugify(campName)+'.docx';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(function(){URL.revokeObjectURL(url)},4000);
+  closeDialog('wordBack');
+  toast('Đã tải file Word (.docx) về máy — mở file kiểm tra lại trước khi nộp cho giảng viên.');
+}
+
 /* ============ BUTTON STABILITY SWEEP ============
    Gắn xử lý cho mọi nút trước đây bấm không có phản hồi:
    menu All ads, preset ngày tháng, tab trong Media picker,
@@ -2477,8 +3189,8 @@ function applyDateRange(){
    handlers (onclick="openCreate()" etc.) resolve names on window, so
    without this export every such button silently does nothing. */
 (function(){
-  var names=['applyDateRange','closeCaseView','closeCompare','closeDialog','closeOptimizeView','goCampaigns','goCases','openOptimizeView','showHome','closeEditor','closeInsights','closePageView','continueToEditor','doExport','editorNext','goEditorStep','onBidChange','openCase','openCaseCampaign','filterCaseCamps','clearNameFilter','openCompare','openCreate','openCustomExport','openDialog','openDuplicate','openEditor','openEditorForObjective','openEditorForSelected','openInsights','openNameEditor','openTags','openTool','openToolPage','renderTable','resetCase','segTab','setCaseVal','setCompareTab','setEditorMode','setFormat','setInsightsTab','setPvTab','setupContinue','startBrief','syncPreviewCta','syncPreviewText','toast','toggleAdsetMore','toggleAnswer','toggleCampMore'];
-  var scope={applyDateRange:applyDateRange,closeCaseView:closeCaseView,closeCompare:closeCompare,closeDialog:closeDialog,closeOptimizeView:closeOptimizeView,goCampaigns:goCampaigns,goCases:goCases,openOptimizeView:openOptimizeView,showHome:showHome,closeEditor:closeEditor,closeInsights:closeInsights,closePageView:closePageView,continueToEditor:continueToEditor,doExport:doExport,editorNext:editorNext,goEditorStep:goEditorStep,onBidChange:onBidChange,openCase:openCase,openCaseCampaign:openCaseCampaign,filterCaseCamps:filterCaseCamps,clearNameFilter:clearNameFilter,openCompare:openCompare,openCreate:openCreate,openCustomExport:openCustomExport,openDialog:openDialog,openDuplicate:openDuplicate,openEditor:openEditor,openEditorForObjective:openEditorForObjective,openEditorForSelected:openEditorForSelected,openInsights:openInsights,openNameEditor:openNameEditor,openTags:openTags,openTool:openTool,openToolPage:openToolPage,renderTable:renderTable,resetCase:resetCase,segTab:segTab,setCaseVal:setCaseVal,setCompareTab:setCompareTab,setEditorMode:setEditorMode,setFormat:setFormat,setInsightsTab:setInsightsTab,setPvTab:setPvTab,setupContinue:setupContinue,startBrief:startBrief,syncPreviewCta:syncPreviewCta,syncPreviewText:syncPreviewText,toast:toast,toggleAdsetMore:toggleAdsetMore,toggleAnswer:toggleAnswer,toggleCampMore:toggleCampMore};
+  var names=['applyDateRange','closeCaseView','closeCompare','closeDialog','closeOptimizeView','goCampaigns','goCases','openOptimizeView','showHome','closeEditor','closeInsights','closePageView','continueToEditor','doExport','editorNext','goEditorStep','onBidChange','openCase','openCaseCampaign','filterCaseCamps','clearNameFilter','openCompare','openCreate','openCustomExport','openDialog','openDuplicate','openEditor','openEditorForObjective','openEditorForSelected','openInsights','openNameEditor','openTags','openTool','openToolPage','renderTable','resetCase','segTab','setCaseVal','setCompareTab','setEditorMode','setFormat','setInsightsTab','setPvTab','setupContinue','startBrief','syncPreviewCta','syncPreviewText','toast','toggleAdsetMore','toggleAnswer','toggleCampMore','draftSet','addLoc','removeLoc','setLocMode','setLocRadius','addChip','removeChip','addChipFromInput','addFromSelect','setGender','toggleAdvAud','toggleAdvPl','togglePlManual','setBudgetType','toggleEndDate','toggleSched','toggleNarrow','setCostControl','toggleAdvOpt','toggleAdvCreative','toggleDtItem','filterDtTree','onDtBrowseToggle','setAdSetupMode','selectDemoPost','syncPreviewHeadline','openExportWordRow','openExportWordEditor','doExportWord'];
+  var scope={applyDateRange:applyDateRange,closeCaseView:closeCaseView,closeCompare:closeCompare,closeDialog:closeDialog,closeOptimizeView:closeOptimizeView,goCampaigns:goCampaigns,goCases:goCases,openOptimizeView:openOptimizeView,showHome:showHome,closeEditor:closeEditor,closeInsights:closeInsights,closePageView:closePageView,continueToEditor:continueToEditor,doExport:doExport,editorNext:editorNext,goEditorStep:goEditorStep,onBidChange:onBidChange,openCase:openCase,openCaseCampaign:openCaseCampaign,filterCaseCamps:filterCaseCamps,clearNameFilter:clearNameFilter,openCompare:openCompare,openCreate:openCreate,openCustomExport:openCustomExport,openDialog:openDialog,openDuplicate:openDuplicate,openEditor:openEditor,openEditorForObjective:openEditorForObjective,openEditorForSelected:openEditorForSelected,openInsights:openInsights,openNameEditor:openNameEditor,openTags:openTags,openTool:openTool,openToolPage:openToolPage,renderTable:renderTable,resetCase:resetCase,segTab:segTab,setCaseVal:setCaseVal,setCompareTab:setCompareTab,setEditorMode:setEditorMode,setFormat:setFormat,setInsightsTab:setInsightsTab,setPvTab:setPvTab,setupContinue:setupContinue,startBrief:startBrief,syncPreviewCta:syncPreviewCta,syncPreviewText:syncPreviewText,toast:toast,toggleAdsetMore:toggleAdsetMore,toggleAnswer:toggleAnswer,toggleCampMore:toggleCampMore,draftSet:draftSet,addLoc:addLoc,removeLoc:removeLoc,setLocMode:setLocMode,setLocRadius:setLocRadius,addChip:addChip,removeChip:removeChip,addChipFromInput:addChipFromInput,addFromSelect:addFromSelect,setGender:setGender,toggleAdvAud:toggleAdvAud,toggleAdvPl:toggleAdvPl,togglePlManual:togglePlManual,setBudgetType:setBudgetType,toggleEndDate:toggleEndDate,toggleSched:toggleSched,toggleNarrow:toggleNarrow,setCostControl:setCostControl,toggleAdvOpt:toggleAdvOpt,toggleAdvCreative:toggleAdvCreative,toggleDtItem:toggleDtItem,filterDtTree:filterDtTree,onDtBrowseToggle:onDtBrowseToggle,setAdSetupMode:setAdSetupMode,selectDemoPost:selectDemoPost,syncPreviewHeadline:syncPreviewHeadline,openExportWordRow:openExportWordRow,openExportWordEditor:openExportWordEditor,doExportWord:doExportWord};
   names.forEach(function(n){if(typeof scope[n]==='function')window[n]=scope[n]});
 })();
 </script>
