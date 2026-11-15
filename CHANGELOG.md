@@ -1,5 +1,8 @@
 # Changelog — Ads Manager Training Simulator
 
+## v1.2.0 — 16/11/2026 00:36 (+07:00)
+- Mở rộng tab "Tối ưu & Đề xuất" cho chi tiết hơn: cả 19 khối giữ nguyên tiêu đề, thứ tự, nội dung và số liệu gốc; mỗi khối 1–18 được thêm phần làm rõ gồm 4 mục — "Vì sao nguyên tắc này đúng", "Cách làm từng bước", "Lỗi thường gặp khi set camp", "Liên hệ trong editor" (chỉ rõ trường/nút tương ứng trong bản mô phỏng); khối 19 giữ bảng tra nhanh, thêm hướng dẫn cách tra bảng và lỗi thường gặp. Bỏ dòng meta-ghi-chú trong khối 5. Không thêm số liệu mới, không nhắc tên cộng đồng, không trích nguồn.
+
 ## v1.1.0 — 16/11/2026 00:12 (+07:00)
 ### 1. Setup đầy đủ cấp Ad set (bước 2 của editor 3 bước)
 - Budget & schedule: chọn ngân sách ngày hoặc ngân sách trọn đời; ngày + giờ bắt đầu; tick "Set an end date" để đặt ngày + giờ kết thúc; tick "Run ads on a schedule" để chạy quảng cáo theo khung giờ + ngày trong tuần.
