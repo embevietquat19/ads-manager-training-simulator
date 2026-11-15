@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản trị lớp học — Ads Manager Training Simulator</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#F0F2F5;color:#1C1E21;font-size:14px}
+  header{background:#fff;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:14px;padding:12px 20px;flex-wrap:wrap}
+  header h1{font-size:18px;margin:0}
+  header .sub{color:#65676B;font-size:13px}
+  header .sp{flex:1}
+  .btn{padding:8px 14px;border:1px solid #CCD0D5;background:#fff;border-radius:8px;cursor:pointer;font-size:13.5px;font-weight:600}
+  .btn:hover{background:#F0F2F5}
+  .btn.primary{background:#0866FF;border-color:#0866FF;color:#fff}
+  .btn.primary:hover{background:#0659D6}
+  .btn.danger{color:#C92A2A;border-color:#F5C6C6}
+  .btn.danger:hover{background:#FDE8E8}
+  .btn.small{padding:5px 9px;font-size:12.5px}
+  main{max-width:1100px;margin:0 auto;padding:20px}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+  .card{background:#fff;border:1px solid #ddd;border-radius:10px;padding:16px}
+  .card .num{font-size:28px;font-weight:800}
+  .card .lbl{color:#65676B;font-size:13px;margin-top:2px}
+  section{background:#fff;border:1px solid #ddd;border-radius:10px;padding:18px;margin-bottom:20px}
+  section h2{font-size:16px;margin:0 0 4px}
+  section .desc{color:#65676B;font-size:13px;margin:0 0 14px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{padding:9px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
+  th{color:#65676B;font-weight:600;font-size:12.5px;text-transform:uppercase}
+  .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}
+  .badge.on{background:#E6F4EA;color:#137333}
+  .badge.off{background:#FDE8E8;color:#9B1C1C}
+  .badge.info{background:#E7F3FF;color:#0866FF}
+  input,textarea,select{padding:9px 10px;border:1px solid #CCD0D5;border-radius:8px;font-size:14px;width:100%}
+  input:focus,textarea:focus{outline:none;border-color:#0866FF;box-shadow:0 0 0 2px rgba(8,102,255,.2)}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end}
+  .form-grid label{display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B}
+  .err{display:none;background:#FDE8E8;color:#9B1C1C;border:1px solid #F5C6C6;border-radius:8px;padding:10px 12px;font-size:13.5px;margin-top:12px}
+  .err.show{display:block}
+  .okmsg{display:none;background:#E6F4EA;color:#137333;border:1px solid #B7DFC0;border-radius:8px;padding:10px 12px;font-size:13.5px;margin-top:12px}
+  .okmsg.show{display:block}
+  .ann{border:1px solid #eee;border-radius:8px;padding:12px;margin-bottom:10px}
+  .ann .t{font-weight:700}
+  .ann .d{color:#65676B;font-size:12.5px}
+  .ann .b{white-space:pre-wrap;margin:6px 0 8px;font-size:13.5px}
+  .hidden{display:none}
+  .kv{display:grid;grid-template-columns:180px 1fr;gap:4px 12px;font-size:13.5px;padding:4px 0}
+  .kv b{font-weight:600}
+  pre{background:#F0F2F5;border-radius:8px;padding:10px;overflow:auto;font-size:12.5px;max-height:300px}
+  .workcase{border:1px solid #eee;border-radius:8px;padding:12px;margin-bottom:10px}
+  .workcase h4{margin:0 0 6px;font-size:14px}
+  .muted{color:#65676B}
+  @media (max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Quản trị lớp học</h1>
+    <div class="sub">Ads Manager Training Simulator · <span class="pill" style="background:#E6F4EA;color:#137333;border:1px solid #B7DFC0;border-radius:999px;padding:2px 8px;font-size:11.5px;font-weight:700">TEST ENVIRONMENT</span></div>
+  </div>
+  <span class="sp"></span>
+  <span id="teacherName" class="sub"></span>
+  <button class="btn" onclick="location.href='/app/'">Vào bản mô phỏng</button>
+  <button class="btn" id="logoutBtn">Đăng xuất</button>
+</header>
+
+<main>
+  <div class="cards">
+    <div class="card"><div class="num" id="statStudents">–</div><div class="lbl">Học viên</div></div>
+    <div class="card"><div class="num" id="statCases">–</div><div class="lbl">Lượt case đã làm</div></div>
+    <div class="card"><div class="num" id="statAnswers">–</div><div class="lbl">Đáp án đã xem</div></div>
+    <div class="card"><div class="num" id="statDrafts">–</div><div class="lbl">Chiến dịch học viên đã tạo</div></div>
+  </div>
+
+  <section>
+    <h2>Tạo tài khoản học viên</h2>
+    <p class="desc">Giáo viên cấp tài khoản cho từng học viên. Học viên đăng nhập bằng tài khoản này; bài làm lưu riêng theo tài khoản trên máy chủ, đổi máy vẫn còn.</p>
+    <form id="createForm" class="form-grid">
+      <div><label>Tên đăng nhập</label><input id="newUser" required placeholder="vd: hv01"></div>
+      <div><label>Tên hiển thị</label><input id="newName" required placeholder="vd: Nguyễn Văn A"></div>
+      <div><label>Mật khẩu (≥ 6 ký tự)</label><input id="newPass" type="password" required minlength="6"></div>
+      <button class="btn primary" type="submit">Tạo tài khoản</button>
+    </form>
+    <div class="err" id="createErr"></div>
+    <div class="okmsg" id="createOk"></div>
+  </section>
+
+  <section>
+    <h2>Danh sách học viên</h2>
+    <p class="desc">Tiến độ tính theo 15 case tình huống. Bấm “Xem bài làm” để xem chi tiết số liệu từng case, ghi chú và chiến dịch của học viên đó.</p>
+    <table>
+      <thead><tr><th>Tài khoản</th><th>Tên hiển thị</th><th>Trạng thái</th><th>Case đã làm</th><th>Đáp án đã xem</th><th>Chiến dịch</th><th>Hoạt động gần nhất</th><th></th></tr></thead>
+      <tbody id="studentRows"><tr><td colspan="8" class="muted">Đang tải…</td></tr></tbody>
+    </table>
+  </section>
+
+  <section id="workSection" class="hidden">
+    <h2>Bài làm của <span id="workStudentName"></span></h2>
+    <p class="desc" id="workStudentMeta"></p>
+    <div id="workBody"></div>
+    <button class="btn" onclick="document.getElementById('workSection').classList.add('hidden')">Đóng</button>
+  </section>
+
+  <section>
+    <h2>Thông báo của giảng viên</h2>
+    <p class="desc">Thông báo hiện cho học viên trên màn hình chính sau khi đăng nhập, kèm chuông báo số chưa đọc. Chỉ giáo viên đăng / sửa / xoá được.</p>
+    <form id="annForm">
+      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Tiêu đề</label><input id="annTitle" required maxlength="200" placeholder="vd: Nhắc lịch nộp bài tập tuần này"></div>
+      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Nội dung</label><textarea id="annBody" rows="3" required maxlength="5000" placeholder="Nội dung thông báo…"></textarea></div>
+      <input type="hidden" id="annEditId" value="">
+      <button class="btn primary" type="submit" id="annSubmitBtn">Đăng thông báo</button>
+      <button class="btn hidden" type="button" id="annCancelEdit">Huỷ sửa</button>
+    </form>
+    <div class="err" id="annErr"></div>
+    <div id="annList" style="margin-top:16px"></div>
+  </section>
+
+  <section>
+    <h2>Sao lưu dữ liệu lớp học</h2>
+    <p class="desc">Tải toàn bộ bài làm của học viên (số liệu case, đáp án đã xem, ghi chú, chiến dịch) và thông báo ra file JSON để sao lưu. Nên tải định kỳ, đặc biệt trước mỗi lần deploy lại website.</p>
+    <button class="btn" id="exportBtn">Tải file sao lưu (.json)</button>
+  </section>
+</main>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function api(path, opts){
+    opts = opts || {};
+    opts.credentials = 'same-origin';
+    opts.headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+    return fetch(path, opts).then(function(r){
+      return r.json().then(function(j){ return { status: r.status, j: j }; });
+    });
+  }
+  function esc(s){
+    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function fmtDate(s){ return s ? String(s).replace('T',' ').slice(0,16) : '—'; }
+
+  var students = [];
+  var curWorkId = null;
+
+  function loadOverview(){
+    api('/api/admin/students').then(function(x){
+      if (!x.j.ok) { $('studentRows').innerHTML = '<tr><td colspan="8">Không tải được danh sách (có thể phiên đã hết — thử đăng nhập lại).</td></tr>'; return; }
+      students = x.j.students || [];
+      $('statStudents').textContent = students.length;
+      $('statCases').textContent = students.reduce(function(a,s){ return a + (s.casesDone||0); }, 0);
+      $('statAnswers').textContent = students.reduce(function(a,s){ return a + (s.answersViewed||0); }, 0);
+      $('statDrafts').textContent = students.reduce(function(a,s){ return a + (s.draftsCount||0); }, 0);
+      renderStudents();
+    });
+  }
+  function renderStudents(){
+    if (!students.length) {
+      $('studentRows').innerHTML = '<tr><td colspan="8" class="muted">Chưa có học viên nào — tạo tài khoản ở mục trên.</td></tr>';
+      return;
+    }
+    $('studentRows').innerHTML = students.map(function(s){
+      return '<tr data-id="'+s.id+'">'
+        + '<td><b>'+esc(s.username)+'</b></td>'
+        + '<td>'+esc(s.displayName)+'</td>'
+        + '<td>'+(s.active ? '<span class="badge on">Đang hoạt động</span>' : '<span class="badge off">Đã vô hiệu hoá</span>')+'</td>'
+        + '<td>'+(s.casesDone||0)+' / 15</td>'
+        + '<td>'+(s.answersViewed||0)+'</td>'
+        + '<td>'+(s.draftsCount||0)+'</td>'
+        + '<td class="muted">'+fmtDate(s.lastActive)+'</td>'
+        + '<td style="white-space:nowrap">'
+        + '<button class="btn small" onclick="viewWork('+s.id+')">Xem bài làm</button> '
+        + '<button class="btn small" onclick="toggleResetForm('+s.id+')">Đặt lại mật khẩu</button> '
+        + '<button class="btn small '+(s.active ? 'danger' : '')+'" onclick="toggleActive('+s.id+','+(s.active?0:1)+')">'+(s.active ? 'Vô hiệu hoá' : 'Kích hoạt lại')+'</button>'
+        + '</td></tr>'
+        + '<tr id="resetRow-'+s.id+'" class="hidden"><td colspan="8">'
+        + '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">'
+        + '<input type="password" id="resetPass-'+s.id+'" placeholder="Mật khẩu mới (≥ 6 ký tự)" style="max-width:260px">'
+        + '<button class="btn small primary" onclick="doResetPassword('+s.id+')">Lưu mật khẩu mới</button>'
+        + '<button class="btn small" onclick="toggleResetForm('+s.id+')">Huỷ</button>'
+        + '<span class="muted">Đặt lại mật khẩu sẽ đăng xuất học viên này khỏi mọi thiết bị.</span>'
+        + '</div></td></tr>';
+    }).join('');
+  }
+
+  window.viewWork = function(id){
+    curWorkId = id;
+    var s = students.filter(function(x){ return x.id === id; })[0];
+    $('workStudentName').textContent = s ? (s.displayName + ' (' + s.username + ')') : ('#' + id);
+    $('workBody').innerHTML = '<p class="muted">Đang tải…</p>';
+    $('workSection').classList.remove('hidden');
+    $('workSection').scrollIntoView({ behavior: 'smooth' });
+    api('/api/admin/students/' + id + '/work').then(function(x){
+      if (!x.j.ok) { $('workBody').innerHTML = '<p>Không tải được bài làm.</p>'; return; }
+      var w = x.j;
+      var h = '';
+      h += '<h3 style="margin:14px 0 8px">Case tình huống (' + w.cases.length + ' / 15)</h3>';
+      if (!w.cases.length) h += '<p class="muted">Học viên chưa làm case nào.</p>';
+      w.cases.forEach(function(c){
+        var vals = Object.keys(c.state).map(function(k){ return esc(k) + ': <b>' + esc(c.state[k]) + '</b>'; }).join(' · ') || '<span class="muted">(chưa chỉnh số)</span>';
+        h += '<div class="workcase"><h4>' + esc(c.caseId) + ' ' + (c.viewedAnswer ? '<span class="badge info">Đã xem đáp án</span>' : '<span class="badge">Chưa xem đáp án</span>') + '</h4>'
+          + '<div class="kv"><span>Số liệu đã chỉnh</span><span>' + vals + '</span></div>'
+          + '<div class="kv"><span>Ghi chú</span><span>' + (c.notes ? esc(c.notes) : '<span class="muted">—</span>') + '</span></div>'
+          + '<div class="kv"><span>Cập nhật</span><span class="muted">' + fmtDate(c.updatedAt) + '</span></div></div>';
+      });
+      h += '<h3 style="margin:14px 0 8px">Campaign của case đã sửa tên / ngân sách (' + w.overrides.length + ')</h3>';
+      if (!w.overrides.length) h += '<p class="muted">Không có.</p>';
+      w.overrides.forEach(function(o){
+        h += '<div class="kv"><span>' + esc(o.caseId) + '</span><span>Tên: <b>' + esc(o.name || '—') + '</b> · Ngân sách: <b>' + esc(o.budgetAmt || '—') + '</b></span></div>';
+      });
+      h += '<h3 style="margin:14px 0 8px">Chiến dịch nháp đã Publish (mô phỏng) (' + w.drafts.length + ')</h3>';
+      if (!w.drafts.length) h += '<p class="muted">Chưa có chiến dịch nào.</p>';
+      w.drafts.forEach(function(d){
+        h += '<div class="workcase"><h4>' + esc(d.name) + ' <span class="muted">· ' + esc(d.objective) + '</span></h4>'
+          + '<div class="muted">Cập nhật: ' + fmtDate(d.updatedAt) + '</div>'
+          + '<details style="margin-top:6px"><summary>Xem chi tiết setup</summary><pre>' + esc(JSON.stringify(d.settings, null, 2)) + '</pre></details></div>';
+      });
+      if (w.editorDraft) {
+        h += '<h3 style="margin:14px 0 8px">Bản nháp trình chỉnh sửa đang làm dở</h3>'
+          + '<div class="muted">Cập nhật: ' + fmtDate(w.editorDraftUpdatedAt) + '</div>'
+          + '<details style="margin-top:6px"><summary>Xem chi tiết</summary><pre>' + esc(JSON.stringify(w.editorDraft, null, 2)) + '</pre></details>';
+      }
+      $('workBody').innerHTML = h;
+    });
+  };
+
+  window.toggleResetForm = function(id){
+    var row = $('resetRow-' + id);
+    if (row) row.classList.toggle('hidden');
+  };
+  window.doResetPassword = function(id){
+    var pw = $('resetPass-' + id).value;
+    if (!pw || pw.length < 6) { alert('Mật khẩu ít nhất 6 ký tự.'); return; }
+    api('/api/admin/students/' + id + '/reset-password', {
+      method: 'POST', body: JSON.stringify({ password: pw })
+    }).then(function(x){
+      if (x.j.ok) { alert('Đã đặt lại mật khẩu. Học viên dùng mật khẩu mới để đăng nhập.'); loadOverview(); }
+      else alert(x.j.message || 'Không đặt lại được mật khẩu.');
+    });
+  };
+  window.toggleActive = function(id, toActive){
+    var s = students.filter(function(x){ return x.id === id; })[0];
+    var msg = toActive
+      ? 'Kích hoạt lại tài khoản ' + (s ? s.username : id) + '?'
+      : 'Vô hiệu hoá tài khoản ' + (s ? s.username : id) + '? Học viên sẽ không đăng nhập được và bị đăng xuất ngay.';
+    if (!confirm(msg)) return;
+    api('/api/admin/students/' + id + '/set-active', {
+      method: 'POST', body: JSON.stringify({ active: !!toActive })
+    }).then(function(x){
+      if (x.j.ok) loadOverview();
+      else alert('Không đổi được trạng thái.');
+    });
+  };
+
+  $('createForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var errEl = $('createErr'), okEl = $('createOk');
+    errEl.classList.remove('show'); okEl.classList.remove('show');
+    api('/api/admin/students', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: $('newUser').value.trim(),
+        displayName: $('newName').value.trim(),
+        password: $('newPass').value
+      })
+    }).then(function(x){
+      if (x.j.ok) {
+        okEl.textContent = 'Đã tạo tài khoản ' + x.j.student.username + ' — mật khẩu như đã nhập. Gửi tài khoản này cho học viên.';
+        okEl.classList.add('show');
+        $('newUser').value = ''; $('newName').value = ''; $('newPass').value = '';
+        loadOverview();
+      } else {
+        errEl.textContent = x.j.message || 'Không tạo được tài khoản (tên đăng nhập có thể đã tồn tại).';
+        errEl.classList.add('show');
+      }
+    });
+  });
+
+  // ---- Thông báo ----
+  function loadAnns(){
+    api('/api/announcements').then(function(x){
+      if (!x.j.ok) return;
+      var list = x.j.announcements || [];
+      $('annList').innerHTML = list.length ? list.map(function(a){
+        return '<div class="ann"><div class="t">' + esc(a.title) + '</div>'
+          + '<div class="d">' + fmtDate(a.createdAt) + (a.updatedAt !== a.createdAt ? ' · sửa ' + fmtDate(a.updatedAt) : '') + '</div>'
+          + '<div class="b">' + esc(a.body) + '</div>'
+          + '<button class="btn small" onclick="editAnn(' + a.id + ')">Sửa</button> '
+          + '<button class="btn small danger" onclick="delAnn(' + a.id + ')">Xoá</button></div>';
+      }).join('') : '<p class="muted">Chưa có thông báo nào.</p>';
+      // Lưu lại để sửa (kèm nội dung gốc)
+      window.__anns = {};
+      list.forEach(function(a){ window.__anns[a.id] = a; });
+    });
+  }
+  window.editAnn = function(id){
+    var a = window.__anns && window.__anns[id];
+    if (!a) return;
+    $('annTitle').value = a.title;
+    $('annBody').value = a.body;
+    $('annEditId').value = String(id);
+    $('annSubmitBtn').textContent = 'Lưu thay đổi';
+    $('annCancelEdit').classList.remove('hidden');
+    $('annForm').scrollIntoView({ behavior: 'smooth' });
+  };
+  window.delAnn = function(id){
+    if (!confirm('Xoá thông báo này? Học viên sẽ không thấy nữa.')) return;
+    api('/api/admin/announcements/' + id, { method: 'DELETE' }).then(function(x){
+      if (x.j.ok) loadAnns();
+      else alert('Không xoá được thông báo.');
+    });
+  };
+  $('annCancelEdit').addEventListener('click', function(){
+    $('annTitle').value = ''; $('annBody').value = ''; $('annEditId').value = '';
+    $('annSubmitBtn').textContent = 'Đăng thông báo';
+    $('annCancelEdit').classList.add('hidden');
+  });
+  $('annForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var errEl = $('annErr'); errEl.classList.remove('show');
+    var editId = $('annEditId').value;
+    var payload = { title: $('annTitle').value.trim(), body: $('annBody').value.trim() };
+    var call = editId
+      ? api('/api/admin/announcements/' + editId, { method: 'PUT', body: JSON.stringify(payload) })
+      : api('/api/admin/announcements', { method: 'POST', body: JSON.stringify(payload) });
+    call.then(function(x){
+      if (x.j.ok) {
+        $('annTitle').value = ''; $('annBody').value = ''; $('annEditId').value = '';
+        $('annSubmitBtn').textContent = 'Đăng thông báo';
+        $('annCancelEdit').classList.add('hidden');
+        loadAnns();
+      } else {
+        errEl.textContent = 'Không lưu được thông báo (tiêu đề và nội dung không được để trống).';
+        errEl.classList.add('show');
+      }
+    });
+  });
+
+  $('exportBtn').addEventListener('click', function(){
+    location.href = '/api/admin/export';
+  });
+  $('logoutBtn').addEventListener('click', function(){
+    api('/api/auth/logout', { method: 'POST' }).then(function(){ location.href = '/login'; });
+  });
+
+  // Kiểm tra quyền rồi tải dữ liệu
+  api('/api/auth/me').then(function(x){
+    if (!x.j.ok || !x.j.user || x.j.user.role !== 'teacher') { location.href = '/login'; return; }
+    $('teacherName').textContent = 'Giáo viên: ' + x.j.user.displayName + ' (' + x.j.user.username + ')';
+    loadOverview();
+    loadAnns();
+  });
+})();
+</script>
+</body>
+</html>

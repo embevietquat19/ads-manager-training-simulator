@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập — Ads Manager Training Simulator</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#F0F2F5;color:#1C1E21;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+  .card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.12);width:100%;max-width:420px;padding:28px}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .brand .logo{font-size:22px;font-weight:800}
+  .brand .logo .inf{color:#0866FF}
+  h1{font-size:20px;margin:4px 0 2px}
+  .sub{color:#65676B;font-size:13.5px;margin:0 0 18px}
+  .pill{display:inline-block;background:#E6F4EA;color:#137333;border:1px solid #B7DFC0;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;margin-bottom:12px}
+  label{display:block;font-size:13.5px;font-weight:600;margin:12px 0 5px}
+  input{width:100%;padding:11px 12px;border:1px solid #CCD0D5;border-radius:8px;font-size:15px}
+  input:focus{outline:none;border-color:#0866FF;box-shadow:0 0 0 2px rgba(8,102,255,.2)}
+  .btn{width:100%;margin-top:18px;padding:12px;border:0;border-radius:8px;background:#0866FF;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+  .btn:hover{background:#0659D6}
+  .btn:disabled{background:#BCC0C4;cursor:not-allowed}
+  .btn.secondary{background:#E4E6EB;color:#1C1E21}
+  .btn.secondary:hover{background:#D8DADF}
+  .err{display:none;background:#FDE8E8;color:#9B1C1C;border:1px solid #F5C6C6;border-radius:8px;padding:10px 12px;font-size:13.5px;margin-top:14px}
+  .err.show{display:block}
+  .ok{display:none;background:#E6F4EA;color:#137333;border:1px solid #B7DFC0;border-radius:8px;padding:10px 12px;font-size:13.5px;margin-top:14px}
+  .ok.show{display:block}
+  .switch{margin-top:16px;text-align:center;font-size:13.5px}
+  .switch a{color:#0866FF;cursor:pointer;text-decoration:none;font-weight:600}
+  .hint{font-size:12.5px;color:#65676B;margin-top:8px;line-height:1.5}
+  .foot{margin-top:22px;text-align:center;font-size:12.5px;color:#65676B;line-height:1.6;max-width:420px}
+  .foot b{color:#1C1E21}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand"><span class="logo"><span class="inf">∞</span> Meta · Ads Manager</span></div>
+    <span class="pill">TEST ENVIRONMENT — MÔI TRƯỜNG LUYỆN TẬP</span>
+    <h1 id="formTitle">Đăng nhập lớp học</h1>
+    <p class="sub">Bản mô phỏng Ads Manager phục vụ đào tạo — không kết nối Meta, không chạy quảng cáo thật.</p>
+
+    <!-- FORM ĐĂNG NHẬP -->
+    <form id="loginForm">
+      <label for="username">Tên đăng nhập</label>
+      <input id="username" type="text" autocomplete="username" required>
+      <label for="password">Mật khẩu</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <div class="err" id="loginErr"></div>
+      <button class="btn" type="submit" id="loginBtn">Đăng nhập</button>
+      <p class="hint">Tài khoản do giáo viên cấp cho từng học viên. Quên mật khẩu? Liên hệ giáo viên để được đặt lại.</p>
+    </form>
+
+    <!-- FORM THIẾT LẬP LẦN ĐẦU (chỉ hiện khi chưa có tài khoản giáo viên) -->
+    <form id="setupForm" class="hidden">
+      <label for="setupUser">Tên đăng nhập quản trị</label>
+      <input id="setupUser" type="text" value="giaovien" required>
+      <label for="setupName">Tên hiển thị</label>
+      <input id="setupName" type="text" value="Giáo viên" required>
+      <label for="setupPass">Mật khẩu quản trị (tự đặt)</label>
+      <input id="setupPass" type="password" autocomplete="new-password" required minlength="6">
+      <label for="setupPass2">Nhập lại mật khẩu</label>
+      <input id="setupPass2" type="password" autocomplete="new-password" required minlength="6">
+      <div class="err" id="setupErr"></div>
+      <div class="ok" id="setupOk"></div>
+      <button class="btn" type="submit" id="setupBtn">Tạo tài khoản giáo viên</button>
+      <p class="hint">Chỉ dùng 1 lần duy nhất lúc mở trang lần đầu. Không có mật khẩu mặc định — hãy đặt mật khẩu mạnh và ghi nhớ. Sau bước này, giáo viên đăng nhập và cấp tài khoản cho học viên trong trang Quản trị.</p>
+    </form>
+
+    <div class="switch" id="setupSwitch" style="display:none">
+      Chưa có tài khoản giáo viên? <a id="showSetup">Thiết lập lần đầu →</a>
+    </div>
+    <div class="switch hidden" id="backToLogin">
+      <a id="showLogin">← Quay lại đăng nhập</a>
+    </div>
+  </div>
+
+  <p class="foot">Ads Manager Training Simulator — công cụ giảng dạy độc lập, không phải sản phẩm của Meta.<br>
+  <b>Liên hệ giảng viên:</b> Đỗ Quốc Việt — SĐT: 0789111126 — Email: vietdq.ncs@gmail.com</p>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function showErr(el, msg){ el.textContent = msg; el.classList.add('show'); }
+  function hideErr(el){ el.textContent = ''; el.classList.remove('show'); }
+
+  // Kiểm tra trạng thái: đã đăng nhập? cần thiết lập lần đầu?
+  fetch('/api/auth/state', { credentials: 'same-origin' })
+    .then(function(r){ return r.json(); })
+    .then(function(s){
+      if (s.loggedIn) { location.href = '/app/'; return; }
+      if (s.needsSetup) { $('setupSwitch').style.display = 'block'; }
+    })
+    .catch(function(){ /* vẫn hiện form đăng nhập */ });
+
+  $('showSetup').addEventListener('click', function(){
+    $('loginForm').classList.add('hidden');
+    $('setupForm').classList.remove('hidden');
+    $('setupSwitch').style.display = 'none';
+    $('backToLogin').classList.remove('hidden');
+    $('formTitle').textContent = 'Thiết lập lần đầu — tài khoản giáo viên';
+  });
+  $('showLogin').addEventListener('click', function(){
+    $('setupForm').classList.add('hidden');
+    $('loginForm').classList.remove('hidden');
+    $('backToLogin').classList.add('hidden');
+    $('setupSwitch').style.display = 'block';
+    $('formTitle').textContent = 'Đăng nhập lớp học';
+  });
+
+  $('loginForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    hideErr($('loginErr'));
+    var btn = $('loginBtn'); btn.disabled = true; btn.textContent = 'Đang đăng nhập…';
+    fetch('/api/auth/login', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: $('username').value.trim(), password: $('password').value })
+    })
+    .then(function(r){ return r.json().then(function(j){ return { status: r.status, j: j }; }); })
+    .then(function(x){
+      if (x.j.ok) { location.href = '/app/'; return; }
+      showErr($('loginErr'), x.j.message || 'Đăng nhập thất bại.');
+      btn.disabled = false; btn.textContent = 'Đăng nhập';
+    })
+    .catch(function(){
+      showErr($('loginErr'), 'Không kết nối được máy chủ. Thử lại sau.');
+      btn.disabled = false; btn.textContent = 'Đăng nhập';
+    });
+  });
+
+  $('setupForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    hideErr($('setupErr'));
+    var okEl = $('setupOk'); okEl.classList.remove('show');
+    var p1 = $('setupPass').value, p2 = $('setupPass2').value;
+    if (p1 !== p2) { showErr($('setupErr'), 'Hai mật khẩu nhập lại không khớp.'); return; }
+    if (p1.length < 6) { showErr($('setupErr'), 'Mật khẩu ít nhất 6 ký tự.'); return; }
+    var btn = $('setupBtn'); btn.disabled = true; btn.textContent = 'Đang tạo…';
+    fetch('/api/auth/setup', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: $('setupUser').value.trim(),
+        displayName: $('setupName').value.trim(),
+        password: p1
+      })
+    })
+    .then(function(r){ return r.json().then(function(j){ return { status: r.status, j: j }; }); })
+    .then(function(x){
+      if (x.j.ok) {
+        okEl.textContent = 'Đã tạo tài khoản giáo viên. Đang vào trang Quản trị…';
+        okEl.classList.add('show');
+        setTimeout(function(){ location.href = '/admin'; }, 800);
+        return;
+      }
+      showErr($('setupErr'), x.j.message || 'Không tạo được tài khoản (tên đăng nhập có thể đã tồn tại).');
+      btn.disabled = false; btn.textContent = 'Tạo tài khoản giáo viên';
+    })
+    .catch(function(){
+      showErr($('setupErr'), 'Không kết nối được máy chủ. Thử lại sau.');
+      btn.disabled = false; btn.textContent = 'Tạo tài khoản giáo viên';
+    });
+  });
+})();
+</script>
+</body>
+</html>
