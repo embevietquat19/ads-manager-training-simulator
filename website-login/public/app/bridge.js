@@ -5,7 +5,9 @@
  * File này được nạp sau các script chính của trang mô phỏng. Nó:
  *  - Tải toàn bộ dữ liệu riêng của học viên đang đăng nhập (/api/bootstrap):
  *    số liệu case, đáp án đã xem, ghi chú, campaign đã sửa, bản nháp editor,
- *    tệp Audiences do học viên tạo, chiến dịch nháp đã Publish, thông báo + số chưa đọc.
+ *    tệp Audiences do học viên tạo, chiến dịch nháp đã Publish, trạng thái
+ *    bảng (ghi đè tên/bật-tắt, dòng tự tạo, dòng đã xoá), phiên bản nhật ký
+ *    cập nhật đã xem, thông báo + số chưa đọc.
  *  - Cung cấp các hàm window.__srv* mà các đoạn mã đã patch trong trang gọi
  *    tới mỗi khi học viên chỉnh số liệu / xem đáp án / ghi chú / Publish.
  *  - Thêm chiến dịch nháp của học viên vào bảng Campaigns, chuông thông báo
@@ -23,6 +25,11 @@
     editorDraft: {},
     audiences: [], // tệp Custom / Lookalike do học viên tạo (chỉ metadata)
     audiencesReady: false, // true khi bootstrap đã nạp xong danh sách từ máy chủ
+    rowState: { overrides: {}, mine: [], deleted: [] }, // trạng thái bảng do học viên thay đổi
+    rowStateReady: false, // true khi bootstrap đã nạp xong trạng thái bảng từ máy chủ
+    colState: { custom: [], view: { preset: 'performance', cols: null, attr: null, fmt: [] } }, // trạng thái hiển thị bảng (Customise columns)
+    colStateReady: false, // true khi bootstrap đã nạp xong trạng thái hiển thị bảng từ máy chủ
+    seenVersion: '', // phiên bản nhật ký cập nhật đã xem gần nhất
     myDrafts: [],
     announcements: [],
     unreadCount: 0,
@@ -151,6 +158,124 @@
     api('PUT', '/api/audiences', { audiences: copy });
   }, 600);
 
+  // ---- Lưu trạng thái bảng do học viên thay đổi (ghi đè tên/bật-tắt, dòng tự
+  // tạo, dòng đã xoá) — cùng cơ chế chờ-gộp như Audiences: thay đổi trước khi
+  // bootstrap xong chỉ giữ bản chờ (pendingRowState), bootstrap xong sẽ gộp
+  // bản chờ vào trạng thái máy chủ (bản chờ thắng theo từng key/id) rồi PUT.
+  function normRowState(s) {
+    if (!s || typeof s !== 'object') return { overrides: {}, mine: [], deleted: [] };
+    return {
+      overrides:
+        s.overrides && typeof s.overrides === 'object' ? s.overrides : {},
+      mine: Array.isArray(s.mine) ? s.mine : [],
+      deleted: Array.isArray(s.deleted) ? s.deleted : [],
+    };
+  }
+  function mergeRowState(server, pending) {
+    var out = { overrides: {}, mine: [], deleted: [] };
+    var s = normRowState(server);
+    var p = normRowState(pending);
+    Object.keys(s.overrides).forEach(function (k) {
+      out.overrides[k] = s.overrides[k];
+    });
+    Object.keys(p.overrides).forEach(function (k) {
+      out.overrides[k] = p.overrides[k];
+    });
+    var byId = {};
+    s.mine.forEach(function (m) {
+      if (m && m.row && m.row.id) byId[m.row.id] = m;
+    });
+    p.mine.forEach(function (m) {
+      if (m && m.row && m.row.id) byId[m.row.id] = m;
+    });
+    out.mine = Object.keys(byId).map(function (k) {
+      return byId[k];
+    });
+    var del = {};
+    s.deleted.concat(p.deleted).forEach(function (id) {
+      del[id] = true;
+    });
+    out.deleted = Object.keys(del);
+    return out;
+  }
+  var pendingRowState = null;
+  window.__srvSaveRowState = debounce(function (state) {
+    var copy = normRowState(null);
+    try {
+      copy = normRowState(JSON.parse(JSON.stringify(state || {})));
+    } catch (e) {}
+    if (!srv.rowStateReady) {
+      pendingRowState = copy;
+      return;
+    }
+    srv.rowState = copy;
+    api('PUT', '/api/row-state', { state: copy });
+  }, 600);
+
+  // ---- Lưu trạng thái hiển thị bảng (Customise columns: preset cột riêng +
+  // lựa chọn đang dùng) — cùng cơ chế chờ-gộp như rowState: thay đổi trước
+  // khi bootstrap xong chỉ giữ bản chờ (pendingColState), bootstrap xong sẽ
+  // gộp bản chờ vào trạng thái máy chủ (preset riêng gộp theo id, bản chờ
+  // thắng; lựa chọn đang dùng lấy theo bản chờ) rồi PUT.
+  function normColState(s) {
+    if (!s || typeof s !== 'object')
+      return {
+        custom: [],
+        view: { preset: 'performance', cols: null, attr: null, fmt: [] },
+      };
+    return {
+      custom: Array.isArray(s.custom) ? s.custom : [],
+      view:
+        s.view && typeof s.view === 'object'
+          ? s.view
+          : { preset: 'performance', cols: null, attr: null, fmt: [] },
+    };
+  }
+  function mergeColState(server, pending) {
+    var s = normColState(server);
+    var p = normColState(pending);
+    var byId = {};
+    s.custom.forEach(function (c) {
+      if (c && c.id) byId[c.id] = c;
+    });
+    p.custom.forEach(function (c) {
+      if (c && c.id) byId[c.id] = c;
+    });
+    return {
+      custom: Object.keys(byId).map(function (k) {
+        return byId[k];
+      }),
+      view: p.view,
+    };
+  }
+  var pendingColState = null;
+  window.__srvSaveColState = debounce(function (state) {
+    var copy = normColState(null);
+    try {
+      copy = normColState(JSON.parse(JSON.stringify(state || {})));
+    } catch (e) {}
+    if (!srv.colStateReady) {
+      pendingColState = copy;
+      return;
+    }
+    srv.colState = copy;
+    api('PUT', '/api/col-state', { state: copy });
+  }, 600);
+
+  // ---- Xoá 1 chiến dịch nháp đã Publish (khi học viên xoá dòng mine-*) ----
+  window.__srvDeleteDraft = function (numId) {
+    if (!numId) return;
+    api('DELETE', '/api/drafts/' + encodeURIComponent(numId));
+  };
+
+  // ---- Đánh dấu đã xem phiên bản mới nhất của nhật ký cập nhật ----
+  window.__srvMarkVersionSeen = function (v) {
+    if (!v) return;
+    srv.seenVersion = v;
+    api('PUT', '/api/seen-version', { version: v });
+    refreshBellDot();
+  };
+
   // ---- Publish (mô phỏng) trong editor -> lưu chiến dịch nháp theo tài khoản ----
   window.__srvPublishDraft = function (objective, adsetDraft, lines) {
     var cn = document.getElementById('campNameInput');
@@ -184,9 +309,9 @@
       id: 'mine-' + id,
       name: name,
       objective: objective || '',
-      active: false,
+      active: true,
       budget: budget || '—',
-      budgetSub: 'Nháp của bạn',
+      budgetSub: 'Đã đăng (mô phỏng)',
       ends: 'Ongoing',
       bid: 'Highest volume',
       schedule: 'Ongoing',
@@ -211,6 +336,18 @@
       (srv.user.role === 'teacher' ? 'Giáo viên' : 'Học viên') +
       ')';
     actions.appendChild(chip);
+    // Avatar topbar: chữ viết tắt lấy từ tên hiển thị của tài khoản đang đăng
+    // nhập (chữ đầu của từ đầu + chữ đầu của từ cuối, hoặc 2 ký tự đầu nếu tên chỉ có 1 từ).
+    var av = document.querySelector('.avatar-profiles');
+    if (av && srv.user && srv.user.displayName) {
+      var parts = String(srv.user.displayName).trim().split(/\s+/);
+      var init =
+        parts.length > 1
+          ? parts[0].charAt(0) + parts[parts.length - 1].charAt(0)
+          : String(srv.user.displayName).trim().slice(0, 2);
+      av.textContent = init.toUpperCase();
+      av.title = srv.user.displayName;
+    }
     if (srv.user.role === 'teacher') {
       var adminBtn = document.createElement('button');
       adminBtn.className = 'tbtn';
@@ -231,6 +368,55 @@
     actions.appendChild(outBtn);
   }
 
+  // ---- Chuông: số chưa đọc = thông báo giảng viên chưa đọc + 1 nếu có phiên
+  // bản nhật ký cập nhật mới chưa xem. Phiên bản mới nhất lấy từ
+  // CHANGELOG_DATA của trang mô phỏng (mới nhất trước).
+  function latestVersion() {
+    try {
+      var d = window.CHANGELOG_DATA;
+      return (d && d[0] && d[0].v) || '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function versionUnseen() {
+    var v = latestVersion();
+    return !!v && srv.seenVersion !== v;
+  }
+  function totalUnread() {
+    return (srv.unreadCount || 0) + (versionUnseen() ? 1 : 0);
+  }
+  function refreshBellDot() {
+    var dot = document.querySelector('button[title="Notifications"] .bdot');
+    if (!dot) return;
+    var n = totalUnread();
+    dot.textContent = String(n);
+    dot.style.display = n ? '' : 'none';
+  }
+  function changelogHTML() {
+    var d = [];
+    try {
+      d = window.CHANGELOG_DATA || [];
+    } catch (e) {}
+    return d
+      .map(function (rel) {
+        return (
+          '<div style="border-top:1px solid #eee;padding:10px 0"><b>' +
+          escHtml(rel.v) +
+          '</b> <span style="color:#65676B;font-size:12px">' +
+          escHtml(rel.date) +
+          '</span><ul style="margin:6px 0 0;padding-left:18px;font-size:13px;line-height:1.55">' +
+          (rel.items || [])
+            .map(function (it) {
+              return '<li>' + escHtml(it) + '</li>';
+            })
+            .join('') +
+          '</ul></div>'
+        );
+      })
+      .join('');
+  }
+
   // ---- Thông báo: chuông thật + thanh thông báo mới + panel danh sách ----
   function renderAnnouncements() {
     var bell = document.querySelector('button[title="Notifications"]');
@@ -241,8 +427,7 @@
         dot.className = 'bdot';
         bell.appendChild(dot);
       }
-      dot.textContent = String(srv.unreadCount || 0);
-      dot.style.display = srv.unreadCount ? '' : 'none';
+      refreshBellDot();
       bell.onclick = function () {
         toggleAnnPanel();
       };
@@ -300,6 +485,10 @@
         escHtml(a.body) +
         '</div></div>';
     });
+    h +=
+      '<h3 style="margin:14px 0 4px;font-size:14px">Nhật ký cập nhật hệ thống</h3>' +
+      '<p style="color:#65676B;margin:0 0 2px;font-size:12.5px">Phiên bản mới nhất trước — chỉ đọc, nội dung lấy từ nhật ký phiên bản.</p>' +
+      changelogHTML();
     p.innerHTML = h;
     document.body.appendChild(p);
     document.getElementById('srvAnnClose').onclick = function () {
@@ -318,10 +507,9 @@
         );
       });
     srv.unreadCount = 0;
-    var dot = document.querySelector(
-      'button[title="Notifications"] .bdot'
-    );
-    if (dot) dot.style.display = 'none';
+    // Mở panel = đã xem phiên bản mới nhất của nhật ký cập nhật.
+    if (versionUnseen()) window.__srvMarkVersionSeen(latestVersion());
+    refreshBellDot();
     var bar = document.getElementById('srvAnnBar');
     if (bar) bar.remove();
   }
@@ -366,6 +554,27 @@
       srv.myDrafts = data.myDrafts || [];
       srv.announcements = data.announcements || [];
       srv.unreadCount = data.unreadCount || 0;
+      srv.seenVersion = data.seenVersion || '';
+      srv.rowState = normRowState(data.rowState);
+      srv.rowStateReady = true;
+      // Gộp bản lưu chờ (nếu học viên đổi bảng trước khi bootstrap xong) rồi
+      // đẩy trạng thái đã gộp lên máy chủ — xem ghi chú ở __srvSaveRowState.
+      if (pendingRowState) {
+        var mergedRS = mergeRowState(srv.rowState, pendingRowState);
+        pendingRowState = null;
+        srv.rowState = mergedRS;
+        api('PUT', '/api/row-state', { state: mergedRS });
+      }
+      srv.colState = normColState(data.colState);
+      srv.colStateReady = true;
+      // Gộp bản lưu chờ (nếu học viên đổi cột trước khi bootstrap xong) rồi
+      // đẩy trạng thái đã gộp lên máy chủ — xem ghi chú ở __srvSaveColState.
+      if (pendingColState) {
+        var mergedCS = mergeColState(srv.colState, pendingColState);
+        pendingColState = null;
+        srv.colState = mergedCS;
+        api('PUT', '/api/col-state', { state: mergedCS });
+      }
 
       // Khôi phục bản nháp editor đang làm dở (qua draftSet của trang).
       if (window.draftSet) {
@@ -385,6 +594,18 @@
           } catch (e) {}
         }
       });
+      // Áp trạng thái bảng (ghi đè tên/bật-tắt, dòng do học viên tạo, dòng đã xoá).
+      if (window.applyRowState) {
+        try {
+          window.applyRowState(srv.rowState);
+        } catch (e) {}
+      }
+      // Áp trạng thái hiển thị bảng (preset cột riêng + lựa chọn đang dùng).
+      if (window.applyColState) {
+        try {
+          window.applyColState(srv.colState);
+        } catch (e) {}
+      }
       injectTopbar();
       renderAnnouncements();
     });
