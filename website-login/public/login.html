@@ -44,9 +44,9 @@
     <!-- FORM ĐĂNG NHẬP -->
     <form id="loginForm">
       <label for="username">Tên đăng nhập</label>
-      <input id="username" type="text" autocomplete="username" required>
+      <input id="username" name="username" type="text" autocomplete="username" required>
       <label for="password">Mật khẩu</label>
-      <input id="password" type="password" autocomplete="current-password" required>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
       <div class="err" id="loginErr"></div>
       <button class="btn" type="submit" id="loginBtn">Đăng nhập</button>
       <p class="hint">Tài khoản do giáo viên cấp cho từng học viên. Quên mật khẩu? Liên hệ giáo viên để được đặt lại.</p>
@@ -55,7 +55,7 @@
     <!-- FORM THIẾT LẬP LẦN ĐẦU (chỉ hiện khi chưa có tài khoản giáo viên) -->
     <form id="setupForm" class="hidden">
       <label for="setupUser">Tên đăng nhập quản trị</label>
-      <input id="setupUser" type="text" value="giaovien" required>
+      <input id="setupUser" name="username" type="text" placeholder="vd: giaovien" autocomplete="username" required>
       <label for="setupName">Tên hiển thị</label>
       <input id="setupName" type="text" value="Giáo viên" required>
       <label for="setupPass">Mật khẩu quản trị (tự đặt)</label>

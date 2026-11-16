@@ -18,7 +18,7 @@
   .btn.danger{color:#C92A2A;border-color:#F5C6C6}
   .btn.danger:hover{background:#FDE8E8}
   .btn.small{padding:5px 9px;font-size:12.5px}
-  main{max-width:1100px;margin:0 auto;padding:20px}
+  main{max-width:1180px;margin:0 auto;padding:20px}
   .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
   .card{background:#fff;border:1px solid #ddd;border-radius:10px;padding:16px}
   .card .num{font-size:28px;font-weight:800}
@@ -26,9 +26,12 @@
   section{background:#fff;border:1px solid #ddd;border-radius:10px;padding:18px;margin-bottom:20px}
   section h2{font-size:16px;margin:0 0 4px}
   section .desc{color:#65676B;font-size:13px;margin:0 0 14px}
-  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:980px}
+  .table-wrap{overflow-x:auto}
   th,td{padding:9px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
-  th{color:#65676B;font-weight:600;font-size:12.5px;text-transform:uppercase}
+  th{color:#65676B;font-weight:600;font-size:12.5px;text-transform:uppercase;white-space:nowrap}
+  td.nw{white-space:nowrap}
+  .badge{white-space:nowrap}
   .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}
   .badge.on{background:#E6F4EA;color:#137333}
   .badge.off{background:#FDE8E8;color:#9B1C1C}
@@ -78,10 +81,10 @@
   <section>
     <h2>Tạo tài khoản học viên</h2>
     <p class="desc">Giáo viên cấp tài khoản cho từng học viên. Học viên đăng nhập bằng tài khoản này; bài làm lưu riêng theo tài khoản trên máy chủ, đổi máy vẫn còn.</p>
-    <form id="createForm" class="form-grid">
-      <div><label>Tên đăng nhập</label><input id="newUser" required placeholder="vd: hv01"></div>
-      <div><label>Tên hiển thị</label><input id="newName" required placeholder="vd: Nguyễn Văn A"></div>
-      <div><label>Mật khẩu (≥ 6 ký tự)</label><input id="newPass" type="password" required minlength="6"></div>
+    <form id="createForm" class="form-grid" autocomplete="off">
+      <div><label>Tên đăng nhập</label><input id="newUser" required placeholder="vd: hv01" autocomplete="off"></div>
+      <div><label>Tên hiển thị</label><input id="newName" required placeholder="vd: Nguyễn Văn A" autocomplete="off"></div>
+      <div><label>Mật khẩu (≥ 6 ký tự)</label><input id="newPass" type="password" required minlength="6" autocomplete="new-password"></div>
       <button class="btn primary" type="submit">Tạo tài khoản</button>
     </form>
     <div class="err" id="createErr"></div>
@@ -91,10 +94,12 @@
   <section>
     <h2>Danh sách học viên</h2>
     <p class="desc">Tiến độ tính theo 15 case tình huống. Bấm “Xem bài làm” để xem chi tiết số liệu từng case, ghi chú và chiến dịch của học viên đó.</p>
+    <div class="table-wrap">
     <table>
       <thead><tr><th>Tài khoản</th><th>Tên hiển thị</th><th>Trạng thái</th><th>Case đã làm</th><th>Đáp án đã xem</th><th>Chiến dịch</th><th>Hoạt động gần nhất</th><th></th></tr></thead>
       <tbody id="studentRows"><tr><td colspan="8" class="muted">Đang tải…</td></tr></tbody>
     </table>
+    </div>
   </section>
 
   <section id="workSection" class="hidden">
@@ -116,6 +121,15 @@
     </form>
     <div class="err" id="annErr"></div>
     <div id="annList" style="margin-top:16px"></div>
+  </section>
+
+  <section>
+    <h2>Nhật ký cập nhật hệ thống</h2>
+    <p class="desc">Chỉ đọc — nội dung lấy từ nhật ký phiên bản của bản mô phỏng (học viên xem đầy đủ bằng chuông thông báo trong bản mô phỏng). Khi deploy phiên bản mới, cập nhật thêm 1 mục vào đầu danh sách này.</p>
+    <div class="kv"><b>v2.0.3 — sắp cập nhật</b><span>Nhóm 1 + Nhóm 2 (nút báo thành công giả nay làm thật), sửa UI trang Quản trị và bảng Campaigns, editor mở campaign Case 1 đúng số liệu case, thông báo thành nhật ký cập nhật, bảng công thức KPI trong Thuật ngữ, Customise columns.</span></div>
+    <div class="kv"><b>v2.0.2 — 08:54 ngày 16/11/2026</b><span>Upload file CSV tạo Custom Audience + Lookalike 1–10%.</span></div>
+    <div class="kv"><b>v2.0.1 — 07:30 ngày 16/11/2026</b><span>Giáo viên tự đổi mật khẩu quản trị.</span></div>
+    <div class="kv"><b>v2.0.0 — 01:23 ngày 16/11/2026</b><span>Website đăng nhập lần đầu.</span></div>
   </section>
 
   <section>
@@ -157,6 +171,20 @@
   var students = [];
   var curWorkId = null;
 
+  // Banner thành công chỉ hiện 1 lần: tự ẩn sau 12 giây, và ẩn hẳn khi quay
+  // lại trang từ bộ nhớ đệm (bfcache) — tránh banner cũ bám dai ở phiên sau.
+  var okTimers = {};
+  function showOk(el, text){
+    el.textContent = text;
+    el.classList.add('show');
+    if (okTimers[el.id]) clearTimeout(okTimers[el.id]);
+    okTimers[el.id] = setTimeout(function(){ el.classList.remove('show'); }, 12000);
+  }
+  function hideOkBanners(){
+    ['createOk','changePassOk'].forEach(function(id){ var e = $(id); if (e) e.classList.remove('show'); });
+  }
+  window.addEventListener('pageshow', hideOkBanners);
+
   function loadOverview(){
     api('/api/admin/students').then(function(x){
       if (!x.j.ok) { $('studentRows').innerHTML = '<tr><td colspan="8">Không tải được danh sách (có thể phiên đã hết — thử đăng nhập lại).</td></tr>'; return; }
@@ -175,13 +203,13 @@
     }
     $('studentRows').innerHTML = students.map(function(s){
       return '<tr data-id="'+s.id+'">'
-        + '<td><b>'+esc(s.username)+'</b></td>'
-        + '<td>'+esc(s.displayName)+'</td>'
-        + '<td>'+(s.active ? '<span class="badge on">Đang hoạt động</span>' : '<span class="badge off">Đã vô hiệu hoá</span>')+'</td>'
+        + '<td class="nw"><b>'+esc(s.username)+'</b></td>'
+        + '<td class="nw">'+esc(s.displayName)+'</td>'
+        + '<td class="nw">'+(s.active ? '<span class="badge on">Đang hoạt động</span>' : '<span class="badge off">Đã vô hiệu hoá</span>')+'</td>'
         + '<td>'+(s.casesDone||0)+' / 15</td>'
         + '<td>'+(s.answersViewed||0)+'</td>'
         + '<td>'+(s.draftsCount||0)+'</td>'
-        + '<td class="muted">'+fmtDate(s.lastActive)+'</td>'
+        + '<td class="nw muted">'+fmtDate(s.lastActive)+'</td>'
         + '<td style="white-space:nowrap">'
         + '<button class="btn small" onclick="viewWork('+s.id+')">Xem bài làm</button> '
         + '<button class="btn small" onclick="toggleResetForm('+s.id+')">Đặt lại mật khẩu</button> '
@@ -189,7 +217,7 @@
         + '</td></tr>'
         + '<tr id="resetRow-'+s.id+'" class="hidden"><td colspan="8">'
         + '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">'
-        + '<input type="password" id="resetPass-'+s.id+'" placeholder="Mật khẩu mới (≥ 6 ký tự)" style="max-width:260px">'
+        + '<input type="password" id="resetPass-'+s.id+'" placeholder="Mật khẩu mới (≥ 6 ký tự)" style="max-width:260px" autocomplete="new-password">'
         + '<button class="btn small primary" onclick="doResetPassword('+s.id+')">Lưu mật khẩu mới</button>'
         + '<button class="btn small" onclick="toggleResetForm('+s.id+')">Huỷ</button>'
         + '<span class="muted">Đặt lại mật khẩu sẽ đăng xuất học viên này khỏi mọi thiết bị.</span>'
@@ -279,8 +307,7 @@
       })
     }).then(function(x){
       if (x.j.ok) {
-        okEl.textContent = 'Đã tạo tài khoản ' + x.j.student.username + ' — mật khẩu như đã nhập. Gửi tài khoản này cho học viên.';
-        okEl.classList.add('show');
+        showOk(okEl, 'Đã tạo tài khoản ' + x.j.student.username + ' — mật khẩu như đã nhập. Gửi tài khoản này cho học viên.');
         $('newUser').value = ''; $('newName').value = ''; $('newPass').value = '';
         loadOverview();
       } else {
@@ -362,8 +389,7 @@
       method: 'POST', body: JSON.stringify({ currentPassword: cur, newPassword: nw })
     }).then(function(x){
       if (x.j.ok) {
-        okEl.textContent = 'Đã đổi mật khẩu quản trị. Đang đăng xuất — đăng nhập lại bằng mật khẩu mới.';
-        okEl.classList.add('show');
+        showOk(okEl, 'Đã đổi mật khẩu quản trị. Đang đăng xuất — đăng nhập lại bằng mật khẩu mới.');
         setTimeout(function(){ location.href = '/login'; }, 1500);
       } else {
         errEl.textContent = x.j.message || 'Không đổi được mật khẩu.';
