@@ -20,6 +20,7 @@
  *  draft_campaigns      — chiến dịch học viên đã Publish (mô phỏng), theo tài khoản
  *  row_state            — trạng thái bảng do học viên thay đổi (ghi đè tên/bật-tắt, dòng tự tạo, dòng đã xoá), theo tài khoản
  *  col_state            — trạng thái hiển thị bảng (preset cột riêng + lựa chọn đang dùng: preset, bộ cột tuỳ chỉnh, Attribution setting, quy tắc tô màu), theo tài khoản
+ *  submissions          — bài nộp case của học viên (1 object JSON theo caseId, chỉ giữ bài gần nhất mỗi case), theo tài khoản
  *  seen_version         — phiên bản nhật ký cập nhật học viên đã xem gần nhất, theo tài khoản
  */
 const fs = require('fs');
@@ -113,6 +114,11 @@ CREATE TABLE IF NOT EXISTS row_state (
 CREATE TABLE IF NOT EXISTS col_state (
   user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
   state_json TEXT NOT NULL DEFAULT '{}',
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE TABLE IF NOT EXISTS submissions (
+  user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  submissions_json TEXT NOT NULL DEFAULT '{}',
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE TABLE IF NOT EXISTS seen_version (
