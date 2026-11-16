@@ -10,6 +10,62 @@
 
 ---
 
+## v2.0.5 — 16/11/2026 (làm đẹp giao diện — chưa deploy)
+
+- **Phạm vi:** chỉ sửa giao diện (CSS + rút ngắn 1 dòng hint + bỏ dòng
+  hint hiển thị dưới tên cột bảng). Không đổi chức năng, class/id hay JS
+  (trừ 1 dòng render header bảng: bỏ `<span class="vi-hint">`, giữ
+  `title` tooltip). Banner TEST ENVIRONMENT và thông tin liên hệ giáo
+  viên giữ nguyên.
+- **Màu sắc (bám sát Ads Manager thật):** `--blue` và `--blue-btn` đổi
+  từ `#0866FF`/`#1877F2` sang xanh Meta `#0064E0` (áp cho link, nút
+  chính, tab đang chọn, toggle); `--blue-dark` `#0757D6` → `#0053B3`
+  (màu hover), `--blue-pale` `#EBF3FF` → `#EAF2FE`; nền `#F0F2F5`,
+  chữ chính `#1C1E21`, chữ phụ `#606770` giữ nguyên. Nút Create kiểm tra
+  thấy đang dùng `--green` (`#00793A`) — đã sửa sang `--green-bright`
+  `#00A400`, hover `#008C00`. Trạng thái đã đúng chuẩn và giữ nguyên:
+  chấm xanh lá `#00A400` cho Active, xám cho nháp/In draft; vòng
+  Opportunity score xanh lá không đổi. Tiêu đề file Word xuất ra đổi
+  theo xanh mới (`#0064E0`).
+- **Topbar:** hint Opportunity score rút ngắn từ “Điểm gợi ý tối ưu của
+  Meta — càng cao setup càng chuẩn, nên tham khảo chứ không bắt buộc làm
+  theo hết.” còn “Điểm càng cao, setup càng chuẩn — chỉ gợi ý, không bắt
+  buộc.” (tối đa 2 dòng; ý gốc đầy đủ giữ trong thuộc tính `title` khi
+  rê chuột). Logo, ô tài khoản, khối Opportunity score và cụm nút phải
+  căn giữa theo chiều dọc (`align-items:center`); các nút topbar cao đều
+  42px (nút `•••` 42×42, avatar 42×42); topbar không wrap ở màn hình
+  rộng (`flex-wrap:nowrap`, chỉ wrap lại khi ≤ 1240px) nên cụm nút phải
+  (Review and publish, `•••`, avatar + tên, Quản trị lớp học, Đăng xuất)
+  không còn chen nhau.
+- **Hàng tiêu đề bảng:** bỏ dòng hint tiếng Việt hiển thị dưới tên cột
+  (các hint dài không rút gọn được mà vẫn đủ ý; toàn bộ nội dung hint
+  giữ nguyên trong `title` tooltip của từng cột và trong hộp thoại
+  Customise columns); padding hàng tiêu đề giảm 9px → 7px; nền header
+  bảng đậm hơn (`#EDEFF2` thay `#F5F6F7`) để tách khỏi nền trắng của
+  bảng. Hàng tiêu đề nay chỉ còn 1 dòng như bản thật.
+- **Hàng nút hành động:** 2 hàng nút Create/Publish/Duplicate/Edit/
+  Delete/More + Columns/Breakdown/Reports/Export/Compare thống nhất cao
+  44px, `align-items:stretch`; hàng View charts/Edit/See history thống
+  nhất cao 42px, padding và khoảng cách đều.
+- **Các trang khác (cùng file tĩnh, hưởng CSS chung):** editor 3 bước,
+  trang chi tiết case, trang Tối ưu & Đề xuất, trang Audiences, các hộp
+  thoại — không phát hiện thêm lỗi căn chỉnh cùng loại (nút 1 dòng đã
+  căn giữa; dialog-foot/page-view-head dùng chung `.btn`); chỉ đổi màu
+  theo bảng màu mới. Trang Quản trị (`admin.html`): xanh chính
+  `#0064E0`, header bảng có nền `#EDEFF2`, thêm mục v2.0.5 vào nhật ký
+  cập nhật. Trang Đăng nhập (`login.html`): xanh chính `#0064E0`
+  (logo, nút, focus, link).
+- **Kiểm thử:** `node --check` các khối `<script>` của file tĩnh đạt;
+  `scripts/apply_frontend_patch.py` pass và tái sinh
+  `public/app/index.html` (ghi rõ byte/dòng ở báo cáo bàn giao);
+  `scripts/test_api.py` trên server local tạm pass toàn bộ 109/109;
+  0 chuỗi `localStorage` trong `public/app/index.html`; probe jsdom
+  smoke test: 21 campaign, 15 case, nút Nộp bài, Custom Audience,
+  Customise columns, changelog, bảng KPI render bình thường, không lỗi
+  JS. **Chưa deploy lên fbads.digimar.site.**
+
+---
+
 ## v2.0.4 — 16/11/2026 (luồng nộp bài case — đã deploy 10:31)
 
 - **Nộp bài case:** học viên chỉnh case trong editor 3 bước rồi bấm "Nộp
