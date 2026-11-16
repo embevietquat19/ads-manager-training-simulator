@@ -293,6 +293,61 @@ check('hv01 đặt lại mặc định 200', st == 200 and j.get('ok') is True, 
 st, j = stuA.j('GET', '/api/bootstrap')
 check('bootstrap hv01 sau đặt lại thấy mặc định', st == 200 and j.get('colState', {}).get('custom') == [] and j['colState']['view']['preset'] == 'performance', str(j.get('colState')))
 
+print('== 18. Bài nộp case (nộp lại thay bản cũ, lưu riêng theo tài khoản) ==')
+sub6 = {
+  'caseId': 'case6',
+  'caseTitle': 'Case 6 — Đồ ngủ: tin nhắn rẻ mà 22 tin chỉ chốt được 2 đơn',
+  'source': 'editor',
+  'submittedAt': '2026-11-16T03:10:00.000Z',
+  'submittedAtVN': '16/11/2026 10:10',
+  'objective': 'Engagement',
+  'campName': 'Case 6 — Đồ ngủ',
+  'adsetName': 'Nhóm Đồ ngủ',
+  'adName': 'Quảng cáo Đồ ngủ',
+  'budget': {'amount': 277442, 'raw': '₫ 277,442 VND', 'type': 'Daily budget', 'unitNote': 'số tiền đã nhập trong editor'},
+  'target': {'display': '', 'locations': [{'name': 'Vietnam', 'mode': 'include', 'radius': ''}], 'ageMin': 22, 'ageMax': 40, 'minAge': '18', 'gender': 'Women', 'langs': [], 'interests': ['Thời trang (Fashion)'], 'narrow': [], 'excludeInterests': [], 'inclAud': [], 'exclAud': [], 'advantageAudience': True},
+  'placements': {'mode': 'advantage', 'platforms': ['Facebook', 'Instagram', 'Messenger', 'Audience Network', 'Threads'], 'devices': 'All devices', 'os': 'All operating systems', 'wifiOnly': False},
+  'optim': {'event': 'Maximise number of conversations', 'costControl': 'none', 'costAmount': '', 'bidStrategy': 'Highest volume', 'bidAmount': '', 'attrSetting': '7-day click · 1-day view'},
+  'creative': {'format': 'Single image or video', 'mode': 'new', 'primary': 'Đồ ngủ lụa mềm, mặc là mê', 'headline': 'Đồ ngủ lụa cao cấp', 'description': '', 'cta': 'Send message', 'demoPost': None},
+  'caseInputs': {'msgs': 22, 'rate': 20, 'cost': 12611, 'aov': 350000, 'cogs': 40},
+  'result': {'rows': [{'key': 'objective', 'label': 'Objective', 'student': 'Engagement', 'teacher': 'Engagement', 'verdict': 'ok', 'note': 'Khớp.'}], 'okCount': 5, 'total': 5},
+}
+st, j = anon2.j('PUT', '/api/submissions', {'submissions': {'case6': sub6}})
+check('chưa đăng nhập nộp bài -> 401', st == 401, str(st))
+st, j = stuA.j('PUT', '/api/submissions', {'submissions': 'khong-phai-object'})
+check('submissions không phải object -> 400', st == 400 and j.get('error') == 'bad_submissions', str(j))
+st, j = stuA.j('PUT', '/api/submissions', {'submissions': {'case99': dict(sub6, caseId='case99')}})
+check('caseId ngoài case1–case15 -> 400', st == 400, str(j))
+st, j = stuA.j('PUT', '/api/submissions', {'submissions': {'case6': dict(sub6, caseId='case7')}})
+check('caseId không khớp key -> 400', st == 400, str(j))
+st, j = stuA.j('PUT', '/api/submissions', {'submissions': {'case6': {k: v for k, v in sub6.items() if k != 'submittedAt'}}})
+check('thiếu submittedAt -> 400', st == 400, str(j))
+st, j = stuA.j('PUT', '/api/submissions', {'submissions': {'case%d' % i: dict(sub6, caseId='case%d' % i) for i in range(1, 17)}})
+check('quá 15 case -> 400', st == 400, str(j))
+st, j = stuA.j('PUT', '/api/submissions', {'submissions': {'case6': sub6}})
+check('hv01 nộp bài case6 200', st == 200 and j.get('ok') is True, str(j))
+st, j = stuA.j('GET', '/api/bootstrap')
+got_sub = j.get('submissions', {})
+check('bootstrap hv01 thấy bài nộp case6 đủ trường', st == 200 and got_sub.get('case6', {}).get('caseTitle', '').startswith('Case 6') and got_sub['case6']['budget']['amount'] == 277442 and got_sub['case6']['result']['okCount'] == 5 and got_sub['case6']['result']['total'] == 5, str(got_sub)[:300])
+st, j = stuB.j('GET', '/api/bootstrap')
+check('hv02 không thấy bài nộp của hv01 (rỗng)', st == 200 and j.get('submissions') == {}, str(j.get('submissions')))
+sub6b = dict(sub6)
+sub6b['budget'] = {'amount': 300000, 'raw': '₫ 300,000 VND', 'type': 'Daily budget', 'unitNote': 'số tiền đã nhập trong editor'}
+sub6b['submittedAt'] = '2026-11-16T03:20:00.000Z'
+sub6b['submittedAtVN'] = '16/11/2026 10:20'
+st, j = stuA.j('PUT', '/api/submissions', {'submissions': {'case6': sub6b}})
+check('hv01 nộp lại case6 với ngân sách khác 200', st == 200, str(j))
+st, j = stuA.j('GET', '/api/bootstrap')
+check('bootstrap chỉ giữ bản mới (300000), vẫn 1 case', st == 200 and len(j.get('submissions', {})) == 1 and j['submissions']['case6']['budget']['amount'] == 300000 and j['submissions']['case6']['submittedAtVN'] == '16/11/2026 10:20', str(j.get('submissions'))[:300])
+st, j = stuA.j('GET', '/api/admin/students/%d/work' % stuA_id)
+check('hv01 xem bài làm qua API admin -> 403', st == 403, str(st))
+st, j = teacher.j('GET', '/api/admin/students/%d/work' % stuA_id)
+ws = j.get('submissions', {}).get('case6', {})
+check('giáo viên xem bài làm thấy bài nộp case6', st == 200 and ws.get('caseTitle', '').startswith('Case 6') and ws.get('submittedAtVN') == '16/11/2026 10:20' and ws.get('result', {}).get('okCount') == 5 and ws['result']['total'] == 5 and ws['budget']['amount'] == 300000, str(ws)[:300])
+st, j = teacher.j('GET', '/api/admin/students')
+rowA2 = [s for s in j.get('students', []) if s['username'] == 'hv01'][0]
+check('tổng quan: hv01 submissionsCount = 1', rowA2.get('submissionsCount') == 1, str(rowA2))
+
 print()
 print('KẾT QUẢ: %d PASS, %d FAIL' % (len(passed), len(failed)))
 if failed:

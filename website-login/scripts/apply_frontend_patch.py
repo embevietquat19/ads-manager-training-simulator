@@ -180,6 +180,20 @@ patch('colStateSave',
       "function colStateSave(){try{localStorage.setItem(COL_STATE_KEY,JSON.stringify(colState))}catch(e){}}",
       "function colStateSave(){try{if(window.__srvSaveColState)window.__srvSaveColState(colState)}catch(e){}}")
 
+# ------------------------------------------- P23: bài nộp case — đọc/ghi qua máy chủ
+# 3 chỗ localStorage cuối cùng còn lại trong file tĩnh (subLoad/subSave +
+# dòng ghi chú trong khối comment v2.0.4); sau patch này kiểm tra an toàn
+# "không còn localStorage" mới đạt.
+patch('subLoad',
+      "function subLoad(){try{var r=localStorage.getItem(SUB_KEY);if(r){var o=JSON.parse(r);if(o&&typeof o==='object')return o}}catch(e){}return{}}",
+      "function subLoad(){try{var s=window.__srv&&window.__srv.submissions;return (s&&typeof s==='object')?JSON.parse(JSON.stringify(s)):{}}catch(e){return{}}}")
+patch('subSave',
+      "function subSave(caseId,sub){var all=subLoad();all[caseId]=sub;try{localStorage.setItem(SUB_KEY,JSON.stringify(all))}catch(e){}}",
+      "function subSave(caseId,sub){try{if(window.__srvSaveSubmissions)window.__srvSaveSubmissions(caseId,sub)}catch(e){}}")
+patch('sub-comment',
+      "của case + số liệu slider hiện tại). Bài nộp lưu ở localStorage (bản tĩnh)",
+      "của case + số liệu slider hiện tại). Bài nộp lưu trên máy chủ theo tài khoản (bản đăng nhập)")
+
 # ------------------------------------------- P14: nạp bridge.js
 patch('inject-bridge',
       "</script>\n</body>\n</html>",
