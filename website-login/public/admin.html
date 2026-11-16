@@ -93,7 +93,7 @@
 
   <section>
     <h2>Danh sách học viên</h2>
-    <p class="desc">Tiến độ tính theo 15 case tình huống. Bấm “Xem bài làm” để xem chi tiết số liệu từng case, ghi chú và chiến dịch của học viên đó.</p>
+    <p class="desc">Tiến độ tính theo 15 case tình huống. Bấm “Xem bài làm” để xem chi tiết số liệu từng case, ghi chú, bài đã nộp và chiến dịch của học viên đó.</p>
     <div class="table-wrap">
     <table>
       <thead><tr><th>Tài khoản</th><th>Tên hiển thị</th><th>Trạng thái</th><th>Case đã làm</th><th>Đáp án đã xem</th><th>Chiến dịch</th><th>Hoạt động gần nhất</th><th></th></tr></thead>
@@ -244,6 +244,24 @@
           + '<div class="kv"><span>Số liệu đã chỉnh</span><span>' + vals + '</span></div>'
           + '<div class="kv"><span>Ghi chú</span><span>' + (c.notes ? esc(c.notes) : '<span class="muted">—</span>') + '</span></div>'
           + '<div class="kv"><span>Cập nhật</span><span class="muted">' + fmtDate(c.updatedAt) + '</span></div></div>';
+      });
+      h += '<h3 style="margin:14px 0 8px">Bài đã nộp (' + Object.keys(w.submissions || {}).length + ' / 15)</h3>';
+      if (!w.submissions || !Object.keys(w.submissions).length) h += '<p class="muted">Học viên chưa nộp bài nào.</p>';
+      Object.keys(w.submissions || {}).sort().forEach(function(cid){
+        var s = w.submissions[cid];
+        var r = s.result || {};
+        var bTxt = '—';
+        if (s.budget) {
+          if (s.budget.raw) bTxt = s.budget.raw;
+          else if (typeof s.budget.amount === 'number') bTxt = s.budget.amount.toLocaleString('vi-VN') + ' đ';
+          if (s.budget.type) bTxt += ' (' + s.budget.type + ')';
+        }
+        h += '<div class="workcase"><h4>' + esc(s.caseTitle || cid) + '</h4>'
+          + '<div class="kv"><span>Nộp lúc</span><span>' + esc(s.submittedAtVN || s.submittedAt || '—') + '</span></div>'
+          + '<div class="kv"><span>Mục tiêu</span><span>' + esc(s.objective || '—') + '</span></div>'
+          + '<div class="kv"><span>Ngân sách</span><span>' + esc(bTxt) + '</span></div>'
+          + '<div class="kv"><span>Đối chiếu đáp án</span><span><b>' + (r.okCount != null && r.total != null ? r.okCount + ' / ' + r.total : '—') + '</b> mục đúng</span></div>'
+          + '<details style="margin-top:6px"><summary>Xem toàn bộ bài nộp</summary><pre>' + esc(JSON.stringify(s, null, 2)) + '</pre></details></div>';
       });
       h += '<h3 style="margin:14px 0 8px">Campaign của case đã sửa tên / ngân sách (' + w.overrides.length + ')</h3>';
       if (!w.overrides.length) h += '<p class="muted">Không có.</p>';
