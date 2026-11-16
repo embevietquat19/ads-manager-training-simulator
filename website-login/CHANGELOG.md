@@ -99,11 +99,9 @@
   score (CSS) và hiệu ứng cắt chữ chỉ kiểm chứng được bằng mắt trên Chrome
   thật sau deploy (jsdom không có layout); đổi Attribution setting chỉ đổi
   nhãn cột vì số liệu mẫu cố định.
-- **Chưa deploy:** bản này mới chỉ chạy kiểm thử local — cần push lên GitHub
-  để Hostinger tự deploy lại thì tính năng mới lên được fbads.digimar.site.
-  Sau khi deploy, điền giờ deploy thật vào mục v2.0.3 trong
-  `CHANGELOG_DATA` (file tĩnh) và mục nhật ký cập nhật ở trang Quản trị
-  (hiện đang ghi "sắp cập nhật").
+- **Đã deploy:** 10:00 ngày 16/11/2026 — đã push lên GitHub, Hostinger tự
+  cập nhật site fbads.digimar.site; giờ deploy thật đã điền vào mục v2.0.3
+  trong `CHANGELOG_DATA` (file tĩnh) và mục nhật ký cập nhật ở trang Quản trị.
 
 ## v2.0.2 — 16/11/2026 (Audiences: Custom Audience + Lookalike, lưu theo tài khoản)
 
