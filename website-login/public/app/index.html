@@ -12,7 +12,7 @@
   --green:#00793A; --green-dark:#00652F; --green-bright:#00A400;
   --bg:#F0F2F5; --surface:#FFFFFF; --surface2:#F5F6F7; --hover:#E4E6EB;
   --line:#DDDFE2; --line2:#CCD0D5; --line3:#BEC3C9;
-  --text:#1C1E21; --text2:#606770; --text3:#8A8D91;
+  --text:#1C1E21; --text2:#606770; --text3:#6B6F76;
   --red:#E41E3F; --amber-bg:#FEF6E0; --amber-line:#E8C547; --amber-text:#5C4300;
   --shadow:0 1px 2px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.08);
   --shadow-lg:0 12px 44px rgba(0,0,0,.28);
@@ -60,11 +60,11 @@ a:hover{text-decoration:underline}
 .tbtn.primary:hover{background:var(--blue-dark)}
 .tbtn .cnt{background:#fff;color:var(--blue-dark);border-radius:999px;font-size:11.5px;padding:0 7px;font-weight:800}
 .icon-only{width:38px;height:38px;padding:0;justify-content:center;border-radius:6px}
-.avatar-profiles{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0064E0,#9333EA);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2);cursor:pointer}
+.avatar-profiles{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2);cursor:pointer}
 .test-banner{background:#F7F8FA;border-bottom:1px solid var(--line);padding:10px 16px;display:flex;gap:12px;align-items:flex-start}
 .test-banner .pill{background:#1C1E21;color:#FFD93D;font-size:11px;font-weight:800;letter-spacing:.05em;padding:3px 9px;border-radius:999px;white-space:nowrap;margin-top:1px}
-.test-banner p{margin:0;font-size:13px;color:var(--text);flex:1}
-.test-banner .x{border:0;background:transparent;font-size:16px;color:var(--text2);width:30px;height:30px;border-radius:50%;flex:none}
+.test-banner p{margin:0;font-size:13px;color:var(--text);flex:1;max-width:960px}
+.test-banner .x{border:0;background:transparent;font-size:16px;color:var(--text2);width:36px;height:36px;border-radius:50%;flex:none}
 .test-banner .x:hover{background:var(--hover)}
 .shell{display:flex;align-items:stretch}
 .rail{width:40px;background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:2px;position:sticky;top:0;height:100vh;flex:none;z-index:30}
@@ -79,7 +79,7 @@ a:hover{text-decoration:underline}
 .page-head h1{font-size:28px;font-weight:800;margin:0;letter-spacing:-.01em}
 .page-head .sub{color:var(--text2);font-size:13px;margin-top:2px}
 .controls{padding:12px 20px 0}
-.ctrl-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ctrl-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .select-like{border:1px solid var(--line2);background:#fff;border-radius:6px;padding:7px 11px;font-weight:600;font-size:13px;display:inline-flex;gap:8px;align-items:center}
 .select-like:hover{background:var(--surface2)}
 .see-more{border:0;background:transparent;color:var(--blue);font-weight:600;font-size:13px;padding:7px 4px}
@@ -101,7 +101,7 @@ a:hover{text-decoration:underline}
 .sel-chip button{border:0;background:transparent;font-weight:800;color:inherit;width:20px;height:20px;padding:0}
 .date-range{margin-left:auto;border:1px solid var(--line2);background:#fff;border-radius:6px;padding:7px 12px;font-weight:600;font-size:13px;display:inline-flex;gap:8px;align-items:center;margin-bottom:6px}
 .date-range:hover{background:var(--surface2)}
-.action-row{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;padding:10px 0 0}
+.action-row{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;padding:10px 0 0}
 .action-row .btn{height:44px;padding:4px 13px}
 .btn{border:1px solid var(--line2);background:#fff;border-radius:6px;padding:7px 13px;font-weight:600;font-size:13px;display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
 .btn:hover{background:var(--surface2)}
@@ -109,12 +109,12 @@ a:hover{text-decoration:underline}
 .btn .car{font-size:10px;color:var(--text2)}
 .btn-create{background:var(--green-bright);border-color:var(--green-bright);color:#fff;font-size:13.5px;padding:8px 16px}
 .btn-create:hover{background:#008C00}
-.btn-publish-go{background:var(--green);border-color:var(--green);color:#fff}
-.btn-publish-go:hover{background:var(--green-dark)}
+.btn-publish-go{background:var(--green-bright);border-color:var(--green-bright);color:#fff}
+.btn-publish-go:hover{background:#008C00}
 .btn-blue{background:var(--blue-btn);border-color:var(--blue-btn);color:#fff}
 .btn-blue:hover{background:var(--blue-dark)}
 .action-right{margin-left:auto;display:flex;gap:6px;align-items:stretch;flex-wrap:wrap}
-.utility-row{display:flex;gap:6px;flex-wrap:wrap;padding:8px 0 0;align-items:center}
+.utility-row{display:flex;gap:8px;flex-wrap:wrap;padding:8px 0 0;align-items:center}
 .utility-row button{border:0;background:transparent;color:var(--text2);font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:6px;display:inline-flex;gap:6px;align-items:center;height:42px}
 .utility-row button:hover{background:#fff;color:var(--text)}
 .utility-row button kbd{font-family:inherit;font-size:11px;color:var(--text3);font-weight:400}
@@ -130,7 +130,7 @@ a:hover{text-decoration:underline}
 .menu hr{border:0;border-top:1px solid var(--line);margin:5px 4px}
 .menu .full{margin:6px 4px 2px;width:calc(100% - 8px);justify-content:center}
 /* Customise columns dialog (v2.0.3) */
-.colpick-row{display:flex;gap:8px;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;background:#fff;cursor:grab}
+.colpick-row{display:flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;background:#fff;cursor:grab}
 .colpick-row.dragging{opacity:.5}
 .colpick-row.off{opacity:.55}
 .colpick-row .grip{color:var(--text3);cursor:grab;flex:none;font-size:14px}
@@ -138,13 +138,13 @@ a:hover{text-decoration:underline}
 .colpick-row .nm{flex:1;min-width:0}
 .colpick-row .nm b{font-size:13.5px;display:block}
 .colpick-row .mv{border:1px solid var(--line2);background:#fff;border-radius:6px;width:28px;height:28px;cursor:pointer;flex:none;font-size:13px}
-.preset-row{display:flex;gap:8px;align-items:center;padding:9px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
+.preset-row{display:flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
 .preset-row .nm{flex:1;min-width:0}
 .preset-row .nm b{font-size:13.5px;display:block}
 .menu input[type="text"]{width:100%;border:1px solid var(--line2);border-radius:6px;padding:8px 10px;margin:4px 0}
 .table-card{margin:12px 20px 0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .table-scroll{overflow-x:auto}
-table{border-collapse:collapse;font-size:13px;min-width:1180px;width:100%}
+table{border-collapse:collapse;font-size:13px;min-width:1180px;width:100%;font-variant-numeric:tabular-nums}
 thead th{background:#EDEFF2;text-align:left;padding:7px 10px;font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--text2);border-bottom:1px solid var(--line);white-space:nowrap;font-weight:700}
 thead th.num,tbody td.num{text-align:right}
 tbody td{padding:12px 10px;border-bottom:1px solid #EBEDF0;vertical-align:middle;white-space:nowrap;overflow-wrap:anywhere}
@@ -161,13 +161,14 @@ td .sub2{display:block;font-size:12px;color:var(--text2);white-space:normal;over
 .edit-col-btn:hover{background:var(--surface2);color:var(--text)}
 .toggle{-webkit-appearance:none;appearance:none;width:38px;height:21px;min-height:21px;background:#B0B3B8;border-radius:999px;position:relative;cursor:pointer;outline:none;flex:none;vertical-align:middle;margin:0;transition:background .15s;border:0;padding:0}
 .toggle:checked{background:var(--blue)}
-.toggle::after{content:"";position:absolute;top:2.5px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
-.toggle:checked::after{left:19px}
+.toggle::after{content:"";position:absolute;top:2.5px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transform:translateX(0);transition:transform .15s,background .15s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.toggle:checked::after{left:3px;transform:translateX(16px)}
+.toggle:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .row-check{width:17px;height:17px;accent-color:var(--blue);vertical-align:middle}
 .table-foot{padding:10px 14px;font-size:12.5px;color:var(--text2);background:var(--surface2);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.section{padding:28px 20px 0}
-.section h2{font-size:19px;margin:0 0 4px}
-.section>p{margin:0 0 14px;color:var(--text2);font-size:13px;max-width:760px}
+.section{padding:32px 20px 0}
+.section h2{font-size:20px;margin:0 0 4px}
+.section>p{margin:0 0 14px;color:var(--text2);font-size:13px;max-width:640px}
 .briefs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .brief{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:8px}
 .brief .tag{align-self:flex-start;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--blue-light);color:var(--blue-dark)}
@@ -177,7 +178,7 @@ td .sub2{display:block;font-size:12px;color:var(--text2);white-space:normal;over
 .brief ul{margin:0;padding-left:18px;color:var(--text2);font-size:12.5px}
 .brief button{align-self:flex-start}
 .glossary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.gloss{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+.gloss{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px}
 .gloss b{font-size:13px;display:block;margin-bottom:4px}
 .gloss p{margin:0;font-size:12.5px;color:var(--text2)}
 .vi-hint{display:block;font-size:11px;line-height:1.35;color:#65676B;font-weight:400;margin-top:2px;letter-spacing:0;text-transform:none;white-space:normal}
@@ -185,21 +186,21 @@ td .sub2{display:block;font-size:12px;color:var(--text2);white-space:normal;over
 .stack{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;line-height:1.25;text-align:left}
 .stack .vi-hint{margin-top:1px}
 .btn .vi-hint,.tbtn .vi-hint{font-size:10.5px;color:inherit;opacity:.75}
-th .vi-hint{font-size:10px;color:#65676B;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
-.ann-panel{position:fixed;top:60px;right:16px;z-index:9999;width:420px;max-width:92vw;max-height:70vh;overflow:auto;background:#fff;border:1px solid #ddd;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.25);padding:14px;font-size:13.5px}
+.tbtn.primary .vi-hint,.btn-blue .vi-hint{opacity:1;color:#E7F0FE}
+.ann-panel{position:fixed;top:60px;right:16px;z-index:9999;width:420px;max-width:92vw;max-height:70vh;overflow:auto;background:#fff;border:1px solid #ddd;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.25);padding:16px;font-size:13.5px}
 .kpi-table{min-width:760px;width:100%}
-.kpi-table th{background:var(--surface2)}
+.kpi-table th{background:#EDEFF2}
 .obj-row .vi-hint{font-size:11.5px;color:#3A5A8C}
 .opp .vi-hint{font-size:10.5px;max-width:230px}
-footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width:860px}
+footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width:720px}
 .backdrop{position:fixed;inset:0;background:rgba(28,30,33,.55);z-index:90;display:none;align-items:center;justify-content:center;padding:16px}
 .backdrop.open{display:flex}
-.dialog{background:#fff;border-radius:10px;box-shadow:var(--shadow-lg);width:100%;max-height:calc(100vh - 32px);display:flex;flex-direction:column;overflow:hidden}
-.dialog-head{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--line)}
-.dialog-head h2{font-size:17px;margin:0}
+.dialog{background:#fff;border-radius:8px;box-shadow:var(--shadow-lg);width:100%;max-height:calc(100vh - 32px);display:flex;flex-direction:column;overflow:hidden}
+.dialog-head{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.dialog-head h2{font-size:18px;margin:0}
 .dialog-head .x{margin-left:auto;width:36px;height:36px;border-radius:50%;border:0;background:var(--surface2);font-size:15px}
 .dialog-head .x:hover{background:var(--hover)}
-.dialog-body{overflow-y:auto;padding:18px 20px}
+.dialog-body{overflow-y:auto;padding:16px 20px}
 .dialog-foot{border-top:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;gap:8px;background:#fff;flex-wrap:wrap}
 .dialog-foot .sp{flex:1}
 .warn-box{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:8px;padding:12px 14px;font-size:13px;margin-bottom:16px}
@@ -207,7 +208,7 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .tools-dialog{max-width:1060px}
 .tools-search{width:100%;border:1px solid var(--line2);border-radius:6px;padding:9px 11px;margin-bottom:14px}
 .freq-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:8px}
-.freq-tile{border:1px solid var(--line);border-radius:8px;padding:14px 8px;text-align:center;background:#fff;font-weight:600;font-size:12.5px}
+.freq-tile{border:1px solid var(--line);border-radius:8px;padding:16px 8px;text-align:center;background:#fff;font-weight:600;font-size:12.5px}
 .freq-tile:hover{background:var(--surface2)}
 .freq-tile .ti{font-size:22px;display:block;margin-bottom:6px}
 .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 28px}
@@ -221,7 +222,7 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .ctab{border:0;background:transparent;padding:11px 14px;font-weight:600;font-size:13.5px;color:var(--text2);border-bottom:3px solid transparent;margin-bottom:-1px}
 .ctab.active{color:var(--blue);border-bottom-color:var(--blue)}
 .create-grid{display:grid;grid-template-columns:1fr 300px;gap:22px;align-items:start}
-.field{margin-bottom:14px}
+.field{margin-bottom:16px}
 .field label{display:block;font-weight:600;font-size:13px;margin-bottom:6px}
 .field label small{font-weight:400;color:var(--text2)}
 .field input[type="text"],.field input[type="number"],.field select,.field textarea{width:100%;border:1px solid var(--line2);border-radius:6px;padding:9px 11px;background:#fff;outline:none}
@@ -236,16 +237,16 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .obj-row.sel .ic{background:#fff}
 .obj-row b{font-size:14px;display:block}
 .obj-row p{margin:1px 0 0;font-size:12.5px;color:var(--text2)}
-.illus{border-radius:10px;background:linear-gradient(150deg,#DCEBFF 0%,#C9D8FF 45%,#E3D7FF 100%);min-height:340px;display:grid;place-items:center;padding:22px;text-align:center;color:#2B3A67}
+.illus{border-radius:8px;background:linear-gradient(150deg,#DCEBFF 0%,#C9D8FF 45%,#E3D7FF 100%);min-height:340px;display:grid;place-items:center;padding:22px;text-align:center;color:#2B3A67}
 .illus .compass{font-size:74px;line-height:1}
 .illus b{display:block;margin-top:10px;font-size:14px}
 .illus span{font-size:12.5px;color:#46578A}
-.setup-opt{border:1px solid var(--line2);border-radius:10px;padding:16px;margin-bottom:12px}
+.setup-opt{border:1px solid var(--line2);border-radius:8px;padding:16px;margin-bottom:12px}
 .setup-opt.sel{border-color:var(--blue);background:var(--blue-pale)}
 .tagpill{display:inline-block;font-size:11px;font-weight:700;background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin:2px 2px 2px 0}
-.editor-back{position:fixed;inset:0;z-index:100;display:none;flex-direction:column;background:linear-gradient(120deg,#FDE8EF 0%,#E3EEFF 48%,#E2F4E4 100%)}
+.editor-back{position:fixed;inset:0;z-index:100;display:none;flex-direction:column;background:var(--bg)}
 .editor-back.open{display:flex}
-.editor-top{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.editor-top{background:#fff;border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .crumbs{font-size:13.5px;font-weight:600;display:flex;gap:6px;align-items:center;flex-wrap:wrap;min-width:0}
 .crumbs .sep{color:var(--text3)}
 .crumbs .cur{color:var(--text)}
@@ -257,11 +258,11 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .etabs button.sel{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.15)}
 .editor-scroll{flex:1;overflow-y:auto;padding:16px}
 .editor-layout{display:flex;gap:14px;max-width:1240px;margin:0 auto;align-items:flex-start}
-.tree{background:#fff;border:1px solid var(--line);border-radius:10px;width:218px;flex:none;padding:8px;position:sticky;top:0}
+.tree{background:#fff;border:1px solid var(--line);border-radius:8px;width:218px;flex:none;padding:8px;position:sticky;top:0}
 .tree .thead-row{display:flex;align-items:center;justify-content:space-between;padding:4px 6px 8px}
 .tree .thead-row b{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--text3)}
 .tree .collapse{border:0;background:var(--surface2);width:28px;height:28px;border-radius:6px;font-weight:800}
-.tree-item{display:flex;gap:8px;align-items:center;width:100%;border:0;background:transparent;text-align:left;padding:9px 8px;border-radius:7px;font-size:13px;font-weight:600}
+.tree-item{display:flex;gap:8px;align-items:center;width:100%;border:0;background:transparent;text-align:left;padding:8px;border-radius:7px;font-size:13px;font-weight:600}
 .tree-item small{display:block;font-weight:400;color:var(--text2);font-size:11.5px}
 .tree-item:hover{background:var(--surface2)}
 .tree-item.sel{background:var(--blue-pale);color:var(--blue-dark)}
@@ -270,7 +271,7 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .tree.collapsed .tree-item span,.tree.collapsed .thead-row b{display:none}
 .editor-main{flex:1;min-width:0}
 .editor-side{width:308px;flex:none;display:flex;flex-direction:column;gap:12px;position:sticky;top:0}
-.ecard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.ecard{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
 .ecard h4{margin:0 0 4px;font-size:14.5px}
 .ecard .hint{color:var(--text2);font-size:12.5px;margin:0 0 12px}
 .radio-line{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid transparent;border-radius:8px;cursor:pointer}
@@ -308,7 +309,7 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .story-frame{border:1px solid var(--line);border-radius:18px;overflow:hidden;max-width:220px;margin:0 auto 10px;background:#111;color:#fff;text-align:center;padding:26px 12px}
 .carousel-card{border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px;background:var(--surface2)}
 .carousel-card .img-ph{height:88px;border:1.5px dashed var(--line3);border-radius:8px;display:grid;place-items:center;color:var(--text2);font-weight:600;background:#fff;margin-bottom:10px}
-.editor-foot{background:rgba(255,255,255,.95);border-top:1px solid var(--line);padding:11px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.editor-foot{background:#fff;border-top:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .editor-foot .terms{font-size:12px;color:var(--text2);max-width:520px}
 .editor-foot .sp{flex:1}
 .saved-state{font-size:12.5px;color:var(--text2);font-weight:600}
@@ -323,10 +324,10 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .page-view{position:fixed;inset:0;background:var(--bg);z-index:105;display:none;flex-direction:column}
 .page-view.open{display:flex}
 .page-view-head{background:#fff;border-bottom:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.page-view-head h2{font-size:19px;margin:0}
-.page-view-body{overflow-y:auto;padding:18px 20px}
+.page-view-head h2{font-size:20px;margin:0}
+.page-view-body{overflow-y:auto;padding:16px 20px}
 .page-inner{max-width:1060px;margin:0 auto}
-.pcard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:12px}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:12px}
 .pcard h3{margin:0 0 6px;font-size:15px}
 .pcard p{margin:0 0 8px;color:var(--text2);font-size:13px}
 .two-col{display:grid;grid-template-columns:220px 1fr;gap:14px;align-items:start}
@@ -346,6 +347,7 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .err-text{color:var(--red);font-weight:600}
 .teach-note{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:8px;padding:12px 14px;font-size:13px;margin-bottom:14px}
 .teach-note b{display:block;margin-bottom:2px}
+.opt-card p,.opt-card ul li,.pcard p,.case-card p,.brief p,.gloss p,.teach-note{line-height:1.55}
 .opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .opt-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px}
 .opt-card.wide{grid-column:1/-1}
@@ -404,8 +406,9 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .roadmap td.num,.roadmap th.num{text-align:right}
 .target-table{width:100%;min-width:0;font-size:12.5px;border-collapse:collapse;margin-top:8px}
 .target-table th,.target-table td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:normal;vertical-align:top}
-.target-table thead th{background:var(--surface2);font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text2)}
+.target-table thead th{background:#EDEFF2;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:var(--text2)}
 .target-table-wrap{overflow-x:auto}
+@media(max-width:1280px){.briefs,.case-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1080px){.opt-grid{grid-template-columns:1fr}.case-grid{grid-template-columns:1fr}}
 @media(max-width:1080px){
   .briefs{grid-template-columns:1fr}
@@ -426,7 +429,7 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
   .util-strip{display:none}
   .page-head,.controls,.section{padding-left:12px;padding-right:12px}
   .table-card{margin-left:12px;margin-right:12px}
-  .page-head h1{font-size:23px}
+  .page-head h1{font-size:24px}
   .acct-combo{display:none}
   .tools-grid{grid-template-columns:1fr}
   .freq-grid{grid-template-columns:repeat(2,1fr)}
@@ -434,8 +437,9 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
   .search-wrap{max-width:none}
   .date-range{margin-left:0}
   .backdrop{padding:0}
-  .dialog{border-radius:0;max-height:100vh;height:100%}
+  .dialog{border-radius:0;max-height:100dvh;height:100dvh}
   .editor-scroll{padding:10px}
+  .field input[type="text"],.field input[type="number"],.field select,.field textarea,.search-filter input{font-size:16px;padding:11px 12px}
 }
 .as-sub{font-size:13.5px;font-weight:700;margin:16px 0 2px;padding-top:13px;border-top:1px solid var(--line)}
 .chip{display:inline-flex;align-items:center;gap:5px;background:var(--blue-pale);border:1px solid #B9D9FF;border-radius:999px;padding:2px 4px 2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
@@ -490,6 +494,7 @@ details.browse .brow button:hover{background:var(--blue-pale)}
 .peek-note{font-size:12.5px;color:var(--text2);margin:8px 0 0}
 .word-btn{width:auto!important;padding:0 9px!important;font-size:12px!important;font-weight:700}
 .post-thumb{width:64px;height:64px;border-radius:8px;background:var(--surface2);border:1px solid var(--line);display:grid;place-items:center;font-size:10px;font-weight:700;text-align:center;flex:none;padding:4px;color:var(--text2)}
+@media (prefers-reduced-motion: reduce){.toggle,.toggle::after,.toast{transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -1096,8 +1101,8 @@ details.browse .brow button:hover{background:var(--blue-pale)}
     <div class="dialog-head"><h2>Xuất file Word — nộp bài</h2><button class="x" onclick="closeDialog('wordBack')" aria-label="Close">✕</button></div>
     <div class="dialog-body">
       <p style="margin-top:0">Chiến dịch: <b id="wordCampName">—</b></p>
-      <div class="field"><label>Họ tên học viên</label><input type="text" id="wordStudent" placeholder="Ví dụ: Nguyễn Văn A"></div>
-      <div class="field"><label>Lớp / nhóm (không bắt buộc)</label><input type="text" id="wordClass" placeholder="Ví dụ: Lớp Ads cơ bản — Nhóm 3"></div>
+      <div class="field"><label for="wordStudent">Họ tên học viên</label><input type="text" id="wordStudent" placeholder="Ví dụ: Nguyễn Văn A"></div>
+      <div class="field"><label for="wordClass">Lớp / nhóm (không bắt buộc)</label><input type="text" id="wordClass" placeholder="Ví dụ: Lớp Ads cơ bản — Nhóm 3"></div>
       <p style="font-size:12.5px;color:var(--text2);margin:0">File .docx tải thẳng về máy, gồm toàn bộ setup: chiến dịch (mục tiêu, loại mua, ngân sách &amp; lịch chạy), nhóm quảng cáo (đối tượng: vị trí, tuổi, giới tính, ngôn ngữ, detailed targeting; vị trí hiển thị) và quảng cáo (định dạng, nội dung, tiêu đề, CTA, đích đến) — kèm họ tên và ngày xuất file để nộp cho giảng viên.</p>
     </div>
     <div class="dialog-foot"><span class="sp"></span><button class="btn" onclick="closeDialog('wordBack')">Huỷ</button><button class="btn btn-blue" onclick="doExportWord()">Tải file Word (.docx)</button></div>
@@ -1297,7 +1302,7 @@ details.browse .brow button:hover{background:var(--blue-pale)}
   <div class="side-panel-head"><h3 id="compareTitle">Compare 1 campaign</h3><span style="margin-left:auto"></span><button class="tbtn icon-only" onclick="closeCompare()" aria-label="Close">✕</button></div>
   <div class="side-panel-body">
     <div class="etabs" style="margin-bottom:12px"><button id="cmpTabTrends" onclick="setCompareTab('trends')">Trends</button><button class="sel" id="cmpTabBd" onclick="setCompareTab('breakdowns')">Breakdowns</button></div>
-    <div class="field"><label>Breakdown</label><select id="compareBreakdown"><option>Placement</option><option>Day</option><option>Age</option><option>Country</option></select><span class="vi-hint">Chia số liệu theo chiều này để so sánh — ví dụ Placement cho biết vị trí nào hiệu quả nhất.</span></div>
+    <div class="field"><label for="compareBreakdown">Breakdown</label><select id="compareBreakdown"><option>Placement</option><option>Day</option><option>Age</option><option>Country</option></select><span class="vi-hint">Chia số liệu theo chiều này để so sánh — ví dụ Placement cho biết vị trí nào hiệu quả nhất.</span></div>
     <div class="field"><label>Metric</label><select><option>Amount spent</option><option>Results</option><option>Impressions</option></select><p style="margin:4px 0 0;color:var(--text2)">--</p></div>
     <div class="pcard" style="text-align:center;padding:28px 16px"><b>Results unavailable</b><p>This campaign is a draft and has no results yet.</p><span class="vi-hint">Toàn bộ chiến dịch mẫu đều là nháp nên chưa có số liệu thật để vẽ biểu đồ — đúng như tài khoản thật lúc mới tạo.</span></div>
     <button class="btn" onclick="toast('+ Chart (mô phỏng): thêm biểu đồ so sánh khác.')">+ Chart</button>
@@ -1393,7 +1398,7 @@ details.browse .brow button:hover{background:var(--blue-pale)}
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 var toastTimer=null;
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove('show')},3400)}
@@ -1475,6 +1480,15 @@ CASE_CAMP_ROWS.forEach(function(r,i){
    Mỗi phiên bản mới thêm 1 mục vào ĐẦU mảng (mới nhất trước). Nội dung lấy từ
    CHANGELOG thật; ngày + giờ là giờ deploy. */
 var CHANGELOG_DATA=[
+ {v:'v2.0.6',date:'sắp cập nhật',items:[
+  'Polish giao diện (chỉ CSS + gắn label cho field, không đổi chức năng): tương phản chữ phụ --text3 tối hơn (#6B6F76, ≈ 5,0:1 trên nền trắng); hint tiếng Việt trên nút xanh chính còn đủ tương phản (#E7F0FE trên #0064E0, ≈ 4,7:1); công tắc toggle có vòng focus khi dùng bàn phím và núm trượt bằng transform thay vì left; thêm hỗ trợ prefers-reduced-motion; toast có role="status" aria-live="polite".',
+  'Bỏ gradient lệch chuẩn Meta: nền editor 3 bước về xám phẳng #F0F2F5, topbar/foot editor nền trắng; avatar topbar về xanh đặc #0064E0. Giữ nguyên 3 gradient có lý do riêng (khung minh hoạ .illus, ảnh placeholder quảng cáo mẫu, gradient thương hiệu Meta AI).',
+  'Thống nhất bo góc thẻ/dialog về 8px; padding/gap lẻ về thang 4/8pt (section 32px, dialog 16px, field 16px, gap 8px); 3 cỡ tiêu đề lẻ về thang (18/20/24px); vùng đọc dài (case, Tối ưu & Đề xuất, brief, glossary) line-height 1.55 và giới hạn độ dài dòng 640px; input trên mobile 16px để chống iOS auto-zoom.',
+  'Bảng: số liệu dùng tabular-nums; header bảng KPI và bảng tra nhanh đồng bộ nền #EDEFF2 với header bảng chính; nút đóng banner 36px như nút đóng dialog; dialog mobile dùng 100dvh; xoá CSS chết th .vi-hint; lưới brief/case thêm bước trung gian 2 cột ở ≤1280px.',
+  'Nút Publish trong editor dùng đúng xanh lá #00A400 như nút Create (kiểm tra thấy .btn-publish-go đang dùng thật ở bước 3 của editor, nên đổi màu thay vì xoá). Dòng lỗi đỏ .err-text giữ nguyên #E41E3F vì đã tính tương phản 4,61:1 trên nền trắng (≥ 4,5:1).',
+  'Trang Quản trị và Đăng nhập đồng bộ token: nút/input 6px, thẻ/section 8px, padding 16px; label form admin gắn for (tạo học viên, thông báo, đổi mật khẩu quản trị); card đăng nhập bo 8px/padding 24px, nút disabled thêm opacity .6, input mobile 16px.',
+  'Editor: gắn for/id cho các field chính (tên campaign đã có id, thêm aria-label cho ô tên campaign/ad set/ad dùng tiêu đề h4; ngân sách, lịch chạy, đối tượng, vị trí hiển thị, tối ưu & phân phối, creative, Primary text/Headline/Description, CTA, form tạo Custom Audience, hộp thoại xuất Word/tìm kiếm/so sánh). Label nhóm (radio/checkbox, nhóm nhiều ô) giữ nguyên vì đã bọc sẵn input hoặc không gắn được 1 ô duy nhất.'
+ ]},
  {v:'v2.0.5',date:'10:53 ngày 16/11/2026',items:[
   'Giao diện (chỉ CSS + rút ngắn 1 dòng hint, không đổi chức năng): xanh chính của link/nút đổi sang xanh Meta #0064E0; nút Create dùng đúng xanh lá #00A400; header bảng còn 1 dòng, hint cột chuyển thành tooltip khi rê chuột; topbar và các hàng nút căn thẳng hàng, cao đều.',
   'Topbar: dòng hint Opportunity score rút ngắn còn “Điểm càng cao, setup càng chuẩn — chỉ gợi ý, không bắt buộc.” (tối đa 2 dòng; đủ ý gốc trong tooltip); logo, ô tài khoản, khối Opportunity score và cụm nút phải căn giữa theo chiều dọc, cao đều 42px, chỉ wrap khi màn hình hẹp.',
@@ -2147,7 +2161,7 @@ document.getElementById('datePresets').innerHTML=['Today','Yesterday','Today and
     +hint('Lọc theo tên kiểu bản thật: chọn tầng (Campaign name) → toán tử (contains all of) → gõ từ khoá → Apply, chip lọc sẽ hiện trong thanh tìm kiếm.')
     +'<div class="field" style="margin-top:8px"><label>Level</label><select><option>Campaign name</option><option>Ad set name</option><option>Ad name</option></select></div>'
     +'<div class="field"><label>Operator</label><select><option>contains all of</option><option>contains any of</option><option>does not contain</option></select></div>'
-    +'<div class="field"><label>Keyword</label><input type="text" id="sfKeyword" placeholder="e.g. Engagement" list="sfSuggest"><datalist id="sfSuggest"><option value="Awareness"></option><option value="Traffic"></option><option value="Engagement"></option><option value="Leads"></option><option value="Sales"></option></datalist></div>'
+    +'<div class="field"><label for="sfKeyword">Keyword</label><input type="text" id="sfKeyword" placeholder="e.g. Engagement" list="sfSuggest"><datalist id="sfSuggest"><option value="Awareness"></option><option value="Traffic"></option><option value="Engagement"></option><option value="Leads"></option><option value="Sales"></option></datalist></div>'
     +'<button class="btn btn-blue" id="sfApply">Apply</button></div>';
   input.addEventListener('focus',function(){closeAllMenus(menu);menu.classList.add('open')});
   menu.addEventListener('click',function(e){e.stopPropagation()});
@@ -2613,7 +2627,7 @@ function audienceCard(){
   var h='<div class="ecard"><h4>Audience</h4>'+hint('Ai sẽ nhìn thấy quảng cáo — thẻ này chỉ hiện sau khi bấm Show more options ở bước Ad set, đúng như bản thật.')
   +'<div class="switch-row" style="margin-bottom:10px"><div><b>Advantage+ audience</b><span>'+(adv?'On — Meta tự mở rộng tìm người có khả năng tạo kết quả, dựa trên các gợi ý bên dưới.':'Off — chỉ phân phối trong đúng đối tượng bạn khai báo ở phần Audience details.')+'</span></div><input type="checkbox" class="toggle" '+(adv?'checked':'')+' onchange="toggleAdvAud(this)" aria-label="Advantage+ audience"></div>'
   +hint('<b>Khi nào dùng Advantage+ audience:</b> đã có dữ liệu chuyển đổi (Pixel/CAPI, tệp khách đã mua), sản phẩm đại trà, ngân sách đủ lớn để Meta học — để Meta tự vượt ra ngoài gợi ý tìm thêm người giống khách thật. <b>Khi nào dùng setup thường (manual):</b> bán theo vùng/ngách hẹp phải khoá cứng đối tượng (xem Case 8), ngân sách test nhỏ cần kiểm soát từng đồng, hoặc sản phẩm chỉ bán cho một nhóm rất cụ thể (xem Case 13).')
-  +'<div class="field"><label>Saved audience</label><select onchange="draftSet(\'savedAud\',this.value)"><option>Use a saved audience</option><option>No saved audiences yet</option></select>'+hint('Dùng lại tệp đối tượng đã lưu để khỏi khai báo lại.')+'</div>'
+  +'<div class="field"><label for="savedAudSel">Saved audience</label><select id="savedAudSel" onchange="draftSet(\'savedAud\',this.value)"><option>Use a saved audience</option><option>No saved audiences yet</option></select>'+hint('Dùng lại tệp đối tượng đã lưu để khỏi khai báo lại.')+'</div>'
 
   +'<div class="as-sub">Audience controls</div>'
   +hint('<b>Kiểm soát đối tượng</b> là giới hạn cứng — Advantage+ có mở rộng thế nào cũng không vượt qua các giới hạn này (địa lý, tuổi tối thiểu, loại trừ, ngôn ngữ).')
@@ -2623,18 +2637,18 @@ function audienceCard(){
   +'<div style="margin-top:6px"><a onclick="toast(\'Browse locations (mô phỏng): duyệt cây quốc gia / tỉnh thành để khoanh vùng.\')">Browse</a> · <a onclick="toast(\'Add locations in bulk (mô phỏng): dán danh sách nhiều địa điểm cùng lúc.\')">Add locations in bulk</a></div>'
   +'<div class="map-ph">Map (simulated) — Vietnam<br><button class="btn" onclick="toast(\'Zoom In (mô phỏng).\')">Zoom In</button> <button class="btn" onclick="toast(\'Zoom Out (mô phỏng).\')">Zoom Out</button> <button class="btn" onclick="toast(\'Centre Map (mô phỏng).\')">Centre Map</button> <button class="btn" onclick="toast(\'Drop Pin (mô phỏng): ghim một điểm trên bản đồ rồi chọn bán kính quanh điểm đó ở danh sách địa điểm phía trên.\')">Drop Pin</button></div>'
   +hint('Khoanh vùng địa lý: bán ở đâu khoanh đúng ở đó. Địa điểm dạng thành phố/điểm ghim thì đặt <b>bán kính</b> (ví dụ bán kính 25 km quanh cửa hàng); vùng không phục vụ được thì thêm một dòng <b>Exclude</b> để loại trừ. Ngành thi công/dịch vụ theo vùng mà để toàn quốc là tin nhắn đổ về nơi không làm được — xem Case 8.')+'</div>'
-  +'<div class="grid2"><div class="field"><label>Minimum age</label><select onchange="draftSet(\'minAge\',this.value)">'+ageOpts+'</select>'+hint('Tuổi tối thiểu là giới hạn cứng — dưới tuổi này Meta không hiển thị, kể cả khi Advantage+ mở rộng.')+'</div>'
-  +'<div class="field"><label>Languages</label><select onchange="addFromSelect(this,\'langs\')"><option value="">Add a language…</option><option>Vietnamese</option><option>English (US)</option><option>English (UK)</option><option>Korean</option><option>Japanese</option><option>Chinese (Simplified)</option></select>'
+  +'<div class="grid2"><div class="field"><label for="minAgeSel">Minimum age</label><select id="minAgeSel" onchange="draftSet(\'minAge\',this.value)">'+ageOpts+'</select>'+hint('Tuổi tối thiểu là giới hạn cứng — dưới tuổi này Meta không hiển thị, kể cả khi Advantage+ mở rộng.')+'</div>'
+  +'<div class="field"><label for="langsSel">Languages</label><select id="langsSel" onchange="addFromSelect(this,\'langs\')"><option value="">Add a language…</option><option>Vietnamese</option><option>English (US)</option><option>English (UK)</option><option>Korean</option><option>Japanese</option><option>Chinese (Simplified)</option></select>'
   +(langs.length?chipsHTML('langs'):'<p style="margin:6px 0 0;font-size:12.5px;color:var(--text2)">All languages — chưa giới hạn ngôn ngữ.</p>')
   +hint('Để trống = mọi ngôn ngữ. Chỉ chọn khi sản phẩm/nội dung chỉ phục vụ người dùng một ngôn ngữ nhất định.')+'</div></div>'
-  +'<div class="field"><label>Exclude these custom audiences</label><select onchange="addFromSelect(this,\'exclAud\')"><option value="">Select a custom audience to exclude…</option><option>Người đã mua — 180 ngày</option><option>Người đã nhắn tin Page — 180 ngày</option><option>Khách hàng hiện tại (CRM list)</option><option>Người đã cài app</option>'+audOptionsHTML()+'</select>'+chipsHTML('exclAud','excl')
+  +'<div class="field"><label for="exclAudSel">Exclude these custom audiences</label><select id="exclAudSel" onchange="addFromSelect(this,\'exclAud\')"><option value="">Select a custom audience to exclude…</option><option>Người đã mua — 180 ngày</option><option>Người đã nhắn tin Page — 180 ngày</option><option>Khách hàng hiện tại (CRM list)</option><option>Người đã cài app</option>'+audOptionsHTML()+'</select>'+chipsHTML('exclAud','excl')
   +hint('Loại trừ người đã mua / đã là khách để ngân sách tập trung vào khách mới — tệp loại trừ hiện dưới dạng thẻ, bấm ✕ để gỡ.')+'</div>'
   +'<div class="kv"><span>Unknown age on WhatsApp</span><b>Included</b></div>'
   +'<p style="color:var(--text2);font-size:12.5px;margin:6px 0 0">Audience includes unknown age on WhatsApp</p>'
 
   +'<div class="as-sub">'+(adv?'Advantage+ audience — Suggest an audience':'Audience details (manual)')+'</div>'
   +hint(adv?'Phần này là <b>gợi ý</b> cho Advantage+: Meta ưu tiên tìm người khớp gợi ý nhưng vẫn có thể vượt ra ngoài để tìm kết quả. Muốn khóa cứng thì đưa điều kiện lên Audience controls ở trên.':'Advantage+ đang tắt nên phần này là đối tượng <b>chính thức</b>: Meta chỉ phân phối cho người khớp các điều kiện dưới đây.')
-  +'<div class="grid2" style="margin-top:10px"><div class="field"><label>Age — from</label><select onchange="draftSet(\'ageMin\',this.value)">'+ageMinOpts+'</select></div><div class="field"><label>Age — to</label><select onchange="draftSet(\'ageMax\',this.value)">'+ageMaxOpts+'</select></div></div>'
+  +'<div class="grid2" style="margin-top:10px"><div class="field"><label for="ageMinSel">Age — from</label><select id="ageMinSel" onchange="draftSet(\'ageMin\',this.value)">'+ageMinOpts+'</select></div><div class="field"><label for="ageMaxSel">Age — to</label><select id="ageMaxSel" onchange="draftSet(\'ageMax\',this.value)">'+ageMaxOpts+'</select></div></div>'
   +'<div class="field"><label>Gender</label><div class="seg" role="group" aria-label="Gender">'
   +['All genders','Men','Women'].map(function(g){return '<button type="button" class="'+(gender===g?'sel':'')+'" onclick="setGender(\''+g+'\')">'+g+'</button>'}).join('')+'</div>'
   +hint('Chọn theo người thật sự mua hàng: ví dụ đồ ngủ nữ thì để Women, áo phông biker thì để Men — đừng để All genders cho mọi sản phẩm.')+'</div>'
@@ -2665,7 +2679,7 @@ function audienceCard(){
   } else {
     h+='<div class="adv-note"><b>Exclude theo detailed targeting không khả dụng khi Advantage+ audience đang bật</b> — ở chế độ gợi ý, Meta có thể vượt qua sở thích/hành vi bạn gợi ý. Muốn loại trừ cứng, dùng <b>Exclude these custom audiences</b> ở phần Audience controls phía trên, hoặc tắt Advantage+ audience để mở ô Exclude thủ công.</div>';
   }
-  h+='<div class="field" style="margin-top:12px"><label>Include these custom audiences</label><select onchange="addFromSelect(this,\'inclAud\')"><option value="">Select a custom audience…</option><option>Người tương tác Page — 365 ngày</option><option>Người xem video 75% — 180 ngày</option><option>Website visitors — 180 ngày (Pixel)</option><option>Lookalike 1% — Người đã mua</option>'+audOptionsHTML()+'</select>'+chipsHTML('inclAud')
+  h+='<div class="field" style="margin-top:12px"><label for="inclAudSel">Include these custom audiences</label><select id="inclAudSel" onchange="addFromSelect(this,\'inclAud\')"><option value="">Select a custom audience…</option><option>Người tương tác Page — 365 ngày</option><option>Người xem video 75% — 180 ngày</option><option>Website visitors — 180 ngày (Pixel)</option><option>Lookalike 1% — Người đã mua</option>'+audOptionsHTML()+'</select>'+chipsHTML('inclAud')
   +hint('Tệp tùy chỉnh / Lookalike đưa vào làm gợi ý cho Advantage+ — ưu tiên xây Lookalike từ tệp <b>người đã mua</b>, không phải tệp tương tác.')+'</div>'
   +'<div style="margin-top:10px"><button class="btn btn-blue" type="button" onclick="toast(\'Save audience (mô phỏng): đã lưu đối tượng hiện tại vào bản nháp — mở lại editor vẫn còn nguyên các lựa chọn.\')">Save audience</button></div>'
   +hint('Mọi lựa chọn ở thẻ Audience tự lưu vào bản nháp của trình duyệt này ngay khi bạn thay đổi.')+'</div>';
@@ -2691,9 +2705,9 @@ function placementsCard(){
   if(showManual){
     h+='<div style="margin-top:12px"><b>Manual placements'+(adv?' (xem trước — đang khoá)':'')+'</b>'+hint('Chọn tay từng <b>nền tảng</b> (Facebook, Instagram, Messenger, Audience Network, Threads) và từng <b>bề mặt</b> trong nền tảng đó: Bảng feed, Stories, Reels, Tìm kiếm, Marketplace, Video trong luồng… Bỏ tick bề mặt nào là quảng cáo không xuất hiện ở đó nữa.')
     +(adv?'<p class="peek-note">Advantage+ placements đang bật nên danh sách này chỉ để xem trước và bị khoá — Meta tự quyết định vị trí hiển thị. Tắt công tắc Advantage+ placements ở trên để chỉnh tay từng bề mặt; các lựa chọn thủ công trước đó vẫn được giữ trong bản nháp.</p>':'')
-    +'<div class="grid2" style="margin-top:10px"><div class="field"><label>Device type</label><select onchange="draftSet(\'devType\',this.value)">'
+    +'<div class="grid2" style="margin-top:10px"><div class="field"><label for="devTypeSel">Device type</label><select id="devTypeSel" onchange="draftSet(\'devType\',this.value)">'
     +['All devices','Mobile only','Desktop only'].map(function(x){return '<option'+(draftGet('devType','All devices')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select></div>'
-    +'<div class="field"><label>Operating systems</label><select onchange="draftSet(\'devOS\',this.value)">'
+    +'<div class="field"><label for="devOSSel">Operating systems</label><select id="devOSSel" onchange="draftSet(\'devOS\',this.value)">'
     +['All operating systems','iOS only','Android only'].map(function(x){return '<option'+(draftGet('devOS','All operating systems')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select></div></div>'
     +'<label class="check-line"><input type="checkbox" '+(draftGet('wifiOnly',false)?'checked':'')+' onchange="draftSet(\'wifiOnly\',this.checked)"><span><b>Only when connected to Wi-Fi</b><span>Chỉ hiển thị khi thiết bị đang dùng Wi-Fi — hợp quảng cáo video nặng / cài app.</span></span></label>';
     platforms.forEach(function(p){
@@ -2719,25 +2733,25 @@ function budgetCard(o){
   var setSched=draftGet('setSched',false);
   var days=['T2','T3','T4','T5','T6','T7','CN'];
   var h='<div class="ecard"><h4>Budget &amp; schedule</h4>'+hint(isCamp?'Mục tiêu này đặt ngân sách ở tầng chiến dịch (CBO) — nhóm quảng cáo dùng chung ngân sách chiến dịch.':'Tiền và thời gian chạy của riêng nhóm này (ABO) — chỗ học viên hay nhầm với ngân sách chiến dịch nhất.')
-  +'<div class="field"><label>Budget type</label><select onchange="setBudgetType(this.value)"><option'+(!isLife?' selected':'')+'>Daily budget</option><option'+(isLife?' selected':'')+'>Lifetime budget</option></select>'
+  +'<div class="field"><label for="budgetTypeSel">Budget type</label><select id="budgetTypeSel" onchange="setBudgetType(this.value)"><option'+(!isLife?' selected':'')+'>Daily budget</option><option'+(isLife?' selected':'')+'>Lifetime budget</option></select>'
   +hint(isLife?'<b>Lifetime budget</b> = ngân sách <b>tổng</b> cho cả đợt chạy — bắt buộc có ngày kết thúc, Meta tự rải tiền theo lịch. Hợp chiến dịch có hạn chót rõ ràng (flash sale, sự kiện).':'<b>Daily budget</b> = ngân sách <b>theo ngày</b> — cách đặt phổ biến nhất khi chạy liên tục (Ongoing), dễ tăng/giảm từng bước khi scale.')+'</div>'
-  +'<div class="field"><label>Amount</label><input type="text" value="'+esc(caseCtx?(caseCtx.saved.budgetAmt||caseCtx.row.cfg.budgetAmt):draftGet('budgetAmt',o.budget))+'" onchange="draftSet(\'budgetAmt\',this.value)">'+hint('Số tiền lưu vào bản nháp ngay khi bạn sửa — mở lại nhóm quảng cáo vẫn giữ nguyên mức ngân sách đã nhập.')+'</div>'
+  +'<div class="field"><label for="budgetAmtInput">Amount</label><input type="text" id="budgetAmtInput" value="'+esc(caseCtx?(caseCtx.saved.budgetAmt||caseCtx.row.cfg.budgetAmt):draftGet('budgetAmt',o.budget))+'" onchange="draftSet(\'budgetAmt\',this.value)">'+hint('Số tiền lưu vào bản nháp ngay khi bạn sửa — mở lại nhóm quảng cáo vẫn giữ nguyên mức ngân sách đã nhập.')+'</div>'
   +'<p style="font-size:12.5px;color:var(--text2);margin:0 0 12px">Ad set budget sharing is on. This ad set may spend up to a maximum per day and a maximum per week above its daily budget. <a onclick="toast(\'About daily budget (mô phỏng): ngân sách ngày là mức trung bình — có ngày Meta chi vượt để bắt cơ hội tốt, nhưng tổng tuần vẫn quanh mức đã đặt.\')">About daily budget</a></p>'
   +'<div class="as-sub" style="margin-top:4px">Schedule</div>'
-  +'<div class="grid2" style="margin-top:8px"><div class="field"><label>Start date</label><input type="date" value="'+esc(draftGet('startDate','2026-10-26'))+'" onchange="draftSet(\'startDate\',this.value)"></div>'
-  +'<div class="field"><label>Start time (GMT+7)</label><input type="time" value="'+esc(draftGet('startTime','17:31'))+'" onchange="draftSet(\'startTime\',this.value)"></div></div>'
+  +'<div class="grid2" style="margin-top:8px"><div class="field"><label for="startDateInput">Start date</label><input type="date" id="startDateInput" value="'+esc(draftGet('startDate','2026-10-26'))+'" onchange="draftSet(\'startDate\',this.value)"></div>'
+  +'<div class="field"><label for="startTimeInput">Start time (GMT+7)</label><input type="time" id="startTimeInput" value="'+esc(draftGet('startTime','17:31'))+'" onchange="draftSet(\'startTime\',this.value)"></div></div>'
   +'<label class="check-line"><input type="checkbox" '+(setEnd?'checked':'')+' onchange="toggleEndDate(this)"><span><b>Set an end date</b>'+(isLife?'<span>Bắt buộc với Lifetime budget.</span>':'')+'</span></label>';
   if(setEnd){
-    h+='<div class="grid2"><div class="field"><label>End date</label><input type="date" value="'+esc(draftGet('endDate','2026-11-26'))+'" onchange="draftSet(\'endDate\',this.value)"></div>'
-    +'<div class="field"><label>End time (GMT+7)</label><input type="time" value="'+esc(draftGet('endTime','23:59'))+'" onchange="draftSet(\'endTime\',this.value)"></div></div>'
+    h+='<div class="grid2"><div class="field"><label for="endDateInput">End date</label><input type="date" id="endDateInput" value="'+esc(draftGet('endDate','2026-11-26'))+'" onchange="draftSet(\'endDate\',this.value)"></div>'
+    +'<div class="field"><label for="endTimeInput">End time (GMT+7)</label><input type="time" id="endTimeInput" value="'+esc(draftGet('endTime','23:59'))+'" onchange="draftSet(\'endTime\',this.value)"></div></div>'
     +hint('Đến đúng thời điểm này nhóm quảng cáo tự dừng — nhớ kiểm tra múi giờ GMT+7 kẻo camp dừng sớm hoặc chạy lố một ngày.');
   } else {
     h+=hint('Không đặt ngày kết thúc = chạy liên tục (Ongoing) cho tới khi bạn tự tắt hoặc hết hạn mức tài khoản.');
   }
   h+='<label class="check-line" style="margin-top:6px"><input type="checkbox" '+(setSched?'checked':'')+' onchange="toggleSched(this)"><span><b>Run ads on a schedule</b><span>Ad scheduling — chỉ chạy trong khung giờ / ngày đã chọn.</span></span></label>';
   if(setSched){
-    h+='<div class="grid2"><div class="field"><label>From</label><input type="time" value="'+esc(draftGet('schedFrom','06:00'))+'" onchange="draftSet(\'schedFrom\',this.value)"></div>'
-    +'<div class="field"><label>To</label><input type="time" value="'+esc(draftGet('schedTo','22:00'))+'" onchange="draftSet(\'schedTo\',this.value)"></div></div>'
+    h+='<div class="grid2"><div class="field"><label for="schedFromInput">From</label><input type="time" id="schedFromInput" value="'+esc(draftGet('schedFrom','06:00'))+'" onchange="draftSet(\'schedFrom\',this.value)"></div>'
+    +'<div class="field"><label for="schedToInput">To</label><input type="time" id="schedToInput" value="'+esc(draftGet('schedTo','22:00'))+'" onchange="draftSet(\'schedTo\',this.value)"></div></div>'
     +'<div class="day-chks">'+days.map(function(d,i){return '<label><input type="checkbox" '+(draftGet('schedD'+i,true)?'checked':'')+' onchange="draftSet(\'schedD'+i+'\',this.checked)"> '+d+'</label>'}).join('')+'</div>'
     +hint('Chỉ nên hẹn giờ khi khách của bạn thật sự chỉ mua trong khung giờ đó (ví dụ dịch vụ đặt lịch giờ hành chính). Shop online bán 24/7 mà hẹn giờ hẹp là tự cắt mất khách buổi tối.');
   }
@@ -2760,11 +2774,11 @@ function optimCard(o,n){
   if(n==='Sales')ctlOpts.push(['roas','Minimum ROAS goal','Meta chỉ phân phối khi tỉ suất doanh thu / chi tiêu kỳ vọng đạt tối thiểu mức bạn đặt (ví dụ ROAS 2.0 = 200%).']);
   var ctlLabel=ctl==='cpr'?'Cost per result goal (VND / kết quả)':(ctl==='bid'?'Bid cap (VND / lần đấu giá)':(ctl==='roas'?'Minimum ROAS goal (ví dụ 2.0)':'Amount'));
   var h='<div class="ecard"><h4>Optimisation &amp; delivery</h4>'+hint('Meta phân phối quảng cáo dựa trên <b>sự kiện tối ưu hoá</b> này và các giới hạn chi phí / cửa sổ ghi nhận bên dưới — chọn sai sự kiện là camp tối ưu nhầm hành vi (xem Case 10: Traffic tối ưu lượt bấm nên lead toàn bấm nhầm).')
-  +'<div class="field" style="margin-top:10px"><label>Optimisation event</label><select onchange="draftSet(\'convEvent_'+n+'\',this.value)">'
+  +'<div class="field" style="margin-top:10px"><label for="convEventSel">Optimisation event</label><select id="convEventSel" onchange="draftSet(\'convEvent_'+n+'\',this.value)">'
   +evs.map(function(e){return '<option'+(curEv===e?' selected':'')+'>'+e+'</option>'}).join('')+'</select>'
   +hint('Sự kiện phải khớp mục tiêu: bán hàng thì tối ưu <b>Purchase</b>, thu lead thì <b>Leads</b>, nhắn tin thì <b>Conversations</b>. Tối ưu sự kiện ở miệng phễu (Add to cart, link click) chỉ khi sự kiện chính chưa đủ ~50 chuyển đổi/tuần để Meta học.')+'</div>';
   if(n==='Sales'||n==='Leads'){
-    h+='<div class="field"><label>Dataset / Pixel</label><select onchange="draftSet(\'dataset\',this.value)">'
+    h+='<div class="field"><label for="datasetSel">Dataset / Pixel</label><select id="datasetSel" onchange="draftSet(\'dataset\',this.value)">'
     +['Shop Pixel — 1234567890 (sample)','Chưa cài dataset / pixel'].map(function(x){return '<option'+(draftGet('dataset','Shop Pixel — 1234567890 (sample)')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'
     +hint('Sự kiện tối ưu hoá lấy từ dataset/pixel này — chưa cài pixel + CAPI thì không tối ưu theo Purchase/Lead trên website được.')+'</div>';
   }
@@ -2773,14 +2787,14 @@ function optimCard(o,n){
     h+='<label class="radio-line'+(ctl===c[0]?' sel':'')+'"><input type="radio" name="costCtl" '+(ctl===c[0]?'checked':'')+' onchange="setCostControl(\''+c[0]+'\')"><span><b>'+c[1]+'</b><span>'+c[2]+'</span></span></label>';
   });
   if(ctl!=='none'){
-    h+='<div class="field" style="margin-top:8px"><label>'+ctlLabel+'</label><input type="text" placeholder="Ví dụ: 50,000" value="'+esc(draftGet('costAmt',''))+'" onchange="draftSet(\'costAmt\',this.value)">'
+    h+='<div class="field" style="margin-top:8px"><label for="costAmtInput">'+ctlLabel+'</label><input type="text" id="costAmtInput" placeholder="Ví dụ: 50,000" value="'+esc(draftGet('costAmt',''))+'" onchange="draftSet(\'costAmt\',this.value)">'
     +hint('Mức kiểm soát lưu vào bản nháp. Đặt trần thấp hơn hẳn chi phí/kết quả đang có thường khiến nhóm quảng cáo chi tiêu rất chậm hoặc đứng hẳn.')+'</div>';
   }
   h+='<div class="as-sub">Attribution setting</div>'
-  +'<div class="field" style="margin-top:8px"><label>Attribution setting</label><select onchange="draftSet(\'attrSetting\',this.value)">'
+  +'<div class="field" style="margin-top:8px"><label for="attrSettingSel">Attribution setting</label><select id="attrSettingSel" onchange="draftSet(\'attrSetting\',this.value)">'
   +['7-day click · 1-day view','7-day click','1-day click · 1-day view','1-day click','1-day click · 1-day engaged view'].map(function(x){return '<option'+(draftGet('attrSetting','7-day click · 1-day view')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'
   +hint('<b>Phân bổ (attribution)</b> = cửa sổ ghi nhận: một đơn hàng được tính cho quảng cáo nếu khách bấm (click) trong vòng 7 ngày hoặc xem (view) trong vòng 1 ngày trước khi mua. Chu trình mua càng dài (BĐS, khóa học, dịch vụ giá cao) càng cần cửa sổ dài; đổi cửa sổ giữa chừng làm số liệu trước/sau không so sánh được với nhau.')+'</div>'
-  +'<div class="field"><label>Attribution model</label><select onchange="draftSet(\'attrModel\',this.value)">'
+  +'<div class="field"><label for="attrModelSel">Attribution model</label><select id="attrModelSel" onchange="draftSet(\'attrModel\',this.value)">'
   +['Standard','Incremental'].map(function(x){return '<option'+(draftGet('attrModel','Standard')===x?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'
   +hint('Standard là mô hình mặc định theo quy tắc cửa sổ ở trên; Incremental đo phần chuyển đổi tăng thêm nhờ quảng cáo — nâng cao, chỉ dùng khi đã có dữ liệu đối chứng.')+'</div>'
   +'<div class="kv"><span>Delivery type</span><b>Standard</b></div>'
@@ -2794,9 +2808,9 @@ function renderEditor(){
   else if(draftGet('adSetupMode','new')==='new'){primaryTextVal=draftGet('manualPrimary','');headlineVal=draftGet('manualHeadline','');descVal=draftGet('manualDesc','')}
   /* --- STEP 1: CAMPAIGN --- */
   var c='<div class="ecard"><h4>Campaign name</h4>'+hint('Đặt tên dễ quản lý, nên chứa ngày + mục tiêu + sản phẩm, ví dụ “15.11 – '+n+' – Áo thun”.')
-  +'<div class="field" style="margin:0"><input type="text" id="campNameInput" value="'+esc(caseCtx?(caseCtx.saved.name||caseCtx.row.name):draftGet('campName_'+n,'New '+n+' campaign'))+'" oninput="setCampName(this.value)"></div><button class="btn" style="margin-top:10px" onclick="toast(\'Create template (mô phỏng).\')">Create template</button></div>'
+  +'<div class="field" style="margin:0"><input type="text" id="campNameInput" aria-label="Campaign name" value="'+esc(caseCtx?(caseCtx.saved.name||caseCtx.row.name):draftGet('campName_'+n,'New '+n+' campaign'))+'" oninput="setCampName(this.value)"></div><button class="btn" style="margin-top:10px" onclick="toast(\'Create template (mô phỏng).\')">Create template</button></div>'
   +'<div class="ecard"><h4>Campaign details</h4>'+hint('Mục tiêu chọn ở đây quyết định Meta tối ưu theo hành động nào — đổi mục tiêu giữa chừng thường phải tạo chiến dịch mới.')
-  +'<div class="field"><label>Buying type</label><select onchange="draftSet(\'buyingType\',this.value)">'+optsSel(['Auction','Reservation'],draftGet('buyingType','Auction'))+'</select>'+hint('Auction là đấu giá theo thời gian thực — cách mua mặc định; Reservation đặt trước vị trí hiển thị với giá cố định, chỉ mở cho một số tài khoản.')+'</div>'
+  +'<div class="field"><label for="buyingTypeSel">Buying type</label><select id="buyingTypeSel" onchange="draftSet(\'buyingType\',this.value)">'+optsSel(['Auction','Reservation'],draftGet('buyingType','Auction'))+'</select>'+hint('Auction là đấu giá theo thời gian thực — cách mua mặc định; Reservation đặt trước vị trí hiển thị với giá cố định, chỉ mở cho một số tài khoản.')+'</div>'
   +'<div class="field" style="margin:0"><label>Campaign objective</label><p style="margin:0"><b>'+n+'</b></p></div></div>';
   if(n==='Leads')c+='<div class="ecard"><div class="switch-row"><div><b>Advantage+ leads campaign</b><span>'+(draftGet('advLeadsCamp',true)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('advLeadsCamp',true)?'checked':'')+' onchange="toggleAdvOpt(\'advLeadsCamp\',this,\'Advantage+ leads campaign\')" aria-label="Advantage+ leads campaign"></div>'+hint('<b>Advantage+ leads campaign</b> là gói tự động hoá riêng cho thu lead: Meta tự áp đối tượng &amp; vị trí hiển thị Advantage+ và tối ưu theo lead. Dùng khi đã có nguồn lead chất lượng/CRM để Meta học đúng lead tốt. Tắt công tắc để về <b>setup thường</b>: tự khai báo đối tượng và vị trí hiển thị ở bước Ad set — hợp khi mới test, ngân sách nhỏ, cần kiểm soát chặt nguồn lead.')+'</div>';
   if(n==='App promotion')c+='<div class="ecard"><div class="switch-row"><div><b>iOS 14+ campaign</b><span>'+(draftGet('ios14Camp',false)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('ios14Camp',false)?'checked':'')+' onchange="toggleAdvOpt(\'ios14Camp\',this,\'iOS 14+ campaign\')" aria-label="iOS 14+ campaign"></div></div><div class="ecard"><div class="switch-row"><div><b>Advantage+ app campaign</b><span>'+(draftGet('advAppCamp',true)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('advAppCamp',true)?'checked':'')+' onchange="toggleAdvOpt(\'advAppCamp\',this,\'Advantage+ app campaign\')" aria-label="Advantage+ app campaign"></div>'+hint('<b>Advantage+ app campaign</b>: Meta tự test tổ hợp quảng cáo, đối tượng và vị trí hiển thị để tìm lượt cài app rẻ nhất — hợp khi app đã có lượng cài đặt ổn định. Tắt để về <b>setup thường</b>: tự chia nhóm theo hệ điều hành / sự kiện trong app và tự chọn vị trí hiển thị khi cần kiểm soát chặt.')+'</div>';
@@ -2807,12 +2821,12 @@ function renderEditor(){
   var campBudgetSuffixABO=caseCtx?(_bs.indexOf('Monthly')>-1?'/tháng':(_bs.indexOf('Daily')>-1?'/ngày':'')):'/ngày';
   c+='<div class="ecard"><h4>Budget</h4>'+hint('Chọn nơi “giữ tiền”: ở tầng chiến dịch (CBO) hay ở từng nhóm quảng cáo (ABO).')
   +(o.budgetLevel==='campaign'?'<p style="margin:0 0 8px"><b>Campaign budget: '+campBudget+campBudgetSuffix+'</b></p><label class="radio-line sel"><input type="radio" name="bs" checked><span><b>Campaign budget</b><span>Advantage+ campaign budget — Meta tự phân bổ giữa các ad set.</span></span></label>':'<label class="radio-line sel"><input type="radio" name="bs" checked><span><b>Ad set budget</b><span>Mỗi ad set có ngân sách riêng — đặt ở bước Ad set: '+campBudget+campBudgetSuffixABO+'.</span></span></label>')
-  +'<div class="field" style="margin-top:10px"><label>Campaign bid strategy</label><select id="bidSel" onchange="onBidChange()">'+optsSel(['Highest volume','Cost per result goal','Bid cap','Cost per 1,000 people reached','Other options'],bs)+'</select>'+hint('<b>Highest volume</b> = lấy nhiều kết quả nhất trong ngân sách (nên dùng khi mới chạy); <b>Cost per result goal</b> mở ô giá mục tiêu mỗi kết quả; <b>Bid cap</b> hoặc <b>Other options</b> mở ô Bid control; <b>Cost per 1,000 people reached</b> mở ô giá mỗi 1.000 người tiếp cận thêm.')+'</div>'
-  +'<div id="bidExpand" style="display:'+(bs==='Highest volume'?'none':'block')+'"><div class="field"><label>Cost per result goal</label><input type="text" id="bidCpr" placeholder="Ví dụ: 50,000" value="'+esc(draftGet('bidCpr',''))+'"'+(bs==='Cost per result goal'?'':' disabled')+' oninput="draftSet(\'bidCpr\',this.value)"></div><div class="field"><label>Cost per unit of incremental reach</label><input type="text" id="bidReach" placeholder="Ví dụ: 20,000" value="'+esc(draftGet('bidReach',''))+'"'+(bs==='Cost per 1,000 people reached'?'':' disabled')+' oninput="draftSet(\'bidReach\',this.value)"></div><div class="field" style="margin:0"><label>Bid control</label><input type="text" id="bidControl" placeholder="Ví dụ: 80,000" value="'+esc(draftGet('bidControl',''))+'"'+((bs==='Bid cap'||bs==='Other options')?'':' disabled')+' oninput="draftSet(\'bidControl\',this.value)"></div><p style="font-size:12.5px;color:var(--text2)">Mỗi ô chỉ mở khi chọn đúng chiến lược thầu tương ứng — ô đang mờ là chưa áp dụng cho chiến lược đã chọn.</p></div>'
+  +'<div class="field" style="margin-top:10px"><label for="bidSel">Campaign bid strategy</label><select id="bidSel" onchange="onBidChange()">'+optsSel(['Highest volume','Cost per result goal','Bid cap','Cost per 1,000 people reached','Other options'],bs)+'</select>'+hint('<b>Highest volume</b> = lấy nhiều kết quả nhất trong ngân sách (nên dùng khi mới chạy); <b>Cost per result goal</b> mở ô giá mục tiêu mỗi kết quả; <b>Bid cap</b> hoặc <b>Other options</b> mở ô Bid control; <b>Cost per 1,000 people reached</b> mở ô giá mỗi 1.000 người tiếp cận thêm.')+'</div>'
+  +'<div id="bidExpand" style="display:'+(bs==='Highest volume'?'none':'block')+'"><div class="field"><label for="bidCpr">Cost per result goal</label><input type="text" id="bidCpr" placeholder="Ví dụ: 50,000" value="'+esc(draftGet('bidCpr',''))+'"'+(bs==='Cost per result goal'?'':' disabled')+' oninput="draftSet(\'bidCpr\',this.value)"></div><div class="field"><label for="bidReach">Cost per unit of incremental reach</label><input type="text" id="bidReach" placeholder="Ví dụ: 20,000" value="'+esc(draftGet('bidReach',''))+'"'+(bs==='Cost per 1,000 people reached'?'':' disabled')+' oninput="draftSet(\'bidReach\',this.value)"></div><div class="field" style="margin:0"><label for="bidControl">Bid control</label><input type="text" id="bidControl" placeholder="Ví dụ: 80,000" value="'+esc(draftGet('bidControl',''))+'"'+((bs==='Bid cap'||bs==='Other options')?'':' disabled')+' oninput="draftSet(\'bidControl\',this.value)"></div><p style="font-size:12.5px;color:var(--text2)">Mỗi ô chỉ mở khi chọn đúng chiến lược thầu tương ứng — ô đang mờ là chưa áp dụng cho chiến lược đã chọn.</p></div>'
   +'<a onclick="toggleCampMore()">Show more options</a>'
   +'<div id="campMore" style="display:none;margin-top:10px"><div class="kv"><span>Campaign spending limit</span><b>None added <button class="btn" onclick="toast(\'Edit spending limit (mô phỏng).\')">Edit</button></b></div><div class="kv"><span>Campaign frequency control</span><b>Off</b></div><div class="kv"><span>A/B test</span><b>Off</b></div></div></div>'
   +'<div class="ecard"><h4>Special Ad Categories</h4>'+hint('Khai báo bắt buộc nếu quảng cáo thuộc tín dụng, việc làm, nhà ở hoặc chính trị — khai thiếu dễ bị hạn chế phân phối.')
-  +'<div class="field" style="margin:0"><label>Category</label><select onchange="draftSet(\'specialCat\',this.value)">'+optsSel(['Select a category','Credit','Employment','Housing','Social issues, elections or politics'],draftGet('specialCat','Select a category'))+'</select></div></div>';
+  +'<div class="field" style="margin:0"><label for="specialCatSel">Category</label><select id="specialCatSel" onchange="draftSet(\'specialCat\',this.value)">'+optsSel(['Select a category','Credit','Employment','Housing','Social issues, elections or politics'],draftGet('specialCat','Select a category'))+'</select></div></div>';
   document.getElementById('epane0').innerHTML=c;
   document.getElementById('crumbCamp').textContent=caseCtx?(caseCtx.saved.name||caseCtx.row.name):draftGet('campName_'+n,'New '+n+' campaign');
   document.getElementById('treeCampName').textContent=caseCtx?(caseCtx.saved.name||caseCtx.row.name):draftGet('campName_'+n,'New '+n+' campaign');
@@ -2824,45 +2838,45 @@ function toggleCampMore(){var d=document.getElementById('campMore');d.style.disp
 function convBlock(o,n){
   var page='<div class="field"><label>Facebook Page</label><div style="display:flex;gap:9px;align-items:center"><span style="width:34px;height:26px;border-radius:4px;background:#111827;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:700">SHOP</span><b style="font-size:13.5px">Shop Thời Trang ABC (Page mẫu)</b></div></div>';
   if(n==='Awareness')return '<div class="ecard"><h4>Conversion</h4>'+hint('Mục tiêu Awareness KHÔNG có trường Conversion location — Meta tối ưu theo mức độ ghi nhớ, không theo một điểm đến cụ thể.')
-  +'<div class="field"><label>Performance goal</label><select onchange="draftSet(\'perfGoal_Awareness\',this.value)"><optgroup label="Awareness goals">'+optsSel(['Maximise reach of ads','Maximise number of impressions','Maximise ad recall lift'],draftGet('perfGoal_Awareness','Maximise reach of ads'))+'</optgroup><optgroup label="Video view goals">'+optsSel(['Maximise ThruPlay views','Maximise 2-second continuous video plays'],draftGet('perfGoal_Awareness','Maximise reach of ads'))+'</optgroup></select>'+hint('Chọn theo thứ bạn muốn tối đa hoá: độ phủ (reach), số lần hiển thị, mức ghi nhớ, hay lượt xem video.')+'</div>'
-  +'<div class="field"><label>Frequency control</label><select><option>No frequency control</option><option selected>Cap — 2 times every 7 days</option></select>'+hint('Giới hạn 1 người thấy quảng cáo tối đa mấy lần — Awareness chạy dài ngày rất nên đặt Cap để tránh gây nhàm.')+'</div>'
+  +'<div class="field"><label for="perfGoalAwareSel">Performance goal</label><select id="perfGoalAwareSel" onchange="draftSet(\'perfGoal_Awareness\',this.value)"><optgroup label="Awareness goals">'+optsSel(['Maximise reach of ads','Maximise number of impressions','Maximise ad recall lift'],draftGet('perfGoal_Awareness','Maximise reach of ads'))+'</optgroup><optgroup label="Video view goals">'+optsSel(['Maximise ThruPlay views','Maximise 2-second continuous video plays'],draftGet('perfGoal_Awareness','Maximise reach of ads'))+'</optgroup></select>'+hint('Chọn theo thứ bạn muốn tối đa hoá: độ phủ (reach), số lần hiển thị, mức ghi nhớ, hay lượt xem video.')+'</div>'
+  +'<div class="field"><label for="freqCtlSel">Frequency control</label><select id="freqCtlSel"><option>No frequency control</option><option selected>Cap — 2 times every 7 days</option></select>'+hint('Giới hạn 1 người thấy quảng cáo tối đa mấy lần — Awareness chạy dài ngày rất nên đặt Cap để tránh gây nhàm.')+'</div>'
   +'<div class="switch-row"><div><b>Dynamic creative</b><span>'+(draftGet('dynCreative',false)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('dynCreative',false)?'checked':'')+' onchange="toggleAdvOpt(\'dynCreative\',this,\'Dynamic creative\')" aria-label="Dynamic creative"></div>'+hint('Bật <b>Dynamic creative</b> thì Meta tự ghép các biến thể ảnh/chữ bạn cung cấp thành nhiều tổ hợp và ưu tiên tổ hợp hiệu quả — tiền thân của Advantage+ creative. Tắt = setup thường: mỗi quảng cáo chạy đúng một bản creative cố định, dễ đối chiếu A/B test thủ công.')+'</div></div>';
   if(n==='Traffic')return '<div class="ecard"><h4>Conversion</h4>'+hint('Nơi “kết quả” xảy ra — Traffic đang chọn Message destinations nên kết quả là cuộc trò chuyện.')
   +'<div class="field"><label>Conversion location</label>'
   +['Instagram live video','Website','App','Message destinations','Instagram or Facebook','Calls'].map(function(x){var _c=draftGet('convLoc_Traffic','Message destinations');return '<label class="radio-line'+(x===_c?' sel':'')+'"><input type="radio" name="tcl" value="'+x+'" '+(x===_c?'checked':'')+' onchange="draftSet(\'convLoc_Traffic\',this.value)"><span><b>'+x+'</b></span></label>'}).join('')+'</div>'
   +page
-  +'<div class="field"><label>Performance goal</label><select onchange="draftSet(\'perfGoal_Traffic\',this.value)">'+optsSel(['Maximise daily unique reach','Maximise number of conversations','Maximise number of impressions'],draftGet('perfGoal_Traffic','Maximise number of conversations'))+'</select></div>'
+  +'<div class="field"><label for="perfGoalTrafficSel">Performance goal</label><select id="perfGoalTrafficSel" onchange="draftSet(\'perfGoal_Traffic\',this.value)">'+optsSel(['Maximise daily unique reach','Maximise number of conversations','Maximise number of impressions'],draftGet('perfGoal_Traffic','Maximise number of conversations'))+'</select></div>'
   +'<div class="field" style="margin:0"><label>Message destinations</label><label class="radio-line"><input type="radio" name="tmd"><span><b>Automatic destination (recommended)</b></span></label><label class="radio-line sel"><input type="radio" name="tmd" checked><span><b>Manual destination</b></span></label><label class="check-line"><input type="checkbox" checked><span><b>Messenger</b></span></label><label class="check-line"><input type="checkbox"><span><b>Instagram</b></span></label><label class="check-line"><input type="checkbox"><span><b>WhatsApp</b></span></label>'+hint('Chọn kênh đội của bạn trực và trả lời nhanh nhất — trả lời chậm là mất khách.')+'</div></div>';
   if(n==='Engagement')return '<div class="ecard"><h4>Conversion</h4>'+hint('Engagement chọn điểm đến bằng dropdown — đang chọn Message destinations để tối ưu số cuộc trò chuyện.')
-  +'<div class="field"><label>Conversion location</label><select onchange="draftSet(\'convLoc_Engagement\',this.value)">'+optsSel(['Instagram live video','Message destinations','On your ad','Calls','Website','App','Instagram or Facebook'],draftGet('convLoc_Engagement','Message destinations'))+'</select></div>'
+  +'<div class="field"><label for="convLocEngSel">Conversion location</label><select id="convLocEngSel" onchange="draftSet(\'convLoc_Engagement\',this.value)">'+optsSel(['Instagram live video','Message destinations','On your ad','Calls','Website','App','Instagram or Facebook'],draftGet('convLoc_Engagement','Message destinations'))+'</select></div>'
   +page
-  +'<div class="field"><label>Performance goal</label><select onchange="draftSet(\'perfGoal_Engagement\',this.value)"><optgroup label="Engagement goals">'+optsSel(['Maximise number of conversations','Maximise number of leads through messaging','Maximise number of purchases through messaging'],draftGet('perfGoal_Engagement','Maximise number of conversations'))+'</optgroup><optgroup label="Other goals">'+optsSel(['Maximise number of link clicks','Maximise number of Page likes','Maximise number of video views'],draftGet('perfGoal_Engagement','Maximise number of conversations'))+'</optgroup></select></div>'
+  +'<div class="field"><label for="perfGoalEngSel">Performance goal</label><select id="perfGoalEngSel" onchange="draftSet(\'perfGoal_Engagement\',this.value)"><optgroup label="Engagement goals">'+optsSel(['Maximise number of conversations','Maximise number of leads through messaging','Maximise number of purchases through messaging'],draftGet('perfGoal_Engagement','Maximise number of conversations'))+'</optgroup><optgroup label="Other goals">'+optsSel(['Maximise number of link clicks','Maximise number of Page likes','Maximise number of video views'],draftGet('perfGoal_Engagement','Maximise number of conversations'))+'</optgroup></select></div>'
   +'<div class="warn-box" style="margin:0"><b>Ad scheduling</b>You could get 22.8% more conversions by running ads during specific business hours.<div style="margin-top:8px"><button class="btn btn-blue" type="button" onclick="toast(\'Apply now (mô phỏng): đã áp lịch chạy theo giờ hành chính mẫu.\')">Apply now</button></div><label class="check-line"><input type="checkbox"><span><b>Set a schedule for ads</b></span></label>'+hint('Gợi ý chạy theo khung giờ khách hay nhắn tin nhất — shop online thường hiệu quả ở giờ hành chính + buổi tối.')+'</div></div>';
   if(n==='Leads')return '<div class="ecard"><h4>Conversion</h4>'+hint('Leads đang dùng Instant forms — khách điền form ngay trong Facebook/Instagram, không cần rời app.')
-  +'<div class="field"><label>Conversion location</label><select onchange="draftSet(\'convLoc_Leads\',this.value)"><optgroup label="Multiple">'+optsSel(['Website and instant forms','Website and calls','Instant forms and Messenger'],draftGet('convLoc_Leads','Instant forms — Recommended'))+'</optgroup><optgroup label="Single">'+optsSel(['Instagram live video','Website','Instant forms — Recommended','Messenger','Instagram','WhatsApp','Calls','App'],draftGet('convLoc_Leads','Instant forms — Recommended'))+'</optgroup></select></div>'
+  +'<div class="field"><label for="convLocLeadsSel">Conversion location</label><select id="convLocLeadsSel" onchange="draftSet(\'convLoc_Leads\',this.value)"><optgroup label="Multiple">'+optsSel(['Website and instant forms','Website and calls','Instant forms and Messenger'],draftGet('convLoc_Leads','Instant forms — Recommended'))+'</optgroup><optgroup label="Single">'+optsSel(['Instagram live video','Website','Instant forms — Recommended','Messenger','Instagram','WhatsApp','Calls','App'],draftGet('convLoc_Leads','Instant forms — Recommended'))+'</optgroup></select></div>'
   +page+'<p style="font-size:12.5px;color:var(--text2)">You\'ve accepted Meta\'s Lead Ads Terms for this Page. <a onclick="toast(\'Lead Ads Terms (mô phỏng): điều khoản thu lead của Meta — Page phải chấp nhận mới chạy được Instant forms.\')">View Terms</a></p>'
-  +'<div class="field"><label>Performance goal</label><select onchange="draftSet(\'perfGoal_Leads\',this.value)"><option'+(draftGet('perfGoal_Leads','Maximise number of leads')==='Maximise number of leads'?' selected':'')+'>Maximise number of leads</option><option disabled>Maximise number of qualified leads — requires CRM</option></select>'+hint('Muốn tối ưu theo lead chất lượng (qualified) thì bắt buộc kết nối CRM để Meta học được lead nào tốt.')+'</div>'
+  +'<div class="field"><label for="perfGoalLeadsSel">Performance goal</label><select id="perfGoalLeadsSel" onchange="draftSet(\'perfGoal_Leads\',this.value)"><option'+(draftGet('perfGoal_Leads','Maximise number of leads')==='Maximise number of leads'?' selected':'')+'>Maximise number of leads</option><option disabled>Maximise number of qualified leads — requires CRM</option></select>'+hint('Muốn tối ưu theo lead chất lượng (qualified) thì bắt buộc kết nối CRM để Meta học được lead nào tốt.')+'</div>'
   +'<div class="warn-box"><b>Connect your CRM to prioritise higher-quality leads</b>Kết nối CRM để Meta ưu tiên tìm lead giống khách đã mua.<div style="margin-top:8px"><button class="btn btn-blue" type="button" onclick="toast(\'Connect CRM (mô phỏng): bản đào tạo không kết nối CRM thật.\')">Connect CRM</button></div></div>'
   +'<div class="kv"><span>Value rules</span><b>Mobile OS 1</b></div></div>';
   if(n==='App promotion')return '<div class="ecard"><h4>App promotion</h4>'+hint('Chọn cửa hàng + tìm đúng app trước — chưa chọn app thì Performance goal sẽ bị mờ, không bấm được.')
-  +'<div class="field"><label>App store</label><select><option>Google Play Store</option><option>Apple App Store (iOS 13.7 or earlier)</option><option>Apple App Store for iPad</option><option>Facebook Canvas</option><option>Amazon Appstore</option><option>Games</option><option>Meta Quest App Store</option><option>Horizon Games</option></select></div>'
-  +'<div class="field"><label>App name</label><input type="text" id="appNameInput" placeholder="Search for your app" oninput="document.getElementById(\'appPerf\').disabled=!this.value"></div>'
+  +'<div class="field"><label for="appStoreSel">App store</label><select id="appStoreSel"><option>Google Play Store</option><option>Apple App Store (iOS 13.7 or earlier)</option><option>Apple App Store for iPad</option><option>Facebook Canvas</option><option>Amazon Appstore</option><option>Games</option><option>Meta Quest App Store</option><option>Horizon Games</option></select></div>'
+  +'<div class="field"><label for="appNameInput">App name</label><input type="text" id="appNameInput" placeholder="Search for your app" oninput="document.getElementById(\'appPerf\').disabled=!this.value"></div>'
   +'<label class="check-line"><input type="checkbox"><span><b>Search for app by country</b></span></label>'
-  +'<div class="field"><label>Performance goal</label><select id="appPerf" disabled><option>Maximise number of app installs</option></select></div>'
-  +'<div class="field"><label>Attribution model</label><select><option>Standard</option><option disabled>Incremental</option></select></div>'
+  +'<div class="field"><label for="appPerf">Performance goal</label><select id="appPerf" disabled><option>Maximise number of app installs</option></select></div>'
+  +'<div class="field"><label for="appAttrModelSel">Attribution model</label><select id="appAttrModelSel"><option>Standard</option><option disabled>Incremental</option></select></div>'
   +'<div class="switch-row" style="margin-top:10px"><div><b>Advantage+ catalogue ads</b><span>'+(draftGet('advCatalogue',false)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('advCatalogue',false)?'checked':'')+' onchange="toggleAdvOpt(\'advCatalogue\',this,\'Advantage+ catalogue ads\')" aria-label="Advantage+ catalogue ads"></div>'+hint('Bật khi app có catalogue sản phẩm: Meta tự lấy sản phẩm trong catalogue làm creative và cá nhân hoá theo từng người. Tắt = setup thường: tự chọn ảnh/video và viết nội dung cho từng quảng cáo.')+'<div class="kv"><span>Value rules</span><b>Enabled: No</b></div></div>';
   /* Sales */
   return '<div class="ecard"><h4>Conversion</h4>'+hint('Sales có thêm chiến lược vòng đời khách hàng và nhóm điểm đến Multiple/Single — đang chọn Message destinations.')
-  +'<div class="field"><label>Customer life cycle strategy</label><select onchange="draftSet(\'lifeCycle_Sales\',this.value)">'+optsSel(['Get conversions from all audiences','Focus on new customers','Focus on existing customers'],draftGet('lifeCycle_Sales','Get conversions from all audiences'))+'</select>'+hint('Chọn Meta nên săn khách mới, khách cũ, hay tất cả — shop mới thường để “all audiences”.')+'</div>'
-  +'<div class="field"><label>Conversion location</label><select onchange="draftSet(\'convLoc_Sales\',this.value)"><optgroup label="Multiple">'+optsSel(['Website and app','Website and calls'],draftGet('convLoc_Sales','Message destinations'))+'<option disabled>Website and in store</option><option disabled>Website, app and in store</option></optgroup><optgroup label="Single">'+optsSel(['Instagram live video','Website','App','Message destinations','Calls'],draftGet('convLoc_Sales','Message destinations'))+'</optgroup></select></div>'
+  +'<div class="field"><label for="lifeCycleSel">Customer life cycle strategy</label><select id="lifeCycleSel" onchange="draftSet(\'lifeCycle_Sales\',this.value)">'+optsSel(['Get conversions from all audiences','Focus on new customers','Focus on existing customers'],draftGet('lifeCycle_Sales','Get conversions from all audiences'))+'</select>'+hint('Chọn Meta nên săn khách mới, khách cũ, hay tất cả — shop mới thường để “all audiences”.')+'</div>'
+  +'<div class="field"><label for="convLocSalesSel">Conversion location</label><select id="convLocSalesSel" onchange="draftSet(\'convLoc_Sales\',this.value)"><optgroup label="Multiple">'+optsSel(['Website and app','Website and calls'],draftGet('convLoc_Sales','Message destinations'))+'<option disabled>Website and in store</option><option disabled>Website, app and in store</option></optgroup><optgroup label="Single">'+optsSel(['Instagram live video','Website','App','Message destinations','Calls'],draftGet('convLoc_Sales','Message destinations'))+'</optgroup></select></div>'
   +page
-  +'<div class="field"><label>Performance goal</label><select onchange="draftSet(\'perfGoal_Sales\',this.value)"><optgroup label="Conversion goals">'+optsSel(['Maximise number of conversions','Maximise number of conversations','Maximise number of purchases through messaging'],draftGet('perfGoal_Sales','Maximise number of conversions'))+'</optgroup><optgroup label="Other goals">'+optsSel(['Maximise number of link clicks','Maximise daily unique reach','Maximise number of impressions'],draftGet('perfGoal_Sales','Maximise number of conversions'))+'</optgroup></select></div>'
-  +'<div class="field"><label>Attribution model</label><select><option>Standard</option></select></div>'
+  +'<div class="field"><label for="perfGoalSalesSel">Performance goal</label><select id="perfGoalSalesSel" onchange="draftSet(\'perfGoal_Sales\',this.value)"><optgroup label="Conversion goals">'+optsSel(['Maximise number of conversions','Maximise number of conversations','Maximise number of purchases through messaging'],draftGet('perfGoal_Sales','Maximise number of conversions'))+'</optgroup><optgroup label="Other goals">'+optsSel(['Maximise number of link clicks','Maximise daily unique reach','Maximise number of impressions'],draftGet('perfGoal_Sales','Maximise number of conversions'))+'</optgroup></select></div>'
+  +'<div class="field"><label for="salesAttrModelSel">Attribution model</label><select id="salesAttrModelSel"><option>Standard</option></select></div>'
   +'<div class="switch-row"><div><b>Advantage+ sales campaign</b><span>'+(draftGet('advSalesCamp',true)?'On':'Off')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('advSalesCamp',true)?'checked':'')+' onchange="toggleAdvOpt(\'advSalesCamp\',this,\'Advantage+ sales campaign\')" aria-label="Advantage+ sales campaign"></div>'+hint('<b>Advantage+ sales campaign</b> là chế độ tự động hoá cao nhất cho mục tiêu Sales: ngân sách cấp chiến dịch (Advantage+ campaign budget) + Advantage+ audience + Advantage+ placements, Meta tự phân bổ tất cả. Dùng khi Pixel/CAPI đã ổn định và có đủ ~50 chuyển đổi/tuần. Tắt để về <b>setup thường</b>: tự đặt ngân sách từng nhóm, tự khai báo đối tượng &amp; vị trí hiển thị ở các thẻ bên dưới — hợp giai đoạn test sản phẩm mới hoặc ngân sách nhỏ.')+'</div>';
 }
 function renderAdset(o,n){
   var h='<div class="ecard"><h4>Ad set name</h4>'+hint('Đặt tên theo đối tượng + vị trí, ví dụ “HN 22–35 Nữ – Fashion”.')
-  +'<div class="field" style="margin:0"><input type="text" value="'+esc(caseCtx?caseCtx.row.adsetName:draftGet('adsetName_'+n,'New '+n+' ad set'))+'" oninput="setAdsetName(this.value)"></div><button class="btn" style="margin-top:10px" onclick="toast(\'Create template (mô phỏng).\')">Create template</button></div>'
+  +'<div class="field" style="margin:0"><input type="text" id="adsetNameInput" aria-label="Ad set name" value="'+esc(caseCtx?caseCtx.row.adsetName:draftGet('adsetName_'+n,'New '+n+' ad set'))+'" oninput="setAdsetName(this.value)"></div><button class="btn" style="margin-top:10px" onclick="toast(\'Create template (mô phỏng).\')">Create template</button></div>'
   +convBlock(o,n)
   +'<div style="text-align:center;margin-bottom:12px"><button class="btn" id="showMoreBtn" onclick="toggleAdsetMore()">Show more options</button></div>'
   +'<div id="adsetMore" style="display:none"><div id="budWrap">'+budgetCard(o)+'</div><div id="audWrap">'+audienceCard()+'</div><div id="optWrap">'+optimCard(o,n)+'</div><div id="plWrap">'+placementsCard()+'</div><div style="text-align:center;margin-bottom:12px"><button class="btn" onclick="toggleAdsetMore()">Hide options</button></div></div>';
@@ -2879,7 +2893,7 @@ function toggleAdsetMore(){
 var CTA21=['No button','Download','Get directions','Get quote','Get showtimes','See details','Learn more','Listen now','Send message','Order now','Request time','Save','See menu','Shop now','Sign up','Subscribe','Watch more','Send WhatsApp message','Apply now','Book now','Contact us'];
 function conversationsBlock(){
   return '<div class="ecard"><h4>Conversations</h4>'+hint('Mẫu chào + câu hỏi gợi ý giúp khách bắt đầu chat nhanh hơn — trả lời sẵn 3 câu khách hay hỏi nhất.')
-  +'<div class="field"><label>Welcome message</label><textarea oninput="draftSet(\'welcomeMsg\',this.value)">'+esc(draftGet('welcomeMsg','Xin chào bạn! Shop có thể tư vấn size, mẫu mới và ưu đãi hôm nay cho bạn nhé.'))+'</textarea></div>'
+  +'<div class="field"><label for="welcomeMsgInput">Welcome message</label><textarea id="welcomeMsgInput" oninput="draftSet(\'welcomeMsg\',this.value)">'+esc(draftGet('welcomeMsg','Xin chào bạn! Shop có thể tư vấn size, mẫu mới và ưu đãi hôm nay cho bạn nhé.'))+'</textarea></div>'
   +'<div class="field" style="margin:0"><label>Suggested questions</label><input type="text" value="'+esc(draftGet('suggQ0','Giá sản phẩm này bao nhiêu?'))+'" oninput="draftSet(\'suggQ0\',this.value)" style="margin-bottom:6px"><input type="text" value="'+esc(draftGet('suggQ1','Còn size / màu nào?'))+'" oninput="draftSet(\'suggQ1\',this.value)" style="margin-bottom:6px"><input type="text" value="'+esc(draftGet('suggQ2','Ship bao lâu, phí thế nào?'))+'" oninput="draftSet(\'suggQ2\',this.value)"></div></div>';
 }
 function trackingBlock(n){
@@ -2925,10 +2939,10 @@ function existingPostBody(n){
   var cta=draftGet('postCta','Send message');
   var h='<div class="ecard"><h4>Ad creative — from existing post</h4>'+hint('Toàn bộ nội dung lấy nguyên từ bài đăng đã chọn — muốn sửa chữ/ảnh thì sửa ở bài đăng gốc trên Page, không sửa trực tiếp tại đây.')
   +'<div class="pm" style="height:110px;border-radius:8px;margin-top:10px">'+p.media+'<br><span style="font-weight:600;font-size:12px">'+esc(p.title)+'</span></div>'
-  +'<div class="field" style="margin-top:10px"><label>Primary text (từ bài đăng)</label><textarea disabled>'+esc(p.text)+'</textarea></div>'
-  +'<div class="field"><label>Headline (từ bài đăng)</label><input type="text" value="'+esc(p.headline)+'" disabled></div>'
+  +'<div class="field" style="margin-top:10px"><label for="postPrimaryText">Primary text (từ bài đăng)</label><textarea id="postPrimaryText" disabled>'+esc(p.text)+'</textarea></div>'
+  +'<div class="field"><label for="postHeadline">Headline (từ bài đăng)</label><input type="text" id="postHeadline" value="'+esc(p.headline)+'" disabled></div>'
   +'<div class="kv"><span>Tương tác sẵn có của bài</span><b>'+p.stats+'</b></div>'
-  +'<div class="field" style="margin:0"><label>Call to action</label><select onchange="draftSet(\'postCta\',this.value)">'+CTA21.map(function(x){return '<option'+(x===cta?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'+hint('Với bài đăng có sẵn, bạn vẫn đổi được nút CTA cho bản quảng cáo; nội dung chữ và media thì giữ nguyên theo bài gốc.')+'</div></div>'
+  +'<div class="field" style="margin:0"><label for="postCtaSel">Call to action</label><select id="postCtaSel" onchange="draftSet(\'postCta\',this.value)">'+CTA21.map(function(x){return '<option'+(x===cta?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'+hint('Với bài đăng có sẵn, bạn vẫn đổi được nút CTA cho bản quảng cáo; nội dung chữ và media thì giữ nguyên theo bài gốc.')+'</div></div>'
   +advCreativeCard()
   +'<div class="ecard"><h4>Destination</h4><p class="hint" style="margin:0">Destination follows your ad set settings ('+(n==='Leads'?'Instant forms':'conversion location đã chọn ở bước Ad set')+').</p>'+hint('Đích đến của quảng cáo dùng bài đăng có sẵn đi theo cài đặt ở bước Ad set — đổi đích đến thì quay lại bước Ad set.')+'</div>';
   return h;
@@ -2936,7 +2950,7 @@ function existingPostBody(n){
 function renderAd(o,n){
   var setupMode=caseCtx?'new':draftGet('adSetupMode','new');
   var h='<div class="ecard"><h4>Ad name</h4>'+hint('Đặt tên theo nội dung / phiên bản, ví dụ “Video unbox – V1”.')
-  +'<div class="field" style="margin:0"><input type="text" value="'+esc(caseCtx?caseCtx.row.adName:draftGet('adName_'+n,'New '+n+' ad'))+'" oninput="setAdName(this.value)"></div><button class="btn" style="margin-top:10px" onclick="toast(\'Create template (mô phỏng).\')">Create template</button></div>'
+  +'<div class="field" style="margin:0"><input type="text" id="adNameInput" aria-label="Ad name" value="'+esc(caseCtx?caseCtx.row.adName:draftGet('adName_'+n,'New '+n+' ad'))+'" oninput="setAdName(this.value)"></div><button class="btn" style="margin-top:10px" onclick="toast(\'Create template (mô phỏng).\')">Create template</button></div>'
   +'<div class="ecard"><div class="switch-row"><div><b>Partnership ad</b><span>'+(draftGet('partnerAd',false)?'On — chạy cùng nhà sáng tạo / đối tác.':'Off — chạy cùng nhà sáng tạo / đối tác khi bật.')+'</span></div><input type="checkbox" class="toggle" '+(draftGet('partnerAd',false)?'checked':'')+' onchange="setPartnerAd(this)" aria-label="Partnership ad"></div></div>'
   +'<div class="ecard"><h4>Identity</h4>'+hint('Danh tính hiển thị trên quảng cáo — khách thấy tên & avatar của Page này.')
   +(n==='App promotion'?'<div class="warn-box"><b>Select a Page</b>Bạn cần chọn Facebook Page trước khi tiếp tục.<div class="field" style="margin:10px 0 0"><select><option>Select a Page</option><option>Shop Thời Trang ABC (Page mẫu)</option></select></div></div>':'<div style="display:flex;gap:9px;align-items:center"><span style="width:34px;height:26px;border-radius:4px;background:#111827;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:700">SHOP</span><b style="font-size:13.5px">Shop Thời Trang ABC (Page mẫu)</b></div>')
@@ -2971,7 +2985,7 @@ function renderFormatBody(n){
     var defCta=n==='Sales'?'Shop now':(n==='Leads'?'Sign up':(n==='App promotion'?'Download':(n==='Awareness'?'Learn more':'Send message')));
     var curCta=draftGet('adCta',defCta);
     var dest='';
-    if(n==='App promotion')dest='<div class="ecard"><h4>Destination</h4><div class="kv"><span>Main destination</span><b>App</b></div><div class="field"><label>Deferred deep link (Optional)</label><input type="text" placeholder="myapp://offer"></div><div class="field" style="margin:0"><label>Custom store listing</label><select><option>Default listing</option></select></div></div>';
+    if(n==='App promotion')dest='<div class="ecard"><h4>Destination</h4><div class="kv"><span>Main destination</span><b>App</b></div><div class="field"><label for="deepLinkInput">Deferred deep link (Optional)</label><input type="text" id="deepLinkInput" placeholder="myapp://offer"></div><div class="field" style="margin:0"><label for="storeListingSel">Custom store listing</label><select id="storeListingSel"><option>Default listing</option></select></div></div>';
     else if(n==='Traffic'||n==='Engagement'||n==='Sales'||n==='Leads')dest='<div class="ecard"><h4>Destination</h4><p class="hint" style="margin:0">Destination is already set from your ad set ('+(n==='Leads'?'Instant forms':'Message destinations')+').</p>'+hint('Điểm đến đã khoá từ bước Ad set; nút CTA chọn ở thẻ Ad creative phía trên phải đi theo đích đến này (tin nhắn → Send message, form → Sign up).')+'</div>';
     else dest='<div class="ecard"><label class="check-line"><input type="checkbox" id="addDestChk" onchange="document.getElementById(\'singleDest\').style.display=this.checked?\'block\':\'none\'"><span><b>Add a destination</b></span></label><div id="singleDest" style="display:none"><h4>Destination</h4><label class="radio-line sel"><input type="radio" name="sdest" checked><span><b>Instant Experience</b></span></label><div class="field"><select><option>Select Instant Experience</option></select></div><label class="radio-line"><input type="radio" name="sdest"><span><b>Website</b></span></label><label class="radio-line"><input type="radio" name="sdest"><span><b>Call</b></span></label><label class="radio-line"><input type="radio" name="sdest"><span><b>Messaging apps</b></span></label></div>'+hint('Chưa tick “Add a destination” thì phần Destination ẩn hẳn — tick vào mới hiện các lựa chọn điểm đến.')+'</div>';
     var shop=(n==='Traffic'||n==='Engagement'||n==='Sales')?'<div class="ecard"><div class="switch-row"><div><b>Turn ads into a shopping experience</b><span>Biến quảng cáo thành trải nghiệm mua sắm ngay trong app.</span></div><input type="checkbox" class="toggle" aria-label="Shopping experience"></div></div>':'';
@@ -2979,24 +2993,24 @@ function renderFormatBody(n){
     +'<div class="field"><label>Creative source</label><label class="radio-line sel"><input type="radio" name="csrc" checked><span><b>Manual upload</b></span></label><label class="radio-line disabled"><input type="radio" name="csrc" disabled><span><b>Product media</b><span>Unavailable — no catalogue connected.</span></span></label></div>'
     +'<div class="field"><label>Set up creative</label><div class="menu-wrap"><button class="btn" type="button" id="setupCreativeBtn">Set up creative ▾</button><div class="menu" id="setupCreativeMenu"><button onclick="openDialog(\'mediaBack\')">Image ad</button><button onclick="openDialog(\'mediaBack\')">Video ad</button></div></div>'+hint('Bấm Set up creative → chọn Image ad / Video ad → mở Media picker để chọn và cắt media.')+'</div>'
     +'<div class="kv"><span>Advantage+ creative</span><b>'+(draftGet('advCreative',true)?'On — chỉnh ở thẻ Advantage+ creative ngay bên dưới':'Off — manual creative (thẻ bên dưới)')+'</b></div>'
-    +'<div class="field"><label>Primary text</label><textarea id="primaryText" oninput="syncPreviewText(this.value)">'+esc(primaryTextVal||'BST mới đã về! Nhắn tin ngay để được tư vấn size và nhận ưu đãi freeship hôm nay.')+'</textarea>'+hint('Câu chữ chính phía trên ảnh/video — viết lợi ích + lý do bấm ngay trong 1–2 dòng đầu.')+'</div>'
-    +'<div class="field"><label>Headline</label><input type="text" id="adHeadline" value="'+esc(headlineVal||'BST mới — tư vấn size trong 5 phút')+'" oninput="headlineVal=this.value;syncPreviewHeadline(this.value)">'+hint('Tiêu đề in đậm ngay dưới media — ngắn gọn, chứa lợi ích chính hoặc giá. Gõ vào là phần Ad preview (tab Search results và Feed) cập nhật theo.')+'</div>'
-    +'<div class="field"><label>Description</label><input type="text" id="adDesc" value="'+esc(descVal)+'" oninput="descVal=this.value;draftSet(\'manualDesc\',this.value)" placeholder="Mô tả ngắn dưới tiêu đề (không bắt buộc)">'+hint('Dòng mô tả nhỏ dưới Headline — chỉ hiển thị ở một số vị trí (ví dụ Feed trên máy tính), có thể để trống.')+'</div>'
-    +'<div class="field" style="margin:0"><label>Call to action</label><select id="adCtaSel" onchange="draftSet(\'adCta\',this.value)">'+CTA21.map(function(x){return '<option'+(x===curCta?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'+hint('Nút bấm dưới quảng cáo — chọn theo đích đến: nhắn tin thì <b>Send message</b>, bán hàng website thì <b>Shop now</b>, thu lead thì <b>Sign up</b>. Đích đến đã đặt ở bước Ad set nên CTA phải khớp với đích đến đó.')+'</div></div>'
+    +'<div class="field"><label for="primaryText">Primary text</label><textarea id="primaryText" oninput="syncPreviewText(this.value)">'+esc(primaryTextVal||'BST mới đã về! Nhắn tin ngay để được tư vấn size và nhận ưu đãi freeship hôm nay.')+'</textarea>'+hint('Câu chữ chính phía trên ảnh/video — viết lợi ích + lý do bấm ngay trong 1–2 dòng đầu.')+'</div>'
+    +'<div class="field"><label for="adHeadline">Headline</label><input type="text" id="adHeadline" value="'+esc(headlineVal||'BST mới — tư vấn size trong 5 phút')+'" oninput="headlineVal=this.value;syncPreviewHeadline(this.value)">'+hint('Tiêu đề in đậm ngay dưới media — ngắn gọn, chứa lợi ích chính hoặc giá. Gõ vào là phần Ad preview (tab Search results và Feed) cập nhật theo.')+'</div>'
+    +'<div class="field"><label for="adDesc">Description</label><input type="text" id="adDesc" value="'+esc(descVal)+'" oninput="descVal=this.value;draftSet(\'manualDesc\',this.value)" placeholder="Mô tả ngắn dưới tiêu đề (không bắt buộc)">'+hint('Dòng mô tả nhỏ dưới Headline — chỉ hiển thị ở một số vị trí (ví dụ Feed trên máy tính), có thể để trống.')+'</div>'
+    +'<div class="field" style="margin:0"><label for="adCtaSel">Call to action</label><select id="adCtaSel" onchange="draftSet(\'adCta\',this.value)">'+CTA21.map(function(x){return '<option'+(x===curCta?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'+hint('Nút bấm dưới quảng cáo — chọn theo đích đến: nhắn tin thì <b>Send message</b>, bán hàng website thì <b>Shop now</b>, thu lead thì <b>Sign up</b>. Đích đến đã đặt ở bước Ad set nên CTA phải khớp với đích đến đó.')+'</div></div>'
     +advCreativeCard()
     +dest;
     wireMenu('setupCreativeBtn','setupCreativeMenu');
   } else {
     el.innerHTML='<div class="ecard"><h4>Destination</h4>'+hint('Carousel có Destination riêng ngay ở bước Ad — khác hẳn Single image or video.')
     +[['Instant Experience','Instant Experience'],['Website','Website']].map(function(d){var _d=draftGet('adDest','Website');return '<label class="radio-line'+(d[0]===_d?' sel':'')+'"><input type="radio" name="cdest" value="'+d[0]+'" '+(d[0]===_d?'checked':'')+' onchange="draftSet(\'adDest\',this.value)"><span><b>'+d[1]+'</b></span></label>'}).join('')
-    +'<div class="field"><label>Website URL *</label><input type="text" placeholder="https://"></div>'
-    +'<div class="field"><label>“See More” display link</label><input type="text" placeholder="Display link"><p style="margin:4px 0 0;font-size:12px;color:var(--text2)">0/250</p></div>'
+    +'<div class="field"><label for="carouselUrlInput">Website URL *</label><input type="text" id="carouselUrlInput" placeholder="https://"></div>'
+    +'<div class="field"><label for="seeMoreLinkInput">“See More” display link</label><input type="text" id="seeMoreLinkInput" placeholder="Display link"><p style="margin:4px 0 0;font-size:12px;color:var(--text2)">0/250</p></div>'
     +[['Mobile app','Mobile app — Choose app']].map(function(d){var _d=draftGet('adDest','Website');return '<label class="radio-line'+(d[0]===_d?' sel':'')+'"><input type="radio" name="cdest" value="'+d[0]+'" '+(d[0]===_d?'checked':'')+' onchange="draftSet(\'adDest\',this.value)"><span><b>'+d[1]+'</b></span></label>'}).join('')
-    +'<div class="field"><label>Browser add-ons</label><select><option>None</option></select></div>'
+    +'<div class="field"><label for="browserAddonsSel">Browser add-ons</label><select id="browserAddonsSel"><option>None</option></select></div>'
     +[['Messenger','Messenger'],['WhatsApp','WhatsApp'],['Call','Call'],['Messaging apps','Messaging apps']].map(function(d){var _d=draftGet('adDest','Website');return '<label class="radio-line'+(d[0]===_d?' sel':'')+'"><input type="radio" name="cdest" value="'+d[0]+'" '+(d[0]===_d?'checked':'')+' onchange="draftSet(\'adDest\',this.value)"><span><b>'+d[1]+'</b></span></label>'}).join('')+'</div>'
     +'<div class="ecard"><h4>Ad creative</h4><div class="field"><label>Carousel cards — 0 of 10 cards added</label><div class="warn-box"><b>Add at least two cards</b>Carousel cần tối thiểu 2 thẻ mới đăng được.</div><button class="btn" onclick="toast(\'Add cards (mô phỏng): thêm tối đa 10 thẻ carousel.\')">Add cards</button> <button class="btn" disabled>Edit placement</button></div>'
-    +'<div class="field"><label>Primary text</label><textarea id="primaryText" oninput="syncPreviewText(this.value)">'+esc(primaryTextVal||'BST mới đã về! Vuốt để xem từng mẫu và nhắn tin tư vấn size.')+'</textarea></div>'
-    +'<div class="field" style="margin:0"><label>Call to action</label><select id="ctaSel" onchange="syncPreviewCta(this.value)">'+CTA21.map(function(x){return '<option'+(x==='No button'?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'
+    +'<div class="field"><label for="primaryText">Primary text</label><textarea id="primaryText" oninput="syncPreviewText(this.value)">'+esc(primaryTextVal||'BST mới đã về! Vuốt để xem từng mẫu và nhắn tin tư vấn size.')+'</textarea></div>'
+    +'<div class="field" style="margin:0"><label for="ctaSel">Call to action</label><select id="ctaSel" onchange="syncPreviewCta(this.value)">'+CTA21.map(function(x){return '<option'+(x==='No button'?' selected':'')+'>'+x+'</option>'}).join('')+'</select>'
     +'<p style="margin:5px 0 0;font-size:12px;color:var(--text2)">\'See details\' is the default call-to-action text — \'See details\' drives up to 2.3% higher CVR compared to \'Learn more\'.</p>'+hint('Đủ 21 lựa chọn nút CTA như bản thật — “No button” nghĩa là quảng cáo không hiện nút bấm.')+'</div></div>'+advCreativeCard();
   }
 }
@@ -4173,7 +4187,7 @@ function audRenderCreate(){
     +'<button class="btn" onclick="audUseSample()">Dùng file mẫu</button>'+hint('File mẫu có sẵn ~200 dòng (tên + email + số điện thoại giả lập, miền @vidu.test) để thử ngay không cần file thật — file mẫu đi qua đúng pipeline đọc và map cột như file bạn tải lên.');
   } else {
     h+='<div class="warn-box"><b>'+audSourceName(audDraft.source)+' — chỉ mô phỏng</b> Bản đào tạo không kết nối dữ liệu thật của nguồn này, nên tệp tạo ra chỉ là tệp mẫu để học viên tập đặt tên và tập gắn vào Ad set. Muốn có số dòng thật, hãy dùng nguồn Customer list ở trên.</div>'
-    +'<div class="field"><label>Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — Website" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc và không được trùng với tệp đã tạo trước đó.')+'</div>'
+    +'<div class="field"><label for="audNameInput">Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — Website" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc và không được trùng với tệp đã tạo trước đó.')+'</div>'
     +'<button class="btn btn-blue" onclick="audCreateSubmit()">Create audience</button>';
   }
   b.innerHTML=h;
@@ -4240,7 +4254,7 @@ function audMapHTML(){
   });
   h+='</div>';
   h+='<div class="field"><label>Preview — first 3 rows (masked)</label><div class="table-scroll"><table><thead><tr>'+audDraft.headers.map(function(c){return '<th>'+esc(c)+'</th>'}).join('')+'</tr></thead><tbody id="audPreviewBody">'+audPreviewRowsHTML()+'</tbody></table></div>'+hint('Xem trước đã che bớt: chỉ hiện vài ký tự đầu, phần còn lại thay bằng ***.')+'</div>';
-  h+='<div class="field"><label>Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — 2026" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc và không được trùng với tệp đã tạo trước đó. Chỉ lưu tên tệp, loại, nguồn và số dòng — nội dung file chỉ đọc trên trình duyệt này và không lưu lại.')+'</div>';
+  h+='<div class="field"><label for="audNameInput">Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — 2026" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc và không được trùng với tệp đã tạo trước đó. Chỉ lưu tên tệp, loại, nguồn và số dòng — nội dung file chỉ đọc trên trình duyệt này và không lưu lại.')+'</div>';
   h+='<button class="btn" onclick="audBackToSource()">Back</button> <button class="btn btn-blue" onclick="audCreateSubmit()">Create audience</button>';
   return h;
 }
