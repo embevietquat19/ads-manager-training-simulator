@@ -10,7 +10,7 @@
 
 ---
 
-## v2.0.4 — 16/11/2026 (luồng nộp bài case — chưa deploy)
+## v2.0.4 — 16/11/2026 (luồng nộp bài case — đã deploy 10:31)
 
 - **Nộp bài case:** học viên chỉnh case trong editor 3 bước rồi bấm "Nộp
   bài" (hoặc bấm "Nộp bài" ngay trên trang case — nộp theo setup đang chạy
