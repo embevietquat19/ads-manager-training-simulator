@@ -16,6 +16,7 @@
  *  case_progress        — số liệu + đáp án đã xem + ghi chú từng case, theo tài khoản
  *  campaign_overrides   — tên / ngân sách học viên tự sửa ở campaign của case
  *  editor_draft         — bản nháp trình chỉnh sửa đang làm dở, theo tài khoản
+ *  audiences            — tệp Custom / Lookalike do học viên tạo (chỉ metadata), theo tài khoản
  *  draft_campaigns      — chiến dịch học viên đã Publish (mô phỏng), theo tài khoản
  */
 const fs = require('fs');
@@ -85,6 +86,11 @@ CREATE TABLE IF NOT EXISTS campaign_overrides (
 CREATE TABLE IF NOT EXISTS editor_draft (
   user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
   draft_json TEXT NOT NULL DEFAULT '{}',
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE TABLE IF NOT EXISTS audiences (
+  user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  audiences_json TEXT NOT NULL DEFAULT '[]',
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE TABLE IF NOT EXISTS draft_campaigns (
