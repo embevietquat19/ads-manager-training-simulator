@@ -564,6 +564,45 @@ app.post('/api/admin/students/:id/reset-password', auth.requireTeacher, auth.sam
   res.json({ ok: true });
 });
 
+/** Đổi mật khẩu giáo viên (tài khoản đang đăng nhập). Đổi xong đăng xuất mọi phiên — giáo viên đăng nhập lại bằng mật khẩu mới. */
+app.post('/api/teacher/change-password', auth.requireTeacher, auth.sameOrigin, (req, res) => {
+  const currentPassword = req.body.currentPassword;
+  const newPassword = req.body.newPassword;
+  if (typeof currentPassword !== 'string' || !currentPassword)
+    return res.status(400).json({
+      ok: false,
+      error: 'bad_current_password',
+      message: 'Nhập mật khẩu hiện tại.',
+    });
+  if (!validPassword(newPassword))
+    return res.status(400).json({
+      ok: false,
+      error: 'bad_password',
+      message: 'Mật khẩu mới ít nhất 6 ký tự.',
+    });
+  if (currentPassword === newPassword)
+    return res.status(400).json({
+      ok: false,
+      error: 'same_password',
+      message: 'Mật khẩu mới phải khác mật khẩu hiện tại.',
+    });
+  const u = auth.findUserById(req.user.id);
+  if (!u || u.role !== 'teacher')
+    return res.status(404).json({ ok: false, error: 'not_found' });
+  if (!auth.checkPassword(currentPassword, u.password_hash))
+    return res.status(400).json({
+      ok: false,
+      error: 'wrong_current_password',
+      message: 'Mật khẩu hiện tại không đúng.',
+    });
+  db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(
+    auth.hashPassword(newPassword),
+    u.id
+  );
+  auth.destroyAllSessions(u.id);
+  res.json({ ok: true });
+});
+
 /** Vô hiệu hoá / kích hoạt lại học viên. Vô hiệu hoá đồng thời đăng xuất học viên đó. */
 app.post('/api/admin/students/:id/set-active', auth.requireTeacher, auth.sameOrigin, (req, res) => {
   const id = Number(req.params.id);
