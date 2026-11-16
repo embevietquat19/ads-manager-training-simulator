@@ -8,7 +8,7 @@
 <title>Ads Manager Training Simulator</title>
 <style>
 :root{
-  --blue:#0866FF; --blue-dark:#0757D6; --blue-btn:#1877F2; --blue-light:#E7F0FE; --blue-pale:#EBF3FF;
+  --blue:#0064E0; --blue-dark:#0053B3; --blue-btn:#0064E0; --blue-light:#E7F0FE; --blue-pale:#EAF2FE;
   --green:#00793A; --green-dark:#00652F; --green-bright:#00A400;
   --bg:#F0F2F5; --surface:#FFFFFF; --surface2:#F5F6F7; --hover:#E4E6EB;
   --line:#DDDFE2; --line2:#CCD0D5; --line3:#BEC3C9;
@@ -31,7 +31,7 @@ a:hover{text-decoration:underline}
 .util-strip button:hover{background:var(--surface2)}
 .util-strip .ai{font-weight:700}
 .util-strip .ai i{font-style:normal;background:linear-gradient(135deg,#0081FB,#A033FF);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:15px}
-.topbar{background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:6px 12px 8px;flex-wrap:wrap}
+.topbar{background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:6px 12px 8px;flex-wrap:nowrap}
 .brand{display:flex;align-items:center;gap:9px;min-width:0}
 .meta-logo{font-size:22px;font-weight:800;letter-spacing:-.03em;color:var(--text);display:flex;align-items:center;gap:7px;white-space:nowrap;cursor:pointer}
 .meta-logo .inf{color:var(--blue);font-size:27px;line-height:1}
@@ -48,7 +48,11 @@ a:hover{text-decoration:underline}
 .opp .ring{width:38px;height:38px;flex:none}
 .opp b{font-size:13px;display:block;line-height:1.2}
 .opp span{font-size:11.5px;color:var(--text2);display:block;line-height:1.2}
-.top-actions{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.top-actions{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;min-width:0}
+.top-actions .tbtn{height:42px;padding:3px 12px}
+.top-actions .tbtn.icon-only{width:42px;height:42px;padding:0}
+.top-actions .avatar-profiles{width:42px;height:42px}
+@media(max-width:1240px){.topbar{flex-wrap:wrap}.top-actions{flex-wrap:wrap}}
 .updated{font-size:12.5px;color:var(--text2);white-space:nowrap}
 .tbtn{border:1px solid var(--line2);background:#fff;border-radius:6px;padding:7px 12px;font-weight:600;font-size:13px;display:inline-flex;gap:7px;align-items:center;white-space:nowrap}
 .tbtn:hover{background:var(--surface2)}
@@ -56,7 +60,7 @@ a:hover{text-decoration:underline}
 .tbtn.primary:hover{background:var(--blue-dark)}
 .tbtn .cnt{background:#fff;color:var(--blue-dark);border-radius:999px;font-size:11.5px;padding:0 7px;font-weight:800}
 .icon-only{width:38px;height:38px;padding:0;justify-content:center;border-radius:6px}
-.avatar-profiles{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#1877F2,#9333EA);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2);cursor:pointer}
+.avatar-profiles{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#0064E0,#9333EA);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2);cursor:pointer}
 .test-banner{background:#F7F8FA;border-bottom:1px solid var(--line);padding:10px 16px;display:flex;gap:12px;align-items:flex-start}
 .test-banner .pill{background:#1C1E21;color:#FFD93D;font-size:11px;font-weight:800;letter-spacing:.05em;padding:3px 9px;border-radius:999px;white-space:nowrap;margin-top:1px}
 .test-banner p{margin:0;font-size:13px;color:var(--text);flex:1}
@@ -97,20 +101,21 @@ a:hover{text-decoration:underline}
 .sel-chip button{border:0;background:transparent;font-weight:800;color:inherit;width:20px;height:20px;padding:0}
 .date-range{margin-left:auto;border:1px solid var(--line2);background:#fff;border-radius:6px;padding:7px 12px;font-weight:600;font-size:13px;display:inline-flex;gap:8px;align-items:center;margin-bottom:6px}
 .date-range:hover{background:var(--surface2)}
-.action-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 0 0}
+.action-row{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;padding:10px 0 0}
+.action-row .btn{height:44px;padding:4px 13px}
 .btn{border:1px solid var(--line2);background:#fff;border-radius:6px;padding:7px 13px;font-weight:600;font-size:13px;display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
 .btn:hover{background:var(--surface2)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn .car{font-size:10px;color:var(--text2)}
-.btn-create{background:var(--green);border-color:var(--green);color:#fff;font-size:13.5px;padding:8px 16px}
-.btn-create:hover{background:var(--green-dark)}
+.btn-create{background:var(--green-bright);border-color:var(--green-bright);color:#fff;font-size:13.5px;padding:8px 16px}
+.btn-create:hover{background:#008C00}
 .btn-publish-go{background:var(--green);border-color:var(--green);color:#fff}
 .btn-publish-go:hover{background:var(--green-dark)}
 .btn-blue{background:var(--blue-btn);border-color:var(--blue-btn);color:#fff}
 .btn-blue:hover{background:var(--blue-dark)}
-.action-right{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.utility-row{display:flex;gap:4px;flex-wrap:wrap;padding:8px 0 0}
-.utility-row button{border:0;background:transparent;color:var(--text2);font-size:12.5px;font-weight:600;padding:5px 9px;border-radius:6px;display:inline-flex;gap:6px;align-items:center}
+.action-right{margin-left:auto;display:flex;gap:6px;align-items:stretch;flex-wrap:wrap}
+.utility-row{display:flex;gap:6px;flex-wrap:wrap;padding:8px 0 0;align-items:center}
+.utility-row button{border:0;background:transparent;color:var(--text2);font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:6px;display:inline-flex;gap:6px;align-items:center;height:42px}
 .utility-row button:hover{background:#fff;color:var(--text)}
 .utility-row button kbd{font-family:inherit;font-size:11px;color:var(--text3);font-weight:400}
 .menu-wrap{position:relative;display:inline-flex}
@@ -140,7 +145,7 @@ a:hover{text-decoration:underline}
 .table-card{margin:12px 20px 0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .table-scroll{overflow-x:auto}
 table{border-collapse:collapse;font-size:13px;min-width:1180px;width:100%}
-thead th{background:var(--surface2);text-align:left;padding:9px 10px;font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--text2);border-bottom:1px solid var(--line);white-space:nowrap;font-weight:700}
+thead th{background:#EDEFF2;text-align:left;padding:7px 10px;font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--text2);border-bottom:1px solid var(--line);white-space:nowrap;font-weight:700}
 thead th.num,tbody td.num{text-align:right}
 tbody td{padding:12px 10px;border-bottom:1px solid #EBEDF0;vertical-align:middle;white-space:nowrap;overflow-wrap:anywhere}
 tbody td.num{white-space:normal}
@@ -297,7 +302,7 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .ad-preview-frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:10px;background:#fff}
 .ad-preview-frame .ph{display:flex;gap:9px;padding:10px;align-items:center}
 .ad-preview-frame .pa{width:36px;height:36px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font-size:10px;font-weight:800;flex:none}
-.ad-preview-frame .pm{height:150px;background:linear-gradient(135deg,#7C5CFF,#0866FF);display:grid;place-items:center;color:#fff;font-weight:800;text-align:center;padding:14px}
+.ad-preview-frame .pm{height:150px;background:linear-gradient(135deg,#7C5CFF,#0064E0);display:grid;place-items:center;color:#fff;font-weight:800;text-align:center;padding:14px}
 .ad-preview-frame .pc{padding:10px;font-size:13px}
 .pv-actions{display:flex;gap:14px;padding:8px 10px;border-top:1px solid var(--line);font-size:12px;color:var(--text2);flex-wrap:wrap}
 .story-frame{border:1px solid var(--line);border-radius:18px;overflow:hidden;max-width:220px;margin:0 auto 10px;background:#111;color:#fff;text-align:center;padding:26px 12px}
@@ -507,7 +512,7 @@ details.browse .brow button:hover{background:var(--blue-pale)}
   </button>
   <div class="opp" title="Opportunity score">
     <svg class="ring" viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="16" fill="none" stroke="#E4E6EB" stroke-width="4"/><circle cx="19" cy="19" r="16" fill="none" stroke="#00A400" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="2" transform="rotate(-90 19 19)"/><text x="19" y="23.5" text-anchor="middle" font-size="11" font-weight="800" fill="#1C1E21">100</text></svg>
-    <span><b>Opportunity score</b><span>Your account is fully optimised</span><span class="vi-hint">Điểm gợi ý tối ưu của Meta — càng cao setup càng chuẩn, nên tham khảo chứ không bắt buộc làm theo hết.</span></span>
+    <span><b>Opportunity score</b><span>Your account is fully optimised</span><span class="vi-hint" title="Điểm gợi ý tối ưu của Meta — càng cao setup càng chuẩn, nên tham khảo chứ không bắt buộc làm theo hết.">Điểm càng cao, setup càng chuẩn — chỉ gợi ý, không bắt buộc.</span></span>
   </div>
   <div class="top-actions">
     <span class="updated">Updated just now</span>
@@ -1470,6 +1475,13 @@ CASE_CAMP_ROWS.forEach(function(r,i){
    Mỗi phiên bản mới thêm 1 mục vào ĐẦU mảng (mới nhất trước). Nội dung lấy từ
    CHANGELOG thật; ngày + giờ là giờ deploy. */
 var CHANGELOG_DATA=[
+ {v:'v2.0.5',date:'sắp cập nhật',items:[
+  'Giao diện (chỉ CSS + rút ngắn 1 dòng hint, không đổi chức năng): xanh chính của link/nút đổi sang xanh Meta #0064E0; nút Create dùng đúng xanh lá #00A400; header bảng còn 1 dòng, hint cột chuyển thành tooltip khi rê chuột; topbar và các hàng nút căn thẳng hàng, cao đều.',
+  'Topbar: dòng hint Opportunity score rút ngắn còn “Điểm càng cao, setup càng chuẩn — chỉ gợi ý, không bắt buộc.” (tối đa 2 dòng; đủ ý gốc trong tooltip); logo, ô tài khoản, khối Opportunity score và cụm nút phải căn giữa theo chiều dọc, cao đều 42px, chỉ wrap khi màn hình hẹp.',
+  'Bảng Campaigns: bỏ dòng hint tiếng Việt dưới tên cột (giữ nguyên trong tooltip title và trong hộp thoại Customise columns), giảm padding hàng tiêu đề; nền header bảng đậm hơn (#EDEFF2) để tách khỏi nền trắng.',
+  'Hàng nút hành động: 2 hàng nút Create/Publish/Duplicate/Edit/Delete/More + Columns/Breakdown/Reports/Export/Compare cao đều 44px; hàng View charts/Edit/See history cao đều 42px.',
+  'Trang Quản trị và trang Đăng nhập: đổi xanh chính sang #0064E0; header bảng Quản trị có nền #EDEFF2.'
+ ]},
  {v:'v2.0.4',date:'10:31 ngày 16/11/2026',items:[
   'Nộp bài case: học viên chỉnh case trong trình chỉnh sửa 3 bước rồi bấm “Nộp bài”, hoặc nộp nhanh từ trang case theo số liệu slider hiện tại; bài nộp lưu lại để xem lại, nộp lại sẽ thay bài cũ.',
   'Sau khi nộp, hiện bảng đối chiếu 5 mục (mục tiêu, ngân sách, đối tượng, vị trí hiển thị, nội dung quảng cáo): giá trị học viên đã nộp, gợi ý của giảng viên và kết luận “Đúng” hoặc “Cần sửa” kèm giải thích.',
@@ -1940,7 +1952,7 @@ function renderTable(){
   var cols=p.cols.map(function(c){return [c[0],c[0]==='name'?nameLabel:c[1],c[2]]}).concat(extra);
   var rows=rowsFor();
   var th='<tr><th style="width:36px"><input type="checkbox" class="row-check" id="checkAll" aria-label="Select all"></th>';
-  cols.forEach(function(c){th+='<th'+(c[2]?' class="num"':'')+(COL_HINTS[c[1]]?' title="'+esc(COL_HINTS[c[1]])+'"':'')+'>'+esc(c[1])+(COL_HINTS[c[1]]?'<span class="vi-hint">'+COL_HINTS[c[1]]+'</span>':'')+'</th>'});
+  cols.forEach(function(c){th+='<th'+(c[2]?' class="num"':'')+(COL_HINTS[c[1]]?' title="'+esc(COL_HINTS[c[1]])+'"':'')+'>'+esc(c[1])+'</th>'});
   th+='<th style="width:'+(curTab==='campaigns'?'118px':'44px')+'"></th></tr>';
   document.getElementById('thead').innerHTML=th;
   var tb='';
@@ -3917,7 +3929,7 @@ function buildDocxBlob(lines){
   var styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'
   +'<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/><w:sz w:val="22"/></w:rPr></w:style>'
   +'<w:style w:type="paragraph" w:styleId="Title"><w:name w:val="Title"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:after="240"/></w:pPr><w:rPr><w:b/><w:sz w:val="36"/><w:color w:val="1C1E21"/></w:rPr></w:style>'
-  +'<w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="280" w:after="120"/></w:pPr><w:rPr><w:b/><w:sz w:val="28"/><w:color w:val="0866FF"/></w:rPr></w:style>'
+  +'<w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="280" w:after="120"/></w:pPr><w:rPr><w:b/><w:sz w:val="28"/><w:color w:val="0064E0"/></w:rPr></w:style>'
   +'<w:style w:type="paragraph" w:styleId="Heading2"><w:name w:val="heading 2"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="200" w:after="80"/></w:pPr><w:rPr><w:b/><w:sz w:val="24"/></w:rPr></w:style></w:styles>';
   var ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>';
   var rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>';
