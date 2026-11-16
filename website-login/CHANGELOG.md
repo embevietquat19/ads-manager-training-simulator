@@ -10,6 +10,35 @@
 
 ---
 
+## v2.0.2 — 16/11/2026 (Audiences: Custom Audience + Lookalike, lưu theo tài khoản)
+
+- **Trang Audiences trong bản mô phỏng nay lưu theo tài khoản trên máy chủ:**
+  học viên tạo **Custom Audience** (tải file CSV/TXT danh sách khách hàng,
+  map cột Email/Số điện thoại/Tên/Họ, hoặc tạo tệp mẫu từ nguồn mô phỏng
+  Website/Video/Lead form/Page) và **Lookalike** (chọn tệp nguồn, kéo 1–10%,
+  ước lượng theo 98.000.000 × % đã chọn); danh sách tệp hiện ở trang
+  Audiences và gắn được vào 2 dropdown Include/Exclude ở bước Ad set.
+  Chỉ metadata của tệp được lưu (id, tên, loại, nguồn, cột đã map, số dòng,
+  ngày tạo, % Lookalike); nội dung file upload chỉ đọc và parse trên trình
+  duyệt, không bao giờ rời máy học viên.
+- API mới `PUT /api/audiences` (chỉ tài khoản đã đăng nhập): validate body
+  `audiences` phải là mảng tối đa 50 tệp, mỗi tệp chỉ gồm key metadata cho
+  phép, `name` ≤ 200 ký tự, `type` thuộc `custom`/`lookalike` (sai → 400,
+  chưa đăng nhập → 401); `GET /api/bootstrap` trả thêm `audiences` của tài
+  khoản đó (mặc định `[]`). Bảng mới `audiences` trong SQLite, theo mẫu
+  `editor_draft` (1 dòng JSON theo user, xoá theo user).
+- **Chống mất dữ liệu khi tạo tệp trước khi bootstrap xong:** bridge chỉ PUT
+  sau khi bootstrap đã nạp xong; bản lưu nào tới sớm được giữ lại, gộp vào
+  danh sách máy chủ (trùng id thì bản mới thắng) rồi mới đẩy lên — tệp tạo
+  sớm không bị mất và không xoá mất tệp cũ.
+- Bộ kiểm thử API `scripts/test_api.py`: **70/70 mục đạt** (59 cũ vẫn đạt +
+  11 mục mới: chưa đăng nhập → 401, body không phải mảng → 400, type sai →
+  400, key lạ → 400, tên quá dài → 400, quá 50 tệp → 400, lưu 1 Custom +
+  1 Lookalike rồi đọc lại qua bootstrap, 2 học viên không thấy tệp của nhau,
+  lưu mảng rỗng xoá hết).
+- **Chưa deploy:** bản này mới chỉ chạy kiểm thử local — cần push lên GitHub
+  để Hostinger tự deploy lại thì tính năng mới lên được fbads.digimar.site.
+
 ## v2.0.1 — 16/11/2026 (giáo viên tự đổi mật khẩu quản trị)
 
 - **Trang Quản trị có thêm mục “Đổi mật khẩu quản trị”:** giáo viên nhập mật

@@ -93,6 +93,76 @@ function parseStateJson(v) {
   return out;
 }
 
+// Kiểm tra danh sách Audiences do học viên tạo (chỉ metadata, không có nội
+// dung file upload). Trả về bản đã làm sạch (chỉ giữ key cho phép) hoặc null
+// nếu sai. Key cho phép: id, name, type, source, columns, rows, created và
+// pct (riêng Lookalike: 1–10%). Tối đa 50 tệp.
+const AUD_ALLOWED_KEYS = new Set([
+  'id',
+  'name',
+  'type',
+  'source',
+  'columns',
+  'rows',
+  'created',
+  'pct',
+]);
+const AUD_COLUMN_AS = new Set(['email', 'phone', 'first', 'last', 'skip']);
+function parseAudiences(v) {
+  if (!Array.isArray(v) || v.length > 50) return null;
+  const out = [];
+  for (const a of v) {
+    if (a === null || typeof a !== 'object' || Array.isArray(a)) return null;
+    for (const k of Object.keys(a)) {
+      if (!AUD_ALLOWED_KEYS.has(k)) return null;
+    }
+    if (typeof a.id !== 'string' || !a.id || a.id.length > 100) return null;
+    if (typeof a.name !== 'string' || !a.name.trim() || a.name.length > 200)
+      return null;
+    if (a.type !== 'custom' && a.type !== 'lookalike') return null;
+    if (a.source !== undefined && (typeof a.source !== 'string' || a.source.length > 200))
+      return null;
+    let columns;
+    if (a.columns !== undefined) {
+      if (!Array.isArray(a.columns) || a.columns.length > 50) return null;
+      columns = [];
+      for (const c of a.columns) {
+        if (c === null || typeof c !== 'object' || Array.isArray(c)) return null;
+        for (const k of Object.keys(c)) {
+          if (k !== 'col' && k !== 'as') return null;
+        }
+        if (typeof c.col !== 'string' || c.col.length > 100) return null;
+        if (typeof c.as !== 'string' || !AUD_COLUMN_AS.has(c.as)) return null;
+        columns.push({ col: c.col, as: c.as });
+      }
+    }
+    if (
+      a.rows !== undefined &&
+      (!Number.isInteger(a.rows) || a.rows < 0 || a.rows > 200000000)
+    )
+      return null;
+    if (a.created !== undefined && (typeof a.created !== 'string' || a.created.length > 50))
+      return null;
+    if (
+      a.pct !== undefined &&
+      (!Number.isInteger(a.pct) || a.pct < 1 || a.pct > 10)
+    )
+      return null;
+    const clean = {
+      id: a.id,
+      name: a.name,
+      type: a.type,
+      source: a.source !== undefined ? a.source : '',
+      rows: a.rows !== undefined ? a.rows : 0,
+      created: a.created !== undefined ? a.created : '',
+    };
+    if (columns !== undefined) clean.columns = columns;
+    if (a.pct !== undefined) clean.pct = a.pct;
+    out.push(clean);
+  }
+  return out;
+}
+
 // =====================================================================
 // TRANG (HTML)
 // =====================================================================
@@ -249,6 +319,18 @@ app.get('/api/bootstrap', auth.requireAuth, (req, res) => {
       editorDraft = {};
     }
   }
+  const audRow = db
+    .prepare('SELECT audiences_json FROM audiences WHERE user_id = ?')
+    .get(uid);
+  let audiences = [];
+  if (audRow) {
+    try {
+      const parsed = JSON.parse(audRow.audiences_json);
+      if (Array.isArray(parsed)) audiences = parsed;
+    } catch (e) {
+      audiences = [];
+    }
+  }
   const myDrafts = db
     .prepare(
       'SELECT id, name, objective, settings_json, created_at, updated_at FROM draft_campaigns WHERE user_id = ? ORDER BY updated_at DESC'
@@ -277,6 +359,7 @@ app.get('/api/bootstrap', auth.requireAuth, (req, res) => {
     cases,
     overrides,
     editorDraft,
+    audiences,
     myDrafts,
     announcements: anns.items,
     unreadCount: anns.unread,
@@ -366,6 +449,20 @@ app.put('/api/editor-draft', auth.requireAuth, auth.sameOrigin, (req, res) => {
      ON CONFLICT(user_id) DO UPDATE SET
        draft_json = excluded.draft_json, updated_at = datetime('now')`
   ).run(req.user.id, JSON.stringify(draft));
+  res.json({ ok: true });
+});
+
+/** Lưu danh sách Audiences do học viên tạo (chỉ metadata, ghi đè toàn bộ). */
+app.put('/api/audiences', auth.requireAuth, auth.sameOrigin, (req, res) => {
+  const audiences = parseAudiences(req.body.audiences);
+  if (audiences === null)
+    return res.status(400).json({ ok: false, error: 'bad_audiences' });
+  db.prepare(
+    `INSERT INTO audiences (user_id, audiences_json, updated_at)
+     VALUES (?, ?, datetime('now'))
+     ON CONFLICT(user_id) DO UPDATE SET
+       audiences_json = excluded.audiences_json, updated_at = datetime('now')`
+  ).run(req.user.id, JSON.stringify(audiences));
   res.json({ ok: true });
 });
 
