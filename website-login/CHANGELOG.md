@@ -10,7 +10,7 @@
 
 ---
 
-## v2.0.5 — 16/11/2026 (làm đẹp giao diện — chưa deploy)
+## v2.0.5 — 16/11/2026 (làm đẹp giao diện — đã deploy 10:53)
 
 - **Phạm vi:** chỉ sửa giao diện (CSS + rút ngắn 1 dòng hint + bỏ dòng
   hint hiển thị dưới tên cột bảng). Không đổi chức năng, class/id hay JS
@@ -62,7 +62,7 @@
   0 chuỗi `localStorage` trong `public/app/index.html`; probe jsdom
   smoke test: 21 campaign, 15 case, nút Nộp bài, Custom Audience,
   Customise columns, changelog, bảng KPI render bình thường, không lỗi
-  JS. **Chưa deploy lên fbads.digimar.site.**
+  JS. **Đã deploy lên fbads.digimar.site lúc 10:53.**
 
 ---
 
@@ -226,8 +226,7 @@
   400, key lạ → 400, tên quá dài → 400, quá 50 tệp → 400, lưu 1 Custom +
   1 Lookalike rồi đọc lại qua bootstrap, 2 học viên không thấy tệp của nhau,
   lưu mảng rỗng xoá hết).
-- **Chưa deploy:** bản này mới chỉ chạy kiểm thử local — cần push lên GitHub
-  để Hostinger tự deploy lại thì tính năng mới lên được fbads.digimar.site.
+- **Đã deploy:** đã push lên GitHub lúc 08:54 ngày 16/11/2026, Hostinger tự deploy lên fbads.digimar.site.
 
 ## v2.0.1 — 16/11/2026 (giáo viên tự đổi mật khẩu quản trị)
 
@@ -240,8 +239,7 @@
   tính năng này: học viên bị chặn 403, mật khẩu hiện tại sai, mật khẩu mới
   trùng cũ, đổi thành công, mật khẩu cũ không vào được, mật khẩu mới vào
   được).
-- **Chưa deploy:** bản này mới chỉ chạy kiểm thử local — cần push lên GitHub
-  để Hostinger tự deploy lại thì tính năng mới lên được fbads.digimar.site.
+- **Đã deploy:** đã push lên GitHub lúc 07:30 ngày 16/11/2026, Hostinger tự deploy lên fbads.digimar.site.
 
 ## v2.0.0 — 16/11/2026 (website đăng nhập — Node.js + Express + SQLite)
 
