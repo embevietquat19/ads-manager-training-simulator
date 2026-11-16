@@ -151,6 +151,35 @@ patch('audSave',
       "function audSave(list){try{localStorage.setItem('sim-audiences-v1',JSON.stringify(list))}catch(e){}}",
       "function audSave(list){try{if(window.__srvSaveAudiences)window.__srvSaveAudiences(list)}catch(e){}}")
 
+# ------------------------------------------- P16/P17: trạng thái bảng — đọc/ghi qua máy chủ
+patch('rowStateLoad',
+      "function rowStateLoad(){try{var r=localStorage.getItem(ROW_STATE_KEY);if(r){var s=JSON.parse(r);if(s&&typeof s==='object')return{overrides:(s.overrides&&typeof s.overrides==='object')?s.overrides:{},mine:Array.isArray(s.mine)?s.mine:[],deleted:Array.isArray(s.deleted)?s.deleted:[]}}}catch(e){}return{overrides:{},mine:[],deleted:[]}}",
+      "function rowStateLoad(){try{var s=window.__srv&&window.__srv.rowState;return rowStateNorm(s)}catch(e){return{overrides:{},mine:[],deleted:[]}}}")
+patch('rowStateSave',
+      "function rowStateSave(){try{localStorage.setItem(ROW_STATE_KEY,JSON.stringify(rowState))}catch(e){}}",
+      "function rowStateSave(){try{if(window.__srvSaveRowState)window.__srvSaveRowState(rowState)}catch(e){}}")
+
+# ------------------------------------------- P18: xoá bản nháp editor -> lưu nháp rỗng lên máy chủ
+patch('clearEditorDraft',
+      "function clearEditorDraft(){adsetDraft={};try{localStorage.removeItem(ADSET_DRAFT_KEY)}catch(e){}}",
+      "function clearEditorDraft(){adsetDraft={};try{if(window.__srvSaveDraft)window.__srvSaveDraft({})}catch(e){}}")
+
+# ------------------------------------------- P19/P20: phiên bản đã xem — đọc/ghi qua máy chủ
+patch('notifSeenGet',
+      "function notifSeenGet(){try{return localStorage.getItem(SEEN_VERSION_KEY)||''}catch(e){return''}}",
+      "function notifSeenGet(){try{return (window.__srv&&window.__srv.seenVersion)||''}catch(e){return''}}")
+patch('notifSeenSet',
+      "function notifSeenSet(v){try{localStorage.setItem(SEEN_VERSION_KEY,v)}catch(e){}}",
+      "function notifSeenSet(v){try{if(window.__srvMarkVersionSeen)window.__srvMarkVersionSeen(v)}catch(e){}}")
+
+# ------------------------------------------- P21/P22: trạng thái hiển thị bảng (Customise columns) — đọc/ghi qua máy chủ
+patch('colStateLoad',
+      "function colStateLoad(){try{var r=localStorage.getItem(COL_STATE_KEY);if(r){var s=JSON.parse(r);if(s&&typeof s==='object')return colStateNorm(s)}}catch(e){}return colStateDefault()}",
+      "function colStateLoad(){try{var s=window.__srv&&window.__srv.colState;return colStateNorm(s)}catch(e){return colStateDefault()}}")
+patch('colStateSave',
+      "function colStateSave(){try{localStorage.setItem(COL_STATE_KEY,JSON.stringify(colState))}catch(e){}}",
+      "function colStateSave(){try{if(window.__srvSaveColState)window.__srvSaveColState(colState)}catch(e){}}")
+
 # ------------------------------------------- P14: nạp bridge.js
 patch('inject-bridge',
       "</script>\n</body>\n</html>",
