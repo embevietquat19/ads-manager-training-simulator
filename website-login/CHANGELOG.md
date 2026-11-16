@@ -10,6 +10,101 @@
 
 ---
 
+## v2.0.3 — 16/11/2026 (sửa các chức năng chưa chạy + Customise columns + nhật ký cập nhật)
+
+- **Nhóm 1 — các trường nhập trong editor nay lưu thật vào bản nháp** (dùng
+  cơ chế `draftSet` sẵn có; bản login lưu theo tài khoản qua
+  `__srvSaveDraft`): tên Campaign/Ad set/Ad, Primary text / Headline /
+  Description (headline cập nhật live preview cả tab Feed lẫn tab Search),
+  Conversion location + Performance goal + "Customer life cycle strategy" ở
+  bước Ad set, Buying type + Category ở bước Campaign, Welcome message +
+  Suggested questions, Destination (7 radio), Partnership ad +
+  Multi-advertiser ads + công tắc On/Off trong editor. **Giá thầu mở theo
+  chiến lược:** chọn "Cost per result goal" → mở ô cost-per-result, "Bid
+  cap"/"Other options" → mở ô Bid control, "Cost per 1,000 people reached"
+  → mở ô cost per unit of incremental reach; giá trị nhập lưu vào nháp;
+  hint viết lại cho đúng thực tế. **Logo topbar:** bấm logo Meta hoặc chữ
+  "Ads Manager" gọi `goHome()` — đóng mọi lớp đang mở (tool page, editor,
+  case view, trang Tối ưu, Insights, dialog...) rồi về đúng bảng Campaigns.
+- **Nhóm 2 — các nút báo thành công giả nay làm thật** (cơ chế lưu chung mới
+  `sim-row-state-v1`: bản tĩnh localStorage, bản login bảng `row_state` +
+  `PUT /api/row-state`): Duplicate nhân bản thật (tên "Copy of …", trạng
+  thái nháp, số dòng tăng); Name editor đổi tên thật của dòng đang chọn;
+  Publish trong editor (bản tĩnh) thêm chiến dịch Active vào bảng như bản
+  login; Discard Drafts **chỉ xoá nháp do học viên tạo** (sau hộp xác nhận),
+  không bao giờ đụng 6 nháp mẫu và 15 campaign case, không có nháp thì báo
+  rõ; Media picker Select gắn media mẫu vào preview và lưu vào nháp; công
+  tắc On/Off từng dòng lưu trạng thái `active`; Export tải file CSV thật
+  của bảng đang hiển thị (đúng cột/bộ lọc đang chọn); Publish/Delete trên
+  bảng làm thật — **campaign bài tập được bảo vệ, không xoá** (chọn cách
+  chặn kèm giải thích để nút "Mở campaign đang chạy" trong case không mất
+  đích). Tab Review nay đọc tên/Partnership/Multi-advertiser từ draft.
+- **Trang Quản trị:** form tạo học viên thêm `autocomplete="off"` /
+  `autocomplete="new-password"` (trình duyệt không còn tự điền tài khoản
+  giáo viên — chính là nguyên nhân tạo ra tài khoản lạ "hocvien" trước
+  đây); banner tạo tài khoản chỉ hiện 1 lần rồi tự ẩn sau 12 giây và ẩn
+  khi tải lại trang (nguyên nhân bám dai là bfcache khôi phục DOM); bảng
+  học viên đủ rộng (cuộn ngang, `white-space:nowrap` cho pill và tiêu đề
+  cột). Mục "Đổi mật khẩu quản trị" đã xác nhận có trên site live (v2.0.1)
+  nên không sửa gì thêm.
+- **Mô phỏng:** mô tả Opportunity score không còn bị cắt giữa chữ; ô
+  Budget trên bảng xuống dòng gọn trong ô, hàng tiêu đề gọn hơn; editor mở
+  campaign của Case 1 đúng số liệu/tên/nội dung của case (ngân sách
+  ₫400.000/ngày, tên ad set/ad, primary text, headline) — sửa chung cơ
+  chế nên cả 15 case đều mở đúng; avatar topbar lấy chữ viết tắt từ tên
+  tài khoản đang đăng nhập (học viên "Học sinh Test" hiện "HT", không còn
+  "GV" hardcode); ô đăng nhập không còn kẹt giá trị đã điền sẵn (bỏ
+  `value="giaovien"` ở form thiết lập lần đầu, thêm `name` cho form đăng
+  nhập). Chuông học viên hiện "Chưa có thông báo nào." là đúng vì không có
+  seed thông báo chào mừng nào trong code (thông báo chào mừng ngày 15/11
+  là tạo tay qua Admin); khối 19 Tối ưu thiếu tiêu đề con "Vì sao…" là cố
+  ý nên để nguyên.
+- **Thông báo thành nhật ký cập nhật:** mảng `CHANGELOG_DATA` trong file
+  tĩnh (v2.0.0 01:23, v2.0.1 07:30, v2.0.2 08:54 ngày 16/11/2026, v2.0.3
+  — giờ deploy điền sau); chuông hiện 2 mục riêng: "Thông báo của giảng
+  viên" (giáo viên vẫn đăng/sửa/xoá từ Quản trị) và "Nhật ký cập nhật hệ
+  thống" (chỉ đọc); số chưa đọc tính cả phiên bản mới chưa xem, lưu
+  "phiên bản đã xem gần nhất" theo tài khoản (bảng `seen_version` +
+  `PUT /api/seen-version`) / theo trình duyệt (bản tĩnh). Trang Quản trị
+  thêm mục nhật ký cập nhật chỉ đọc.
+- **Thuật ngữ:** thêm bảng "Tổng hợp công thức KPI hay dùng" (12 dòng:
+  CPM, CTR link/all, CPC, Cost per result, CPL, CPA, Cost per message,
+  ROAS, Conversion rate, Frequency, Reach vs Impressions, CPA hoà vốn),
+  mỗi dòng có công thức, cách đọc và ví dụ số lấy từ case trong bản mô
+  phỏng (ghi rõ case; số minh họa ghi rõ); ngưỡng tham khảo chỉ dùng
+  ngưỡng đã có trong mục Tối ưu & Đề xuất; ghi chú ROAS chưa trừ 10% VAT
+  + ~1,1% phí ngân hàng, chi phí thực ≈111% (Case 4).
+- **Customise columns làm thật:** dialog liệt kê đủ 33 cột, tick chọn/bỏ,
+  kéo thả (hoặc bấm ↑ ↓) sắp xếp, Apply render lại bảng đúng cột và thứ
+  tự; "Save as preset" lưu preset riêng (chặn trùng tên, dùng lại được
+  trong menu Columns); preset lưu theo tài khoản (bảng `col_state` +
+  `PUT /api/col-state`) / theo trình duyệt (bản tĩnh). "View your column
+  presets" liệt kê và xoá preset riêng; "Discover more column presets"
+  mở dialog Customise; "Compare attribution settings" đổi Attribution
+  setting hiển thị trên bảng (số liệu mẫu cố định nên chỉ đổi nhãn cột,
+  không tính lại chỉ số — đã ghi rõ trong dialog); "Conditional
+  formatting" tô màu ô thật theo ngưỡng tự đặt (lưu lại và xoá được).
+  Không còn toast giả nào trong menu Columns.
+- API mới `PUT /api/row-state`, `PUT /api/seen-version`,
+  `PUT /api/col-state` (chỉ tài khoản đã đăng nhập; validate như
+  `parseAudiences`: giới hạn số mục/kích thước JSON, sai → 400, chưa đăng
+  nhập → 401); `GET /api/bootstrap` trả thêm `rowState`, `seenVersion`,
+  `colState`. Bảng mới `row_state`, `seen_version`, `col_state` trong
+  SQLite. Patch script thêm P16–P22 (không đổi chuỗi neo cũ).
+- Bộ kiểm thử API `scripts/test_api.py`: **95/95 mục đạt** (70 cũ vẫn đạt
+  + 13 mục mới row-state/seen-version + 12 mục mới col-state). Probe
+  jsdom: Nhóm 1: 84/84 + logo 22/22; Nhóm 2 + UI + changelog + KPI:
+  101/101; Customise columns: 35/35 (bản tĩnh) + 9/9 (bản login đã patch);
+  hồi quy Nhóm 1+2 trên file cuối: 101/101. Hạn chế đã biết: mục Opportunity
+  score (CSS) và hiệu ứng cắt chữ chỉ kiểm chứng được bằng mắt trên Chrome
+  thật sau deploy (jsdom không có layout); đổi Attribution setting chỉ đổi
+  nhãn cột vì số liệu mẫu cố định.
+- **Chưa deploy:** bản này mới chỉ chạy kiểm thử local — cần push lên GitHub
+  để Hostinger tự deploy lại thì tính năng mới lên được fbads.digimar.site.
+  Sau khi deploy, điền giờ deploy thật vào mục v2.0.3 trong
+  `CHANGELOG_DATA` (file tĩnh) và mục nhật ký cập nhật ở trang Quản trị
+  (hiện đang ghi "sắp cập nhật").
+
 ## v2.0.2 — 16/11/2026 (Audiences: Custom Audience + Lookalike, lưu theo tài khoản)
 
 - **Trang Audiences trong bản mô phỏng nay lưu theo tài khoản trên máy chủ:**

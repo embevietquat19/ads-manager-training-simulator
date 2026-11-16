@@ -163,6 +163,217 @@ function parseAudiences(v) {
   return out;
 }
 
+// Kiểm tra trạng thái bảng do học viên thay đổi (ghi đè theo id dòng + dòng do
+// học viên tạo + id dòng đã xoá). Trả về bản đã làm sạch hoặc null nếu sai.
+// overrides: {id: {name?, active?}} tối đa 200 key; mine: tối đa 100 dòng
+// {tab, row} với row có id (string ≤ 100) và name (string ≤ 200) nếu có;
+// deleted: tối đa 200 id (string ≤ 100). Toàn bộ JSON tối đa 200.000 ký tự.
+function parseRowState(v) {
+  if (v === null || typeof v !== 'object' || Array.isArray(v)) return null;
+  try {
+    if (JSON.stringify(v).length > 200000) return null;
+  } catch (e) {
+    return null;
+  }
+  const out = { overrides: {}, mine: [], deleted: [] };
+  const ov = v.overrides;
+  if (ov !== undefined) {
+    if (ov === null || typeof ov !== 'object' || Array.isArray(ov)) return null;
+    const keys = Object.keys(ov);
+    if (keys.length > 200) return null;
+    for (const k of keys) {
+      if (typeof k !== 'string' || !k || k.length > 100) return null;
+      const p = ov[k];
+      if (p === null || typeof p !== 'object' || Array.isArray(p)) return null;
+      const clean = {};
+      if (p.name !== undefined) {
+        if (typeof p.name !== 'string' || !p.name.trim() || p.name.length > 200)
+          return null;
+        clean.name = p.name;
+      }
+      if (p.active !== undefined) {
+        if (typeof p.active !== 'boolean') return null;
+        clean.active = p.active;
+      }
+      out.overrides[k] = clean;
+    }
+  }
+  if (v.mine !== undefined) {
+    if (!Array.isArray(v.mine) || v.mine.length > 100) return null;
+    for (const m of v.mine) {
+      if (m === null || typeof m !== 'object' || Array.isArray(m)) return null;
+      if (m.tab !== 'campaigns' && m.tab !== 'adsets' && m.tab !== 'ads')
+        return null;
+      const r = m.row;
+      if (r === null || typeof r !== 'object' || Array.isArray(r)) return null;
+      if (typeof r.id !== 'string' || !r.id || r.id.length > 100) return null;
+      if (
+        r.name !== undefined &&
+        (typeof r.name !== 'string' || r.name.length > 200)
+      )
+        return null;
+      out.mine.push({ tab: m.tab, row: r });
+    }
+  }
+  if (v.deleted !== undefined) {
+    if (!Array.isArray(v.deleted) || v.deleted.length > 200) return null;
+    for (const id of v.deleted) {
+      if (typeof id !== 'string' || !id || id.length > 100) return null;
+      out.deleted.push(id);
+    }
+  }
+  return out;
+}
+
+// Kiểm tra trạng thái hiển thị bảng (Customise columns): preset cột riêng +
+// lựa chọn đang dùng (preset, bộ cột tuỳ chỉnh, Attribution setting, quy tắc
+// tô màu). Trả về bản đã làm sạch hoặc null nếu sai.
+// custom: tối đa 20 preset {id (string ≤ 100), name (1..100 ký tự),
+//   cols: 1..40 key cột hợp lệ, không trùng, luôn có 'on' + 'name'};
+// view: {preset (string ≤ 100: preset hệ thống, 'custom', hoặc
+//   'custom:<id>' phải trùng 1 preset riêng đã có), cols: null hoặc 1..40
+//   key cột hợp lệ, attr: null hoặc 1 trong 5 cửa sổ ghi nhận,
+//   fmt: tối đa 20 quy tắc {id (string ≤ 100), col (cột số liệu),
+//   op gt/lt, threshold (số hữu hạn, |x| ≤ 1e15), color red/green}}.
+// Toàn bộ JSON tối đa 200.000 ký tự.
+const COL_KEYS = new Set([
+  'on', 'name', 'delivery', 'actions', 'attr', 'results', 'cpr', 'budget',
+  'spend', 'impr', 'reach', 'ends', 'bid', 'freq', 'cpm', 'linkclicks',
+  'shopclicks', 'cpclink', 'ctlink', 'clicksall', 'ctrall', 'cpall', 'lpv',
+  'clpv', 'pageeng', 'reactions', 'comments', 'saves', 'shares', 'fblikes',
+  'igfollows', 'cpc', 'cpm1000',
+]);
+const COL_FMT_KEYS = new Set([
+  'results', 'cpr', 'budget', 'spend', 'impr', 'reach', 'freq', 'cpm',
+  'linkclicks', 'shopclicks', 'cpclink', 'ctlink', 'clicksall', 'ctrall',
+  'cpall', 'lpv', 'clpv', 'pageeng', 'reactions', 'comments', 'saves',
+  'shares', 'fblikes', 'igfollows', 'cpc', 'cpm1000',
+]);
+const COL_ATTR_OPTIONS = new Set([
+  '7-day click or 1-day view',
+  '7-day click',
+  '1-day click or 1-day view',
+  '1-day click',
+  '1-day click or 1-day engaged view',
+]);
+const COL_SYSTEM_PRESETS = new Set([
+  'performance',
+  'clicks',
+  'engagement',
+  'delivery',
+]);
+function cleanColKeys(v) {
+  if (!Array.isArray(v)) return null;
+  const out = [];
+  for (const k of v) {
+    if (typeof k !== 'string' || !COL_KEYS.has(k)) return null;
+    if (!out.includes(k)) out.push(k);
+  }
+  if (!out.includes('on')) out.unshift('on');
+  if (!out.includes('name')) out.splice(1, 0, 'name');
+  if (out.length < 3 || out.length > 40) return null;
+  return out;
+}
+function parseColState(v) {
+  if (v === null || typeof v !== 'object' || Array.isArray(v)) return null;
+  try {
+    if (JSON.stringify(v).length > 200000) return null;
+  } catch (e) {
+    return null;
+  }
+  const out = {
+    custom: [],
+    view: { preset: 'performance', cols: null, attr: null, fmt: [] },
+  };
+  if (v.custom !== undefined) {
+    if (!Array.isArray(v.custom) || v.custom.length > 20) return null;
+    const seenIds = new Set();
+    for (const p of v.custom) {
+      if (p === null || typeof p !== 'object' || Array.isArray(p)) return null;
+      for (const k of Object.keys(p)) {
+        if (k !== 'id' && k !== 'name' && k !== 'cols') return null;
+      }
+      if (typeof p.id !== 'string' || !p.id || p.id.length > 100) return null;
+      if (seenIds.has(p.id)) return null;
+      seenIds.add(p.id);
+      if (
+        typeof p.name !== 'string' ||
+        !p.name.trim() ||
+        p.name.length > 100
+      )
+        return null;
+      const cols = cleanColKeys(p.cols);
+      if (cols === null) return null;
+      out.custom.push({ id: p.id, name: p.name, cols });
+    }
+  }
+  if (v.view !== undefined) {
+    const vw = v.view;
+    if (vw === null || typeof vw !== 'object' || Array.isArray(vw)) return null;
+    for (const k of Object.keys(vw)) {
+      if (k !== 'preset' && k !== 'cols' && k !== 'attr' && k !== 'fmt')
+        return null;
+    }
+    if (vw.preset !== undefined) {
+      if (
+        typeof vw.preset !== 'string' ||
+        !vw.preset ||
+        vw.preset.length > 100
+      )
+        return null;
+      if (vw.preset === 'custom') {
+        out.view.preset = 'custom';
+      } else if (COL_SYSTEM_PRESETS.has(vw.preset)) {
+        out.view.preset = vw.preset;
+      } else if (vw.preset.startsWith('custom:')) {
+        const id = vw.preset.slice('custom:'.length);
+        if (!out.custom.some((p) => p.id === id)) return null;
+        out.view.preset = vw.preset;
+      } else {
+        return null;
+      }
+    }
+    if (vw.cols !== undefined && vw.cols !== null) {
+      const cols = cleanColKeys(vw.cols);
+      if (cols === null) return null;
+      out.view.cols = cols;
+    }
+    if (vw.attr !== undefined && vw.attr !== null) {
+      if (typeof vw.attr !== 'string' || !COL_ATTR_OPTIONS.has(vw.attr))
+        return null;
+      out.view.attr = vw.attr;
+    }
+    if (vw.fmt !== undefined) {
+      if (!Array.isArray(vw.fmt) || vw.fmt.length > 20) return null;
+      for (const r of vw.fmt) {
+        if (r === null || typeof r !== 'object' || Array.isArray(r)) return null;
+        for (const k of Object.keys(r)) {
+          if (k !== 'id' && k !== 'col' && k !== 'op' && k !== 'threshold' && k !== 'color')
+            return null;
+        }
+        if (typeof r.id !== 'string' || !r.id || r.id.length > 100) return null;
+        if (!COL_FMT_KEYS.has(r.col)) return null;
+        if (r.op !== 'gt' && r.op !== 'lt') return null;
+        if (
+          typeof r.threshold !== 'number' ||
+          !Number.isFinite(r.threshold) ||
+          Math.abs(r.threshold) > 1e15
+        )
+          return null;
+        if (r.color !== 'red' && r.color !== 'green') return null;
+        out.view.fmt.push({
+          id: r.id,
+          col: r.col,
+          op: r.op,
+          threshold: r.threshold,
+          color: r.color,
+        });
+      }
+    }
+  }
+  return out;
+}
+
 // =====================================================================
 // TRANG (HTML)
 // =====================================================================
@@ -353,6 +564,39 @@ app.get('/api/bootstrap', auth.requireAuth, (req, res) => {
       };
     });
   const anns = listAnnouncements(uid);
+  const rsRow = db
+    .prepare('SELECT state_json FROM row_state WHERE user_id = ?')
+    .get(uid);
+  let rowState = { overrides: {}, mine: [], deleted: [] };
+  if (rsRow) {
+    try {
+      rowState = parseRowState(JSON.parse(rsRow.state_json)) || {
+        overrides: {},
+        mine: [],
+        deleted: [],
+      };
+    } catch (e) {
+      rowState = { overrides: {}, mine: [], deleted: [] };
+    }
+  }
+  const svRow = db
+    .prepare('SELECT version FROM seen_version WHERE user_id = ?')
+    .get(uid);
+  const seenVersion = svRow ? svRow.version || '' : '';
+  const csRow = db
+    .prepare('SELECT state_json FROM col_state WHERE user_id = ?')
+    .get(uid);
+  let colState = { custom: [], view: { preset: 'performance', cols: null, attr: null, fmt: [] } };
+  if (csRow) {
+    try {
+      colState = parseColState(JSON.parse(csRow.state_json)) || {
+        custom: [],
+        view: { preset: 'performance', cols: null, attr: null, fmt: [] },
+      };
+    } catch (e) {
+      colState = { custom: [], view: { preset: 'performance', cols: null, attr: null, fmt: [] } };
+    }
+  }
   res.json({
     ok: true,
     user: auth.publicUser(req.user),
@@ -360,6 +604,9 @@ app.get('/api/bootstrap', auth.requireAuth, (req, res) => {
     overrides,
     editorDraft,
     audiences,
+    rowState,
+    colState,
+    seenVersion,
     myDrafts,
     announcements: anns.items,
     unreadCount: anns.unread,
@@ -463,6 +710,48 @@ app.put('/api/audiences', auth.requireAuth, auth.sameOrigin, (req, res) => {
      ON CONFLICT(user_id) DO UPDATE SET
        audiences_json = excluded.audiences_json, updated_at = datetime('now')`
   ).run(req.user.id, JSON.stringify(audiences));
+  res.json({ ok: true });
+});
+
+/** Lưu trạng thái bảng do học viên thay đổi (ghi đè toàn bộ). */
+app.put('/api/row-state', auth.requireAuth, auth.sameOrigin, (req, res) => {
+  const state = parseRowState(req.body.state);
+  if (state === null)
+    return res.status(400).json({ ok: false, error: 'bad_row_state' });
+  db.prepare(
+    `INSERT INTO row_state (user_id, state_json, updated_at)
+     VALUES (?, ?, datetime('now'))
+     ON CONFLICT(user_id) DO UPDATE SET
+       state_json = excluded.state_json, updated_at = datetime('now')`
+  ).run(req.user.id, JSON.stringify(state));
+  res.json({ ok: true });
+});
+
+/** Lưu trạng thái hiển thị bảng (Customise columns) — ghi đè toàn bộ. */
+app.put('/api/col-state', auth.requireAuth, auth.sameOrigin, (req, res) => {
+  const state = parseColState(req.body.state);
+  if (state === null)
+    return res.status(400).json({ ok: false, error: 'bad_col_state' });
+  db.prepare(
+    `INSERT INTO col_state (user_id, state_json, updated_at)
+     VALUES (?, ?, datetime('now'))
+     ON CONFLICT(user_id) DO UPDATE SET
+       state_json = excluded.state_json, updated_at = datetime('now')`
+  ).run(req.user.id, JSON.stringify(state));
+  res.json({ ok: true });
+});
+
+/** Đánh dấu đã xem phiên bản mới nhất của nhật ký cập nhật. */
+app.put('/api/seen-version', auth.requireAuth, auth.sameOrigin, (req, res) => {
+  const version = req.body.version;
+  if (typeof version !== 'string' || !version || version.length > 50)
+    return res.status(400).json({ ok: false, error: 'bad_version' });
+  db.prepare(
+    `INSERT INTO seen_version (user_id, version, updated_at)
+     VALUES (?, ?, datetime('now'))
+     ON CONFLICT(user_id) DO UPDATE SET
+       version = excluded.version, updated_at = datetime('now')`
+  ).run(req.user.id, version);
   res.json({ ok: true });
 });
 
