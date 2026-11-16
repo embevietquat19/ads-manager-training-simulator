@@ -1165,6 +1165,24 @@ details.browse .brow button:hover{background:var(--blue-pale)}
   </div>
 </div>
 
+<!-- ===== AUDIENCE CREATOR: CUSTOM AUDIENCE ===== -->
+<div class="backdrop" id="audCreateBack" role="dialog" aria-modal="true" aria-label="Create a Custom Audience">
+  <div class="dialog" style="max-width:720px">
+    <div class="dialog-head"><h2>Create a Custom Audience</h2><button class="x" onclick="closeDialog('audCreateBack')" aria-label="Close">✕</button></div>
+    <div class="dialog-body" id="audCreateBody"></div>
+    <div class="dialog-foot"><span class="sp"></span><button class="btn" onclick="closeDialog('audCreateBack')">Cancel</button></div>
+  </div>
+</div>
+
+<!-- ===== AUDIENCE CREATOR: LOOKALIKE ===== -->
+<div class="backdrop" id="audLookalikeBack" role="dialog" aria-modal="true" aria-label="Create a lookalike audience">
+  <div class="dialog" style="max-width:720px">
+    <div class="dialog-head"><h2>Create a lookalike audience</h2><button class="x" onclick="closeDialog('audLookalikeBack')" aria-label="Close">✕</button></div>
+    <div class="dialog-body" id="audLookalikeBody"></div>
+    <div class="dialog-foot"><span class="sp"></span><button class="btn" onclick="closeDialog('audLookalikeBack')">Cancel</button></div>
+  </div>
+</div>
+
 <!-- ===== COMPARE PANEL (Breakdown / Compare) ===== -->
 <aside class="side-panel" id="comparePanel" role="dialog" aria-label="Compare panel">
   <div class="side-panel-head"><h3 id="compareTitle">Compare 1 campaign</h3><span style="margin-left:auto"></span><button class="tbtn icon-only" onclick="closeCompare()" aria-label="Close">✕</button></div>
@@ -1618,9 +1636,10 @@ function openToolPage(name){
     +'<div class="pcard"><h3>Payment history</h3><p><a onclick="toast(\'Transaction history (mô phỏng): chưa có giao dịch nào.\')">View transaction history</a> · <a onclick="toast(\'Help Centre (mô phỏng).\')">Help Centre</a></p></div>'
     +'</div></div>'+hint('Trang thanh toán: nơi thêm thẻ/phương thức trả tiền và xem số dư — quảng cáo thật chỉ chạy khi đã có phương thức thanh toán.');
   } else if(name==='Audiences'){
-    body='<div class="pcard"><h3>Reach the people who matter to you</h3><p>Create and save audiences to reuse across campaigns. Chưa có audience nào được lưu sẵn.</p>'+hint('Audience = tệp đối tượng lưu sẵn để dùng lại nhiều chiến dịch, khỏi khai báo lại từ đầu.')+'</div>'
-    +'<div class="pcard"><h3>Custom Audiences</h3><p>From customer contacts, website traffic, mobile app activity.</p><button class="btn btn-blue" onclick="toast(\'Create a Custom Audience (mô phỏng).\')">Create a Custom Audience</button></div>'
-    +'<div class="pcard"><h3>Lookalike audiences</h3><p>Find new people similar to your best customers.</p><button class="btn btn-blue" onclick="toast(\'Create a lookalike audience (mô phỏng).\')">Create a lookalike audience</button></div>'
+    body='<div class="pcard"><h3>Reach the people who matter to you</h3><p>Create and save audiences to reuse across campaigns.</p>'+hint('Audience = tệp đối tượng lưu sẵn để dùng lại nhiều chiến dịch, khỏi khai báo lại từ đầu.')+'</div>'
+    +'<div class="pcard"><h3>Custom Audiences</h3><p>From customer contacts, website traffic, mobile app activity.</p><button class="btn btn-blue" onclick="openAudCreate()">Create a Custom Audience</button></div>'
+    +'<div class="pcard"><h3>Lookalike audiences</h3><p>Find new people similar to your best customers.</p><button class="btn btn-blue" onclick="openAudLookalike()">Create a lookalike audience</button></div>'
+    +'<div class="pcard"><h3>Your audiences</h3><div id="audListWrap">'+audListHTML()+'</div></div>'
     +'<div class="pcard"><h3>Saved audience</h3><p>Reuse targeting settings such as location, age and interests.</p><button class="btn btn-blue" onclick="toast(\'Create a saved audience (mô phỏng).\')">Create a saved audience</button></div>';
   } else if(name==='Events Manager'){
     body='<div class="two-col"><div class="side-nav"><button onclick="toast(\'Connect data (mô phỏng): nối website / app / CRM để gửi sự kiện chuyển đổi về Meta.\')">Connect data</button><button onclick="toast(\'Overview (mô phỏng): tổng quan các nguồn dữ liệu và sự kiện đã nhận.\')">Overview</button><button class="sel">Datasets</button><button onclick="toast(\'Custom conversions (mô phỏng): tạo chuyển đổi tuỳ chỉnh từ sự kiện có sẵn.\')">Custom conversions</button><button onclick="toast(\'Integrations (mô phỏng): bản đào tạo không kết nối nguồn dữ liệu thật.\')">Integrations</button></div><div>'
@@ -1997,7 +2016,7 @@ function audienceCard(){
   +'<div class="field"><label>Languages</label><select onchange="addFromSelect(this,\'langs\')"><option value="">Add a language…</option><option>Vietnamese</option><option>English (US)</option><option>English (UK)</option><option>Korean</option><option>Japanese</option><option>Chinese (Simplified)</option></select>'
   +(langs.length?chipsHTML('langs'):'<p style="margin:6px 0 0;font-size:12.5px;color:var(--text2)">All languages — chưa giới hạn ngôn ngữ.</p>')
   +hint('Để trống = mọi ngôn ngữ. Chỉ chọn khi sản phẩm/nội dung chỉ phục vụ người dùng một ngôn ngữ nhất định.')+'</div></div>'
-  +'<div class="field"><label>Exclude these custom audiences</label><select onchange="addFromSelect(this,\'exclAud\')"><option value="">Select a custom audience to exclude…</option><option>Người đã mua — 180 ngày</option><option>Người đã nhắn tin Page — 180 ngày</option><option>Khách hàng hiện tại (CRM list)</option><option>Người đã cài app</option></select>'+chipsHTML('exclAud','excl')
+  +'<div class="field"><label>Exclude these custom audiences</label><select onchange="addFromSelect(this,\'exclAud\')"><option value="">Select a custom audience to exclude…</option><option>Người đã mua — 180 ngày</option><option>Người đã nhắn tin Page — 180 ngày</option><option>Khách hàng hiện tại (CRM list)</option><option>Người đã cài app</option>'+audOptionsHTML()+'</select>'+chipsHTML('exclAud','excl')
   +hint('Loại trừ người đã mua / đã là khách để ngân sách tập trung vào khách mới — tệp loại trừ hiện dưới dạng thẻ, bấm ✕ để gỡ.')+'</div>'
   +'<div class="kv"><span>Unknown age on WhatsApp</span><b>Included</b></div>'
   +'<p style="color:var(--text2);font-size:12.5px;margin:6px 0 0">Audience includes unknown age on WhatsApp</p>'
@@ -2035,7 +2054,7 @@ function audienceCard(){
   } else {
     h+='<div class="adv-note"><b>Exclude theo detailed targeting không khả dụng khi Advantage+ audience đang bật</b> — ở chế độ gợi ý, Meta có thể vượt qua sở thích/hành vi bạn gợi ý. Muốn loại trừ cứng, dùng <b>Exclude these custom audiences</b> ở phần Audience controls phía trên, hoặc tắt Advantage+ audience để mở ô Exclude thủ công.</div>';
   }
-  h+='<div class="field" style="margin-top:12px"><label>Include these custom audiences</label><select onchange="addFromSelect(this,\'inclAud\')"><option value="">Select a custom audience…</option><option>Người tương tác Page — 365 ngày</option><option>Người xem video 75% — 180 ngày</option><option>Website visitors — 180 ngày (Pixel)</option><option>Lookalike 1% — Người đã mua</option></select>'+chipsHTML('inclAud')
+  h+='<div class="field" style="margin-top:12px"><label>Include these custom audiences</label><select onchange="addFromSelect(this,\'inclAud\')"><option value="">Select a custom audience…</option><option>Người tương tác Page — 365 ngày</option><option>Người xem video 75% — 180 ngày</option><option>Website visitors — 180 ngày (Pixel)</option><option>Lookalike 1% — Người đã mua</option>'+audOptionsHTML()+'</select>'+chipsHTML('inclAud')
   +hint('Tệp tùy chỉnh / Lookalike đưa vào làm gợi ý cho Advantage+ — ưu tiên xây Lookalike từ tệp <b>người đã mua</b>, không phải tệp tương tác.')+'</div>'
   +'<div style="margin-top:10px"><button class="btn btn-blue" type="button" onclick="toast(\'Save audience (mô phỏng): đã lưu đối tượng hiện tại vào bản nháp — mở lại editor vẫn còn nguyên các lựa chọn.\')">Save audience</button></div>'
   +hint('Mọi lựa chọn ở thẻ Audience tự lưu vào bản nháp của trình duyệt này ngay khi bạn thay đổi.')+'</div>';
@@ -3194,6 +3213,224 @@ function applyDateRange(){
     });
   });
 })();
+/* ============ AUDIENCES DO HỌC VIÊN TẠO (Custom / Lookalike) ============ */
+/* Chỉ lưu metadata của tệp (tên, loại, nguồn, cột đã map, số dòng, ngày tạo).
+   Nội dung file upload chỉ đọc và parse trên trình duyệt, không lưu lại. */
+function audLoad(){try{var l=window.__srv&&window.__srv.audiences;return l?JSON.parse(JSON.stringify(l)):[]}catch(e){return[]}}
+function audSave(list){try{if(window.__srvSaveAudiences)window.__srvSaveAudiences(list)}catch(e){}}
+var audDraft={step:'source',source:'customer_list',headers:[],rows:[],mapping:[],name:''};
+var audLalDraft={sourceId:'',pct:1};
+var audSeq=0;
+function audNewId(){audSeq++;return 'aud'+Date.now().toString(36)+audSeq}
+function audToday(){try{return new Date().toLocaleDateString('vi-VN')}catch(e){return new Date().toISOString().slice(0,10)}}
+function audLabel(a){return a.type==='lookalike'?a.name+' — Lookalike '+a.pct+'%':a.name+' — Custom Audience'}
+function audOptionsHTML(){return audLoad().map(function(a){return '<option>'+esc(audLabel(a))+'</option>'}).join('')}
+function audSizeText(a){
+  if(a.type==='lookalike')return fmtNum(a.rows)+' người (ước lượng mô phỏng)';
+  if(a.rows>0)return fmtNum(a.rows)+' dòng';
+  return '— (mô phỏng)';
+}
+function audListHTML(){
+  var list=audLoad();
+  if(!list.length)return '<p style="margin:0;color:var(--text2)">Chưa có tệp nào do bạn tạo — bấm “Create a Custom Audience” hoặc “Create a lookalike audience” ở trên để tạo tệp đầu tiên, rồi dùng lại trong bước Ad set.</p>';
+  var h='<div class="table-scroll"><table><thead><tr><th>Audience name</th><th>Type</th><th>Source</th><th>Size</th><th>Created</th><th></th></tr></thead><tbody>';
+  list.forEach(function(a){
+    h+='<tr><td><b>'+esc(a.name)+'</b></td><td>'+(a.type==='lookalike'?('Lookalike '+a.pct+'%'):'Custom Audience')+'</td><td>'+esc(a.source||'—')+'</td><td>'+audSizeText(a)+'</td><td>'+esc(a.created||'')+'</td><td><button class="btn" onclick="audDelete(\''+a.id+'\')">Delete</button></td></tr>';
+  });
+  return h+'</tbody></table></div>'+hint('Xoá một tệp ở đây cũng gỡ tên tệp đó khỏi các lựa chọn Include/Exclude đã gắn trong bản nháp Ad set.');
+}
+function audRefreshPage(){
+  var w=document.getElementById('audListWrap');if(w)w.innerHTML=audListHTML();
+  if(typeof refreshAud==='function'){try{refreshAud()}catch(e){}}
+}
+/* ---- Nguồn tạo Custom Audience ---- */
+var AUD_SOURCES=[
+ {id:'customer_list',name:'Customer list',vi:'Tải file danh sách khách hàng (CSV/TXT) lên — nguồn duy nhất chạy thật trong bản mô phỏng này.'},
+ {id:'website',name:'Website traffic',vi:'Chỉ mô phỏng: trong bản thật, nguồn này lấy người đã vào website qua Pixel — bản đào tạo không kết nối Pixel thật nên chỉ tạo được tệp mẫu đặt tên.'},
+ {id:'video',name:'Video engagement',vi:'Chỉ mô phỏng: trong bản thật, nguồn này lấy người đã xem video của Page — bản đào tạo không có dữ liệu xem video thật nên chỉ tạo được tệp mẫu đặt tên.'},
+ {id:'leadform',name:'Lead form',vi:'Chỉ mô phỏng: trong bản thật, nguồn này lấy người đã mở/điền form thu lead — bản đào tạo không có form thật nên chỉ tạo được tệp mẫu đặt tên.'},
+ {id:'page',name:'Instagram / Facebook Page',vi:'Chỉ mô phỏng: trong bản thật, nguồn này lấy người đã tương tác Page/Instagram — bản đào tạo không kết nối Page thật nên chỉ tạo được tệp mẫu đặt tên.'}
+];
+function audSourceName(id){var s=AUD_SOURCES.filter(function(x){return x.id===id})[0];return s?s.name:id}
+function openAudCreate(){
+  audDraft={step:'source',source:'customer_list',headers:[],rows:[],mapping:[],name:''};
+  audRenderCreate();openDialog('audCreateBack');
+}
+function audSetSource(v){audDraft.source=v;audDraft.step='source';audRenderCreate()}
+function audSetName(v){audDraft.name=v}
+function audRenderCreate(){
+  var b=document.getElementById('audCreateBody');if(!b)return;
+  if(audDraft.step==='map'){b.innerHTML=audMapHTML();return}
+  var h='<div class="field"><label>Source</label>';
+  AUD_SOURCES.forEach(function(s){
+    h+='<label class="radio-line'+(audDraft.source===s.id?' sel':'')+'"><input type="radio" name="audSource" value="'+s.id+'"'+(audDraft.source===s.id?' checked':'')+' onchange="audSetSource(this.value)"><span><b>'+s.name+'</b><span>'+s.vi+'</span></span></label>';
+  });
+  h+='</div>';
+  if(audDraft.source==='customer_list'){
+    h+='<div class="field"><label>Upload a customer list file (CSV or TXT)</label><input type="file" accept=".csv,.txt" onchange="audFileChange(this)">'+hint('File phải có dòng đầu là header (tên cột), các dòng sau là dữ liệu. Hỗ trợ trường có dấu ngoặc kép. Nội dung file chỉ đọc và parse ngay trên trình duyệt này để map cột — chỉ lưu tên tệp, loại, nguồn và số dòng, không lưu lại nội dung từng dòng.')+'</div>'
+    +'<button class="btn" onclick="audUseSample()">Dùng file mẫu</button>'+hint('File mẫu có sẵn ~200 dòng (tên + email + số điện thoại giả lập, miền @vidu.test) để thử ngay không cần file thật — file mẫu đi qua đúng pipeline đọc và map cột như file bạn tải lên.');
+  } else {
+    h+='<div class="warn-box"><b>'+audSourceName(audDraft.source)+' — chỉ mô phỏng</b> Bản đào tạo không kết nối dữ liệu thật của nguồn này, nên tệp tạo ra chỉ là tệp mẫu để học viên tập đặt tên và tập gắn vào Ad set. Muốn có số dòng thật, hãy dùng nguồn Customer list ở trên.</div>'
+    +'<div class="field"><label>Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — Website" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc và không được trùng với tệp đã tạo trước đó.')+'</div>'
+    +'<button class="btn btn-blue" onclick="audCreateSubmit()">Create audience</button>';
+  }
+  b.innerHTML=h;
+}
+/* ---- Parse CSV: dòng đầu là header, hỗ trợ trường có dấu ngoặc kép ---- */
+function audParseCSV(text){
+  var rows=[],row=[],field='',q=false;
+  text=String(text||'').replace(/^\uFEFF/,'');
+  for(var i=0;i<text.length;i++){
+    var c=text.charAt(i);
+    if(q){
+      if(c==='"'){if(text.charAt(i+1)==='"'){field+='"';i++}else{q=false}}
+      else{field+=c}
+    } else if(c==='"'){q=true}
+    else if(c===','){row.push(field);field=''}
+    else if(c==='\n'){row.push(field);field='';rows.push(row);row=[]}
+    else if(c==='\r'){}
+    else{field+=c}
+  }
+  if(field!==''||row.length){row.push(field);rows.push(row)}
+  rows=rows.filter(function(r){return r.some(function(x){return String(x).trim()!==''})});
+  if(!rows.length)return {headers:[],rows:[]};
+  return {headers:rows[0].map(function(x){return String(x).trim()}),rows:rows.slice(1)};
+}
+function audAutoMap(h){
+  var s=String(h||'').toLowerCase();
+  if(s.indexOf('email')>-1||s.indexOf('mail')>-1)return 'email';
+  if(s.indexOf('phone')>-1||s.indexOf('tel')>-1||s.indexOf('sdt')>-1||s.indexOf('dien thoai')>-1||s.indexOf('điện thoại')>-1)return 'phone';
+  if(s.indexOf('first')>-1||s==='ten'||s.indexOf('tên')>-1)return 'first';
+  if(s.indexOf('last')>-1||s==='ho'||s.indexOf('họ')>-1)return 'last';
+  return 'skip';
+}
+function audFileChange(inp){
+  var f=inp&&inp.files&&inp.files[0];
+  if(!f)return;
+  var rd=new FileReader();
+  rd.onload=function(){audApplyParsed(audParseCSV(rd.result))};
+  rd.onerror=function(){toast('Không đọc được file — hãy thử lại với file CSV hoặc TXT khác.')};
+  rd.readAsText(f);
+}
+function audApplyParsed(p){
+  if(!p.headers.length||!p.rows.length){toast('File không có dữ liệu đọc được — file cần dòng đầu là header và ít nhất 1 dòng dữ liệu.');return}
+  audDraft.headers=p.headers;audDraft.rows=p.rows;audDraft.mapping=p.headers.map(audAutoMap);audDraft.step='map';audRenderCreate();
+}
+function audMask(v,kind){
+  v=String(v||'');if(!v)return '—';
+  if(kind==='email')return v.slice(0,2)+'***';
+  if(kind==='phone')return v.slice(0,3)+'***';
+  return v.slice(0,1)+'***';
+}
+function audPreviewRowsHTML(){
+  return audDraft.rows.slice(0,3).map(function(r){
+    return '<tr>'+audDraft.headers.map(function(c,i){return '<td>'+esc(audMask(r[i]||'',audDraft.mapping[i]||'skip'))+'</td>'}).join('')+'</tr>';
+  }).join('');
+}
+function audMapHTML(){
+  var h='<p><b>Đã đọc được '+fmtNum(audDraft.rows.length)+' dòng.</b> Map từng cột bên dưới sang đúng loại dữ liệu — cần ít nhất Email hoặc Số điện thoại mới tạo được tệp.</p>';
+  h+='<div class="field"><label>Map columns</label>';
+  audDraft.headers.forEach(function(col,i){
+    var m=audDraft.mapping[i]||'skip';
+    h+='<div class="kv"><span><b>'+esc(col)+'</b></span><span><select onchange="audSetMap('+i+',this.value)">'
+    +[['email','Email'],['phone','Số điện thoại'],['first','Tên'],['last','Họ'],['skip','Bỏ qua']].map(function(o){return '<option value="'+o[0]+'"'+(m===o[0]?' selected':'')+'>'+o[1]+'</option>'}).join('')
+    +'</select></span></div>';
+  });
+  h+='</div>';
+  h+='<div class="field"><label>Preview — first 3 rows (masked)</label><div class="table-scroll"><table><thead><tr>'+audDraft.headers.map(function(c){return '<th>'+esc(c)+'</th>'}).join('')+'</tr></thead><tbody id="audPreviewBody">'+audPreviewRowsHTML()+'</tbody></table></div>'+hint('Xem trước đã che bớt: chỉ hiện vài ký tự đầu, phần còn lại thay bằng ***.')+'</div>';
+  h+='<div class="field"><label>Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — 2026" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc và không được trùng với tệp đã tạo trước đó. Chỉ lưu tên tệp, loại, nguồn và số dòng — nội dung file chỉ đọc trên trình duyệt này và không lưu lại.')+'</div>';
+  h+='<button class="btn" onclick="audBackToSource()">Back</button> <button class="btn btn-blue" onclick="audCreateSubmit()">Create audience</button>';
+  return h;
+}
+function audSetMap(i,v){
+  audDraft.mapping[i]=v;
+  var pb=document.getElementById('audPreviewBody');if(pb)pb.innerHTML=audPreviewRowsHTML();
+}
+function audBackToSource(){audDraft.step='source';audRenderCreate()}
+function audSampleCSV(){
+  var first=['An','Binh','Chi','Dung','Ha','Hoa','Hung','Khanh','Lan','Linh','Long','Mai','Minh','Nam','Ngoc','Phuong','Quang','Thu','Tuan','Vy'];
+  var last=['Nguyen','Tran','Le','Pham','Hoang','Huynh','Phan','Vu','Dang','Bui'];
+  var lines=['first_name,last_name,email,phone'];
+  for(var i=0;i<200;i++){
+    var f=first[i%first.length],l=last[(i*7)%last.length];
+    lines.push(f+','+l+','+(f+l+(100+i)).toLowerCase()+'@vidu.test'+',09'+String(10000000+((i*7919)%89999999)));
+  }
+  return lines.join('\n');
+}
+function audUseSample(){audApplyParsed(audParseCSV(audSampleCSV()));toast('Đã tải file mẫu (~200 dòng, dữ liệu giả lập) — kiểm tra map cột rồi đặt tên và tạo tệp.')}
+function audCreateSubmit(){
+  var name=(audDraft.name||'').trim();
+  if(!name){toast('Hãy đặt tên cho tệp trước khi tạo.');var n=document.getElementById('audNameInput');if(n)n.focus();return}
+  var list=audLoad();
+  if(list.some(function(a){return a.name.toLowerCase()===name.toLowerCase()})){toast('Tên “'+name+'” đã có rồi — hãy đặt tên khác.');return}
+  var isFile=audDraft.source==='customer_list';
+  var cols=[];
+  if(isFile){
+    var hasId=audDraft.mapping.some(function(m){return m==='email'||m==='phone'});
+    if(!hasId){toast('Cần map ít nhất 1 cột sang Email hoặc Số điện thoại mới tạo được tệp.');return}
+    cols=audDraft.headers.map(function(h,i){return {col:h,as:audDraft.mapping[i]||'skip'}}).filter(function(c){return c.as!=='skip'});
+  }
+  var entry={id:audNewId(),name:name,type:'custom',source:audSourceName(audDraft.source),columns:cols,rows:isFile?audDraft.rows.length:0,created:audToday()};
+  list.push(entry);audSave(list);
+  closeDialog('audCreateBack');
+  toast('Đã tạo Custom Audience “'+name+'” ('+(isFile?fmtNum(entry.rows)+' dòng':'tệp mẫu — mô phỏng')+').');
+  audRefreshPage();
+}
+/* ---- Lookalike ---- */
+function audLalSources(){
+  var s=[{id:'sample-buyers',name:'Người đã mua (mẫu)',size:12400},{id:'sample-engaged',name:'Người tương tác Page (mẫu)',size:48000}];
+  audLoad().forEach(function(a){if(a.type==='custom')s.push({id:a.id,name:a.name,size:a.rows||0})});
+  return s;
+}
+function openAudLookalike(){
+  var srcs=audLalSources();
+  audLalDraft={sourceId:srcs.length?srcs[0].id:'',pct:1};
+  audRenderLookalike();openDialog('audLookalikeBack');
+}
+function audLalSrc(v){audLalDraft.sourceId=v;audRenderLookalike()}
+function audLalPct(v){
+  audLalDraft.pct=parseInt(v,10)||1;
+  var e=document.getElementById('audLalEst');if(e)e.textContent=audLalEstText(audLalDraft.pct);
+  var p=document.getElementById('audLalPctVal');if(p)p.textContent=audLalDraft.pct+'%';
+}
+function audLalEstText(pct){return fmtNum(98000000*pct/100)+' người (ước lượng mô phỏng, không phải số thật)'}
+function audRenderLookalike(){
+  var b=document.getElementById('audLookalikeBody');if(!b)return;
+  var srcs=audLalSources();
+  var h='<div class="field"><label>Source audience</label><select onchange="audLalSrc(this.value)">'
+  +srcs.map(function(s){return '<option value="'+s.id+'"'+(audLalDraft.sourceId===s.id?' selected':'')+'>'+esc(s.name)+'</option>'}).join('')
+  +'</select>'+hint('Chọn tệp nguồn để tìm người tương tự — nên chọn tệp người đã mua thay vì tệp tương tác chung chung, vì Lookalike học theo hành vi của tệp nguồn.')+'</div>'
+  +'<div class="field"><label>Location</label><input type="text" value="Vietnam" disabled>'+hint('Quốc gia cố định là Việt Nam trong bản mô phỏng này — trong bản thật có thể chọn nhiều quốc gia khác.')+'</div>'
+  +'<div class="field"><label>Audience size — <span id="audLalPctVal">'+audLalDraft.pct+'%</span></label><input type="range" min="1" max="10" step="1" value="'+audLalDraft.pct+'" style="width:100%" oninput="audLalPct(this.value)"><p style="margin:6px 0 0">Estimated size: <b id="audLalEst">'+audLalEstText(audLalDraft.pct)+'</b></p>'+hint('1% = 1% người giống tệp nguồn nhất tại Việt Nam (tệp nhỏ, giống nhất); kéo lên 10% thì tệp rộng hơn nhưng độ giống giảm. Công thức mô phỏng: 98.000.000 × % đã chọn.')+'</div>'
+  +'<button class="btn btn-blue" onclick="audLalCreate()">Create lookalike audience</button>';
+  b.innerHTML=h;
+}
+function audLalCreate(){
+  var src=audLalSources().filter(function(s){return s.id===audLalDraft.sourceId})[0];
+  if(!src){toast('Hãy chọn một tệp nguồn trước.');return}
+  var base='Lookalike — '+src.name;
+  var name=base,n=2;
+  var list=audLoad();
+  while(list.some(function(a){return a.name.toLowerCase()===name.toLowerCase()})){name=base+' ('+n+')';n++}
+  var entry={id:audNewId(),name:name,type:'lookalike',source:src.name,pct:audLalDraft.pct,rows:Math.round(98000000*audLalDraft.pct/100),created:audToday()};
+  list.push(entry);audSave(list);
+  closeDialog('audLookalikeBack');
+  toast('Đã tạo '+name+' ('+audLalDraft.pct+'% — '+audLalEstText(audLalDraft.pct)+').');
+  audRefreshPage();
+}
+function audDelete(id){
+  var list=audLoad();
+  var a=list.filter(function(x){return x.id===id})[0];
+  if(!a)return;
+  audSave(list.filter(function(x){return x.id!==id}));
+  ['inclAud','exclAud'].forEach(function(k){
+    var before=draftList(k,[]);
+    var l=before.filter(function(x){return x.indexOf(a.name+' — ')!==0});
+    if(l.length!==before.length)draftSet(k,l);
+  });
+  toast('Đã xoá tệp “'+a.name+'” khỏi danh sách Audiences (và khỏi các lựa chọn đã gắn trong bản nháp Ad set, nếu có).');
+  audRefreshPage();
+}
 /* Cầu nối bản đăng nhập (máy chủ): cho bridge thêm chiến dịch nháp của học viên vào bảng. */
 function __srvAddDraftRow(row){CAMPAIGNS.push(row);if(typeof renderTable==='function')renderTable();}
 Object.defineProperty(window,'__curCase',{configurable:true,get:function(){return curCase}});
@@ -3203,8 +3440,8 @@ Object.defineProperty(window,'__curCase',{configurable:true,get:function(){retur
    handlers (onclick="openCreate()" etc.) resolve names on window, so
    without this export every such button silently does nothing. */
 (function(){
-  var names=['applyDateRange','closeCaseView','closeCompare','closeDialog','closeOptimizeView','goCampaigns','goCases','openOptimizeView','showHome','closeEditor','closeInsights','closePageView','continueToEditor','doExport','editorNext','goEditorStep','onBidChange','openCase','openCaseCampaign','filterCaseCamps','clearNameFilter','openCompare','openCreate','openCustomExport','openDialog','openDuplicate','openEditor','openEditorForObjective','openEditorForSelected','openInsights','openNameEditor','openTags','openTool','openToolPage','renderTable','resetCase','segTab','setCaseVal','setCompareTab','setEditorMode','setFormat','setInsightsTab','setPvTab','setupContinue','startBrief','syncPreviewCta','syncPreviewText','toast','toggleAdsetMore','toggleAnswer','toggleCampMore','draftSet','addLoc','removeLoc','setLocMode','setLocRadius','addChip','removeChip','addChipFromInput','addFromSelect','setGender','toggleAdvAud','toggleAdvPl','togglePlManual','setBudgetType','toggleEndDate','toggleSched','toggleNarrow','setCostControl','toggleAdvOpt','toggleAdvCreative','toggleDtItem','filterDtTree','onDtBrowseToggle','setAdSetupMode','selectDemoPost','syncPreviewHeadline','openExportWordRow','openExportWordEditor','doExportWord','__srvAddDraftRow'];
-  var scope={applyDateRange:applyDateRange,closeCaseView:closeCaseView,closeCompare:closeCompare,closeDialog:closeDialog,closeOptimizeView:closeOptimizeView,goCampaigns:goCampaigns,goCases:goCases,openOptimizeView:openOptimizeView,showHome:showHome,closeEditor:closeEditor,closeInsights:closeInsights,closePageView:closePageView,continueToEditor:continueToEditor,doExport:doExport,editorNext:editorNext,goEditorStep:goEditorStep,onBidChange:onBidChange,openCase:openCase,openCaseCampaign:openCaseCampaign,filterCaseCamps:filterCaseCamps,clearNameFilter:clearNameFilter,openCompare:openCompare,openCreate:openCreate,openCustomExport:openCustomExport,openDialog:openDialog,openDuplicate:openDuplicate,openEditor:openEditor,openEditorForObjective:openEditorForObjective,openEditorForSelected:openEditorForSelected,openInsights:openInsights,openNameEditor:openNameEditor,openTags:openTags,openTool:openTool,openToolPage:openToolPage,renderTable:renderTable,resetCase:resetCase,segTab:segTab,setCaseVal:setCaseVal,setCompareTab:setCompareTab,setEditorMode:setEditorMode,setFormat:setFormat,setInsightsTab:setInsightsTab,setPvTab:setPvTab,setupContinue:setupContinue,startBrief:startBrief,syncPreviewCta:syncPreviewCta,syncPreviewText:syncPreviewText,toast:toast,toggleAdsetMore:toggleAdsetMore,toggleAnswer:toggleAnswer,toggleCampMore:toggleCampMore,draftSet:draftSet,addLoc:addLoc,removeLoc:removeLoc,setLocMode:setLocMode,setLocRadius:setLocRadius,addChip:addChip,removeChip:removeChip,addChipFromInput:addChipFromInput,addFromSelect:addFromSelect,setGender:setGender,toggleAdvAud:toggleAdvAud,toggleAdvPl:toggleAdvPl,togglePlManual:togglePlManual,setBudgetType:setBudgetType,toggleEndDate:toggleEndDate,toggleSched:toggleSched,toggleNarrow:toggleNarrow,setCostControl:setCostControl,toggleAdvOpt:toggleAdvOpt,toggleAdvCreative:toggleAdvCreative,toggleDtItem:toggleDtItem,filterDtTree:filterDtTree,onDtBrowseToggle:onDtBrowseToggle,setAdSetupMode:setAdSetupMode,selectDemoPost:selectDemoPost,syncPreviewHeadline:syncPreviewHeadline,openExportWordRow:openExportWordRow,openExportWordEditor:openExportWordEditor,doExportWord:doExportWord,__srvAddDraftRow:__srvAddDraftRow};
+  var names=['applyDateRange','closeCaseView','closeCompare','closeDialog','closeOptimizeView','goCampaigns','goCases','openOptimizeView','showHome','closeEditor','closeInsights','closePageView','continueToEditor','doExport','editorNext','goEditorStep','onBidChange','openCase','openCaseCampaign','filterCaseCamps','clearNameFilter','openCompare','openCreate','openCustomExport','openDialog','openDuplicate','openEditor','openEditorForObjective','openEditorForSelected','openInsights','openNameEditor','openTags','openTool','openToolPage','renderTable','resetCase','segTab','setCaseVal','setCompareTab','setEditorMode','setFormat','setInsightsTab','setPvTab','setupContinue','startBrief','syncPreviewCta','syncPreviewText','toast','toggleAdsetMore','toggleAnswer','toggleCampMore','draftSet','addLoc','removeLoc','setLocMode','setLocRadius','addChip','removeChip','addChipFromInput','addFromSelect','setGender','toggleAdvAud','toggleAdvPl','togglePlManual','setBudgetType','toggleEndDate','toggleSched','toggleNarrow','setCostControl','toggleAdvOpt','toggleAdvCreative','toggleDtItem','filterDtTree','onDtBrowseToggle','setAdSetupMode','selectDemoPost','syncPreviewHeadline','openExportWordRow','openExportWordEditor','doExportWord','__srvAddDraftRow','audLoad','audSave','openAudCreate','audSetSource','audUseSample','audFileChange','audSetMap','audSetName','audCreateSubmit','audBackToSource','audDelete','openAudLookalike','audLalSrc','audLalPct','audLalCreate'];
+  var scope={applyDateRange:applyDateRange,closeCaseView:closeCaseView,closeCompare:closeCompare,closeDialog:closeDialog,closeOptimizeView:closeOptimizeView,goCampaigns:goCampaigns,goCases:goCases,openOptimizeView:openOptimizeView,showHome:showHome,closeEditor:closeEditor,closeInsights:closeInsights,closePageView:closePageView,continueToEditor:continueToEditor,doExport:doExport,editorNext:editorNext,goEditorStep:goEditorStep,onBidChange:onBidChange,openCase:openCase,openCaseCampaign:openCaseCampaign,filterCaseCamps:filterCaseCamps,clearNameFilter:clearNameFilter,openCompare:openCompare,openCreate:openCreate,openCustomExport:openCustomExport,openDialog:openDialog,openDuplicate:openDuplicate,openEditor:openEditor,openEditorForObjective:openEditorForObjective,openEditorForSelected:openEditorForSelected,openInsights:openInsights,openNameEditor:openNameEditor,openTags:openTags,openTool:openTool,openToolPage:openToolPage,renderTable:renderTable,resetCase:resetCase,segTab:segTab,setCaseVal:setCaseVal,setCompareTab:setCompareTab,setEditorMode:setEditorMode,setFormat:setFormat,setInsightsTab:setInsightsTab,setPvTab:setPvTab,setupContinue:setupContinue,startBrief:startBrief,syncPreviewCta:syncPreviewCta,syncPreviewText:syncPreviewText,toast:toast,toggleAdsetMore:toggleAdsetMore,toggleAnswer:toggleAnswer,toggleCampMore:toggleCampMore,draftSet:draftSet,addLoc:addLoc,removeLoc:removeLoc,setLocMode:setLocMode,setLocRadius:setLocRadius,addChip:addChip,removeChip:removeChip,addChipFromInput:addChipFromInput,addFromSelect:addFromSelect,setGender:setGender,toggleAdvAud:toggleAdvAud,toggleAdvPl:toggleAdvPl,togglePlManual:togglePlManual,setBudgetType:setBudgetType,toggleEndDate:toggleEndDate,toggleSched:toggleSched,toggleNarrow:toggleNarrow,setCostControl:setCostControl,toggleAdvOpt:toggleAdvOpt,toggleAdvCreative:toggleAdvCreative,toggleDtItem:toggleDtItem,filterDtTree:filterDtTree,onDtBrowseToggle:onDtBrowseToggle,setAdSetupMode:setAdSetupMode,selectDemoPost:selectDemoPost,syncPreviewHeadline:syncPreviewHeadline,openExportWordRow:openExportWordRow,openExportWordEditor:openExportWordEditor,doExportWord:doExportWord,__srvAddDraftRow:__srvAddDraftRow,audLoad:audLoad,audSave:audSave,openAudCreate:openAudCreate,audSetSource:audSetSource,audUseSample:audUseSample,audFileChange:audFileChange,audSetMap:audSetMap,audSetName:audSetName,audCreateSubmit:audCreateSubmit,audBackToSource:audBackToSource,audDelete:audDelete,openAudLookalike:openAudLookalike,audLalSrc:audLalSrc,audLalPct:audLalPct,audLalCreate:audLalCreate};
   names.forEach(function(n){if(typeof scope[n]==='function')window[n]=scope[n]});
 })();
 </script>

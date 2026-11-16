@@ -5,7 +5,7 @@
  * File này được nạp sau các script chính của trang mô phỏng. Nó:
  *  - Tải toàn bộ dữ liệu riêng của học viên đang đăng nhập (/api/bootstrap):
  *    số liệu case, đáp án đã xem, ghi chú, campaign đã sửa, bản nháp editor,
- *    chiến dịch nháp đã Publish, thông báo + số chưa đọc.
+ *    tệp Audiences do học viên tạo, chiến dịch nháp đã Publish, thông báo + số chưa đọc.
  *  - Cung cấp các hàm window.__srv* mà các đoạn mã đã patch trong trang gọi
  *    tới mỗi khi học viên chỉnh số liệu / xem đáp án / ghi chú / Publish.
  *  - Thêm chiến dịch nháp của học viên vào bảng Campaigns, chuông thông báo
@@ -21,6 +21,8 @@
     caseNotes: {}, // caseId -> string
     overrides: {}, // caseId -> {name, budgetAmt}
     editorDraft: {},
+    audiences: [], // tệp Custom / Lookalike do học viên tạo (chỉ metadata)
+    audiencesReady: false, // true khi bootstrap đã nạp xong danh sách từ máy chủ
     myDrafts: [],
     announcements: [],
     unreadCount: 0,
@@ -125,6 +127,29 @@
     } catch (e) {}
     api('PUT', '/api/editor-draft', { draft: draft });
   }, 800);
+
+  // ---- Lưu danh sách Audiences do học viên tạo (chỉ metadata, không có nội dung file) ----
+  // Edge case: học viên tạo tệp trước khi bootstrap nạp xong thì audLoad() trả []
+  // và lần lưu đầu có thể ghi đè (xoá) danh sách cũ trên máy chủ. Xử lý: khi
+  // bootstrap chưa xong, chỉ giữ bản lưu chờ (pendingAudiences) mà KHÔNG PUT;
+  // bootstrap xong sẽ gộp bản chờ vào danh sách máy chủ (trùng id thì bản chờ
+  // thắng) rồi mới PUT danh sách đã gộp lên. Nhờ đó tệp tạo sớm không bị mất
+  // và cũng không xoá mất tệp cũ.
+  var pendingAudiences = null;
+  window.__srvSaveAudiences = debounce(function (list) {
+    var copy = [];
+    try {
+      copy = JSON.parse(JSON.stringify(list || []));
+    } catch (e) {
+      copy = [];
+    }
+    if (!srv.audiencesReady) {
+      pendingAudiences = copy;
+      return;
+    }
+    srv.audiences = copy;
+    api('PUT', '/api/audiences', { audiences: copy });
+  }, 600);
 
   // ---- Publish (mô phỏng) trong editor -> lưu chiến dịch nháp theo tài khoản ----
   window.__srvPublishDraft = function (objective, adsetDraft, lines) {
@@ -317,6 +342,27 @@
       });
       srv.overrides = data.overrides || {};
       srv.editorDraft = data.editorDraft || {};
+      srv.audiences = Array.isArray(data.audiences) ? data.audiences : [];
+      srv.audiencesReady = true;
+      // Gộp bản lưu chờ (nếu học viên tạo tệp trước khi bootstrap xong) rồi
+      // đẩy danh sách đã gộp lên máy chủ — xem ghi chú ở __srvSaveAudiences.
+      if (pendingAudiences) {
+        var merged = srv.audiences.slice();
+        pendingAudiences.forEach(function (a) {
+          var idx = -1;
+          for (var i = 0; i < merged.length; i++) {
+            if (merged[i] && merged[i].id === a.id) {
+              idx = i;
+              break;
+            }
+          }
+          if (idx >= 0) merged[idx] = a;
+          else merged.push(a);
+        });
+        pendingAudiences = null;
+        srv.audiences = merged;
+        api('PUT', '/api/audiences', { audiences: merged });
+      }
       srv.myDrafts = data.myDrafts || [];
       srv.announcements = data.announcements || [];
       srv.unreadCount = data.unreadCount || 0;
