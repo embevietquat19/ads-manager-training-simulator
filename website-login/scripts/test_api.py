@@ -201,7 +201,34 @@ st, j = teacher.j('POST', '/api/auth/login', {'username': 'giaovien', 'password'
 check('mật khẩu giáo viên mới vào được', st == 200 and j['user']['role'] == 'teacher', str(j))
 
 
-print('== 14. Giới hạn đăng nhập sai ==')
+print('== 14. Audiences (Custom + Lookalike, lưu riêng theo tài khoản) ==')
+anon2 = Client()
+aud_custom = {'id': 'aud1', 'name': 'Khách đã mua — 2026', 'type': 'custom', 'source': 'Customer list', 'columns': [{'col': 'email', 'as': 'email'}, {'col': 'phone', 'as': 'phone'}], 'rows': 200, 'created': '16/11/2026'}
+aud_lal = {'id': 'aud2', 'name': 'Lookalike — Khách đã mua — 2026', 'type': 'lookalike', 'source': 'Khách đã mua — 2026', 'pct': 1, 'rows': 980000, 'created': '16/11/2026'}
+st, j = anon2.j('PUT', '/api/audiences', {'audiences': [aud_custom]})
+check('chưa đăng nhập lưu audiences -> 401', st == 401, str(st))
+st, j = stuA.j('PUT', '/api/audiences', {'audiences': 'khong-phai-mang'})
+check('audiences không phải mảng -> 400', st == 400 and j.get('error') == 'bad_audiences', str(j))
+st, j = stuA.j('PUT', '/api/audiences', {'audiences': [{'id': 'x', 'name': 'Sai', 'type': 'saved', 'source': '', 'rows': 0, 'created': ''}]})
+check('type ngoài custom/lookalike -> 400', st == 400, str(j))
+st, j = stuA.j('PUT', '/api/audiences', {'audiences': [dict(aud_custom, hack='x')]})
+check('key lạ trong tệp -> 400', st == 400, str(j))
+st, j = stuA.j('PUT', '/api/audiences', {'audiences': [dict(aud_custom, name='N' * 201)]})
+check('tên quá 200 ký tự -> 400', st == 400, str(j))
+st, j = stuA.j('PUT', '/api/audiences', {'audiences': [dict(aud_custom, id='a%d' % i) for i in range(51)]})
+check('quá 50 tệp -> 400', st == 400, str(j))
+st, j = stuA.j('PUT', '/api/audiences', {'audiences': [aud_custom, aud_lal]})
+check('hv01 lưu 1 Custom + 1 Lookalike 200', st == 200 and j.get('ok') is True, str(j))
+st, j = stuA.j('GET', '/api/bootstrap')
+check('bootstrap hv01 thấy đủ 2 tệp', st == 200 and len(j.get('audiences', [])) == 2 and j['audiences'][0]['name'] == 'Khách đã mua — 2026' and j['audiences'][1]['type'] == 'lookalike' and j['audiences'][1]['pct'] == 1, str(j.get('audiences')))
+st, j = stuB.j('GET', '/api/bootstrap')
+check('hv02 không thấy tệp của hv01 (rỗng)', st == 200 and j.get('audiences') == [], str(j.get('audiences')))
+st, j = stuA.j('PUT', '/api/audiences', {'audiences': []})
+check('lưu mảng rỗng xoá hết 200', st == 200 and j.get('ok') is True, str(j))
+st, j = stuA.j('GET', '/api/bootstrap')
+check('bootstrap hv01 sau xoá thấy []', st == 200 and j.get('audiences') == [], str(j.get('audiences')))
+
+print('== 15. Giới hạn đăng nhập sai ==')
 bad = Client()
 for i in range(5):
     st, j = bad.j('POST', '/api/auth/login', {'username': 'hv02', 'password': 'sai'})

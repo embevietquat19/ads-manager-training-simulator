@@ -115,11 +115,11 @@ patch('bridge-helpers',
       "Object.defineProperty(window,'__curCase',{configurable:true,get:function(){return curCase}});\n"
       "/* Expose every handler referenced by inline on* attributes on window.")
 patch('bridge-export-names',
-      "'doExportWord'];",
-      "'doExportWord','__srvAddDraftRow'];")
+      "'doExportWord','audLoad'",
+      "'doExportWord','__srvAddDraftRow','audLoad'")
 patch('bridge-export-scope',
-      "doExportWord:doExportWord};",
-      "doExportWord:doExportWord,__srvAddDraftRow:__srvAddDraftRow};")
+      "doExportWord:doExportWord,audLoad:audLoad",
+      "doExportWord:doExportWord,__srvAddDraftRow:__srvAddDraftRow,audLoad:audLoad")
 
 # ------------------------------------------- P13: đổi câu chữ localStorage -> lưu theo tài khoản
 patch('text-case-intro',
@@ -140,6 +140,16 @@ patch('text-casecamp-toast',
 patch('text-reset-toast',
       "Đã khôi phục số liệu gốc của case này trên trình duyệt của bạn.",
       "Đã khôi phục số liệu gốc của case này trên tài khoản của bạn.")
+
+# ------------------------------------------- P15: Audiences do học viên tạo — đọc/ghi qua máy chủ
+# 2 dòng audLoad/audSave là 2 chỗ localStorage cuối cùng còn lại trong file
+# tĩnh; sau patch này kiểm tra an toàn "không còn localStorage" mới đạt.
+patch('audLoad',
+      "function audLoad(){try{var r=localStorage.getItem('sim-audiences-v1');return r?JSON.parse(r):[]}catch(e){return[]}}",
+      "function audLoad(){try{var l=window.__srv&&window.__srv.audiences;return l?JSON.parse(JSON.stringify(l)):[]}catch(e){return[]}}")
+patch('audSave',
+      "function audSave(list){try{localStorage.setItem('sim-audiences-v1',JSON.stringify(list))}catch(e){}}",
+      "function audSave(list){try{if(window.__srvSaveAudiences)window.__srvSaveAudiences(list)}catch(e){}}")
 
 # ------------------------------------------- P14: nạp bridge.js
 patch('inject-bridge',
