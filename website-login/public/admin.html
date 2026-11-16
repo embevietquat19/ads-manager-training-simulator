@@ -11,7 +11,7 @@
   header h1{font-size:18px;margin:0}
   header .sub{color:#65676B;font-size:13px}
   header .sp{flex:1}
-  .btn{padding:8px 14px;border:1px solid #CCD0D5;background:#fff;border-radius:8px;cursor:pointer;font-size:13.5px;font-weight:600}
+  .btn{padding:8px 14px;border:1px solid #CCD0D5;background:#fff;border-radius:6px;cursor:pointer;font-size:13.5px;font-weight:600}
   .btn:hover{background:#F0F2F5}
   .btn.primary{background:#0064E0;border-color:#0064E0;color:#fff}
   .btn.primary:hover{background:#0053B3}
@@ -20,15 +20,15 @@
   .btn.small{padding:5px 9px;font-size:12.5px}
   main{max-width:1180px;margin:0 auto;padding:20px}
   .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
-  .card{background:#fff;border:1px solid #ddd;border-radius:10px;padding:16px}
+  .card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:16px}
   .card .num{font-size:28px;font-weight:800}
   .card .lbl{color:#65676B;font-size:13px;margin-top:2px}
-  section{background:#fff;border:1px solid #ddd;border-radius:10px;padding:18px;margin-bottom:20px}
+  section{background:#fff;border:1px solid #ddd;border-radius:8px;padding:16px;margin-bottom:20px}
   section h2{font-size:16px;margin:0 0 4px}
   section .desc{color:#65676B;font-size:13px;margin:0 0 14px}
   table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:980px}
   .table-wrap{overflow-x:auto}
-  th,td{padding:9px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
+  th,td{padding:8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
   th{color:#65676B;font-weight:600;font-size:12.5px;text-transform:uppercase;white-space:nowrap;background:#EDEFF2}
   td.nw{white-space:nowrap}
   .badge{white-space:nowrap}
@@ -36,7 +36,7 @@
   .badge.on{background:#E6F4EA;color:#137333}
   .badge.off{background:#FDE8E8;color:#9B1C1C}
   .badge.info{background:#E7F3FF;color:#0064E0}
-  input,textarea,select{padding:9px 10px;border:1px solid #CCD0D5;border-radius:8px;font-size:14px;width:100%}
+  input,textarea,select{padding:9px 10px;border:1px solid #CCD0D5;border-radius:6px;font-size:14px;width:100%}
   input:focus,textarea:focus{outline:none;border-color:#0064E0;box-shadow:0 0 0 2px rgba(0,100,224,.2)}
   .form-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end}
   .form-grid label{display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B}
@@ -82,9 +82,9 @@
     <h2>Tạo tài khoản học viên</h2>
     <p class="desc">Giáo viên cấp tài khoản cho từng học viên. Học viên đăng nhập bằng tài khoản này; bài làm lưu riêng theo tài khoản trên máy chủ, đổi máy vẫn còn.</p>
     <form id="createForm" class="form-grid" autocomplete="off">
-      <div><label>Tên đăng nhập</label><input id="newUser" required placeholder="vd: hv01" autocomplete="off"></div>
-      <div><label>Tên hiển thị</label><input id="newName" required placeholder="vd: Nguyễn Văn A" autocomplete="off"></div>
-      <div><label>Mật khẩu (≥ 6 ký tự)</label><input id="newPass" type="password" required minlength="6" autocomplete="new-password"></div>
+      <div><label for="newUser">Tên đăng nhập</label><input id="newUser" required placeholder="vd: hv01" autocomplete="off"></div>
+      <div><label for="newName">Tên hiển thị</label><input id="newName" required placeholder="vd: Nguyễn Văn A" autocomplete="off"></div>
+      <div><label for="newPass">Mật khẩu (≥ 6 ký tự)</label><input id="newPass" type="password" required minlength="6" autocomplete="new-password"></div>
       <button class="btn primary" type="submit">Tạo tài khoản</button>
     </form>
     <div class="err" id="createErr"></div>
@@ -113,8 +113,8 @@
     <h2>Thông báo của giảng viên</h2>
     <p class="desc">Thông báo hiện cho học viên trên màn hình chính sau khi đăng nhập, kèm chuông báo số chưa đọc. Chỉ giáo viên đăng / sửa / xoá được.</p>
     <form id="annForm">
-      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Tiêu đề</label><input id="annTitle" required maxlength="200" placeholder="vd: Nhắc lịch nộp bài tập tuần này"></div>
-      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Nội dung</label><textarea id="annBody" rows="3" required maxlength="5000" placeholder="Nội dung thông báo…"></textarea></div>
+      <div style="margin-bottom:10px"><label for="annTitle" style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Tiêu đề</label><input id="annTitle" required maxlength="200" placeholder="vd: Nhắc lịch nộp bài tập tuần này"></div>
+      <div style="margin-bottom:10px"><label for="annBody" style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Nội dung</label><textarea id="annBody" rows="3" required maxlength="5000" placeholder="Nội dung thông báo…"></textarea></div>
       <input type="hidden" id="annEditId" value="">
       <button class="btn primary" type="submit" id="annSubmitBtn">Đăng thông báo</button>
       <button class="btn hidden" type="button" id="annCancelEdit">Huỷ sửa</button>
@@ -126,6 +126,7 @@
   <section>
     <h2>Nhật ký cập nhật hệ thống</h2>
     <p class="desc">Chỉ đọc — nội dung lấy từ nhật ký phiên bản của bản mô phỏng (học viên xem đầy đủ bằng chuông thông báo trong bản mô phỏng). Khi deploy phiên bản mới, cập nhật thêm 1 mục vào đầu danh sách này.</p>
+    <div class="kv"><b>v2.0.6 — 16/11/2026 (chưa deploy)</b><span>Polish giao diện theo skill UI/UX: tương phản chữ phụ, focus toggle, bỏ gradient nền editor/avatar, thống nhất bo 8px và thang 4/8pt, chữ đọc dài dễ đọc hơn, form Quản trị/Đăng nhập đồng bộ token, gắn label cho field trong editor.</span></div>
     <div class="kv"><b>v2.0.5 — 10:53 ngày 16/11/2026</b><span>Làm đẹp giao diện (chỉ CSS + rút ngắn 1 dòng hint): xanh chính #0064E0, nút Create xanh lá #00A400, header bảng 1 dòng, topbar và các hàng nút căn thẳng hàng, cao đều.</span></div>
     <div class="kv"><b>v2.0.4 — 10:31 ngày 16/11/2026</b><span>Luồng nộp bài case: thêm thẻ "Bối cảnh", nút "Nộp bài" trong editor và trang case, bảng đối chiếu 5 mục với gợi ý giảng viên, giáo viên xem bài nộp trong "Xem bài làm".</span></div>
     <div class="kv"><b>v2.0.3 — 10:00 ngày 16/11/2026</b><span>Nhóm 1 + Nhóm 2 (nút báo thành công giả nay làm thật), sửa UI trang Quản trị và bảng Campaigns, editor mở campaign Case 1 đúng số liệu case, thông báo thành nhật ký cập nhật, bảng công thức KPI trong Thuật ngữ, Customise columns.</span></div>
@@ -138,9 +139,9 @@
     <h2>Đổi mật khẩu quản trị</h2>
     <p class="desc">Đổi mật khẩu tài khoản giáo viên đang đăng nhập. Đổi xong sẽ đăng xuất khỏi mọi thiết bị — đăng nhập lại bằng mật khẩu mới. Nên đặt mật khẩu mạnh (≥ 8 ký tự, gồm chữ và số).</p>
     <form id="changePassForm">
-      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Mật khẩu hiện tại</label><input id="curPass" type="password" required autocomplete="current-password"></div>
-      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Mật khẩu mới (≥ 6 ký tự)</label><input id="newTeacherPass" type="password" required minlength="6" autocomplete="new-password"></div>
-      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Nhập lại mật khẩu mới</label><input id="newTeacherPass2" type="password" required minlength="6" autocomplete="new-password"></div>
+      <div style="margin-bottom:10px"><label for="curPass" style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Mật khẩu hiện tại</label><input id="curPass" type="password" required autocomplete="current-password"></div>
+      <div style="margin-bottom:10px"><label for="newTeacherPass" style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Mật khẩu mới (≥ 6 ký tự)</label><input id="newTeacherPass" type="password" required minlength="6" autocomplete="new-password"></div>
+      <div style="margin-bottom:10px"><label for="newTeacherPass2" style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Nhập lại mật khẩu mới</label><input id="newTeacherPass2" type="password" required minlength="6" autocomplete="new-password"></div>
       <button class="btn primary" type="submit">Đổi mật khẩu</button>
     </form>
     <div class="err" id="changePassErr"></div>
