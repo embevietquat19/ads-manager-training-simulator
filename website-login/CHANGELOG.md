@@ -10,6 +10,47 @@
 
 ---
 
+## v2.0.4 — 16/11/2026 (luồng nộp bài case — chưa deploy)
+
+- **Nộp bài case:** học viên chỉnh case trong editor 3 bước rồi bấm "Nộp
+  bài" (hoặc bấm "Nộp bài" ngay trên trang case — nộp theo setup đang chạy
+  của case + số liệu slider hiện tại) → hiện đáp án gợi ý của giảng viên
+  kèm bảng đối chiếu 5 mục (Objective / Budget / Audience / Placements /
+  Ad creative) so sánh bài làm với gợi ý, ghi rõ đúng bao nhiêu mục và
+  thiếu/khác gì ở từng mục. Nộp lại thay bài cũ (chỉ giữ bài nộp gần nhất
+  mỗi case).
+- **Máy chủ (mới):** bảng `submissions` (1 dòng JSON theo tài khoản, theo
+  mẫu bảng `audiences`); `PUT /api/submissions` (đăng nhập + `sameOrigin`,
+  validate qua `parseSubmissions`: body là object, tối đa 15 case
+  case1–case15, mỗi entry có `caseId` khớp key và `submittedAt` là chuỗi —
+  sai → 400, chưa đăng nhập → 401; server chỉ lưu nguyên object bài nộp,
+  không chấm lại vì `result` đã tính sẵn ở client); `GET /api/bootstrap`
+  trả thêm `submissions`; endpoint admin `GET /api/admin/students/:id/work`
+  trả thêm `submissions` (+ `submissionsCount` trong tổng quan học viên)
+  để giáo viên xem bài nộp — học viên gọi API admin vẫn 403.
+- **Cầu nối:** `bridge.js` thêm `srv.submissions` + `__srvSaveSubmissions(caseId, sub)`
+  (debounce 600ms, theo đúng mẫu `__srvSaveAudiences`, kể cả cơ chế giữ bản
+  chờ `pendingSubmissions` khi nộp trước khi bootstrap xong rồi gộp khi
+  bootstrap xong — bản chờ thắng theo từng case); patch script thêm P23
+  thay thân `subLoad()`/`subSave()` trong file tĩnh bằng bản đọc/ghi qua
+  `window.__srv.submissions` / `window.__srvSaveSubmissions` (giữ nguyên
+  tên + chữ ký), kèm patch dòng ghi chú trong khối comment v2.0.4 — sau
+  patch không còn chuỗi `localStorage` nào trong `public/app/index.html`.
+- **Trang Quản trị:** panel "Xem bài làm" hiện thêm mục "Bài đã nộp": mỗi
+  case 1 dòng (tên case, thời gian nộp `submittedAtVN`, mục tiêu, ngân
+  sách, số mục đối chiếu đúng `okCount/total`) + chi tiết đầy đủ trong
+  `<details>`, cùng cấu trúc với các mục bài làm sẵn có.
+- **Kiểm thử:** `scripts/test_api.py` thêm mục 18 (401 chưa đăng nhập; 400
+  khi body không phải object / caseId ngoài case1–case15 / caseId không
+  khớp key / thiếu `submittedAt` / quá 15 case; lưu rồi bootstrap thấy đủ;
+  2 học viên không thấy bài nộp của nhau; nộp lại thay bản cũ; học viên
+  gọi API admin → 403; giáo viên xem bài làm thấy bài nộp) — toàn bộ
+  suite pass (95 cũ + 14 mới = 109). Probe API end-to-end và probe jsdom
+  `subLoad`/`subSave` đã patch đều đạt (xem báo cáo bàn giao). **Chưa
+  deploy lên fbads.digimar.site.**
+
+---
+
 ## v2.0.3 — 16/11/2026 (sửa các chức năng chưa chạy + Customise columns + nhật ký cập nhật)
 
 - **Nhóm 1 — các trường nhập trong editor nay lưu thật vào bản nháp** (dùng

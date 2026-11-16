@@ -374,6 +374,43 @@ function parseColState(v) {
   return out;
 }
 
+// Kiểm tra bài nộp case của học viên (1 object JSON theo caseId, chỉ giữ bài
+// gần nhất mỗi case). Trả về bản đã làm sạch (giữ nguyên các trường của từng
+// bài nộp — server chỉ lưu, không chấm lại; đáp án đối chiếu `result` đã tính
+// sẵn ở client) hoặc null nếu sai. Body phải là object, tối đa 15 case
+// (case1–case15), key là caseId; mỗi entry là object có `caseId` khớp key và
+// `submittedAt` là chuỗi (thời gian nộp, ISO). Toàn bộ JSON tối đa 500.000
+// ký tự.
+function parseSubmissions(v) {
+  if (v === null || typeof v !== 'object' || Array.isArray(v)) return null;
+  try {
+    if (JSON.stringify(v).length > 500000) return null;
+  } catch (e) {
+    return null;
+  }
+  const keys = Object.keys(v);
+  if (keys.length > 15) return null;
+  const out = {};
+  for (const k of keys) {
+    const m = /^case(\d{1,2})$/.exec(k);
+    if (!m) return null;
+    const n = Number(m[1]);
+    if (n < 1 || n > 15) return null;
+    const sub = v[k];
+    if (sub === null || typeof sub !== 'object' || Array.isArray(sub))
+      return null;
+    if (sub.caseId !== k) return null;
+    if (
+      typeof sub.submittedAt !== 'string' ||
+      !sub.submittedAt ||
+      sub.submittedAt.length > 100
+    )
+      return null;
+    out[k] = sub;
+  }
+  return out;
+}
+
 // =====================================================================
 // TRANG (HTML)
 // =====================================================================
@@ -542,6 +579,18 @@ app.get('/api/bootstrap', auth.requireAuth, (req, res) => {
       audiences = [];
     }
   }
+  const subRow = db
+    .prepare('SELECT submissions_json FROM submissions WHERE user_id = ?')
+    .get(uid);
+  let submissions = {};
+  if (subRow) {
+    try {
+      const parsed = parseSubmissions(JSON.parse(subRow.submissions_json));
+      if (parsed) submissions = parsed;
+    } catch (e) {
+      submissions = {};
+    }
+  }
   const myDrafts = db
     .prepare(
       'SELECT id, name, objective, settings_json, created_at, updated_at FROM draft_campaigns WHERE user_id = ? ORDER BY updated_at DESC'
@@ -604,6 +653,7 @@ app.get('/api/bootstrap', auth.requireAuth, (req, res) => {
     overrides,
     editorDraft,
     audiences,
+    submissions,
     rowState,
     colState,
     seenVersion,
@@ -710,6 +760,20 @@ app.put('/api/audiences', auth.requireAuth, auth.sameOrigin, (req, res) => {
      ON CONFLICT(user_id) DO UPDATE SET
        audiences_json = excluded.audiences_json, updated_at = datetime('now')`
   ).run(req.user.id, JSON.stringify(audiences));
+  res.json({ ok: true });
+});
+
+/** Lưu bài nộp case của học viên (ghi đè toàn bộ; nộp lại cùng case thay bản cũ). */
+app.put('/api/submissions', auth.requireAuth, auth.sameOrigin, (req, res) => {
+  const submissions = parseSubmissions(req.body.submissions);
+  if (submissions === null)
+    return res.status(400).json({ ok: false, error: 'bad_submissions' });
+  db.prepare(
+    `INSERT INTO submissions (user_id, submissions_json, updated_at)
+     VALUES (?, ?, datetime('now'))
+     ON CONFLICT(user_id) DO UPDATE SET
+       submissions_json = excluded.submissions_json, updated_at = datetime('now')`
+  ).run(req.user.id, JSON.stringify(submissions));
   res.json({ ok: true });
 });
 
@@ -868,20 +932,35 @@ function studentSummary(u) {
   const drafts = db
     .prepare('SELECT COUNT(*) AS n FROM draft_campaigns WHERE user_id = ?')
     .get(u.id).n;
+  const subsRow = db
+    .prepare('SELECT submissions_json FROM submissions WHERE user_id = ?')
+    .get(u.id);
+  let submissionsCount = 0;
+  if (subsRow) {
+    try {
+      const parsed = JSON.parse(subsRow.submissions_json);
+      if (parsed && typeof parsed === 'object')
+        submissionsCount = Object.keys(parsed).length;
+    } catch (e) {
+      submissionsCount = 0;
+    }
+  }
   const last = db
     .prepare(
       `SELECT MAX(t) AS t FROM (
          SELECT MAX(updated_at) AS t FROM case_progress WHERE user_id = ?
          UNION ALL SELECT MAX(updated_at) AS t FROM draft_campaigns WHERE user_id = ?
          UNION ALL SELECT MAX(updated_at) AS t FROM editor_draft WHERE user_id = ?
+         UNION ALL SELECT MAX(updated_at) AS t FROM submissions WHERE user_id = ?
        )`
     )
-    .get(u.id, u.id, u.id).t;
+    .get(u.id, u.id, u.id, u.id).t;
   return {
     ...auth.publicUser(u),
     casesDone: cases,
     answersViewed: answers,
     draftsCount: drafts,
+    submissionsCount,
     lastActive: last || null,
   };
 }
@@ -1072,6 +1151,18 @@ app.get('/api/admin/students/:id/work', auth.requireTeacher, (req, res) => {
       editorDraft = {};
     }
   }
+  const subRow = db
+    .prepare('SELECT submissions_json, updated_at FROM submissions WHERE user_id = ?')
+    .get(id);
+  let submissions = {};
+  if (subRow) {
+    try {
+      const parsed = parseSubmissions(JSON.parse(subRow.submissions_json));
+      if (parsed) submissions = parsed;
+    } catch (e) {
+      submissions = {};
+    }
+  }
   res.json({
     ok: true,
     student: studentSummary(u),
@@ -1080,6 +1171,8 @@ app.get('/api/admin/students/:id/work', auth.requireTeacher, (req, res) => {
     drafts,
     editorDraft,
     editorDraftUpdatedAt: ed ? ed.updated_at : null,
+    submissions,
+    submissionsUpdatedAt: subRow ? subRow.updated_at : null,
   });
 });
 
