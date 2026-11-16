@@ -119,6 +119,19 @@
   </section>
 
   <section>
+    <h2>Đổi mật khẩu quản trị</h2>
+    <p class="desc">Đổi mật khẩu tài khoản giáo viên đang đăng nhập. Đổi xong sẽ đăng xuất khỏi mọi thiết bị — đăng nhập lại bằng mật khẩu mới. Nên đặt mật khẩu mạnh (≥ 8 ký tự, gồm chữ và số).</p>
+    <form id="changePassForm">
+      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Mật khẩu hiện tại</label><input id="curPass" type="password" required autocomplete="current-password"></div>
+      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Mật khẩu mới (≥ 6 ký tự)</label><input id="newTeacherPass" type="password" required minlength="6" autocomplete="new-password"></div>
+      <div style="margin-bottom:10px"><label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Nhập lại mật khẩu mới</label><input id="newTeacherPass2" type="password" required minlength="6" autocomplete="new-password"></div>
+      <button class="btn primary" type="submit">Đổi mật khẩu</button>
+    </form>
+    <div class="err" id="changePassErr"></div>
+    <div class="okmsg" id="changePassOk"></div>
+  </section>
+
+  <section>
     <h2>Sao lưu dữ liệu lớp học</h2>
     <p class="desc">Tải toàn bộ bài làm của học viên (số liệu case, đáp án đã xem, ghi chú, chiến dịch) và thông báo ra file JSON để sao lưu. Nên tải định kỳ, đặc biệt trước mỗi lần deploy lại website.</p>
     <button class="btn" id="exportBtn">Tải file sao lưu (.json)</button>
@@ -332,6 +345,28 @@
         loadAnns();
       } else {
         errEl.textContent = 'Không lưu được thông báo (tiêu đề và nội dung không được để trống).';
+        errEl.classList.add('show');
+      }
+    });
+  });
+
+  $('changePassForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var errEl = $('changePassErr'), okEl = $('changePassOk');
+    errEl.classList.remove('show'); okEl.classList.remove('show');
+    var cur = $('curPass').value, nw = $('newTeacherPass').value, nw2 = $('newTeacherPass2').value;
+    if (!nw || nw.length < 6) { errEl.textContent = 'Mật khẩu mới ít nhất 6 ký tự.'; errEl.classList.add('show'); return; }
+    if (nw !== nw2) { errEl.textContent = 'Hai lần nhập mật khẩu mới không khớp.'; errEl.classList.add('show'); return; }
+    if (cur === nw) { errEl.textContent = 'Mật khẩu mới phải khác mật khẩu hiện tại.'; errEl.classList.add('show'); return; }
+    api('/api/teacher/change-password', {
+      method: 'POST', body: JSON.stringify({ currentPassword: cur, newPassword: nw })
+    }).then(function(x){
+      if (x.j.ok) {
+        okEl.textContent = 'Đã đổi mật khẩu quản trị. Đang đăng xuất — đăng nhập lại bằng mật khẩu mới.';
+        okEl.classList.add('show');
+        setTimeout(function(){ location.href = '/login'; }, 1500);
+      } else {
+        errEl.textContent = x.j.message || 'Không đổi được mật khẩu.';
         errEl.classList.add('show');
       }
     });
