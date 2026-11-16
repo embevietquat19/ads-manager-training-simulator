@@ -5,9 +5,10 @@
  * File này được nạp sau các script chính của trang mô phỏng. Nó:
  *  - Tải toàn bộ dữ liệu riêng của học viên đang đăng nhập (/api/bootstrap):
  *    số liệu case, đáp án đã xem, ghi chú, campaign đã sửa, bản nháp editor,
- *    tệp Audiences do học viên tạo, chiến dịch nháp đã Publish, trạng thái
- *    bảng (ghi đè tên/bật-tắt, dòng tự tạo, dòng đã xoá), phiên bản nhật ký
- *    cập nhật đã xem, thông báo + số chưa đọc.
+ *    tệp Audiences do học viên tạo, bài nộp case (nộp lại thay bản cũ),
+ *    chiến dịch nháp đã Publish, trạng thái bảng (ghi đè tên/bật-tắt, dòng
+ *    tự tạo, dòng đã xoá), phiên bản nhật ký cập nhật đã xem, thông báo +
+ *    số chưa đọc.
  *  - Cung cấp các hàm window.__srv* mà các đoạn mã đã patch trong trang gọi
  *    tới mỗi khi học viên chỉnh số liệu / xem đáp án / ghi chú / Publish.
  *  - Thêm chiến dịch nháp của học viên vào bảng Campaigns, chuông thông báo
@@ -25,6 +26,8 @@
     editorDraft: {},
     audiences: [], // tệp Custom / Lookalike do học viên tạo (chỉ metadata)
     audiencesReady: false, // true khi bootstrap đã nạp xong danh sách từ máy chủ
+    submissions: {}, // caseId -> bài nộp case gần nhất của học viên
+    submissionsReady: false, // true khi bootstrap đã nạp xong bài nộp từ máy chủ
     rowState: { overrides: {}, mine: [], deleted: [] }, // trạng thái bảng do học viên thay đổi
     rowStateReady: false, // true khi bootstrap đã nạp xong trạng thái bảng từ máy chủ
     colState: { custom: [], view: { preset: 'performance', cols: null, attr: null, fmt: [] } }, // trạng thái hiển thị bảng (Customise columns)
@@ -156,6 +159,28 @@
     }
     srv.audiences = copy;
     api('PUT', '/api/audiences', { audiences: copy });
+  }, 600);
+
+  // ---- Lưu bài nộp case (nộp lại cùng case thay bản cũ) — cùng cơ chế
+  // chờ-gộp như Audiences: nộp trước khi bootstrap xong chỉ giữ bản chờ
+  // (pendingSubmissions, theo từng caseId); bootstrap xong sẽ gộp bản chờ
+  // vào danh sách máy chủ (bản chờ thắng theo từng case) rồi PUT.
+  var pendingSubmissions = null;
+  window.__srvSaveSubmissions = debounce(function (caseId, sub) {
+    if (!caseId) return;
+    var copy = {};
+    try {
+      copy = JSON.parse(JSON.stringify(sub || {}));
+    } catch (e) {
+      copy = {};
+    }
+    if (!srv.submissionsReady) {
+      if (!pendingSubmissions) pendingSubmissions = {};
+      pendingSubmissions[caseId] = copy;
+      return;
+    }
+    srv.submissions[caseId] = copy;
+    api('PUT', '/api/submissions', { submissions: srv.submissions });
   }, 600);
 
   // ---- Lưu trạng thái bảng do học viên thay đổi (ghi đè tên/bật-tắt, dòng tự
@@ -550,6 +575,20 @@
         pendingAudiences = null;
         srv.audiences = merged;
         api('PUT', '/api/audiences', { audiences: merged });
+      }
+      srv.submissions =
+        data.submissions && typeof data.submissions === 'object' && !Array.isArray(data.submissions)
+          ? data.submissions
+          : {};
+      srv.submissionsReady = true;
+      // Gộp bản nộp chờ (nếu học viên nộp bài trước khi bootstrap xong) rồi
+      // đẩy danh sách đã gộp lên máy chủ — xem ghi chú ở __srvSaveSubmissions.
+      if (pendingSubmissions) {
+        Object.keys(pendingSubmissions).forEach(function (cid) {
+          srv.submissions[cid] = pendingSubmissions[cid];
+        });
+        pendingSubmissions = null;
+        api('PUT', '/api/submissions', { submissions: srv.submissions });
       }
       srv.myDrafts = data.myDrafts || [];
       srv.announcements = data.announcements || [];
