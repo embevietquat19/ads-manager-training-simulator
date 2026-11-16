@@ -186,7 +186,22 @@ check('giáo viên mở /admin -> 200', st == 200 and 'Quản trị lớp học'
 st, j = teacher.j('GET', '/api/admin/export')
 check('export JSON sao lưu', st == 200 and 'students' in j and len(j['students']) == 2, str(j)[:200])
 
-print('== 13. Giới hạn đăng nhập sai ==')
+print('== 13. Giáo viên tự đổi mật khẩu ==')
+st, j = stuA.j('POST', '/api/teacher/change-password', {'currentPassword': 'pass1234', 'newPassword': 'moiPass99'})
+check('học viên đổi mật khẩu giáo viên -> 403', st == 403, str(j))
+st, j = teacher.j('POST', '/api/teacher/change-password', {'currentPassword': 'sai', 'newPassword': 'GvMoiManh99'})
+check('mật khẩu hiện tại sai -> 400', st == 400 and j.get('error') == 'wrong_current_password', str(j))
+st, j = teacher.j('POST', '/api/teacher/change-password', {'currentPassword': 'MatKhauManh123', 'newPassword': 'MatKhauManh123'})
+check('mật khẩu mới trùng cũ -> 400', st == 400 and j.get('error') == 'same_password', str(j))
+st, j = teacher.j('POST', '/api/teacher/change-password', {'currentPassword': 'MatKhauManh123', 'newPassword': 'GvMoiManh99'})
+check('đổi mật khẩu giáo viên 200', st == 200 and j.get('ok') is True, str(j))
+st, j = teacher.j('POST', '/api/auth/login', {'username': 'giaovien', 'password': 'MatKhauManh123'})
+check('mật khẩu giáo viên cũ không vào được', st == 401, str(j))
+st, j = teacher.j('POST', '/api/auth/login', {'username': 'giaovien', 'password': 'GvMoiManh99'})
+check('mật khẩu giáo viên mới vào được', st == 200 and j['user']['role'] == 'teacher', str(j))
+
+
+print('== 14. Giới hạn đăng nhập sai ==')
 bad = Client()
 for i in range(5):
     st, j = bad.j('POST', '/api/auth/login', {'username': 'hv02', 'password': 'sai'})
