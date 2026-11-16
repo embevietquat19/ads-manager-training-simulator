@@ -13,8 +13,8 @@
   header .sp{flex:1}
   .btn{padding:8px 14px;border:1px solid #CCD0D5;background:#fff;border-radius:8px;cursor:pointer;font-size:13.5px;font-weight:600}
   .btn:hover{background:#F0F2F5}
-  .btn.primary{background:#0866FF;border-color:#0866FF;color:#fff}
-  .btn.primary:hover{background:#0659D6}
+  .btn.primary{background:#0064E0;border-color:#0064E0;color:#fff}
+  .btn.primary:hover{background:#0053B3}
   .btn.danger{color:#C92A2A;border-color:#F5C6C6}
   .btn.danger:hover{background:#FDE8E8}
   .btn.small{padding:5px 9px;font-size:12.5px}
@@ -29,15 +29,15 @@
   table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:980px}
   .table-wrap{overflow-x:auto}
   th,td{padding:9px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
-  th{color:#65676B;font-weight:600;font-size:12.5px;text-transform:uppercase;white-space:nowrap}
+  th{color:#65676B;font-weight:600;font-size:12.5px;text-transform:uppercase;white-space:nowrap;background:#EDEFF2}
   td.nw{white-space:nowrap}
   .badge{white-space:nowrap}
   .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}
   .badge.on{background:#E6F4EA;color:#137333}
   .badge.off{background:#FDE8E8;color:#9B1C1C}
-  .badge.info{background:#E7F3FF;color:#0866FF}
+  .badge.info{background:#E7F3FF;color:#0064E0}
   input,textarea,select{padding:9px 10px;border:1px solid #CCD0D5;border-radius:8px;font-size:14px;width:100%}
-  input:focus,textarea:focus{outline:none;border-color:#0866FF;box-shadow:0 0 0 2px rgba(8,102,255,.2)}
+  input:focus,textarea:focus{outline:none;border-color:#0064E0;box-shadow:0 0 0 2px rgba(0,100,224,.2)}
   .form-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end}
   .form-grid label{display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B}
   .err{display:none;background:#FDE8E8;color:#9B1C1C;border:1px solid #F5C6C6;border-radius:8px;padding:10px 12px;font-size:13.5px;margin-top:12px}
@@ -126,6 +126,7 @@
   <section>
     <h2>Nhật ký cập nhật hệ thống</h2>
     <p class="desc">Chỉ đọc — nội dung lấy từ nhật ký phiên bản của bản mô phỏng (học viên xem đầy đủ bằng chuông thông báo trong bản mô phỏng). Khi deploy phiên bản mới, cập nhật thêm 1 mục vào đầu danh sách này.</p>
+    <div class="kv"><b>v2.0.5 — sắp cập nhật</b><span>Làm đẹp giao diện (chỉ CSS + rút ngắn 1 dòng hint): xanh chính #0064E0, nút Create xanh lá #00A400, header bảng 1 dòng, topbar và các hàng nút căn thẳng hàng, cao đều. Chưa deploy.</span></div>
     <div class="kv"><b>v2.0.4 — 10:31 ngày 16/11/2026</b><span>Luồng nộp bài case: thêm thẻ "Bối cảnh", nút "Nộp bài" trong editor và trang case, bảng đối chiếu 5 mục với gợi ý giảng viên, giáo viên xem bài nộp trong "Xem bài làm".</span></div>
     <div class="kv"><b>v2.0.3 — 10:00 ngày 16/11/2026</b><span>Nhóm 1 + Nhóm 2 (nút báo thành công giả nay làm thật), sửa UI trang Quản trị và bảng Campaigns, editor mở campaign Case 1 đúng số liệu case, thông báo thành nhật ký cập nhật, bảng công thức KPI trong Thuật ngữ, Customise columns.</span></div>
     <div class="kv"><b>v2.0.2 — 08:54 ngày 16/11/2026</b><span>Upload file CSV tạo Custom Audience + Lookalike 1–10%.</span></div>
