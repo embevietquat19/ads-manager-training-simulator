@@ -18,6 +18,9 @@
  *  editor_draft         — bản nháp trình chỉnh sửa đang làm dở, theo tài khoản
  *  audiences            — tệp Custom / Lookalike do học viên tạo (chỉ metadata), theo tài khoản
  *  draft_campaigns      — chiến dịch học viên đã Publish (mô phỏng), theo tài khoản
+ *  row_state            — trạng thái bảng do học viên thay đổi (ghi đè tên/bật-tắt, dòng tự tạo, dòng đã xoá), theo tài khoản
+ *  col_state            — trạng thái hiển thị bảng (preset cột riêng + lựa chọn đang dùng: preset, bộ cột tuỳ chỉnh, Attribution setting, quy tắc tô màu), theo tài khoản
+ *  seen_version         — phiên bản nhật ký cập nhật học viên đã xem gần nhất, theo tài khoản
  */
 const fs = require('fs');
 const path = require('path');
@@ -100,6 +103,21 @@ CREATE TABLE IF NOT EXISTS draft_campaigns (
   objective TEXT NOT NULL,
   settings_json TEXT NOT NULL DEFAULT '{}',
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE TABLE IF NOT EXISTS row_state (
+  user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  state_json TEXT NOT NULL DEFAULT '{}',
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE TABLE IF NOT EXISTS col_state (
+  user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  state_json TEXT NOT NULL DEFAULT '{}',
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE TABLE IF NOT EXISTS seen_version (
+  user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  version TEXT NOT NULL DEFAULT '',
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id);
