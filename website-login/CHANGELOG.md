@@ -10,6 +10,20 @@
 
 ---
 
+## v2.0.1 — 16/11/2026 (giáo viên tự đổi mật khẩu quản trị)
+
+- **Trang Quản trị có thêm mục “Đổi mật khẩu quản trị”:** giáo viên nhập mật
+  khẩu hiện tại + mật khẩu mới (≥ 6 ký tự, khác mật khẩu cũ) để đổi; đổi xong
+  sẽ đăng xuất khỏi mọi thiết bị và đăng nhập lại bằng mật khẩu mới.
+- API mới `POST /api/teacher/change-password` (chỉ giáo viên, kiểm tra mật
+  khẩu hiện tại bằng bcrypt, đổi xong huỷ mọi phiên của giáo viên).
+- Bộ kiểm thử API `scripts/test_api.py`: **59/59 mục đạt** (thêm 6 mục cho
+  tính năng này: học viên bị chặn 403, mật khẩu hiện tại sai, mật khẩu mới
+  trùng cũ, đổi thành công, mật khẩu cũ không vào được, mật khẩu mới vào
+  được).
+- **Chưa deploy:** bản này mới chỉ chạy kiểm thử local — cần push lên GitHub
+  để Hostinger tự deploy lại thì tính năng mới lên được fbads.digimar.site.
+
 ## v2.0.0 — 16/11/2026 (website đăng nhập — Node.js + Express + SQLite)
 
 ### Công nghệ
@@ -81,25 +95,24 @@
   số client gửi lên).
 - Đăng nhập sai 5 lần / 10 phút / IP thì bị chặn tạm thời (mã 429).
 - API thay đổi dữ liệu kiểm tra Origin cùng host (chống CSRF cơ bản).
-- **Lưu ý:** chưa có chức năng tự đổi mật khẩu giáo viên qua giao diện —
-  giáo viên cần ghi nhớ mật khẩu quản trị ngay từ đầu (xem README_DEPLOY.md
-  mục 5).
+- **Đổi mật khẩu giáo viên:** từ v2.0.1, giáo viên tự đổi được trong trang
+  Quản trị (mục “Đổi mật khẩu quản trị”) — xem mục v2.0.1 ở trên.
 
 ### Kiểm thử (chạy local ngày 16/11/2026)
-- Bộ kiểm thử API `scripts/test_api.py`: **53/53 mục đạt**, bao gồm:
+- Bộ kiểm thử API `scripts/test_api.py`: **59/59 mục đạt**, bao gồm:
   thiết lập lần đầu (và chặn thiết lập lần 2), tạo học viên, đăng nhập,
   lưu/đọc lại số liệu case + đáp án + ghi chú + override + bản nháp editor +
   chiến dịch Publish, giáo viên xem bài làm, học viên khác bị chặn 403 ở
   mọi API quản trị, thông báo + đánh dấu đã đọc, vô hiệu hoá/kích hoạt lại,
   đặt lại mật khẩu, phân quyền trang `/admin`, sao lưu JSON, giới hạn đăng
-  nhập sai (429).
+  nhập sai (429), giáo viên tự đổi mật khẩu quản trị.
 - Cú pháp JavaScript đạt (`node --check`) cho server, `bridge.js` và cả 2
   script trong trang app đã patch.
 - Mật khẩu trong DB đã kiểm tra: hash bcrypt `$2a$10$`, không có plaintext.
 - **Chưa kiểm chứng trực quan:** bấm tay từng nút/công tắc trên trình duyệt
   (subagent không có trình duyệt thật) — cần giáo viên mở thử trên website
   sau deploy và báo lại nếu có chỗ lạ. Các luồng API phía dưới đã chạy thật
-  đạt 53/53.
+  đạt 59/59 (sau khi thêm tính năng đổi mật khẩu giáo viên ở v2.0.1).
 
 ### Nội dung học tập (giữ nguyên từ bản tĩnh v1.2.0)
 - Mô phỏng Ads Manager: topbar, banner TEST ENVIRONMENT, thanh icon trái,

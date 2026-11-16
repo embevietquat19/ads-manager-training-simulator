@@ -143,11 +143,10 @@ Git Deployment tĩnh đang chạy cho fbads.digimar.site. Một subdomain chỉ 
      (script tự kiểm tra 25 patch; nếu báo lỗi khớp mẫu thì dừng — không ghi
      file nửa vời — và cần xem lại vì file export đổi cấu trúc).
   3. Commit `website-login/public/app/index.html` rồi push → deploy lại.
-- **Đổi mật khẩu giáo viên:** hiện chưa có nút đổi mật khẩu trong trang Quản
-  trị — nếu cần, giáo viên tự đổi bằng cách: tạo 1 tài khoản giáo viên mới
-  (không hỗ trợ qua giao diện; cần can thiệp DB) — **khuyến nghị ghi nhớ mật
-  khẩu quản trị ngay từ đầu**. (Tính năng đổi mật khẩu giáo viên sẽ bổ sung ở
-  bản sau nếu cần.)
+- **Đổi mật khẩu giáo viên:** từ v2.0.1, giáo viên tự đổi trong trang Quản
+  trị (mục “Đổi mật khẩu quản trị”): nhập mật khẩu hiện tại + mật khẩu mới,
+  đổi xong sẽ đăng xuất khỏi mọi thiết bị và đăng nhập lại bằng mật khẩu mới.
+  Nên đặt mật khẩu mạnh (≥ 8 ký tự, gồm chữ và số) và ghi nhớ ngay từ đầu.
 
 ## 6. Bảo mật & vận hành
 
