@@ -493,7 +493,7 @@
     p = document.createElement('div');
     p.id = 'srvAnnPanel';
     p.style.cssText =
-      'position:fixed;top:60px;right:16px;z-index:9999;width:380px;max-width:92vw;max-height:70vh;overflow:auto;background:#fff;border:1px solid #ddd;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.25);padding:14px;font-size:13.5px';
+      'position:fixed;top:60px;right:16px;z-index:150;width:360px;max-width:92vw;max-height:70vh;overflow:auto;background:#fff;border:1px solid #ddd;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.25);padding:14px;font-size:13.5px';
     var h =
       '<div style="display:flex;justify-content:space-between;align-items:center"><b>Thông báo của giảng viên</b><button id="srvAnnClose" style="border:0;background:none;font-size:16px;cursor:pointer">✕</button></div>';
     if (!srv.announcements.length)

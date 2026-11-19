@@ -31,13 +31,13 @@ a:hover{text-decoration:underline}
 .util-strip button:hover{background:var(--surface2)}
 .util-strip .ai{font-weight:700}
 .util-strip .ai i{font-style:normal;background:linear-gradient(135deg,#0081FB,#A033FF);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:15px}
-.topbar{background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:8px 12px;flex-wrap:nowrap}
-.brand{display:flex;align-items:center;gap:8px;min-width:0}
+.topbar{background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:8px 12px;flex-wrap:nowrap}
+.brand{display:flex;align-items:center;gap:8px;min-width:0;flex:none}
 .meta-logo{font-size:22px;font-weight:800;letter-spacing:-.03em;color:var(--text);display:flex;align-items:center;gap:8px;white-space:nowrap;cursor:pointer}
 .meta-logo .inf{color:var(--blue);font-size:27px;line-height:1}
-.brand .am-link{font-size:15px;font-weight:600;color:var(--text)}
+.brand .am-link{font-size:15px;font-weight:600;color:var(--text);white-space:nowrap;flex:none}
 .brand .am-link:hover{text-decoration:none;color:var(--blue)}
-.acct-combo{display:flex;align-items:center;gap:8px;border:1px solid var(--line2);border-radius:6px;background:#fff;padding:6px 10px;cursor:pointer;max-width:340px}
+.acct-combo{display:flex;align-items:center;gap:8px;border:1px solid var(--line2);border-radius:6px;background:#fff;padding:6px 10px;cursor:pointer;max-width:340px;flex:0 1 auto;min-width:0}
 .acct-combo:hover{background:var(--surface2)}
 .acct-combo .thumb{width:34px;height:26px;border-radius:4px;background:#111827;color:#fff;display:grid;place-items:center;font-size:9px;font-weight:700;flex:none}
 .acct-combo b{font-size:12.5px;display:block;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -46,12 +46,14 @@ a:hover{text-decoration:underline}
 .opp{display:flex;align-items:center;gap:8px;flex:none}
 .opp>span{min-width:0}
 .opp .ring{width:38px;height:38px;flex:none}
-.opp b{font-size:13px;display:block;line-height:1.2}
+.opp b{font-size:13px;display:block;line-height:1.2;white-space:nowrap}
+.opp span{white-space:nowrap}
 .opp span{font-size:11.5px;color:var(--text2);display:block;line-height:1.2}
-.top-actions{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:nowrap;min-width:0}
-.top-actions .tbtn{height:42px;padding:3px 12px}
+.top-actions{margin-left:auto;display:flex;align-items:center;gap:6px;flex-wrap:nowrap;min-width:0}
+.top-actions .tbtn{height:42px;padding:3px 10px;flex:none}
 .top-actions .tbtn.icon-only{width:42px;height:42px;padding:0}
 .top-actions .avatar-profiles{width:42px;height:42px}
+@media(max-width:1500px){.top-actions .updated{display:none}.acct-combo{max-width:240px}}
 @media(max-width:1240px){.topbar{flex-wrap:wrap}.top-actions{flex-wrap:wrap}}
 .updated{font-size:12.5px;color:var(--text2);white-space:nowrap}
 .tbtn{border:1px solid var(--line2);background:#fff;border-radius:6px;padding:8px 12px;font-weight:600;font-size:13px;display:inline-flex;gap:8px;align-items:center;white-space:nowrap}
@@ -106,7 +108,7 @@ a:hover{text-decoration:underline}
 .date-range{margin-left:auto;border:1px solid var(--line2);background:#fff;border-radius:6px;padding:8px 12px;font-weight:600;font-size:13px;display:inline-flex;gap:8px;align-items:center;margin-bottom:6px}
 .date-range:hover{background:var(--surface2)}
 .action-row{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;padding:12px 0 0}
-.action-row .btn{height:44px;padding:4px 12px}
+.action-row .btn{min-height:44px;padding:4px 12px}
 .btn{border:1px solid var(--line2);background:#fff;border-radius:6px;padding:8px 12px;font-weight:600;font-size:13px;display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
 .btn:hover{background:var(--surface2)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
@@ -119,7 +121,7 @@ a:hover{text-decoration:underline}
 .btn-blue:hover{background:var(--blue-dark)}
 .action-right{margin-left:auto;display:flex;gap:6px;align-items:stretch;flex-wrap:wrap}
 .utility-row{display:flex;gap:8px;flex-wrap:wrap;padding:8px 0 0;align-items:center}
-.utility-row button{border:0;background:transparent;color:var(--text2);font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:6px;display:inline-flex;gap:6px;align-items:center;height:42px}
+.utility-row button{border:0;background:transparent;color:var(--text2);font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:6px;display:inline-flex;gap:6px;align-items:center;min-height:42px}
 .utility-row button:hover{background:#fff;color:var(--text)}
 .utility-row button kbd{font-family:inherit;font-size:11px;color:var(--text3);font-weight:400}
 .menu-wrap{position:relative;display:inline-flex}
@@ -194,13 +196,13 @@ td .sub2{display:block;font-size:12px;color:var(--text2);white-space:normal;over
 .btn .vi-hint,.tbtn .vi-hint{font-size:10.5px;color:inherit;opacity:.75}
 .tbtn.primary .vi-hint,.btn-blue .vi-hint{opacity:1;color:#E7F0FE}
 .btn-create .vi-hint,.btn-publish-go .vi-hint{opacity:1;background:rgba(0,0,0,.25);border-radius:4px;padding:1px 6px}
-.ann-panel{position:fixed;top:60px;right:16px;z-index:9999;width:420px;max-width:92vw;max-height:70dvh;overflow:auto;background:#fff;border:1px solid #ddd;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.25);padding:16px;font-size:13.5px}
+.ann-panel{position:fixed;top:60px;right:16px;z-index:150;width:360px;max-width:92vw;max-height:70dvh;overflow:auto;background:#fff;border:1px solid #ddd;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.25);padding:16px;font-size:13.5px}
 .kpi-table{min-width:760px;width:100%}
 .kpi-table th{background:#EDEFF2}
 .obj-row .vi-hint{font-size:11.5px;color:#3A5A8C}
 .opp .vi-hint{font-size:10.5px;max-width:230px}
 footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width:720px}
-.backdrop{position:fixed;inset:0;background:rgba(28,30,33,.55);z-index:90;display:none;align-items:center;justify-content:center;padding:16px}
+.backdrop{position:fixed;inset:0;background:rgba(28,30,33,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
 .backdrop.open{display:flex}
 .dialog{background:#fff;border-radius:8px;box-shadow:var(--shadow-lg);width:100%;max-height:calc(100dvh - 32px);display:flex;flex-direction:column;overflow:hidden}
 .dialog-head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
@@ -294,6 +296,17 @@ footer.page-foot{padding:28px 20px 0;color:var(--text3);font-size:12px;max-width
 .check-line{display:flex;gap:12px;align-items:flex-start;padding:8px 0;cursor:pointer}
 .check-line input{width:17px;height:17px;margin-top:2px;accent-color:var(--blue);flex:none}
 .check-line b{font-size:13.5px;font-weight:600}
+.check-line>span{flex:1;min-width:0}
+.check-line .pl-view-btn{margin-left:auto;flex:none;align-self:center;padding:4px 10px;font-size:12px}
+.check-line .pl-view-btn[aria-pressed="true"]{background:var(--blue-pale);border-color:#B9D9FF;color:var(--blue-dark)}
+.pl-preview{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.pl-preview .pl-frame-narrow{max-width:300px}
+.pl-preview .pl-frame-video .pm{height:180px}
+.pl-chat{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:10px;background:#fff;max-width:360px}
+.pl-chat .pl-chat-head{background:var(--surface2);padding:8px 12px;font-weight:700;font-size:13px}
+.pl-chat .pl-bubble{background:var(--blue-pale);border-radius:12px;padding:8px 12px;margin:12px;font-size:13px}
+.pl-chat .pl-card{margin:0 12px 12px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pl-chat .pl-card .pm{height:90px}
 .check-line span{font-size:12.5px;color:var(--text2);display:block}
 .score-card{text-align:left}
 .score-flex{display:flex;gap:16px;align-items:center}
@@ -530,15 +543,15 @@ details.browse .brow button:hover{background:var(--blue-pale)}
     <span style="min-width:0"><b>Shop Training — Ad account</b><span>123456789012345 · VND</span></span>
     <span class="chev">▾</span>
   </button>
-  <div class="opp" title="Opportunity score">
+  <div class="opp" title="Opportunity score — Điểm gợi ý tối ưu của Meta: càng cao setup càng chuẩn, chỉ gợi ý, không bắt buộc làm theo hết.">
     <svg class="ring" viewBox="0 0 38 38" aria-hidden="true"><circle cx="19" cy="19" r="16" fill="none" stroke="#E4E6EB" stroke-width="4"/><circle cx="19" cy="19" r="16" fill="none" stroke="#00A400" stroke-width="4" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="2" transform="rotate(-90 19 19)"/><text x="19" y="23.5" text-anchor="middle" font-size="11" font-weight="800" fill="#1C1E21">100</text></svg>
-    <span><b>Opportunity score</b><span>Your account is fully optimised</span><span class="vi-hint" title="Điểm gợi ý tối ưu của Meta — càng cao setup càng chuẩn, nên tham khảo chứ không bắt buộc làm theo hết.">Điểm càng cao, setup càng chuẩn — chỉ gợi ý, không bắt buộc.</span></span>
+    <span><b>Opportunity score</b><span>Your account is fully optimised</span></span>
   </div>
   <div class="top-actions">
     <span class="updated">Updated just now</span>
     <button class="tbtn" onclick="renderTable();toast('Table data refreshed (simulated).')"><span aria-hidden="true">↻</span> Refresh table data</button>
-    <button class="tbtn" onclick="discardDrafts()"><span aria-hidden="true">🗑</span> <span class="stack">Discard Drafts<span class="vi-hint">Chỉ xoá bản nháp do bạn tạo, chưa đăng — giữ 6 nháp mẫu và 15 campaign bài tập</span></span></button>
-    <button class="tbtn primary" onclick="toast('Review and publish (mô phỏng): không có thay đổi thật nào được gửi lên Meta.')"><span class="stack">Review and publish<span class="vi-hint">Kiểm tra lại rồi mới đăng chính thức</span></span> <span class="cnt" id="publishCount">54</span></button>
+    <button class="tbtn" onclick="discardDrafts()" title="Chỉ xoá bản nháp do bạn tạo, chưa đăng — giữ 6 nháp mẫu và 15 campaign bài tập"><span aria-hidden="true">🗑</span> Discard Drafts</button>
+    <button class="tbtn primary" onclick="toast('Review and publish (mô phỏng): không có thay đổi thật nào được gửi lên Meta.')" title="Kiểm tra lại rồi mới đăng chính thức"><span>Review and publish</span> <span class="cnt" id="publishCount">54</span></button>
     <div class="menu-wrap">
       <button class="tbtn icon-only" id="menuBtn" aria-label="Menu" aria-haspopup="true">•••</button>
       <div class="menu right" id="topMenu">
@@ -635,9 +648,9 @@ details.browse .brow button:hover{background:var(--blue-pale)}
             <button onclick="toast('Campaign spending limit (mô phỏng): đặt ở bước Campaign → Show more options.')">Campaign spending limit</button>
           </div>
         </div>
-        <button class="btn" id="delBtn" disabled onclick="doDeleteSelected()"><span class="stack">Delete (Ctrl+Backspace)<span class="vi-hint">Xoá hẳn — cân nhắc kỹ, khó khôi phục</span></span></button>
+        <button class="btn" id="delBtn" disabled onclick="doDeleteSelected()"><span class="stack">Delete (Ctrl+Backspace)<span class="vi-hint">Xoá hẳn — khó khôi phục</span></span></button>
         <div class="menu-wrap">
-          <button class="btn" id="moreBtn"><span class="stack">More<span class="vi-hint">Thêm tuỳ chọn: rule, tag, nhập/xuất cấu hình…</span></span> <span class="car">▾</span></button>
+          <button class="btn" id="moreBtn"><span class="stack">More<span class="vi-hint">Rule, tag, nhập/xuất cấu hình</span></span> <span class="car">▾</span></button>
           <div class="menu" id="moreMenu" style="min-width:290px">
             <button onclick="toast('Revert (mô phỏng): hoàn tác về bản nháp đã lưu gần nhất.')">Revert</button>
             <button disabled>A/B test</button>
@@ -657,7 +670,7 @@ details.browse .brow button:hover{background:var(--blue-pale)}
         </div>
         <div class="action-right">
           <div class="menu-wrap">
-            <button class="btn" id="colsBtn"><span class="stack">Columns: <span id="colsLabel">Performance</span><span class="vi-hint">Chọn bộ cột số liệu hiển thị trên bảng</span></span> <span class="car">▾</span></button>
+            <button class="btn" id="colsBtn" title="Chọn bộ cột số liệu hiển thị trên bảng"><span class="stack"><span>Columns: <span id="colsLabel">Performance</span></span><span class="vi-hint">Chọn bộ cột số liệu hiển thị trên bảng</span></span> <span class="car">▾</span></button>
             <div class="menu right" id="colsMenu" style="min-width:300px"></div>
           </div>
           <div class="menu-wrap">
@@ -1418,10 +1431,12 @@ details.browse .brow button:hover{background:var(--blue-pale)}
 var toastTimer=null;
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove('show')},3400)}
 function closeDialog(id){document.getElementById(id).classList.remove('open')}
-function openDialog(id){document.getElementById(id).classList.add('open')}
+/* Panel thông báo/changelog (v2.0.7): mặc định đóng, chỉ mở khi bấm chuông; tự đóng khi mở modal/chuyển trang/bấm ra ngoài để không đè nội dung hay chặn click. */
+function closeNotifPanel(){var p=document.getElementById('notifPanel');if(p)p.remove();var q=document.getElementById('srvAnnPanel');if(q)q.remove()}
+function openDialog(id){closeNotifPanel();document.getElementById(id).classList.add('open')}
 function closePageView(id){document.getElementById(id).classList.remove('open')}
-function showHome(){var h=document.getElementById('homeView'),o=document.getElementById('optimizePage');if(h)h.style.display='';if(o)o.style.display='none';var rc=document.getElementById('railCampaigns'),ro=document.getElementById('railOptimize');if(rc)rc.classList.add('active');if(ro)ro.classList.remove('active')}
-function openOptimizeView(){var h=document.getElementById('homeView'),o=document.getElementById('optimizePage');if(h)h.style.display='none';if(o)o.style.display='block';var rc=document.getElementById('railCampaigns'),ro=document.getElementById('railOptimize');if(rc)rc.classList.remove('active');if(ro)ro.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function showHome(){closeNotifPanel();var h=document.getElementById('homeView'),o=document.getElementById('optimizePage');if(h)h.style.display='';if(o)o.style.display='none';var rc=document.getElementById('railCampaigns'),ro=document.getElementById('railOptimize');if(rc)rc.classList.add('active');if(ro)ro.classList.remove('active')}
+function openOptimizeView(){closeNotifPanel();var h=document.getElementById('homeView'),o=document.getElementById('optimizePage');if(h)h.style.display='none';if(o)o.style.display='block';var rc=document.getElementById('railCampaigns'),ro=document.getElementById('railOptimize');if(rc)rc.classList.remove('active');if(ro)ro.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
 function closeOptimizeView(){showHome();window.scrollTo({top:0,behavior:'smooth'})}
 function goCampaigns(){showHome();window.scrollTo({top:0,behavior:'smooth'})}
 function goHome(){
@@ -1495,47 +1510,44 @@ CASE_CAMP_ROWS.forEach(function(r,i){
    Mỗi phiên bản mới thêm 1 mục vào ĐẦU mảng (mới nhất trước). Nội dung lấy từ
    CHANGELOG thật; ngày + giờ là giờ deploy. */
 var CHANGELOG_DATA=[
+ {v:'v2.0.7',date:'22:12 ngày 19/11/2026',items:[
+  'Polish giao diện: tương phản nâu cam #B06000 → #8A4A00; hint nút Create xanh lá rõ hơn (nền mờ tối, 5,48:1).',
+  'Chống tràn ngang: toast chỉ transition transform; overflow-x:clip; panel bên width min(480px,100%); vh → dvh.',
+  'Spacing về thang 4/8pt; thêm hover/disabled còn thiếu; số liệu tabular-nums.',
+  'Topbar gọn lại: logo “Ads Manager” không cắt; hint Opportunity score chỉ còn trong tooltip; nút Discard Drafts / Review and publish 1 dòng, hint thành tooltip, không đè nút khác.',
+  'Panel thông báo/changelog hẹp còn 360px, mặc định đóng (chỉ mở khi bấm chuông), tự đóng khi mở modal/chuyển trang/bấm ra ngoài; modal luôn nằm trên panel.',
+  'Sửa lỗi modal Audiences: hộp thoại tạo Custom/Lookalike mở ngay trong trang Audiences (trước đây bị trang Audiences che vì backdrop z-index thấp hơn).',
+  'Audiences sát bản gốc hơn: đủ nguồn Customer list, Website, App activity, Video, Lead form, Instagram, Facebook Page; các bước chọn nguồn → tải file/map cột → đặt tên; Lookalike chọn nguồn → vị trí → kéo 1–10%.',
+  'Bước Ad set thêm “Xem trước theo vị trí”: bấm Xem ở từng placement hoặc chọn trong dropdown để xem preview đúng định dạng (Feed/Stories/Reels 9:16/Marketplace/cột phải…).'
+ ]},
  {v:'v2.0.6',date:'11:27 ngày 16/11/2026',items:[
-  'Polish giao diện (chỉ CSS + gắn label cho field, không đổi chức năng): tương phản chữ phụ --text3 tối hơn (#6B6F76, ≈ 5,0:1 trên nền trắng); hint tiếng Việt trên nút xanh chính còn đủ tương phản (#E7F0FE trên #0064E0, ≈ 4,7:1); công tắc toggle có vòng focus khi dùng bàn phím và núm trượt bằng transform thay vì left; thêm hỗ trợ prefers-reduced-motion; toast có role="status" aria-live="polite".',
-  'Bỏ gradient lệch chuẩn Meta: nền editor 3 bước về xám phẳng #F0F2F5, topbar/foot editor nền trắng; avatar topbar về xanh đặc #0064E0. Giữ nguyên 3 gradient có lý do riêng (khung minh hoạ .illus, ảnh placeholder quảng cáo mẫu, gradient thương hiệu Meta AI).',
-  'Thống nhất bo góc thẻ/dialog về 8px; padding/gap lẻ về thang 4/8pt (section 32px, dialog 16px, field 16px, gap 8px); 3 cỡ tiêu đề lẻ về thang (18/20/24px); vùng đọc dài (case, Tối ưu & Đề xuất, brief, glossary) line-height 1.55 và giới hạn độ dài dòng 640px; input trên mobile 16px để chống iOS auto-zoom.',
-  'Bảng: số liệu dùng tabular-nums; header bảng KPI và bảng tra nhanh đồng bộ nền #EDEFF2 với header bảng chính; nút đóng banner 36px như nút đóng dialog; dialog mobile dùng 100dvh; xoá CSS chết th .vi-hint; lưới brief/case thêm bước trung gian 2 cột ở ≤1280px.',
-  'Nút Publish trong editor dùng đúng xanh lá #00A400 như nút Create (kiểm tra thấy .btn-publish-go đang dùng thật ở bước 3 của editor, nên đổi màu thay vì xoá). Dòng lỗi đỏ .err-text giữ nguyên #E41E3F vì đã tính tương phản 4,61:1 trên nền trắng (≥ 4,5:1).',
-  'Trang Quản trị và Đăng nhập đồng bộ token: nút/input 6px, thẻ/section 8px, padding 16px; label form admin gắn for (tạo học viên, thông báo, đổi mật khẩu quản trị); card đăng nhập bo 8px/padding 24px, nút disabled thêm opacity .6, input mobile 16px.',
-  'Editor: gắn for/id cho các field chính (tên campaign đã có id, thêm aria-label cho ô tên campaign/ad set/ad dùng tiêu đề h4; ngân sách, lịch chạy, đối tượng, vị trí hiển thị, tối ưu & phân phối, creative, Primary text/Headline/Description, CTA, form tạo Custom Audience, hộp thoại xuất Word/tìm kiếm/so sánh). Label nhóm (radio/checkbox, nhóm nhiều ô) giữ nguyên vì đã bọc sẵn input hoặc không gắn được 1 ô duy nhất.'
+  'Polish giao diện: tương phản chữ phụ, focus toggle, bỏ gradient nền editor/avatar; bo 8px, thang 4/8pt.',
+  'Nút Publish trong editor dùng xanh lá #00A400; dòng lỗi đỏ giữ #E41E3F (4,61:1).',
+  'Quản trị & Đăng nhập đồng bộ token; gắn label cho field trong editor.'
  ]},
  {v:'v2.0.5',date:'10:53 ngày 16/11/2026',items:[
-  'Giao diện (chỉ CSS + rút ngắn 1 dòng hint, không đổi chức năng): xanh chính của link/nút đổi sang xanh Meta #0064E0; nút Create dùng đúng xanh lá #00A400; header bảng còn 1 dòng, hint cột chuyển thành tooltip khi rê chuột; topbar và các hàng nút căn thẳng hàng, cao đều.',
-  'Topbar: dòng hint Opportunity score rút ngắn còn “Điểm càng cao, setup càng chuẩn — chỉ gợi ý, không bắt buộc.” (tối đa 2 dòng; đủ ý gốc trong tooltip); logo, ô tài khoản, khối Opportunity score và cụm nút phải căn giữa theo chiều dọc, cao đều 42px, chỉ wrap khi màn hình hẹp.',
-  'Bảng Campaigns: bỏ dòng hint tiếng Việt dưới tên cột (giữ nguyên trong tooltip title và trong hộp thoại Customise columns), giảm padding hàng tiêu đề; nền header bảng đậm hơn (#EDEFF2) để tách khỏi nền trắng.',
-  'Hàng nút hành động: 2 hàng nút Create/Publish/Duplicate/Edit/Delete/More + Columns/Breakdown/Reports/Export/Compare cao đều 44px; hàng View charts/Edit/See history cao đều 42px.',
-  'Trang Quản trị và trang Đăng nhập: đổi xanh chính sang #0064E0; header bảng Quản trị có nền #EDEFF2.'
+  'Xanh chính #0064E0; nút Create xanh lá #00A400; header bảng 1 dòng, hint cột thành tooltip; topbar và hàng nút căn đều.',
+  'Hint Opportunity score rút còn 1–2 dòng; các nút topbar cao đều 42px.'
  ]},
  {v:'v2.0.4',date:'10:31 ngày 16/11/2026',items:[
-  'Nộp bài case: học viên chỉnh case trong trình chỉnh sửa 3 bước rồi bấm “Nộp bài”, hoặc nộp nhanh từ trang case theo số liệu slider hiện tại; bài nộp lưu lại để xem lại, nộp lại sẽ thay bài cũ.',
-  'Sau khi nộp, hiện bảng đối chiếu 5 mục (mục tiêu, ngân sách, đối tượng, vị trí hiển thị, nội dung quảng cáo): giá trị học viên đã nộp, gợi ý của giảng viên và kết luận “Đúng” hoặc “Cần sửa” kèm giải thích.',
-  'Mỗi case có thêm thẻ “Bối cảnh”: tình trạng fanpage/tài khoản, lịch sử chạy, đối tượng và creative đang dùng — chỉ dựa trên dữ kiện đã có của case.',
-  'Đáp án gợi ý của giảng viên được cấu trúc hoá thành 5 mục (mục tiêu, ngân sách, đối tượng, vị trí hiển thị, creative) để đối chiếu; đáp án gợi ý chung cũ vẫn giữ nguyên.'
+  'Nộp bài case: bấm “Nộp bài” trong editor hoặc trang case; bảng đối chiếu 5 mục với gợi ý giảng viên.',
+  'Mỗi case thêm thẻ “Bối cảnh”; đáp án gợi ý cấu trúc hoá 5 mục.'
  ]},
  {v:'v2.0.3',date:'10:00 ngày 16/11/2026',items:[
-  'Nhóm 1 — các trường nhập trong editor nay lưu thật vào bản nháp: tên Campaign/Ad set/Ad, Conversion location, Performance goal, Buying type, Category, giá thầu, Welcome message, Suggested questions, Destination, Partnership ad, Multi-advertiser ads và công tắc On/Off trong editor.',
-  'Nhóm 2 — các nút báo thành công giả nay làm thật: Duplicate nhân bản thêm dòng, Name editor đổi tên thật, Publish trong editor thêm chiến dịch Active vào bảng, Discard Drafts chỉ xoá nháp của học viên, Media picker gắn media vào preview, công tắc On/Off từng dòng lưu thật, Export tải file CSV thật, Publish/Delete trên bảng làm thật (campaign bài tập được bảo vệ, không xoá).',
-  'Trang Quản trị: form tạo học viên không còn bị trình duyệt tự điền tài khoản giáo viên; banner tạo tài khoản chỉ hiện 1 lần rồi tự ẩn; bảng học viên đủ rộng, không vỡ dòng.',
-  'Mô phỏng: mô tả Opportunity score không còn bị cắt giữa chữ; ô Budget trên bảng xuống dòng gọn trong ô, hàng tiêu đề gọn hơn; editor mở campaign của Case 1 đúng số liệu/tên/nội dung của case; avatar topbar lấy chữ viết tắt từ tên tài khoản đang đăng nhập; ô đăng nhập không còn kẹt giá trị đã điền sẵn.',
-  'Thông báo: thêm mục Nhật ký cập nhật liệt kê các phiên bản mới nhất trước; chuông hiện cả thông báo giảng viên và nhật ký cập nhật, số chưa đọc tính cả phiên bản mới chưa xem.',
-  'Thuật ngữ: thêm bảng Tổng hợp công thức KPI hay dùng (CPM, CTR, CPC, CPL, CPA, ROAS, tỉ lệ chuyển đổi, Frequency, Reach vs Impressions, CPA hoà vốn) với ví dụ số lấy từ các case.',
-  'Customise columns: tự chọn và sắp xếp cột hiển thị trên bảng Campaigns (kéo thả hoặc bấm ↑ ↓), lưu thành preset riêng dùng lại được trong menu Columns; “View your column presets” liệt kê và xoá preset riêng; “Compare attribution settings” đổi Attribution setting hiển thị trên bảng; “Conditional formatting” tô màu ô theo ngưỡng tự đặt (lưu lại và xoá được).'
+  'Các trường editor lưu thật vào bản nháp; các nút báo thành công giả nay làm thật (Duplicate, Publish, Discard Drafts, Export CSV…).',
+  'Quản trị: form tạo học viên hết tự điền; banner chỉ hiện 1 lần.',
+  'Thêm nhật ký cập nhật + chuông; bảng công thức KPI; Customise columns (chọn/sắp cột, preset, tô màu theo ngưỡng).'
  ]},
  {v:'v2.0.2',date:'08:54 ngày 16/11/2026',items:[
-  'Trang Audiences: tải file CSV tạo Custom Audience (map cột, xem trước đã che) và tạo Lookalike 1–10% từ tệp nguồn; gắn được vào Include/Exclude ở bước Ad set.',
-  'Danh sách tệp Audiences lưu riêng theo tài khoản trên máy chủ (chỉ metadata, nội dung file không rời máy học viên).'
+  'Trang Audiences: tải CSV tạo Custom Audience (map cột, xem trước đã che) + Lookalike 1–10%; gắn vào Include/Exclude ở bước Ad set.',
+  'Tệp Audiences lưu riêng theo tài khoản (chỉ metadata).'
  ]},
  {v:'v2.0.1',date:'07:30 ngày 16/11/2026',items:[
-  'Trang Quản trị có thêm mục “Đổi mật khẩu quản trị”: giáo viên tự đổi mật khẩu, đổi xong đăng xuất khỏi mọi thiết bị.'
+  'Trang Quản trị thêm “Đổi mật khẩu quản trị”.'
  ]},
  {v:'v2.0.0',date:'01:23 ngày 16/11/2026',items:[
-  'Website đăng nhập lần đầu: mở trang là màn hình đăng nhập; giáo viên cấp tài khoản học viên; bài làm lưu riêng theo tài khoản trên máy chủ, đổi máy vẫn còn.',
-  'Đầy đủ nội dung bản tĩnh v1.2.0: 21 chiến dịch (6 nháp mẫu + 15 campaign bài tập), 15 case, 19 khối Tối ưu &amp; Đề xuất, editor 3 bước, xuất file Word.'
+  'Website đăng nhập lần đầu: giáo viên cấp tài khoản; bài làm lưu riêng theo tài khoản, đổi máy vẫn còn.',
+  'Đủ nội dung bản tĩnh v1.2.0: 21 chiến dịch, 15 case, 19 khối Tối ưu & Đề xuất, editor 3 bước, xuất file Word.'
  ]}
 ];
 var COL_HINTS={'Off/On':'Bật / tắt nhanh từng mục','Campaign':'Tên chiến dịch — bấm vào để chuyển sang tab Ad sets','Ad set':'Tên nhóm quảng cáo — bấm vào để chuyển sang tab Ads','Ad':'Tên quảng cáo','Delivery':'Trạng thái phân phối: đang chạy / nháp / tạm dừng','Actions':'Hành động / cột thao tác của dòng','Attribution setting':'Cửa sổ ghi nhận chuyển đổi, ví dụ click trong 7 ngày','Results':'Số kết quả đạt được theo mục tiêu — chỉ số quan trọng nhất','Cost per result':'Chi phí trung bình cho 1 kết quả — càng thấp càng hiệu quả','Budget':'Ngân sách đã đặt (ngày hoặc ngân sách chiến dịch)','Amount spent':'Tổng tiền đã chi trong khoảng thời gian đang xem','Impressions':'Tổng số lần quảng cáo được hiển thị','Reach':'Số người khác nhau đã thấy quảng cáo ít nhất 1 lần','Ends':'Ngày kết thúc (Ongoing = chạy liên tục)','Bid strategy':'Chiến lược đấu thầu đang dùng','Frequency':'Số lần trung bình 1 người thấy quảng cáo','CPM':'Chi phí cho 1.000 lần hiển thị','Link clicks':'Số lượt bấm vào liên kết trong quảng cáo','Shop clicks':'Số lượt bấm vào cửa hàng / sản phẩm','CPC (cost per link click)':'Chi phí trung bình cho 1 lượt bấm liên kết','CTR (link click-through rate)':'Tỉ lệ bấm liên kết = Link clicks ÷ Impressions','Clicks (all)':'Tổng mọi lượt bấm (link, Page, tương tác…)','CTR (all)':'Tỉ lệ bấm trên mọi loại click','CPC (all)':'Chi phí trung bình cho 1 lượt bấm bất kỳ','Landing page views':'Số lượt xem trang đích thành công','Cost per landing page view':'Chi phí trung bình cho 1 lượt xem trang đích','Page engagement':'Tổng tương tác với Page / bài viết','Post reactions':'Số lượt bày tỏ cảm xúc','Post comments':'Số bình luận','Post saves':'Số lượt lưu bài','Post shares':'Số lượt chia sẻ bài','Facebook likes':'Số lượt thích Page mới','Instagram follows':'Số lượt theo dõi Instagram mới','CPC':'Chi phí trung bình cho 1 lượt bấm','Cost per 1,000 Meta accounts reached':'Chi phí để tiếp cận 1.000 tài khoản Meta','Objective':'Mục tiêu đã chọn ở tầng chiến dịch','Schedule':'Lịch chạy của nhóm quảng cáo','Last significant edit':'Lần sửa quan trọng gần nhất','Quality ranking':'Xếp hạng chất lượng so với đối thủ cùng đối tượng','Engagement rate ranking':'Xếp hạng tỉ lệ tương tác so với đối thủ','Conversion rate ranking':'Xếp hạng tỉ lệ chuyển đổi so với đối thủ','Ad set name':'Nhóm quảng cáo chứa quảng cáo này'};
@@ -2240,6 +2252,7 @@ document.getElementById('railTools').addEventListener('click',function(){openDia
 /* ============ TOOL PAGES ============ */
 function pageShell(inner){return inner}
 function openToolPage(name){
+  closeNotifPanel();
   var title=name,body='';
   if(name==='Account overview'){
     body='<div class="pcard"><h3>Account overview</h3><p><b>0 active campaigns</b> · Amount spent in last seven days: ₫0 | 0% spent in learning phase</p>'
@@ -2266,8 +2279,8 @@ function openToolPage(name){
     +'<div class="pcard"><h3>Payment history</h3><p><a onclick="toast(\'Transaction history (mô phỏng): chưa có giao dịch nào.\')">View transaction history</a> · <a onclick="toast(\'Help Centre (mô phỏng).\')">Help Centre</a></p></div>'
     +'</div></div>'+hint('Trang thanh toán: nơi thêm thẻ/phương thức trả tiền và xem số dư — quảng cáo thật chỉ chạy khi đã có phương thức thanh toán.');
   } else if(name==='Audiences'){
-    body='<div class="pcard"><h3>Reach the people who matter to you</h3><p>Create and save audiences to reuse across campaigns.</p>'+hint('Audience = tệp đối tượng lưu sẵn để dùng lại nhiều chiến dịch, khỏi khai báo lại từ đầu.')+'</div>'
-    +'<div class="pcard"><h3>Custom Audiences</h3><p>From customer contacts, website traffic, mobile app activity.</p><button class="btn btn-blue" onclick="openAudCreate()">Create a Custom Audience</button></div>'
+    body='<div class="pcard"><h3>Reach the people who matter to you</h3><p>Create and save audiences to reuse across campaigns.</p>'+hint('Audience = tệp đối tượng lưu sẵn, dùng lại nhiều chiến dịch.')+'</div>'
+    +'<div class="pcard"><h3>Custom Audiences</h3><p>From customer contacts, website traffic, app activity, video engagement, lead forms or Page engagement.</p><button class="btn btn-blue" onclick="openAudCreate()">Create a Custom Audience</button></div>'
     +'<div class="pcard"><h3>Lookalike audiences</h3><p>Find new people similar to your best customers.</p><button class="btn btn-blue" onclick="openAudLookalike()">Create a lookalike audience</button></div>'
     +'<div class="pcard"><h3>Your audiences</h3><div id="audListWrap">'+audListHTML()+'</div></div>'
     +'<div class="pcard"><h3>Saved audience</h3><p>Reuse targeting settings such as location, age and interests.</p><button class="btn btn-blue" onclick="toast(\'Create a saved audience (mô phỏng).\')">Create a saved audience</button></div>';
@@ -2731,15 +2744,86 @@ function placementsCard(){
         var key=plKey(item[0]);
         var def=item[0].indexOf('rewarded')===-1;
         var on=draftGet(key,def);
-        h+='<label class="check-line" style="padding-left:28px;padding-top:2px;padding-bottom:2px'+(adv?';opacity:.55':'')+'"><input type="checkbox" '+(on?'checked':'')+(adv?' disabled':'')+' onchange="draftSet(\''+key+'\',this.checked)"><span><b style="font-weight:600">'+item[0]+'</b><span>'+item[1]+'</span></span></label>';
+        var pv=draftGet('plPreview','Facebook Feed')===item[0];
+        h+='<label class="check-line" style="padding-left:28px;padding-top:2px;padding-bottom:2px'+(adv?';opacity:.55':'')+'"><input type="checkbox" '+(on?'checked':'')+(adv?' disabled':'')+' onchange="draftSet(\''+key+'\',this.checked)"><span><b style="font-weight:600">'+item[0]+'</b><span>'+item[1]+'</span></span><button type="button" class="btn pl-view-btn" aria-pressed="'+(pv?'true':'false')+'" title="Xem trước quảng cáo ở vị trí này" onclick="event.stopPropagation();setPlPreview(\''+item[0].replace(/'/g,"\\'")+'\')">Xem</button></label>';
       });
     });
     h+='<div style="margin-top:10px"><label class="check-line" style="padding-left:28px;padding-top:2px;padding-bottom:2px;opacity:.5"><input type="checkbox" disabled><span>Facebook Business Explore (unavailable)</span></label></div>'
     +'<div class="kv" style="margin-top:8px"><span>Skippable ads</span><b>Included</b></div></div>';
   }
+  /* Xem trước theo vị trí (v2.0.7): panel nằm trong luồng của thẻ Placements,
+     dưới danh sách placement — không đè lên Campaign score / Estimated audience
+     ở cột phải. Nội dung lấy từ nháp bước Ad (Primary text/Headline/media). */
+  h+='<div class="pl-preview" id="plPreviewWrap">'+plPreviewHTML()+'</div>';
   h+=hint('Người mới nên để Advantage+ placements — chỉ chuyển Manual khi có chủ đích rõ, ví dụ chỉ chạy Reels, hoặc loại hẳn Audience Network khi sợ traffic chất lượng thấp. Mọi tick chọn ở đây tự lưu vào bản nháp.')+'</div>';
   return h;
 }
+/* ---- Xem trước quảng cáo theo từng placement (v2.0.7) ----
+   Dùng lại đúng nội dung preview của bước Ad (Primary text / Headline /
+   media đã chọn trong nháp; chưa có nội dung thì hiện mẫu + ghi chú).
+   Định dạng theo từng nhóm vị trí: Feed (khung bài viết ngang), Stories /
+   Reels / Status (khung dọc 9:16), Search (thẻ kết quả tìm kiếm),
+   Marketplace (khung listing), Right column (khung hẹp), In-stream video
+   (khung video), Messenger inbox (khung chat). Lựa chọn lưu vào bản nháp
+   (plPreview) nên mở lại editor vẫn giữ vị trí đang xem. */
+function plPreviewKind(name){
+  var n=String(name||'').toLowerCase();
+  if(/stories|reels|status/.test(n))return 'vertical';
+  if(/search/.test(n))return 'search';
+  if(/right column/.test(n))return 'narrow';
+  if(/marketplace/.test(n))return 'marketplace';
+  if(/in-stream|rewarded/.test(n))return 'video';
+  if(/messenger inbox/.test(n))return 'chat';
+  return 'feed';
+}
+function plPreviewContent(){
+  var primary='',headline='',sample=false;
+  if(caseCtx){primary=caseCtx.row.cfg.primary||'';headline=caseCtx.row.cfg.headline||''}
+  else if(draftGet('adSetupMode','new')==='existing'){var p=demoPostById(draftGet('demoPostId','p1'));primary=p.text;headline=p.headline}
+  else{primary=primaryTextVal||draftGet('manualPrimary','');headline=headlineVal||draftGet('manualHeadline','')}
+  if(!primary&&!headline){primary='BST mới đã về! Nhắn tin ngay để được tư vấn size và nhận ưu đãi freeship hôm nay.';headline='BST mới — tư vấn size trong 5 phút';sample=true}
+  else if(!headline){headline='Xem ngay — Shop Thời Trang ABC'}
+  else if(!primary){primary='Xem chi tiết sản phẩm trong quảng cáo này.'}
+  return {primary:primary,headline:headline,sample:sample,
+    media:(draftGet('adSetupMode','new')==='existing'?demoPostById(draftGet('demoPostId','p1')).media:(selectedMediaLabel()||(adFormat==='carousel'?'CAROUSEL':'SINGLE IMAGE / VIDEO')))};
+}
+function plPreviewOptionsHTML(cur){
+  var opts='';
+  (PLATFORMS||[]).forEach(function(p){
+    opts+='<optgroup label="'+esc(p[0])+'">';
+    p[2].forEach(function(item){opts+='<option'+(item[0]===cur?' selected':'')+'>'+esc(item[0])+'</option>'});
+    opts+='</optgroup>';
+  });
+  return opts;
+}
+function plPreviewHTML(){
+  var name=draftGet('plPreview','Facebook Feed');
+  var kind=plPreviewKind(name);
+  var c=plPreviewContent();
+  var head='<div class="ph"><span class="pa">SHOP</span><div><b style="font-size:13px;display:block">Shop Thời Trang ABC</b><span style="font-size:11.5px;color:var(--text2)">Sponsored · 🌐</span></div></div>';
+  var frame='';
+  if(kind==='vertical'){
+    frame='<div class="story-frame"><b>Shop Thời Trang ABC</b><div style="margin:16px 0;font-size:22px">STORY PREVIEW</div><span>'+esc(c.primary)+'</span><div style="margin-top:16px;font-size:12px">Swipe up · Send message</div></div>';
+  } else if(kind==='search'){
+    frame='<div class="ad-preview-frame"><div class="pc"><b>Shop Thời Trang ABC</b> <span style="color:var(--text2)">· Sponsored</span><div style="font-weight:700;margin-top:4px">'+esc(c.headline)+'</div><span style="color:var(--text2);font-size:12px">shop.example.vn</span></div><div class="pm" style="height:90px">'+esc(c.media)+'</div></div>';
+  } else if(kind==='narrow'){
+    frame='<div class="ad-preview-frame pl-frame-narrow"><div class="pc"><b style="font-size:12.5px">Shop Thời Trang ABC</b> <span style="color:var(--text2);font-size:11.5px">· Sponsored</span><div style="font-weight:700;margin-top:4px;font-size:12.5px">'+esc(c.headline)+'</div></div><div class="pm" style="height:90px">'+esc(c.media)+'</div></div>';
+  } else if(kind==='marketplace'){
+    frame='<div class="ad-preview-frame"><div class="pc"><b>Marketplace listing</b> <span style="color:var(--text2)">· Sponsored</span><div style="font-weight:700;margin-top:4px">'+esc(c.headline)+'</div><div style="color:var(--text2);font-size:12.5px">'+esc(c.primary)+'</div></div><div class="pm">'+esc(c.media)+'</div><div class="pv-actions"><span>👍 Like</span><span>💬 Comment</span><span>↗ Share</span></div></div>';
+  } else if(kind==='video'){
+    frame='<div class="ad-preview-frame pl-frame-video"><div class="pc"><b style="font-size:12.5px">▶ Video trong luồng (in-stream)</b> <span style="color:var(--text2);font-size:12px">— quảng cáo chèn giữa video / livestream</span></div>'+head+'<div class="pc pvText">'+esc(c.primary)+'</div><div class="pm">'+esc(c.media)+'<br><span style="font-weight:600;font-size:12px">'+esc(c.headline)+'</span></div></div>';
+  } else if(kind==='chat'){
+    frame='<div class="pl-chat"><div class="pl-chat-head">Messenger — Shop Thời Trang ABC</div><div class="pl-bubble">'+esc(c.primary)+'</div><div class="pl-card"><div class="pm">'+esc(c.media)+'</div><div class="pc"><b>'+esc(c.headline)+'</b><div style="margin-top:8px"><button class="btn btn-blue" type="button" onclick="toast(\'Send message (mô phỏng): nút nhắn tin trong quảng cáo Messenger.\')">Send message</button></div></div></div></div>';
+  } else {
+    frame='<div class="ad-preview-frame">'+head+'<div class="pc pvText">'+esc(c.primary)+'</div><div class="pm">'+esc(c.media)+'<br><span style="font-weight:600;font-size:12px">'+esc(c.headline)+'</span></div><div class="pv-actions"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>↗ Share</span><span>🔖 Save</span></div></div>';
+  }
+  var kindLabel={feed:'Feed — khung bài viết ngang',vertical:'Stories / Reels — khung dọc 9:16',search:'Search — thẻ kết quả tìm kiếm',marketplace:'Marketplace — khung listing',narrow:'Right column — khung hẹp (desktop)',video:'In-stream video — khung video',chat:'Messenger inbox — khung chat'}[kind];
+  return '<h4 style="margin:0 0 4px;font-size:14.5px">Xem trước theo vị trí</h4>'
+  +'<span class="vi-hint">Bấm nút Xem ở từng placement bên trên, hoặc chọn trong danh sách dưới đây — preview đổi ngay theo đúng định dạng của vị trí đó.'+(c.sample?' Nội dung đang là mẫu (chưa nhập Primary text/Headline ở bước Ad).':'')+'</span>'
+  +'<div class="field" style="margin-top:10px"><label for="plPreviewSel">Placement đang xem trước</label><select id="plPreviewSel" onchange="setPlPreview(this.value)">'+plPreviewOptionsHTML(name)+'</select></div>'
+  +'<p style="margin:0 0 8px;font-size:12.5px;color:var(--text2)">'+esc(name)+' — '+kindLabel+'</p>'+frame;
+}
+function setPlPreview(name){draftSet('plPreview',name);refreshPl()}
 function budgetCard(o){
   var isCamp=o.budgetLevel==='campaign';
   var bType=draftGet('budgetType','Daily budget');
@@ -3104,7 +3188,7 @@ document.addEventListener('keydown',function(e){
   if(e.ctrlKey&&(e.key==='y'||e.key==='Y')){e.preventDefault();openInsights()}
   if(e.ctrlKey&&(e.key==='u'||e.key==='U')){e.preventDefault();openEditorForSelected()}
   if(e.ctrlKey&&(e.key==='i'||e.key==='I')){e.preventDefault();toast('See history (mô phỏng): chưa có thay đổi nào trong phiên luyện tập này.')}
-  if(e.key==='Escape'){closeAllMenus(null);closeInsights();closeCompare();closeDialog('toolsBack');closeDialog('createBack')}
+  if(e.key==='Escape'){closeAllMenus(null);closeInsights();closeCompare();closeNotifPanel();closeDialog('toolsBack');closeDialog('createBack')}
 });
 ['toolsBack','createBack','setupBack','dupBack','tagsBack','exportBack','dateBack','mediaBack','wordBack'].forEach(function(id){
   document.getElementById(id).addEventListener('click',function(e){if(e.target===this)closeDialog(id)});
@@ -4041,6 +4125,8 @@ function changelogHTML(){
     return '<div style="border-top:1px solid #eee;padding:10px 0"><b>'+esc(rel.v)+'</b> <span style="color:#65676B;font-size:12px">'+esc(rel.date)+'</span><ul style="margin:6px 0 0;padding-left:18px;font-size:13px;line-height:1.55">'+rel.items.map(function(it){return '<li>'+esc(it)+'</li>'}).join('')+'</ul></div>';
   }).join('');
 }
+/* Bấm ra ngoài panel thông báo thì đóng panel (trừ nút chuông mở panel). */
+document.addEventListener('click',function(e){var p=document.getElementById('notifPanel')||document.getElementById('srvAnnPanel');if(!p)return;var t=e.target;if(!t||!t.closest)return;if(p.contains(t))return;if(t.closest('button[title="Notifications"]'))return;if(t.closest('#srvAnnBar'))return;p.remove()});
 function toggleNotifPanel(){
   var p=document.getElementById('notifPanel');
   if(p){p.remove();return}
@@ -4175,12 +4261,17 @@ function audRefreshPage(){
   if(typeof refreshAud==='function'){try{refreshAud()}catch(e){}}
 }
 /* ---- Nguồn tạo Custom Audience ---- */
+/* Thứ tự nguồn theo bản gốc Facebook: Customer list, Website, App activity,
+   Video, Lead form, Instagram, Facebook Page. Chỉ Customer list chạy thật
+   (tải file CSV); các nguồn còn lại chỉ mô phỏng — tạo tệp mẫu đặt tên. */
 var AUD_SOURCES=[
- {id:'customer_list',name:'Customer list',vi:'Tải file danh sách khách hàng (CSV/TXT) lên — nguồn duy nhất chạy thật trong bản mô phỏng này.'},
- {id:'website',name:'Website traffic',vi:'Chỉ mô phỏng: trong bản thật, nguồn này lấy người đã vào website qua Pixel — bản đào tạo không kết nối Pixel thật nên chỉ tạo được tệp mẫu đặt tên.'},
- {id:'video',name:'Video engagement',vi:'Chỉ mô phỏng: trong bản thật, nguồn này lấy người đã xem video của Page — bản đào tạo không có dữ liệu xem video thật nên chỉ tạo được tệp mẫu đặt tên.'},
- {id:'leadform',name:'Lead form',vi:'Chỉ mô phỏng: trong bản thật, nguồn này lấy người đã mở/điền form thu lead — bản đào tạo không có form thật nên chỉ tạo được tệp mẫu đặt tên.'},
- {id:'page',name:'Instagram / Facebook Page',vi:'Chỉ mô phỏng: trong bản thật, nguồn này lấy người đã tương tác Page/Instagram — bản đào tạo không kết nối Page thật nên chỉ tạo được tệp mẫu đặt tên.'}
+ {id:'customer_list',name:'Customer list',vi:'Tải file danh sách khách hàng (CSV/TXT) lên — nguồn duy nhất chạy thật.'},
+ {id:'website',name:'Website traffic',vi:'Chỉ mô phỏng — không có Pixel thật, chỉ tạo tệp mẫu đặt tên.'},
+ {id:'app',name:'App activity',vi:'Chỉ mô phỏng — không có dữ liệu app thật, chỉ tạo tệp mẫu đặt tên.'},
+ {id:'video',name:'Video engagement',vi:'Chỉ mô phỏng — không có dữ liệu xem video thật, chỉ tạo tệp mẫu đặt tên.'},
+ {id:'leadform',name:'Lead form',vi:'Chỉ mô phỏng — không có form thật, chỉ tạo tệp mẫu đặt tên.'},
+ {id:'instagram',name:'Instagram account',vi:'Chỉ mô phỏng — không kết nối Instagram thật, chỉ tạo tệp mẫu đặt tên.'},
+ {id:'page',name:'Facebook Page',vi:'Chỉ mô phỏng — không kết nối Page thật, chỉ tạo tệp mẫu đặt tên.'}
 ];
 function audSourceName(id){var s=AUD_SOURCES.filter(function(x){return x.id===id})[0];return s?s.name:id}
 function openAudCreate(){
@@ -4192,17 +4283,17 @@ function audSetName(v){audDraft.name=v}
 function audRenderCreate(){
   var b=document.getElementById('audCreateBody');if(!b)return;
   if(audDraft.step==='map'){b.innerHTML=audMapHTML();return}
-  var h='<div class="field"><label>Source</label>';
+  var h='<p style="margin:0 0 10px;font-size:12.5px;color:var(--text2)"><b>Bước 1 — Chọn nguồn dữ liệu</b> (như bản gốc: chọn nguồn trước, rồi mới tải file/đặt tên).</p><div class="field"><label>Source</label>';
   AUD_SOURCES.forEach(function(s){
     h+='<label class="radio-line'+(audDraft.source===s.id?' sel':'')+'"><input type="radio" name="audSource" value="'+s.id+'"'+(audDraft.source===s.id?' checked':'')+' onchange="audSetSource(this.value)"><span><b>'+s.name+'</b><span>'+s.vi+'</span></span></label>';
   });
   h+='</div>';
   if(audDraft.source==='customer_list'){
-    h+='<div class="field"><label>Upload a customer list file (CSV or TXT)</label><input type="file" accept=".csv,.txt" onchange="audFileChange(this)">'+hint('File phải có dòng đầu là header (tên cột), các dòng sau là dữ liệu. Hỗ trợ trường có dấu ngoặc kép. Nội dung file chỉ đọc và parse ngay trên trình duyệt này để map cột — chỉ lưu tên tệp, loại, nguồn và số dòng, không lưu lại nội dung từng dòng.')+'</div>'
-    +'<button class="btn" onclick="audUseSample()">Dùng file mẫu</button>'+hint('File mẫu có sẵn ~200 dòng (tên + email + số điện thoại giả lập, miền @vidu.test) để thử ngay không cần file thật — file mẫu đi qua đúng pipeline đọc và map cột như file bạn tải lên.');
+    h+='<div class="field"><label>Upload a customer list file (CSV or TXT)</label><input type="file" accept=".csv,.txt" onchange="audFileChange(this)">'+hint('File CSV/TXT có dòng đầu là header. Chỉ đọc & parse trên trình duyệt này — không lưu nội dung từng dòng.')+'</div>'
+    +'<button class="btn" onclick="audUseSample()">Dùng file mẫu</button>'+hint('File mẫu ~200 dòng (dữ liệu giả lập @vidu.test) — đi qua đúng pipeline đọc & map cột như file bạn tải lên.');
   } else {
-    h+='<div class="warn-box"><b>'+audSourceName(audDraft.source)+' — chỉ mô phỏng</b> Bản đào tạo không kết nối dữ liệu thật của nguồn này, nên tệp tạo ra chỉ là tệp mẫu để học viên tập đặt tên và tập gắn vào Ad set. Muốn có số dòng thật, hãy dùng nguồn Customer list ở trên.</div>'
-    +'<div class="field"><label for="audNameInput">Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — Website" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc và không được trùng với tệp đã tạo trước đó.')+'</div>'
+    h+='<p style="margin:0 0 10px;font-size:12.5px;color:var(--text2)"><b>Bước 2 — Đặt tên tệp</b></p><div class="warn-box"><b>'+audSourceName(audDraft.source)+' — chỉ mô phỏng</b> Không kết nối dữ liệu thật nên chỉ tạo tệp mẫu để tập đặt tên & gắn vào Ad set. Muốn có số dòng thật, dùng nguồn Customer list.</div>'
+    +'<div class="field"><label for="audNameInput">Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — Website" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc, không trùng tệp đã tạo.')+'</div>'
     +'<button class="btn btn-blue" onclick="audCreateSubmit()">Create audience</button>';
   }
   b.innerHTML=h;
@@ -4259,7 +4350,7 @@ function audPreviewRowsHTML(){
   }).join('');
 }
 function audMapHTML(){
-  var h='<p><b>Đã đọc được '+fmtNum(audDraft.rows.length)+' dòng.</b> Map từng cột bên dưới sang đúng loại dữ liệu — cần ít nhất Email hoặc Số điện thoại mới tạo được tệp.</p>';
+  var h='<p style="margin:0 0 10px;font-size:12.5px;color:var(--text2)"><b>Bước 2 — Map cột & đặt tên</b></p><p><b>Đã đọc được '+fmtNum(audDraft.rows.length)+' dòng.</b> Map từng cột sang đúng loại dữ liệu — cần ít nhất Email hoặc Số điện thoại mới tạo được tệp.</p>';
   h+='<div class="field"><label>Map columns</label>';
   audDraft.headers.forEach(function(col,i){
     var m=audDraft.mapping[i]||'skip';
@@ -4268,8 +4359,8 @@ function audMapHTML(){
     +'</select></span></div>';
   });
   h+='</div>';
-  h+='<div class="field"><label>Preview — first 3 rows (masked)</label><div class="table-scroll"><table><thead><tr>'+audDraft.headers.map(function(c){return '<th>'+esc(c)+'</th>'}).join('')+'</tr></thead><tbody id="audPreviewBody">'+audPreviewRowsHTML()+'</tbody></table></div>'+hint('Xem trước đã che bớt: chỉ hiện vài ký tự đầu, phần còn lại thay bằng ***.')+'</div>';
-  h+='<div class="field"><label for="audNameInput">Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — 2026" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc và không được trùng với tệp đã tạo trước đó. Chỉ lưu tên tệp, loại, nguồn và số dòng — nội dung file chỉ đọc trên trình duyệt này và không lưu lại.')+'</div>';
+  h+='<div class="field"><label>Preview — first 3 rows (masked)</label><div class="table-scroll"><table><thead><tr>'+audDraft.headers.map(function(c){return '<th>'+esc(c)+'</th>'}).join('')+'</tr></thead><tbody id="audPreviewBody">'+audPreviewRowsHTML()+'</tbody></table></div>'+hint('Xem trước đã che bớt (***).')+'</div>';
+  h+='<div class="field"><label for="audNameInput">Audience name</label><input type="text" id="audNameInput" placeholder="Ví dụ: Khách đã mua — 2026" value="'+esc(audDraft.name)+'" oninput="audSetName(this.value)">'+hint('Tên tệp bắt buộc, không trùng tệp đã tạo. Chỉ lưu tên/loại/nguồn/số dòng.')+'</div>';
   h+='<button class="btn" onclick="audBackToSource()">Back</button> <button class="btn btn-blue" onclick="audCreateSubmit()">Create audience</button>';
   return h;
 }
@@ -4328,11 +4419,11 @@ function audLalEstText(pct){return fmtNum(98000000*pct/100)+' người (ước l
 function audRenderLookalike(){
   var b=document.getElementById('audLookalikeBody');if(!b)return;
   var srcs=audLalSources();
-  var h='<div class="field"><label>Source audience</label><select onchange="audLalSrc(this.value)">'
+  var h='<p style="margin:0 0 10px;font-size:12.5px;color:var(--text2)"><b>Bước 1 — Chọn tệp nguồn</b> (như bản gốc: nguồn → vị trí → kéo thanh %).</p><div class="field"><label>Source audience</label><select onchange="audLalSrc(this.value)">'
   +srcs.map(function(s){return '<option value="'+s.id+'"'+(audLalDraft.sourceId===s.id?' selected':'')+'>'+esc(s.name)+'</option>'}).join('')
-  +'</select>'+hint('Chọn tệp nguồn để tìm người tương tự — nên chọn tệp người đã mua thay vì tệp tương tác chung chung, vì Lookalike học theo hành vi của tệp nguồn.')+'</div>'
-  +'<div class="field"><label>Location</label><input type="text" value="Vietnam" disabled>'+hint('Quốc gia cố định là Việt Nam trong bản mô phỏng này — trong bản thật có thể chọn nhiều quốc gia khác.')+'</div>'
-  +'<div class="field"><label>Audience size — <span id="audLalPctVal">'+audLalDraft.pct+'%</span></label><input type="range" min="1" max="10" step="1" value="'+audLalDraft.pct+'" style="width:100%" oninput="audLalPct(this.value)"><p style="margin:6px 0 0">Estimated size: <b id="audLalEst">'+audLalEstText(audLalDraft.pct)+'</b></p>'+hint('1% = 1% người giống tệp nguồn nhất tại Việt Nam (tệp nhỏ, giống nhất); kéo lên 10% thì tệp rộng hơn nhưng độ giống giảm. Công thức mô phỏng: 98.000.000 × % đã chọn.')+'</div>'
+  +'</select>'+hint('Nên chọn tệp người đã mua — Lookalike học theo hành vi của tệp nguồn.')+'</div>'
+  +'<p style="margin:0 0 10px;font-size:12.5px;color:var(--text2)"><b>Bước 2 — Vị trí</b></p><div class="field"><label>Location</label><input type="text" value="Vietnam" disabled>'+hint('Cố định Việt Nam trong bản mô phỏng; bản thật chọn được nhiều quốc gia.')+'</div>'
+  +'<p style="margin:0 0 10px;font-size:12.5px;color:var(--text2)"><b>Bước 3 — Kéo thanh chọn % tương tự</b></p><div class="field"><label>Audience size — <span id="audLalPctVal">'+audLalDraft.pct+'%</span></label><input type="range" min="1" max="10" step="1" value="'+audLalDraft.pct+'" style="width:100%" oninput="audLalPct(this.value)"><p style="margin:6px 0 0">Estimated size: <b id="audLalEst">'+audLalEstText(audLalDraft.pct)+'</b></p>'+hint('1% = giống nhất, tệp nhỏ; 10% = tệp rộng hơn, độ giống giảm. Công thức mô phỏng: 98.000.000 × %.')+'</div>'
   +'<button class="btn btn-blue" onclick="audLalCreate()">Create lookalike audience</button>';
   b.innerHTML=h;
 }
@@ -4371,8 +4462,8 @@ Object.defineProperty(window,'__curCase',{configurable:true,get:function(){retur
    handlers (onclick="openCreate()" etc.) resolve names on window, so
    without this export every such button silently does nothing. */
 (function(){
-  var names=['doDuplicate','doPublishSelected','doDeleteSelected','discardDrafts','selectMedia','toggleNotifPanel','applyRowState','clearEditorDraft','applyDateRange','closeCaseView','closeCompare','closeDialog','closeOptimizeView','goCampaigns','goCases','openOptimizeView','showHome','closeEditor','closeInsights','closePageView','continueToEditor','doExport','editorNext','goEditorStep','goHome','onBidChange','openCase','openCaseCampaign','filterCaseCamps','clearNameFilter','openCompare','openCreate','openCustomExport','openDialog','openDuplicate','openEditor','openEditorForObjective','openEditorForSelected','openInsights','openNameEditor','openTags','openTool','openToolPage','renderTable','resetCase','segTab','setCaseVal','setCompareTab','setEditorMode','setFormat','setInsightsTab','setPvTab','setupContinue','startBrief','syncPreviewCta','syncPreviewText','toast','toggleAdsetMore','toggleAnswer','toggleCampMore','draftSet','addLoc','removeLoc','setLocMode','setLocRadius','addChip','removeChip','addChipFromInput','addFromSelect','setGender','toggleAdvAud','toggleAdvPl','togglePlManual','setBudgetType','toggleEndDate','toggleSched','toggleNarrow','setCostControl','toggleAdvOpt','toggleAdvCreative','toggleDtItem','filterDtTree','onDtBrowseToggle','setAdSetupMode','selectDemoPost','syncPreviewHeadline','setCampName','setAdsetName','setAdName','setPartnerAd','openExportWordRow','openExportWordEditor','doExportWord','__srvAddDraftRow','audLoad','audSave','openAudCreate','audSetSource','audUseSample','audFileChange','audSetMap','audSetName','audCreateSubmit','audBackToSource','audDelete','openAudLookalike','audLalSrc','audLalPct','audLalCreate','submitCaseWork','collectSubmission','subLoad','subSave','compareSubmission','renderSubResult'];
-  var scope={doDuplicate:doDuplicate,doPublishSelected:doPublishSelected,doDeleteSelected:doDeleteSelected,discardDrafts:discardDrafts,selectMedia:selectMedia,toggleNotifPanel:toggleNotifPanel,applyRowState:applyRowState,clearEditorDraft:clearEditorDraft,applyDateRange:applyDateRange,closeCaseView:closeCaseView,closeCompare:closeCompare,closeDialog:closeDialog,closeOptimizeView:closeOptimizeView,goCampaigns:goCampaigns,goCases:goCases,openOptimizeView:openOptimizeView,showHome:showHome,closeEditor:closeEditor,closeInsights:closeInsights,closePageView:closePageView,continueToEditor:continueToEditor,doExport:doExport,editorNext:editorNext,goEditorStep:goEditorStep,goHome:goHome,onBidChange:onBidChange,openCase:openCase,openCaseCampaign:openCaseCampaign,filterCaseCamps:filterCaseCamps,clearNameFilter:clearNameFilter,openCompare:openCompare,openCreate:openCreate,openCustomExport:openCustomExport,openDialog:openDialog,openDuplicate:openDuplicate,openEditor:openEditor,openEditorForObjective:openEditorForObjective,openEditorForSelected:openEditorForSelected,openInsights:openInsights,openNameEditor:openNameEditor,openTags:openTags,openTool:openTool,openToolPage:openToolPage,renderTable:renderTable,resetCase:resetCase,segTab:segTab,setCaseVal:setCaseVal,setCompareTab:setCompareTab,setEditorMode:setEditorMode,setFormat:setFormat,setInsightsTab:setInsightsTab,setPvTab:setPvTab,setupContinue:setupContinue,startBrief:startBrief,syncPreviewCta:syncPreviewCta,syncPreviewText:syncPreviewText,toast:toast,toggleAdsetMore:toggleAdsetMore,toggleAnswer:toggleAnswer,toggleCampMore:toggleCampMore,draftSet:draftSet,addLoc:addLoc,removeLoc:removeLoc,setLocMode:setLocMode,setLocRadius:setLocRadius,addChip:addChip,removeChip:removeChip,addChipFromInput:addChipFromInput,addFromSelect:addFromSelect,setGender:setGender,toggleAdvAud:toggleAdvAud,toggleAdvPl:toggleAdvPl,togglePlManual:togglePlManual,setBudgetType:setBudgetType,toggleEndDate:toggleEndDate,toggleSched:toggleSched,toggleNarrow:toggleNarrow,setCostControl:setCostControl,toggleAdvOpt:toggleAdvOpt,toggleAdvCreative:toggleAdvCreative,toggleDtItem:toggleDtItem,filterDtTree:filterDtTree,onDtBrowseToggle:onDtBrowseToggle,setAdSetupMode:setAdSetupMode,selectDemoPost:selectDemoPost,syncPreviewHeadline:syncPreviewHeadline,setCampName:setCampName,setAdsetName:setAdsetName,setAdName:setAdName,setPartnerAd:setPartnerAd,openExportWordRow:openExportWordRow,openExportWordEditor:openExportWordEditor,doExportWord:doExportWord,__srvAddDraftRow:__srvAddDraftRow,audLoad:audLoad,audSave:audSave,openAudCreate:openAudCreate,audSetSource:audSetSource,audUseSample:audUseSample,audFileChange:audFileChange,audSetMap:audSetMap,audSetName:audSetName,audCreateSubmit:audCreateSubmit,audBackToSource:audBackToSource,audDelete:audDelete,openAudLookalike:openAudLookalike,audLalSrc:audLalSrc,audLalPct:audLalPct,audLalCreate:audLalCreate,submitCaseWork:submitCaseWork,collectSubmission:collectSubmission,subLoad:subLoad,subSave:subSave,compareSubmission:compareSubmission,renderSubResult:renderSubResult};
+  var names=['doDuplicate','doPublishSelected','doDeleteSelected','discardDrafts','selectMedia','toggleNotifPanel','applyRowState','clearEditorDraft','applyDateRange','closeCaseView','closeCompare','closeDialog','closeOptimizeView','goCampaigns','goCases','openOptimizeView','showHome','closeEditor','closeInsights','closePageView','continueToEditor','doExport','editorNext','goEditorStep','goHome','onBidChange','openCase','openCaseCampaign','filterCaseCamps','clearNameFilter','openCompare','openCreate','openCustomExport','openDialog','openDuplicate','openEditor','openEditorForObjective','openEditorForSelected','openInsights','openNameEditor','openTags','openTool','openToolPage','renderTable','resetCase','segTab','setCaseVal','setCompareTab','setEditorMode','setFormat','setInsightsTab','setPvTab','setupContinue','startBrief','syncPreviewCta','syncPreviewText','toast','toggleAdsetMore','toggleAnswer','toggleCampMore','draftSet','addLoc','removeLoc','setLocMode','setLocRadius','addChip','removeChip','addChipFromInput','addFromSelect','setGender','toggleAdvAud','toggleAdvPl','togglePlManual','setBudgetType','toggleEndDate','toggleSched','toggleNarrow','setCostControl','toggleAdvOpt','toggleAdvCreative','toggleDtItem','filterDtTree','onDtBrowseToggle','setAdSetupMode','selectDemoPost','syncPreviewHeadline','setCampName','setAdsetName','setAdName','setPartnerAd','openExportWordRow','openExportWordEditor','doExportWord','__srvAddDraftRow','audLoad','setPlPreview','audSave','openAudCreate','audSetSource','audUseSample','audFileChange','audSetMap','audSetName','audCreateSubmit','audBackToSource','audDelete','openAudLookalike','audLalSrc','audLalPct','audLalCreate','submitCaseWork','collectSubmission','subLoad','subSave','compareSubmission','renderSubResult'];
+  var scope={doDuplicate:doDuplicate,doPublishSelected:doPublishSelected,doDeleteSelected:doDeleteSelected,discardDrafts:discardDrafts,selectMedia:selectMedia,toggleNotifPanel:toggleNotifPanel,applyRowState:applyRowState,clearEditorDraft:clearEditorDraft,applyDateRange:applyDateRange,closeCaseView:closeCaseView,closeCompare:closeCompare,closeDialog:closeDialog,closeOptimizeView:closeOptimizeView,goCampaigns:goCampaigns,goCases:goCases,openOptimizeView:openOptimizeView,showHome:showHome,closeEditor:closeEditor,closeInsights:closeInsights,closePageView:closePageView,continueToEditor:continueToEditor,doExport:doExport,editorNext:editorNext,goEditorStep:goEditorStep,goHome:goHome,onBidChange:onBidChange,openCase:openCase,openCaseCampaign:openCaseCampaign,filterCaseCamps:filterCaseCamps,clearNameFilter:clearNameFilter,openCompare:openCompare,openCreate:openCreate,openCustomExport:openCustomExport,openDialog:openDialog,openDuplicate:openDuplicate,openEditor:openEditor,openEditorForObjective:openEditorForObjective,openEditorForSelected:openEditorForSelected,openInsights:openInsights,openNameEditor:openNameEditor,openTags:openTags,openTool:openTool,openToolPage:openToolPage,renderTable:renderTable,resetCase:resetCase,segTab:segTab,setCaseVal:setCaseVal,setCompareTab:setCompareTab,setEditorMode:setEditorMode,setFormat:setFormat,setInsightsTab:setInsightsTab,setPvTab:setPvTab,setupContinue:setupContinue,startBrief:startBrief,syncPreviewCta:syncPreviewCta,syncPreviewText:syncPreviewText,toast:toast,toggleAdsetMore:toggleAdsetMore,toggleAnswer:toggleAnswer,toggleCampMore:toggleCampMore,draftSet:draftSet,addLoc:addLoc,removeLoc:removeLoc,setLocMode:setLocMode,setLocRadius:setLocRadius,addChip:addChip,removeChip:removeChip,addChipFromInput:addChipFromInput,addFromSelect:addFromSelect,setGender:setGender,toggleAdvAud:toggleAdvAud,toggleAdvPl:toggleAdvPl,togglePlManual:togglePlManual,setBudgetType:setBudgetType,toggleEndDate:toggleEndDate,toggleSched:toggleSched,toggleNarrow:toggleNarrow,setCostControl:setCostControl,toggleAdvOpt:toggleAdvOpt,toggleAdvCreative:toggleAdvCreative,toggleDtItem:toggleDtItem,filterDtTree:filterDtTree,onDtBrowseToggle:onDtBrowseToggle,setAdSetupMode:setAdSetupMode,selectDemoPost:selectDemoPost,syncPreviewHeadline:syncPreviewHeadline,setCampName:setCampName,setAdsetName:setAdsetName,setAdName:setAdName,setPartnerAd:setPartnerAd,openExportWordRow:openExportWordRow,openExportWordEditor:openExportWordEditor,doExportWord:doExportWord,__srvAddDraftRow:__srvAddDraftRow,audLoad:audLoad,setPlPreview:setPlPreview,audSave:audSave,openAudCreate:openAudCreate,audSetSource:audSetSource,audUseSample:audUseSample,audFileChange:audFileChange,audSetMap:audSetMap,audSetName:audSetName,audCreateSubmit:audCreateSubmit,audBackToSource:audBackToSource,audDelete:audDelete,openAudLookalike:openAudLookalike,audLalSrc:audLalSrc,audLalPct:audLalPct,audLalCreate:audLalCreate,submitCaseWork:submitCaseWork,collectSubmission:collectSubmission,subLoad:subLoad,subSave:subSave,compareSubmission:compareSubmission,renderSubResult:renderSubResult};
   names.forEach(function(n){if(typeof scope[n]==='function')window[n]=scope[n]});
 })();
 </script>
