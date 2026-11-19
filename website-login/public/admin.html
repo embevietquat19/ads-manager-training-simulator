@@ -111,10 +111,10 @@
 
   <section>
     <h2>Thông báo của giảng viên</h2>
-    <p class="desc">Thông báo hiện cho học viên trên màn hình chính sau khi đăng nhập, kèm chuông báo số chưa đọc. Chỉ giáo viên đăng / sửa / xoá được.</p>
+    <p class="desc">Thông báo hiện cho học viên trên màn hình chính sau khi đăng nhập, kèm chuông báo số chưa đọc. Chỉ giáo viên đăng / sửa / xoá được. Viết ngắn 1–2 dòng: chỉ báo tính năng mới hoặc sửa lỗi, không giải thích dài.</p>
     <form id="annForm">
-      <div style="margin-bottom:10px"><label for="annTitle" style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Tiêu đề</label><input id="annTitle" required maxlength="200" placeholder="vd: Nhắc lịch nộp bài tập tuần này"></div>
-      <div style="margin-bottom:10px"><label for="annBody" style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Nội dung</label><textarea id="annBody" rows="3" required maxlength="5000" placeholder="Nội dung thông báo…"></textarea></div>
+      <div style="margin-bottom:10px"><label for="annTitle" style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Tiêu đề</label><input id="annTitle" required maxlength="200" placeholder="VD: Đã thêm nút Xuất file Word ở từng chiến dịch"></div>
+      <div style="margin-bottom:10px"><label for="annBody" style="display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:#65676B">Nội dung</label><textarea id="annBody" rows="2" required maxlength="500" placeholder="VD: Bấm nút Xuất file Word ở dòng chiến dịch để tải file .docx nộp bài."></textarea></div>
       <input type="hidden" id="annEditId" value="">
       <button class="btn primary" type="submit" id="annSubmitBtn">Đăng thông báo</button>
       <button class="btn hidden" type="button" id="annCancelEdit">Huỷ sửa</button>
@@ -126,11 +126,12 @@
   <section>
     <h2>Nhật ký cập nhật hệ thống</h2>
     <p class="desc">Chỉ đọc — nội dung lấy từ nhật ký phiên bản của bản mô phỏng (học viên xem đầy đủ bằng chuông thông báo trong bản mô phỏng). Khi deploy phiên bản mới, cập nhật thêm 1 mục vào đầu danh sách này.</p>
-    <div class="kv"><b>v2.0.6 — 11:27 ngày 16/11/2026</b><span>Polish giao diện theo skill UI/UX: tương phản chữ phụ, focus toggle, bỏ gradient nền editor/avatar, thống nhất bo 8px và thang 4/8pt, chữ đọc dài dễ đọc hơn, form Quản trị/Đăng nhập đồng bộ token, gắn label cho field trong editor.</span></div>
-    <div class="kv"><b>v2.0.5 — 10:53 ngày 16/11/2026</b><span>Làm đẹp giao diện (chỉ CSS + rút ngắn 1 dòng hint): xanh chính #0064E0, nút Create xanh lá #00A400, header bảng 1 dòng, topbar và các hàng nút căn thẳng hàng, cao đều.</span></div>
-    <div class="kv"><b>v2.0.4 — 10:31 ngày 16/11/2026</b><span>Luồng nộp bài case: thêm thẻ "Bối cảnh", nút "Nộp bài" trong editor và trang case, bảng đối chiếu 5 mục với gợi ý giảng viên, giáo viên xem bài nộp trong "Xem bài làm".</span></div>
-    <div class="kv"><b>v2.0.3 — 10:00 ngày 16/11/2026</b><span>Nhóm 1 + Nhóm 2 (nút báo thành công giả nay làm thật), sửa UI trang Quản trị và bảng Campaigns, editor mở campaign Case 1 đúng số liệu case, thông báo thành nhật ký cập nhật, bảng công thức KPI trong Thuật ngữ, Customise columns.</span></div>
-    <div class="kv"><b>v2.0.2 — 08:54 ngày 16/11/2026</b><span>Upload file CSV tạo Custom Audience + Lookalike 1–10%.</span></div>
+    <div class="kv"><b>v2.0.7 — 22:12 ngày 19/11/2026</b><span>Polish giao diện: tương phản nâu cam #B06000 → #8A4A00, hint nút Create rõ hơn, chống tràn ngang, spacing 4/8pt, hover/disabled, tabular-nums. Bản sửa bổ sung: topbar gọn/không cắt chữ, panel thông báo hẹp + mặc định đóng, sửa modal Audiences mở tại chỗ, Audiences sát bản gốc, preview theo placement ở bước Ad set.</span></div>
+    <div class="kv"><b>v2.0.6 — 11:27 ngày 16/11/2026</b><span>Polish giao diện: tương phản chữ phụ, focus toggle, bỏ gradient nền editor/avatar; bo 8px, thang 4/8pt; form Quản trị/Đăng nhập đồng bộ token, gắn label cho field trong editor.</span></div>
+    <div class="kv"><b>v2.0.5 — 10:53 ngày 16/11/2026</b><span>Xanh chính #0064E0, nút Create xanh lá #00A400, header bảng 1 dòng, topbar và hàng nút căn đều.</span></div>
+    <div class="kv"><b>v2.0.4 — 10:31 ngày 16/11/2026</b><span>Nộp bài case: thêm thẻ "Bối cảnh", nút "Nộp bài", bảng đối chiếu 5 mục với gợi ý giảng viên.</span></div>
+    <div class="kv"><b>v2.0.3 — 10:00 ngày 16/11/2026</b><span>Trường editor lưu thật vào nháp; nút báo thành công giả nay làm thật; nhật ký cập nhật + chuông; bảng công thức KPI; Customise columns.</span></div>
+    <div class="kv"><b>v2.0.2 — 08:54 ngày 16/11/2026</b><span>Tải CSV tạo Custom Audience + Lookalike 1–10%.</span></div>
     <div class="kv"><b>v2.0.1 — 07:30 ngày 16/11/2026</b><span>Giáo viên tự đổi mật khẩu quản trị.</span></div>
     <div class="kv"><b>v2.0.0 — 01:23 ngày 16/11/2026</b><span>Website đăng nhập lần đầu.</span></div>
   </section>
